@@ -217,3 +217,6 @@ If you want ot get your personal API key from Unplash:
 3. In the top bar, click on _'API/Developers'_
 4. Go to _['Your applications'](https://unsplash.com/oauth/applications)_
 5. Click on _'New Application'_ to create a new one and get an API key (and a Secret).
+
+## TODO
+* Add user's authentication actions
