@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.4</TargetFramework>
+    <PackageId>unplasharp.api</PackageId>
+    <PackageVersion>0.5.1</PackageVersion>
+    <Authors>Jeremie CORPINOT</Authors>
+    <Description>Unsplash API for .NET</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>First release</PackageReleaseNotes>
+    <Copyright>MIT Licence. All rights reserved.</Copyright>
+    <PackageTags>unsplash api</PackageTags>
+    <PackageProjectUrl>https://github.com/rootasjey/unsplasharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/rootasjey/unsplasharp</RepositoryUrl>
+    <Version>0.5.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard1.4\unsplasharp.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="System.Net.Http" Version="4.3.2" />
+  </ItemGroup>
+
+</Project>
