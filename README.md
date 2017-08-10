@@ -213,43 +213,43 @@ var totalStats = await client.GetTotalStats();
 var monthlyStats = await client.GetMonthlyStats();
 ```
 
-## Custom Requests
+### Custom Requests
 
 In adition to the previous API methods, you can build and use custom URL's to fetch photos, photos' lists, and collections' lists.
 
 There're also methods to search for collections, photos and users using a custom URL.
 
-### Fetch a photo
+#### Fetch a photo
 
 ```csharp
 var photo = await FetchPhoto("you_custom_url");
 ```
 
-### Fetch a list of photos
+#### Fetch a list of photos
 
 ```csharp
 var photos = await FetchPhotosList("you_custom_url");
 ```
 
-### Fetch a list of collections
+#### Fetch a list of collections
 
 ```csharp
 var collections = await FetchCollectionsList("you_custom_url");
 ```
 
-### Search for photos using a specific search URL
+#### Search for photos using a specific search URL
 
 ```csharp
 var photosFound = await client.FetchSearchPhotosList("your_custom_url");
 ```
 
-### Search for collections using a specific search URL
+#### Search for collections using a specific search URL
 
 ```csharp
 var collectionsFound = await client.FetchSearcCollectionsList("your_custom_url");
 ```
 
-### Search for users using a specific search URL
+#### Search for users using a specific search URL
 
 ```csharp
 var usersFound = await client.FetchSearcUsersList("your_custom_url");
