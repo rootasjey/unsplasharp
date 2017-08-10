@@ -268,6 +268,11 @@ In this project, a test API key is used which is limited to 50 requests per hour
 
 * [Official Unplash documentation](https://unsplash.com/documentation)
 
+## Dependencies
+
+* [System.Net.Http](https://preview.nuget.org/packages/System.Net.Http/)
+* [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json)
+
 ## Personal API key
 
 If you want ot get your personal API key from Unplash:
