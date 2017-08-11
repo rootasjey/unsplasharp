@@ -8,7 +8,7 @@ namespace UnsplashsharpTest {
     public class CollectionTests {
         [TestMethod]
         public async Task GetCollectionTest() {
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var listCollection = await client.ListCollections();
             var collection = await client.GetCollection(listCollection[0].Id);
 
@@ -17,7 +17,7 @@ namespace UnsplashsharpTest {
 
         [TestMethod]
         public async Task ListCollectionsTest() {
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var listCollection = await client.ListCollections();
             var listCollectionPaged = await client.ListCollections(2);
 
@@ -30,7 +30,7 @@ namespace UnsplashsharpTest {
 
         [TestMethod]
         public async Task ListFeaturedCollectionsTest() {
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var listFeaturedCollection = await client.ListFeaturedCollections();
             var listFeaturedCollectionPaged = await client.ListFeaturedCollections(2);
 
@@ -43,7 +43,7 @@ namespace UnsplashsharpTest {
 
         [TestMethod]
         public async Task ListCuratedCollectionsTest() {
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var listCuratedCollection = await client.ListCuratedCollections();
             var listCuratedCollectionPaged = await client.ListCuratedCollections(2);
 
@@ -56,7 +56,7 @@ namespace UnsplashsharpTest {
 
         [TestMethod]
         public async Task GetCollectionPhotosTest() {
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var listCollection = await client.ListCollections();
             var collection = await client.GetCollection(listCollection[0].Id);
             var listPhotos = await client.GetCollectionPhotos(collection.Id);
@@ -66,7 +66,7 @@ namespace UnsplashsharpTest {
         }
 
         public async Task ListRelatedCollectionsTest() {
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var listCollection = await client.ListCollections();
             var collectionsRelated = await client.ListRelatedCollections(listCollection[0].Id);
 

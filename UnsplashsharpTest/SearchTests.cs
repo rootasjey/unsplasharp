@@ -9,7 +9,7 @@ namespace UnsplashsharpTest {
         [TestMethod]
         public async Task SearchPhotosTest() {
             var query = "mountains";
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var photosFound = await client.SearchPhotos(query);
             var photosFoundPaged = await client.SearchPhotos(query, 2);
 
@@ -24,7 +24,7 @@ namespace UnsplashsharpTest {
         [TestMethod]
         public async Task SearchCollectionsTest() {
             var query = "mountains";
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var collectionsFound = await client.SearchCollections(query);
             var collectionsFoundPaged = await client.SearchCollections(query, 2);
 
@@ -39,7 +39,7 @@ namespace UnsplashsharpTest {
         [TestMethod]
         public async Task SearchUsersTest() {
             var query = "mountains";
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var usersFound = await client.SearchUsers(query);
             var usersFoundPaged = await client.SearchUsers(query, 2);
 

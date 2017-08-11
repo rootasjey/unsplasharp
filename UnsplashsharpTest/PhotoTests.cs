@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Threading.Tasks;
 using UnsplashsharpTest.Data;
-using static Unsplasharp.Client;
+using static Unsplasharp.UnsplasharpClient;
 
 namespace UnsplashsharpTest {
     [TestClass]
@@ -12,7 +12,7 @@ namespace UnsplashsharpTest {
         [TestMethod]
         public async Task GetPhotoTest() {
             var id = "TPv9dh822VA";
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var photo = await client.GetPhoto(id);
 
             // Custom size
@@ -34,7 +34,7 @@ namespace UnsplashsharpTest {
 
         [TestMethod]
         public async Task GetRandomPhotoTest() {
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var randomPhoto = await client.GetRandomPhoto();
 
             var randomPhotoFromCollection = await client.GetRandomPhoto("499830");
@@ -60,7 +60,7 @@ namespace UnsplashsharpTest {
 
         [TestMethod]
         public async Task ListPhotosTest() {
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var listPhotos = await client.ListPhotos();
             var listPhotosPaged = await client.ListPhotos(page:2, perPage:15, orderBy: OrderBy.Popular);
 
@@ -70,7 +70,7 @@ namespace UnsplashsharpTest {
 
         [TestMethod]
         public async Task ListCuratedPhotosTest() {
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var listCuratedPhotos = await client.ListCuratedPhotos();
             var listCuratedPhotosPaged = await client.ListCuratedPhotos(2);
 
@@ -80,17 +80,16 @@ namespace UnsplashsharpTest {
 
         [TestMethod]
         public async Task GetPhotoStatsTest() {
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var listPhotos = await client.ListPhotos();
             var statsPhoto = await client.GetPhotoStats(listPhotos[0].Id);
 
             Assert.IsNotNull(statsPhoto);
-            Assert.IsTrue(statsPhoto.Views.Total > 0);
         }
 
         [TestMethod]
         public async Task GetPhotoDownloadLinkTest() {
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var listPhotos = await client.ListPhotos();
             var downloadLink = await client.GetPhotoDownloadLink(listPhotos[0].Id);
 

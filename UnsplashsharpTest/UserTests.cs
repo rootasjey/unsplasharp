@@ -10,7 +10,7 @@ namespace UnsplashsharpTest {
         [TestMethod]
         public async Task GetUserTest() {
             var username = "unsplash";
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var user = await client.GetUser(username);
             var userCustomProfileImage = client.GetUser("seteales", width: 100, height: 100);
 
@@ -20,7 +20,7 @@ namespace UnsplashsharpTest {
         [TestMethod]
         public async Task ListUserCollectionsTest() {
             var username = "unsplash";
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var userCollections = await client.ListUserCollections(username);
 
             Assert.IsNotNull(userCollections);
@@ -29,7 +29,7 @@ namespace UnsplashsharpTest {
         [TestMethod]
         public async Task ListUserPhotosTest() {
             var username = "seteales";
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var userPhotos = await client.ListUserPhotos(username, perPage: 40);
             var userPhotosCustomParam = await client.ListUserPhotos(username, page: 2, perPage: 2, stats: true);
 
@@ -40,7 +40,7 @@ namespace UnsplashsharpTest {
         [TestMethod]
         public async Task ListUserLikedPhotosTest() {
             var username = "anniespratt";
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var userLikedPhotos = await client.ListUserLikedPhotos(username);
 
             Assert.IsNotNull(userLikedPhotos);
@@ -50,7 +50,7 @@ namespace UnsplashsharpTest {
         [TestMethod]
         public async Task GetUserStatsTest() {
             var username = "anniespratt";
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var userStats = await client.GetUserStats(username);
 
             Assert.IsNotNull(userStats);

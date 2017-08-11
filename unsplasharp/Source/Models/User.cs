@@ -29,6 +29,8 @@
         /// </summary>
         public string LastName { get; set; }
 
+        public string TwitterUsername { get; set; }
+
         /// <summary>
         /// Portfolio/personal URL.
         /// </summary>
@@ -64,73 +66,44 @@
         /// </summary>
         public string UpdatedAt { get; set; }
 
-        private bool _FollowedByUser;
-
         /// <summary>
         /// True if the current authentified user follows this user
         /// </summary>
-        public bool FollowedByUser {
-            get { return _FollowedByUser; }
-            set { _FollowedByUser = value; }
-        }
-
-        private int _FollowersCount;
+        public bool FollowedByUser { get; set; }
 
         /// <summary>
         /// User dollwers count
         /// </summary>
-        public int FollowersCount {
-            get { return _FollowersCount; }
-            set { _FollowersCount = value; }
-        }
+        public int FollowersCount { get; set; }
 
         /// <summary>
         /// Users following count
         /// </summary>
         public int FollowingCount { get; set; }
 
-        private int _Downloads;
-
         /// <summary>
         /// Downloads count
         /// </summary>
-        public int Downloads {
-            get { return _Downloads; }
-            set { _Downloads = value; }
-        }
+        public int Downloads { get; set; }
 
         #endregion simple properties
 
         #region composed properties
-        private ProfileImage _ProfileImage;
 
         /// <summary>
         /// User's avatar
         /// </summary>
-        public ProfileImage ProfileImage {
-            get { return _ProfileImage; }
-            set { _ProfileImage = value; }
-        }
-
-        private Badge _Badge;
+        public ProfileImage ProfileImage { get; set; }
 
         /// <summary>
         /// User's badge
         /// </summary>
-        public Badge Badge {
-            get { return _Badge; }
-            set { _Badge = value; }
-        }
-
-        private UserLinks _Links;
+        public Badge Badge { get; set; }
 
         /// <summary>
         /// User's link relations
         /// </summary>
-        public UserLinks Links {
-            get { return _Links; }
-            set { _Links = value; }
-        }
+        public UserLinks Links { get; set; }
         #endregion composed properties
     }
 

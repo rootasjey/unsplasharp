@@ -10,7 +10,7 @@ namespace Unsplasharp {
     /// <summary>
     /// Represents a Unsplasharp class which can be used to communicate with Unplash APIs.
     /// </summary>
-    public class Client {
+    public class UnsplasharpClient {
         #region variables
         /// <summary>
         /// API Key 
@@ -173,7 +173,7 @@ namespace Unsplasharp {
         /// </summary>
         /// <param name="applicationId">A string to identify the current application performing a request.</param>
         /// <param name="secret">A string representing an API secret key to make HTTP authentified calls to Unplash services.</param>
-        public Client(string applicationId, string secret = "") {
+        public UnsplasharpClient(string applicationId, string secret = "") {
             ApplicationId = applicationId;
             Secret = secret;
         }
@@ -1085,6 +1085,9 @@ namespace Unsplasharp {
                 UpdatedAt = (string)data["updated_at"],
                 FirstName = (string)data["first_name"],
                 LastName = (string)data["last_name"],
+                Username = (string)data["username"],
+                Name = (string)data["name"],
+                TwitterUsername = (string)data["twitter_username"],
                 PortfolioUrl = (string)data["portfolio_url"],
                 Bio = (string)data["bio"],
                 Location = (string)data["location"],

@@ -8,7 +8,7 @@ namespace UnsplashsharpTest {
     public class GeneralTests {
         [TestMethod]
         public async Task RateLimitTest() {
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var photosFound = await client.GetRandomPhoto();
 
             Assert.IsTrue(client.RateLimitRemaining < client.MaxRateLimit);
@@ -16,7 +16,7 @@ namespace UnsplashsharpTest {
 
         [TestMethod]
         public async Task GetTotalStatsTest() {
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var totalStats = await client.GetTotalStats();
 
             Assert.IsNotNull(totalStats);
@@ -25,7 +25,7 @@ namespace UnsplashsharpTest {
 
         [TestMethod]
         public async Task GetMonthlyStatsTest() {
-            var client = new Client(Credentials.ApplicationId);
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
             var monthlyStats = await client.GetMonthlyStats();
 
             Assert.IsNotNull(monthlyStats);
