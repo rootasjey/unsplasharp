@@ -29,6 +29,9 @@
         /// </summary>
         public string LastName { get; set; }
 
+        /// <summary>
+        /// User's twitter username
+        /// </summary>
         public string TwitterUsername { get; set; }
 
         /// <summary>
