@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
-    <PackageId>unplasharp</PackageId>
+    <PackageId>unplasharp.api</PackageId>
     <PackageVersion>0.5.2</PackageVersion>
     <Authors>Jeremie CORPINOT</Authors>
     <Description>Unsplash API for .NET</Description>
