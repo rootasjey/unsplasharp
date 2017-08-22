@@ -1,6 +1,6 @@
 # Unsplasharp 📷
 
-Unoficial C# wrapper around [Unplash](https://unsplash.com) API targeting .NET Standard 1.4.
+Unofficial C# wrapper around [Unsplash](https://unsplash.com) API targeting .NET Standard 1.4.
 
 This lib is compatible with .NET Core, .NET Framework 4.6.1, Xamarin (iOS, Android), Universal Windows Platform.
 
@@ -10,14 +10,14 @@ This lib is compatible with .NET Core, .NET Framework 4.6.1, Xamarin (iOS, Andro
 
 ## Installation
 
-[NuGet](https://preview.nuget.org/packages/unplasharp.api/0.5.0): ```Install-Package unplasharp.api```
+[NuGet](https://www.nuget.org/packages/unsplasharp.api/): ```Install-Package unsplasharp.api```
 
 ## Usage
 
 ```csharp
 using Unsplasharp;
 
-var client = new Unsplasharp.Client("YOUR_APPLICATION_ID");
+var client = new UnsplasharpClient("YOUR_APPLICATION_ID");
 var photosFound = await client.SearchPhoto("mountains");
 ```
 
@@ -35,7 +35,7 @@ var photosFound = await client.SearchPhoto("mountains");
 
 ### Instanciate a new client
 
-It's necessary to instanciate a new client with at least an application id to start making requests.
+It's necessary to instanciate a new client with at least an application ID to start making requests.
 
 ```csharp
 var client = new Client("YOUR_APPLICATION_ID");
@@ -44,16 +44,16 @@ var client = new Client("YOUR_APPLICATION_ID");
 ### General
 
 #### Rates limits
-Unplash has API requests [rates limits](https://unsplash.com/documentation#rate-limiting).
+Unsplash has API requests [rates limits](https://unsplash.com/documentation#rate-limiting).
 
-An Unplashsharp client has two properties to help you monitor API calls:
+An Unsplashsharp client has two properties to help you monitor API calls:
 
 Max API calls allowed per hour
 
 * ```MaxRateLimit```
 
 API calls remaining for the current hour
-* ```RateLimitRemaining``` 
+* ```RateLimitRemaining```
 
 ```csharp
 if (client.RateLimitRemaining == 0) {
@@ -77,19 +77,20 @@ if (client.MaxRateLimit == 50) {
 ```csharp
 var photo = await client.GetPhoto("TPv9dh822VA");
 
-// custom parameters
-var photoWidthHeight = await client.GetPhoto(id, width: 500, height: 500);
+// get a photo in the specified width and height in pixels
+var photoWidthHeight = await client.GetPhoto(id: "TPv9dh822VA", width: 500, height: 500);
 ```
 
 #### Get a random photo
 
 ```csharp
-var photoRandom = await client.GetRandomPhoto();
+var randomPhoto = await client.GetRandomPhoto();
 
-// custom parameters
+// using collections' IDs
 var randomPhotoFromCollections = await client.GetRandomPhoto(new string[] { "499830", "194162" });
 
-var randomPhotoFromUser = await client.GetRandomPhoto(1, username: "matthewkane");
+// from a specific user
+var randomPhotoFromUser = await client.GetRandomPhoto(count: 1, username: "matthewkane");
 
 var randomPhotosFromQuery = await client.GetRandomPhoto(count: 3, query:"woman");
 ```
@@ -99,7 +100,6 @@ var randomPhotosFromQuery = await client.GetRandomPhoto(count: 3, query:"woman")
 ```csharp
 var listPhotos = await client.ListPhotos();
 
-// custom parameters
 var listPhotosPaged = await client.ListPhotos(page:2, perPage:15, orderBy: OrderBy.Popular);
 ```
 
@@ -150,7 +150,6 @@ var collectionsRelated = await client.ListRelatedCollections("771520");
 ```csharp
 var user = await client.GetUser("unsplash");
 
-// custom parameters
 var userCustomProfileImage = client.GetUser("seteales", width: 100, height: 100);
 ```
 
@@ -197,17 +196,17 @@ var collectionsFound = await client.SearchCollections("mountains");
 #### Search users from a query
 
 ```csharp
-var usersFound = await client.SearchUsers("mountains");
+var usersFound = await client.SearchUsers("seteales");
 ```
 
 ### Stats
-#### Get Unplash [total stats](https://unsplash.com/documentation#totals)
+#### Get Unsplash [total stats](https://unsplash.com/documentation#totals)
 
 ```csharp
 var totalStats = await client.GetTotalStats();
 ```
 
-#### Get Unplash [monthly stats](https://unsplash.com/documentation#month)
+#### Get Unsplash [monthly stats](https://unsplash.com/documentation#month)
 
 ```csharp
 var monthlyStats = await client.GetMonthlyStats();
@@ -222,19 +221,19 @@ There're also methods to search for collections, photos and users using a custom
 #### Fetch a photo
 
 ```csharp
-var photo = await FetchPhoto("you_custom_url");
+var photo = await client.FetchPhoto("you_custom_url");
 ```
 
 #### Fetch a list of photos
 
 ```csharp
-var photos = await FetchPhotosList("you_custom_url");
+var photos = await client.FetchPhotosList("you_custom_url");
 ```
 
 #### Fetch a list of collections
 
 ```csharp
-var collections = await FetchCollectionsList("you_custom_url");
+var collections = await client.FetchCollectionsList("you_custom_url");
 ```
 
 #### Search for photos using a specific search URL
@@ -258,30 +257,30 @@ var usersFound = await client.FetchSearcUsersList("your_custom_url");
 
 ## Tests
 
-Test are under [UnsplashsharpTests](https://github.com/rootasjey/unsplasharp/tree/master/UnsplashsharpTest) project.
+Tests are under [UnsplashsharpTests](https://github.com/rootasjey/unsplasharp/tree/master/UnsplashsharpTest) project.
 
-Unit tests are used to check the Unplash [API status](https://status.unsplash.com/) and thatn every methods in the lib works properly.
+They check the Unsplash [API status](https://status.unsplash.com/) and that every methods in the lib works properly.
 
-In this project, a test API key is used which is limited to 50 requests per hour. So ensure you're not off limit.
+In this project, a dev API key is used which is limited to 50 requests per hour. So ensure you're not off limit.
 
-## Resources
+## Personal API key
 
-* [Official Unplash documentation](https://unsplash.com/documentation)
+If you want to get your personal API key from Unsplash:
+
+1. Go to [Unsplash](https://unsplash.com)
+2. Log in or create a new account
+3. In the top bar, click on _'API/Developers'_
+4. Go to _['Your applications'](https://unsplash.com/oauth/applications)_
+5. Click on _'New Application'_ to create a new one and get an API key (and a Secret).
 
 ## Dependencies
 
 * [System.Net.Http](https://preview.nuget.org/packages/System.Net.Http/)
 * [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json)
 
-## Personal API key
+## Resources
 
-If you want ot get your personal API key from Unplash:
-
-1. Go to [Unplash](https://unsplash.com)
-2. Log in or create a new account
-3. In the top bar, click on _'API/Developers'_
-4. Go to _['Your applications'](https://unsplash.com/oauth/applications)_
-5. Click on _'New Application'_ to create a new one and get an API key (and a Secret).
+* [Official Unsplash documentation](https://unsplash.com/documentation)
 
 ## TODO
 
