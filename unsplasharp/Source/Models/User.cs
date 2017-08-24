@@ -1,8 +1,11 @@
-﻿namespace Unsplasharp.Models {
+﻿using System;
+using System.ComponentModel;
+
+namespace Unsplasharp.Models {
     /// <summary>
     /// Represents an user class from Unplash API.
     /// </summary>
-    public class User {
+    public class User : INotifyPropertyChanged {
         #region simple properties
         /// <summary>
         /// Unique user's identifer
@@ -44,50 +47,149 @@
         /// </summary>
         public string Bio { get; set; }
 
+        private string _Location;
         /// <summary>
         /// User's location
         /// </summary>
-        public string Location { get; set; }
+        public string Location {
+            get {
+                return _Location;
+            }
+            set {
+                if (_Location != value) {
+                    _Location = value;
+                    NotifyPropertyChanged(nameof(Location));
+                }
+            }
+        }
 
+        private int _TotalLikes;
         /// <summary>
         /// User's liked photos count
         /// </summary>
-        public int TotalLikes { get; set; }
+        public int TotalLikes {
+            get {
+                return _TotalLikes;
+            }
+            set {
+                if (_TotalLikes != value) {
+                    _TotalLikes = value;
+                    NotifyPropertyChanged(nameof(TotalLikes));
+                }
+            }
+        }
 
+        private int _TotalPhotos;
         /// <summary>
         /// User's photo count
         /// </summary>
-        public int TotalPhotos { get; set; }
+        public int TotalPhotos {
+            get {
+                return _TotalPhotos;
+            }
+            set {
+                if (_TotalPhotos != value) {
+                    _TotalPhotos = value;
+                    NotifyPropertyChanged(nameof(TotalPhotos));
+                }
+            }
+        }
 
+        private int _TotalCollections;
         /// <summary>
         /// User's collections count
         /// </summary>
-        public int TotalCollections { get; set; }
+        public int TotalCollections {
+            get {
+                return _TotalCollections;
+            }
+            set {
+                if (_TotalCollections != value) {
+                    _TotalCollections = value;
+                    NotifyPropertyChanged(nameof(TotalCollections));
+                }
+            }
+        }
 
+        private string _UpdatedAt;
         /// <summary>
         /// Last user profile update
         /// </summary>
-        public string UpdatedAt { get; set; }
+        public string UpdatedAt {
+            get {
+                return _UpdatedAt;
+            }
+            set {
+                if (_UpdatedAt != value) {
+                    _UpdatedAt = value;
+                    NotifyPropertyChanged(nameof(UpdatedAt));
+                }
+            }
+        }
 
+        private bool _FollowedByUser;
         /// <summary>
         /// True if the current authentified user follows this user
         /// </summary>
-        public bool FollowedByUser { get; set; }
+        public bool FollowedByUser {
+            get {
+                return _FollowedByUser;
+            }
+            set {
+                if (_FollowedByUser != value) {
+                    _FollowedByUser = value;
+                    NotifyPropertyChanged(nameof(FollowedByUser));
+                }
+            }
+        }
 
+        private int _FollowersCount;
         /// <summary>
         /// User dollwers count
         /// </summary>
-        public int FollowersCount { get; set; }
+        public int FollowersCount {
+            get {
+                return _FollowersCount;
+            }
+            set {
+                if (_FollowersCount != value) {
+                    _FollowersCount = value;
+                    NotifyPropertyChanged(nameof(FollowersCount));
+                }
+            }
+        }
 
+        private int _FollowingCount;
         /// <summary>
         /// Users following count
         /// </summary>
-        public int FollowingCount { get; set; }
+        public int FollowingCount {
+            get {
+                return _FollowingCount;
+            }
+            set {
+                if (_FollowingCount != value) {
+                    _FollowingCount = value;
+                    NotifyPropertyChanged(nameof(FollowingCount));
+                }
+            }
+        }
 
+        private int _Downloads;
         /// <summary>
         /// Downloads count
         /// </summary>
-        public int Downloads { get; set; }
+        public int Downloads {
+            get {
+                return _Downloads;
+            }
+            set {
+                if (_Downloads != value) {
+                    _Downloads = value;
+                    NotifyPropertyChanged(nameof(Downloads));
+                }
+            }
+        }
 
         #endregion simple properties
 
@@ -98,16 +200,36 @@
         /// </summary>
         public ProfileImage ProfileImage { get; set; }
 
+        private Badge _Badge;
         /// <summary>
         /// User's badge
         /// </summary>
-        public Badge Badge { get; set; }
+        public Badge Badge {
+            get {
+                return _Badge;
+            }
+            set {
+                if (_Badge != value) {
+                    _Badge = value;
+                    NotifyPropertyChanged(nameof(Badge));
+                }
+            }
+        }
 
         /// <summary>
         /// User's link relations
         /// </summary>
         public UserLinks Links { get; set; }
+        
         #endregion composed properties
+
+        #region events
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(String propertyName) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion events
     }
 
     /// <summary>

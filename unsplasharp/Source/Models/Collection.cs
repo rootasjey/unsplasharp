@@ -1,8 +1,11 @@
-﻿namespace Unsplasharp.Models {
+﻿using System;
+using System.ComponentModel;
+
+namespace Unsplasharp.Models {
     /// <summary>
     /// Represents a collection of photos.
     /// </summary>
-    public class Collection {
+    public class Collection : INotifyPropertyChanged {
 
         #region simple properties
 
@@ -26,30 +29,86 @@
         /// </summary>
         public string PublishedAt { get; set; }
 
+        private string _UpdatedAt;
         /// <summary>
         /// Collection's last update's date.
         /// </summary>
-        public string UpdatedAt { get; set; }
+        public string UpdatedAt {
+            get {
+                return _UpdatedAt;
+            }
+            set {
+                if (_UpdatedAt != value) {
+                    _UpdatedAt = value;
+                    NotifyPropertyChanged(nameof(UpdatedAt));
+                }
+            }
+        }
 
+        private bool _IsCurated;
         /// <summary>
         /// True if the collection is curated.
         /// </summary>
-        public bool IsCurated { get; set; }
+        public bool IsCurated {
+            get {
+                return _IsCurated;
+            }
+            set {
+                if (_IsCurated != value) {
+                    _IsCurated = value;
+                    NotifyPropertyChanged(nameof(IsCurated));
+                }
+            }
+        }
 
+        private bool _IsFeatured;
         /// <summary>
         /// True if the collection is featured.
         /// </summary>
-        public bool IsFeatured { get; set; }
+        public bool IsFeatured {
+            get {
+                return _IsFeatured;
+            }
+            set {
+                if (_IsFeatured != value) {
+                    _IsFeatured = value;
+                    NotifyPropertyChanged(nameof(IsFeatured));
+                }
+            }
+        }
 
+        private int _TotalPhotos;
         /// <summary>
         /// Photos count in the collection.
         /// </summary>
-        public int TotalPhotos { get; set; }
+        public int TotalPhotos {
+            get {
+                return _TotalPhotos;
+            }
+            set {
+                if (_TotalPhotos != value) {
+                    _TotalPhotos = value;
+                    NotifyPropertyChanged(nameof(TotalPhotos));
+                }
+            }
+        }
 
+
+        private bool _IsPrivate;
         /// <summary>
         /// True if the collection is private (not publicly visible).
         /// </summary>
-        public bool IsPrivate { get; set; }
+        public bool IsPrivate {
+            get {
+                return _IsPrivate;
+            }
+            set {
+                if (_IsPrivate != value) {
+                    _IsPrivate = value;
+                    NotifyPropertyChanged(nameof(IsPrivate));
+                }
+            }
+        }
 
         /// <summary>
         /// Collection's share key.
@@ -76,6 +135,14 @@
         public CollectionLinks Links { get; set; }
 
         #endregion composed properties
+
+        #region events
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(String propertyName) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion events
     }
 
     /// <summary>

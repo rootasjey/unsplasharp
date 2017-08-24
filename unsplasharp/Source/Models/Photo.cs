@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Unsplasharp.Models {
     /// <summary>
     /// Represents a photo class from Unsplash API.
     /// </summary>
-    public class Photo {
+    public class Photo : INotifyPropertyChanged {
 
         #region simple properties
         /// <summary>
@@ -13,7 +15,7 @@ namespace Unsplasharp.Models {
         public string Id { get; set; }
 
         /// <summary>
-        /// Photo's dezcription
+        /// Photo's description
         /// </summary>
         public string Description { get; set; }
 
@@ -22,10 +24,21 @@ namespace Unsplasharp.Models {
         /// </summary>
         public string CreatedAt { get; set; }
 
+        private string _UpdatedAt;
         /// <summary>
         /// Date indicating the last time the photo has been updated.
         /// </summary>
-        public string UpdatedAt { get; set; }
+        public string UpdatedAt {
+            get {
+                return _UpdatedAt;
+            }
+            set {
+                if (_UpdatedAt != value) {
+                    _UpdatedAt = value;
+                    NotifyPropertyChanged(nameof(UpdatedAt));
+                }
+            }
+        }
 
         /// <summary>
         /// Photo's width in pixels.
@@ -49,9 +62,13 @@ namespace Unsplasharp.Models {
         /// </summary>
         public int Downloads {
             get { return _Downloads; }
-            set { _Downloads = value; }
+            set {
+                if (_Downloads != value) {
+                    _Downloads = value;
+                    NotifyPropertyChanged(nameof(Downloads));
+                }
+            }
         }
-
 
         private int _Likes;
 
@@ -65,52 +82,101 @@ namespace Unsplasharp.Models {
             set {
                 if (_Likes != value) {
                     _Likes = value;
+                    NotifyPropertyChanged(nameof(Likes));
                 }
             }
         }
 
         private bool _IsLikedByUser;
-
         /// <summary>
         /// Whether the photo has been liked by the current user if a user is logged.
         /// </summary>
         public bool IsLikedByUser {
             get { return _IsLikedByUser; }
-            set { _IsLikedByUser = value; }
+            set {
+                if (_IsLikedByUser != value) {
+                    _IsLikedByUser = value;
+                    NotifyPropertyChanged(nameof(IsLikedByUser));
+                }
+            }
         }
 
         #endregion simple properties
 
         #region composed properties
+
+        private List<Collection> _CurrentUserCollection;
         /// <summary>
         /// The photo's collection where the photo is included, if any.
         /// </summary>
-        public List<Collection> CurrentUserCollection { get; set; }
+        public List<Collection> CurrentUserCollection {
+            get {
+                return _CurrentUserCollection;
+            }
+            set {
+                if (_CurrentUserCollection != value) {
+                    _CurrentUserCollection = value;
+                    NotifyPropertyChanged(nameof(CurrentUserCollection));
+                }
+            }
+        }
+    
 
         /// <summary>
         /// Absolute photo's URLs (for different photo's sizes).
         /// </summary>
         public Urls Urls { get; set; }
 
+        private List<Category> _Categories;
         /// <summary>
         /// Photo's matched categories.
         /// </summary>
-        public List<Category> Categories { get; set; }
+        public List<Category> Categories {
+            get {
+                return _Categories;
+            }
+            set {
+                if (_Categories != value) {
+                    _Categories = value;
+                    NotifyPropertyChanged(nameof(Categories));
+                }
+            }
+        }
 
         /// <summary>
         /// Photo's owner (who's uploaded the content).
         /// </summary>
         public User User { get; set; }
 
+        private Exif _Exif;
         /// <summary>
         /// Camera specifications.
         /// </summary>
-        public Exif Exif { get; set; }
+        public Exif Exif {
+            get {
+                return _Exif;
+            }
+            set {
+                if (_Exif != value) {
+                    _Exif = value;
+                    NotifyPropertyChanged(nameof(Exif));
+                }
+            }
+        }
 
+        private Location _Location;
         /// <summary>
-        /// Represents where the photo has been shot.
+        /// Where the photo has been shot.
         /// </summary>
-        public Location Location { get; set; }
+        public Location Location {
+            get { return _Location; }
+            set {
+                if (_Location != value) {
+                    _Location = value;
+                    NotifyPropertyChanged(nameof(Location));
+                }
+            }
+        }
 
         /// <summary>
         /// Photo's link relations
@@ -118,6 +184,12 @@ namespace Unsplasharp.Models {
         public PhotoLinks Links { get; set; }
 
         #endregion composed properties
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(String propertyName) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
     /// <summary>

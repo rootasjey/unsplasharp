@@ -95,6 +95,15 @@ namespace UnsplashsharpTest {
 
             Assert.IsNotNull(downloadLink);
         }
+
+        [TestMethod]
+        public async Task NotifyPropertyChangedTest() {
+            var id = "TPv9dh822VA";
+            var client = new UnsplasharpClient(Credentials.ApplicationId);
+            var photo = await client.GetPhoto(id);
+
+            photo.Downloads = 20000;
+        }
         
     }
 }
