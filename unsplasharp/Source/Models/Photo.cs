@@ -185,11 +185,16 @@ namespace Unsplasharp.Models {
 
         #endregion composed properties
 
+        #region events
+        /// <summary>
+        /// Event raised when a property is modified
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged(String propertyName) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion events
     }
 
     /// <summary>
