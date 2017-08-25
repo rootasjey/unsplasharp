@@ -1132,6 +1132,8 @@ namespace Unsplasharp {
             if (IsNull(data)) return null;
 
             return new Location() {
+                Title = (string)data["title"],
+                Name = (string)data["name"],
                 City = (string)data["city"],
                 Country = (string)data["country"],
 

@@ -261,6 +261,20 @@ namespace Unsplasharp.Models {
     /// The photo's location.
     /// </summary>
     public class Location {
+        private string _Title;
+
+        public string Title {
+            get { return _Title; }
+            set { _Title = value; }
+        }
+
+        private string _Name;
+
+        public string Name {
+            get { return _Name; }
+            set { _Name = value; }
+        }
+
         private string _City;
 
         /// <summary>
@@ -279,7 +293,7 @@ namespace Unsplasharp.Models {
         public string Country {
             get { return _Country; }
             set { _Country = value; }
-        }
+        }        
 
         private Position _Position;
 
