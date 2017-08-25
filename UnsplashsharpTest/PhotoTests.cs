@@ -104,6 +104,5 @@ namespace UnsplashsharpTest {
 
             photo.Downloads = 20000;
         }
-        
     }
 }

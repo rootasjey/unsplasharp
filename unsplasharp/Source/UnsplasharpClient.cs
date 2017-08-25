@@ -1137,7 +1137,7 @@ namespace Unsplasharp {
 
                 Position = new Position() {
                     Latitude = (int)data["position"]["latitude"],
-                    Longitude = (int)data["posityion"]["longitude"],
+                    Longitude = (int)data["position"]["longitude"],
                 }
             };
         }
@@ -1159,7 +1159,7 @@ namespace Unsplasharp {
 
                 Exif = ExtractExif(data["exif"]),
 
-                Location = ExtractLocation(data["Location"]),
+                Location = ExtractLocation(data["location"]),
 
                 Urls = new Urls() {
                     Raw = (string)data["urls"]["raw"],
