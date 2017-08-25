@@ -263,6 +263,9 @@ namespace Unsplasharp.Models {
     public class Location {
         private string _Title;
 
+        /// <summary>
+        /// Full location's name (district + city + country (if available))
+        /// </summary>
         public string Title {
             get { return _Title; }
             set { _Title = value; }
@@ -270,6 +273,9 @@ namespace Unsplasharp.Models {
 
         private string _Name;
 
+        /// <summary>
+        /// Location's name
+        /// </summary>
         public string Name {
             get { return _Name; }
             set { _Name = value; }
@@ -278,7 +284,7 @@ namespace Unsplasharp.Models {
         private string _City;
 
         /// <summary>
-        /// The photo location’s city.
+        /// Location’s city.
         /// </summary>
         public string City {
             get { return _City; }
@@ -288,7 +294,7 @@ namespace Unsplasharp.Models {
         private string _Country;
 
         /// <summary>
-        /// The photo location’s country.
+        /// Location’s country.
         /// </summary>
         public string Country {
             get { return _Country; }
@@ -298,7 +304,7 @@ namespace Unsplasharp.Models {
         private Position _Position;
 
         /// <summary>
-        /// The photo location’s position (latitude, longitude).
+        /// Location’s position (latitude, longitude).
         /// </summary>
         public Position Position {
             get { return _Position; }
