@@ -11,7 +11,8 @@ namespace UnsplashsharpTest {
     public class PhotoTests {
         [TestMethod]
         public async Task GetPhotoTest() {
-            var id = "TPv9dh822VA";
+            //var id = "TPv9dh822VA";
+            var id = "qcs09SwNPHY";
             var client = new UnsplasharpClient(Credentials.ApplicationId);
             var photo = await client.GetPhoto(id);
 

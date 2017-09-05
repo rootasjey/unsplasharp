@@ -1138,8 +1138,8 @@ namespace Unsplasharp {
                 Country = (string)data["country"],
 
                 Position = new Position() {
-                    Latitude = (int)data["position"]["latitude"],
-                    Longitude = (int)data["position"]["longitude"],
+                    Latitude = IsNull(data["position"]["latitude"]) ? 0 : (int)data["position"]["latitude"],
+                    Longitude = IsNull(data["position"]["longitude"]) ? 0 : (int)data["position"]["longitude"],
                 }
             };
         }
