@@ -994,7 +994,7 @@ namespace Unsplasharp {
         private async Task<string> Fetch(string url) {
             HttpClient http = new HttpClient();
             http.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("client_id", ApplicationId);
+                new AuthenticationHeaderValue("Client-ID", ApplicationId);
             HttpResponseMessage response = null;
 
             try {
