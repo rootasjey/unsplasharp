@@ -1,5 +1,8 @@
 # Unsplasharp 📷
 
+> ⚠️ Looking for maintenairs
+> I don't have much time to work on this lib.
+
 Unofficial C# wrapper around [Unsplash](https://unsplash.com) API targeting .NET Standard 1.4.
 
 This lib is compatible with .NET Core, .NET Framework 4.6.1, Xamarin (iOS, Android), Universal Windows Platform.
