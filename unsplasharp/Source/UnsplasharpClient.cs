@@ -1150,6 +1150,7 @@ namespace Unsplasharp {
             return new Photo() {
                 Id = (string)data["id"],
                 Color = (string)data["color"],
+                BlurHash = (string)data["blur_hash"],
                 CreatedAt = (string)data["created_at"],
                 UpdatedAt = (string)data["updated_at"],
                 Description = (string)data["description"],

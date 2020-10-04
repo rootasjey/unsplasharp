@@ -54,6 +54,10 @@ namespace Unsplasharp.Models {
         /// The main color composing the photo.
         /// </summary>
         public string Color { get; set; }
+        /// <summary>
+        /// BlurHash Placeholders
+        /// </summary>
+        public string BlurHash { get; set; }
 
         private int _Downloads;
 
