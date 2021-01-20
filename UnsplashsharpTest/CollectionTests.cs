@@ -42,19 +42,6 @@ namespace UnsplashsharpTest {
         }
 
         [TestMethod]
-        public async Task ListCuratedCollectionsTest() {
-            var client = new UnsplasharpClient(Credentials.ApplicationId);
-            var listCuratedCollection = await client.ListCuratedCollections();
-            var listCuratedCollectionPaged = await client.ListCuratedCollections(2);
-
-            Assert.IsNotNull(listCuratedCollection);
-            Assert.IsNotNull(listCuratedCollectionPaged);
-
-            Assert.IsTrue(listCuratedCollection.Count > 0);
-            Assert.IsTrue(listCuratedCollectionPaged.Count > 0);
-        }
-
-        [TestMethod]
         public async Task GetCollectionPhotosTest() {
             var client = new UnsplasharpClient(Credentials.ApplicationId);
             var listCollection = await client.ListCollections();
