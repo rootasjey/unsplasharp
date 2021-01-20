@@ -991,7 +991,7 @@ namespace Unsplasharp {
 
                 return responseBodyAsText;
 
-            } catch (Exception e) {
+            } catch {
                 return null;
             }
         }
