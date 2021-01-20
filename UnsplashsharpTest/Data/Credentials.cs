@@ -2,13 +2,13 @@
     public static class Credentials {
         public static string ApplicationId {
             get {
-                return "geLn8Z-0TgME0SsK9v4qOUIx5tU9DD_WbJLH8BrWNls";
+                return "b27797f08021cb0d84672e38530613898facf6d4b06c62ec7dd5a2912c9a4438";
             }
         }
 
         private static string Secret {
             get {
-                return "O3-RnHubVs98uk9z19YWYdz0p6Z1sTgkqwVBKqw9JCo";
+                return "38b6f87419f686094e53286d0b6cb39efc3fc97ee6ce3bb6e0b90531aec9984f";
             }
         }
     }
