@@ -106,12 +106,6 @@ var listPhotos = await client.ListPhotos();
 var listPhotosPaged = await client.ListPhotos(page:2, perPage:15, orderBy: OrderBy.Popular);
 ```
 
-#### Get a list of curated photos
-```csharp
-var listCuratedPhotos = await client.ListCuratedPhotos();
-```
-
-
 ### Collections
 
 #### Get a single collection from an id
@@ -128,12 +122,6 @@ var listCollection = await client.ListCollections();
 ```csharp
 var listFeaturedCollection = await client.ListFeaturedCollections();
 ```
-
-#### Get a list of curated collections
-```csharp
-var listCuratedCollection = await client.ListCuratedCollections();
-```
-
 #### Get a collection's photos from a collection's id
 ```csharp
 var listPhotos = await client.GetCollectionPhotos("771520");
