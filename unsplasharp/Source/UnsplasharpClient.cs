@@ -5,6 +5,8 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Unsplasharp.Models;
 using System.Linq;
+using System;
+using System.Collections.Concurrent;
 
 namespace Unsplasharp {
     /// <summary>
@@ -34,11 +36,15 @@ namespace Unsplasharp {
         }
 
         /// <summary>
+        /// Keep a single http client per application id, to avoid https://www.aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/
+        /// </summary>
+        private static readonly ConcurrentDictionary<string, Lazy<HttpClient>> httpClients = new ConcurrentDictionary<string, Lazy<HttpClient>>();
+
+        /// <summary>
         /// Unplash endpoints
         /// </summary>
         private static IDictionary<string, string> URIEndpoints = new Dictionary<string, string>() {
             {"photos", "photos" },
-            {"curated_photos", "photos/curated" },
             {"search", "search" },
             {"users", "users" },
             {"collections", "collections" },
@@ -424,21 +430,6 @@ namespace Unsplasharp {
         }
 
         /// <summary>
-        /// Returns a list of curated photos.
-        /// </summary>
-        /// <param name="page">Page number to retrieve.</param>
-        /// // <param name="perPage">Number of items per page.</param>
-        /// <param name="orderBy">How to sort the photos.</param>
-        /// <returns>List of curated photos.</returns>
-        public async Task<List<Photo>> ListCuratedPhotos(int page = 1, int perPage = 10, OrderBy orderBy = OrderBy.Latest) {
-            var url = string.Format(
-                "{0}?page={1}&per_page={2}&order_by={3}", 
-                GetUrl("curated_photos"), page, perPage, ConvertOderBy(orderBy));
-
-            return await FetchPhotosList(url);
-        }
-
-        /// <summary>
         /// Return a list of photos from the specified URL.
         /// </summary>
         /// <param name="url">API endpoint to fetch the photos' list.</param>
@@ -557,20 +548,6 @@ namespace Unsplasharp {
         public async Task<List<Collection>> ListFeaturedCollections(int page = 1, int perPage = 10) {
             var url = string.Format(
                 "{0}/featured?page={1}&per_page={2}", 
-                GetUrl("collections"), page, perPage);
-
-            return await FetchCollectionsList(url);
-        }
-
-        /// <summary>
-        /// Get a single page from the list of curated collections.
-        /// </summary>
-        /// <param name="page">Page number to retrieve.</param>
-        /// <param name="perPage">Number of items per page. (Max: 30)</param>
-        /// <returns>A list of collections.</returns>
-        public async Task<List<Collection>> ListCuratedCollections(int page = 1, int perPage = 10) {
-            var url = string.Format("" +
-                "{0}/curated?page={1}&per_page={2}", 
                 GetUrl("collections"), page, perPage);
 
             return await FetchCollectionsList(url);
@@ -914,7 +891,7 @@ namespace Unsplasharp {
                 Photos = double.Parse((string)data["photos"]),
                 Downloads = double.Parse((string)data["downloads"]),
                 Views = double.Parse((string)data["views"]),
-                Likes = double.Parse((string)data["likes"]),
+                Likes = double.Parse((string)data["likes"] ?? "0"),
                 Photographers = double.Parse((string)data["photographers"]),
                 Pixels = double.Parse((string)data["pixels"]),
                 DownloadsPerSecond = double.Parse((string)data["downloads_per_second"]),
@@ -939,7 +916,7 @@ namespace Unsplasharp {
             return new UnplashMonthlyStats() {
                 Downloads = double.Parse((string)data["downloads"]),
                 Views = double.Parse((string)data["views"]),
-                Likes = double.Parse((string)data["likes"]),
+                Likes = double.Parse((string)data["likes"] ?? "0"),
                 NewPhotos = double.Parse((string)data["new_photos"]),
                 NewPhotographers = double.Parse((string)data["new_photographers"]),
                 NewPixels = double.Parse((string)data["new_pixels"]),
@@ -963,8 +940,6 @@ namespace Unsplasharp {
             switch (type) {
                 case "photos":
                     return URIBase + URIEndpoints["photos"];
-                case "curated_photos":
-                    return URIBase + URIEndpoints["curated_photos"];
                 case "users":
                     return URIBase + URIEndpoints["users"];
                 case "search":
@@ -992,12 +967,22 @@ namespace Unsplasharp {
         /// <param name="url">URL to reach.</param>
         /// <returns>Body response as string.</returns>
         private async Task<string> Fetch(string url) {
-            HttpClient http = new HttpClient();
-            http.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Client-ID", ApplicationId);
             HttpResponseMessage response = null;
 
+            var appID = ApplicationId ?? "";
+
             try {
+                var http = httpClients.GetOrAdd(appID, (key) =>
+                {
+                    return new Lazy<HttpClient>(() =>
+                    {
+                        HttpClient client = new HttpClient();
+                        client.DefaultRequestHeaders.Authorization =
+                                new AuthenticationHeaderValue("Client-ID", key);
+                        return client;
+                    });
+                }).Value;
+
                 response = await http.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 var responseBodyAsText = await response.Content.ReadAsStringAsync();
@@ -1155,7 +1140,7 @@ namespace Unsplasharp {
                 UpdatedAt = (string)data["updated_at"],
                 Description = (string)data["description"],
                 Downloads = ExtractNumber(data["downloads"]),
-                Likes = ExtractNumber(data["likes"]),
+                Likes = ExtractNumber(data["likes"] ?? "0"),
                 IsLikedByUser = ExtractBoolean(data["liked_by_user"]),
                 Width = ExtractNumber(data["width"]),
                 Height = ExtractNumber(data["height"]),

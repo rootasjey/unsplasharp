@@ -41,7 +41,7 @@ namespace UnsplashsharpTest {
             var randomPhotoFromCollection = await client.GetRandomPhoto("499830");
             var randomPhotoFromCollections = await client.GetRandomPhoto(new string[] { "499830", "194162" });
 
-            var randomPhotoFromUser = await client.GetRandomPhoto(1, username: "matthewkane");
+            var randomPhotoFromUser = await client.GetRandomPhoto(1, username: "chrisjoelcampbell");
             var randomPhotosFromQuery = await client.GetRandomPhoto(count: 3, query:"woman");
 
             var randomPhotoFeatured = await client.GetRandomPhoto(featured: true);
@@ -67,16 +67,6 @@ namespace UnsplashsharpTest {
 
             Assert.IsTrue(listPhotos.Count > 0);
             Assert.IsTrue(listPhotosPaged.Count > 0);
-        }
-
-        [TestMethod]
-        public async Task ListCuratedPhotosTest() {
-            var client = new UnsplasharpClient(Credentials.ApplicationId);
-            var listCuratedPhotos = await client.ListCuratedPhotos();
-            var listCuratedPhotosPaged = await client.ListCuratedPhotos(2);
-
-            Assert.IsTrue(listCuratedPhotos.Count > 0);
-            Assert.IsTrue(listCuratedPhotosPaged.Count > 0);
         }
 
         [TestMethod]

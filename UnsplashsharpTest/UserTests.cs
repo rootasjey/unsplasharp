@@ -28,7 +28,7 @@ namespace UnsplashsharpTest {
 
         [TestMethod]
         public async Task ListUserPhotosTest() {
-            var username = "seteales";
+            var username = "matthew";
             var client = new UnsplasharpClient(Credentials.ApplicationId);
             var userPhotos = await client.ListUserPhotos(username, perPage: 40);
             var userPhotosCustomParam = await client.ListUserPhotos(username, page: 2, perPage: 2, stats: true);
@@ -39,7 +39,7 @@ namespace UnsplashsharpTest {
 
         [TestMethod]
         public async Task ListUserLikedPhotosTest() {
-            var username = "anniespratt";
+            var username = "matthew";
             var client = new UnsplasharpClient(Credentials.ApplicationId);
             var userLikedPhotos = await client.ListUserLikedPhotos(username);
 
@@ -49,7 +49,7 @@ namespace UnsplashsharpTest {
 
         [TestMethod]
         public async Task GetUserStatsTest() {
-            var username = "anniespratt";
+            var username = "matthew";
             var client = new UnsplasharpClient(Credentials.ApplicationId);
             var userStats = await client.GetUserStats(username);
 
