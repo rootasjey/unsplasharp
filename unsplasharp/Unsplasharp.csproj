@@ -3,19 +3,19 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
     <PackageId>unsplasharp.api</PackageId>
-    <PackageVersion>0.5.8</PackageVersion>
+    <Version>0.7.0</Version>
     <Authors>Jeremie CORPINOT</Authors>
     <Description>Unsplash API for .NET</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>
-      Fix client id header parameter.
+      Optimize [HttpClient] resources and remove deprecated APIs.
     </PackageReleaseNotes>
     <Copyright>MIT Licence. All rights reserved.</Copyright>
     <PackageTags>unsplash api</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/rootasjey/unsplasharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/rootasjey/unsplasharp</RepositoryUrl>
-    <Version>0.5.2</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
