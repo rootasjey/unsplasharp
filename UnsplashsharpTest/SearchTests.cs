@@ -7,9 +7,21 @@ namespace UnsplashsharpTest {
     [TestClass]
     public class SearchTests {
         [TestMethod]
-        public async Task SearchPhotosTest() {
+        public async Task SearchPhotosTestLowSafety()
+        {
+            await SearchPhotosTest(UnsplasharpClient.ContentSafety.Low);
+        }
+
+        [TestMethod]
+        public async Task SearchPhotosTestHighSafety()
+        {
+            await SearchPhotosTest(UnsplasharpClient.ContentSafety.High);
+        }
+
+        private async Task SearchPhotosTest(UnsplasharpClient.ContentSafety contentFilter) {
             var query = "mountains";
             var client = new UnsplasharpClient(Credentials.ApplicationId);
+            client.ContentFilter = contentFilter;
             var photosFound = await client.SearchPhotos(query);
             var photosFoundPaged = await client.SearchPhotos(query, 2);
 
