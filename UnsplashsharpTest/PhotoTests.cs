@@ -34,8 +34,20 @@ namespace UnsplashsharpTest {
         }
 
         [TestMethod]
-        public async Task GetRandomPhotoTest() {
+        public async Task GetRandomPhotoTestLowSafety()
+        {
+            await GetRandomPhotoTest(UnsplasharpClient.ContentSafety.Low);
+        }
+
+        [TestMethod]
+        public async Task GetRandomPhotoTestHighSafety()
+        {
+            await GetRandomPhotoTest(UnsplasharpClient.ContentSafety.High);
+        }
+
+        private async Task GetRandomPhotoTest(UnsplasharpClient.ContentSafety contentFilter) {
             var client = new UnsplasharpClient(Credentials.ApplicationId);
+            client.ContentFilter = contentFilter;
             var randomPhoto = await client.GetRandomPhoto();
 
             var randomPhotoFromCollection = await client.GetRandomPhoto("499830");
