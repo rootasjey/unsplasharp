@@ -7,6 +7,7 @@ using Unsplasharp.Models;
 using System.Linq;
 using System;
 using System.Collections.Concurrent;
+using MihaZupan;
 
 namespace Unsplasharp {
     /// <summary>
@@ -25,6 +26,19 @@ namespace Unsplasharp {
         /// https://unsplash.com/developers
         /// </summary>
         public string ApplicationId { get; set; }
+        
+        
+        /// <summary>
+        /// Proxy address with socks5
+        /// </summary>
+        public string ProxyAddress { get; set; }
+
+        
+        /// <summary>
+        /// Proxy port with socks5
+        /// </summary>
+        public int ProxyPort { get; set; }
+
 
         /// <summary>
         /// Unplash base URI: "https://api.unsplash.com/"
@@ -179,9 +193,13 @@ namespace Unsplasharp {
         /// </summary>
         /// <param name="applicationId">A string to identify the current application performing a request.</param>
         /// <param name="secret">A string representing an API secret key to make HTTP authentified calls to Unplash services.</param>
-        public UnsplasharpClient(string applicationId, string secret = "") {
+        /// <param name="proxyAddress">A string for proxy socks5 address.</param>
+        /// <param name="proxyPort">A integer for proxy socks5 port.</param>
+        public UnsplasharpClient(string applicationId, string secret = "", string proxyAddress = "", int proxyPort = 80) {
             ApplicationId = applicationId;
             Secret = secret;
+            ProxyAddress = proxyAddress;
+            ProxyPort = proxyPort;
         }
 
 
@@ -972,13 +990,20 @@ namespace Unsplasharp {
             var appID = ApplicationId ?? "";
 
             try {
-                var http = httpClients.GetOrAdd(appID, (key) =>
+                var http = httpClients.GetOrAdd(appID, key =>
                 {
+                    HttpClient client = new HttpClient();
                     return new Lazy<HttpClient>(() =>
                     {
-                        HttpClient client = new HttpClient();
+                        if (!string.IsNullOrEmpty(ProxyAddress))
+                        {
+                            var proxy = new HttpToSocks5Proxy(ProxyAddress, ProxyPort);
+                            var handler = new HttpClientHandler {Proxy = proxy};
+                            client = new HttpClient(handler, true);
+                        }
+
                         client.DefaultRequestHeaders.Authorization =
-                                new AuthenticationHeaderValue("Client-ID", key);
+                            new AuthenticationHeaderValue("Client-ID", key);
                         return client;
                     });
                 }).Value;
