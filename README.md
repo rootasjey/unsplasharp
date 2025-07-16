@@ -12,6 +12,7 @@ This lib is compatible with .NET Core, .NET Framework 4.6.1+, Xamarin (iOS, Andr
 This library has been enhanced with modern .NET practices and reliability features:
 
 - **🔄 Async/Await Patterns**: Improved async patterns with proper `ConfigureAwait(false)` usage
+- **⏹️ Cancellation Token Support**: All async methods now support `CancellationToken` for request cancellation and timeouts
 - **📊 Structured Logging**: Built-in support for Microsoft.Extensions.Logging with detailed request/response logging
 - **🔁 Retry Policies**: Automatic retry logic using Polly for resilient HTTP requests
 - **⚡ Performance**: Migrated to System.Text.Json for 2-3x faster JSON processing and reduced memory usage
@@ -36,6 +37,41 @@ using Unsplasharp;
 var client = new UnsplasharpClient("YOUR_APPLICATION_ID");
 var photosFound = await client.SearchPhotos("mountains");
 ```
+
+### Cancellation Token Support
+
+All async methods now support `CancellationToken` for request cancellation and timeout handling:
+
+```csharp
+using Unsplasharp;
+
+var client = new UnsplasharpClient("YOUR_APPLICATION_ID");
+
+// Timeout after 30 seconds
+using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+var photo = await client.GetRandomPhoto(cts.Token);
+
+// Manual cancellation
+using var cts2 = new CancellationTokenSource();
+var searchTask = client.SearchPhotos("nature", 1, 10, cts2.Token);
+// Later: cts2.Cancel();
+
+// Integration with ASP.NET Core
+public async Task<IActionResult> GetPhoto(string id, CancellationToken cancellationToken)
+{
+    var photo = await client.GetPhoto(id, 0, 0, cancellationToken);
+    return Ok(photo);
+}
+```
+
+**Supported Methods:**
+- All photo methods: `GetPhoto()`, `GetRandomPhoto()`, `ListPhotos()`, `SearchPhotos()`
+- All collection methods: `GetCollection()`, `ListCollections()`, `GetCollectionPhotos()`
+- All user methods: `GetUser()`
+- All search methods: `SearchPhotos()`, `SearchCollections()`
+- Stats methods: `GetTotalStats()`
+
+> **🔄 Backward Compatibility**: All existing method signatures remain unchanged. Cancellation token support is added as optional overloads, so your existing code will continue to work without any modifications.
 
 ### Advanced Usage with Logging
 

@@ -8,7 +8,7 @@
     <Description>Unsplash API for .NET - Modernized for .NET Standard 2.0</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>
-      Updated to .NET Standard 2.0, modernized dependencies, improved HttpClient usage patterns.
+      Added comprehensive CancellationToken support to all async methods. Updated to .NET Standard 2.0, modernized dependencies, improved HttpClient usage patterns with structured logging and retry policies.
     </PackageReleaseNotes>
     <Copyright>MIT Licence. All rights reserved.</Copyright>
     <PackageTags>unsplash api photography images</PackageTags>

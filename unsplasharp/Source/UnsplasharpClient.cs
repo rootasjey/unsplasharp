@@ -227,12 +227,24 @@ namespace Unsplasharp {
         /// <param name="height">Desired height.</param>
         /// <returns>A new Photo class instance.</returns>
         public async Task<Photo?> GetPhoto(string id, int width = 0, int height = 0) {
+            return await GetPhoto(id, width, height, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns the photo corresponding to the given id.
+        /// </summary>
+        /// <param name="id">Photo's unique id to find.</param>
+        /// <param name="width">Desired width.</param>
+        /// <param name="height">Desired height.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A new Photo class instance.</returns>
+        public async Task<Photo?> GetPhoto(string id, int width, int height, CancellationToken cancellationToken) {
             var url = string.Format("{0}/{1}", GetUrl("photos"), id);
 
             if (width != 0) { url = AddQueryString(url, "w", width); }
             if (height != 0) { url = AddQueryString(url, "h", height); }
 
-            return await FetchPhoto(url).ConfigureAwait(false);
+            return await FetchPhoto(url, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -248,10 +260,27 @@ namespace Unsplasharp {
         /// <param name="rectHeight">Height of the cropped rectangle.</param>
         /// <returns>A new Photo class instance which has a custom URL.</returns>
         public async Task<Photo?> GetPhoto(string id, int width, int height, int rectX, int rectY, int rectWidth, int rectHeight) {
+            return await GetPhoto(id, width, height, rectX, rectY, rectWidth, rectHeight, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns the photo corresponding to the given id,
+        /// in the specified width and height and cropped according to a specified rectangle.
+        /// </summary>
+        /// <param name="id">Photo's unique id to find.</param>
+        /// <param name="width">Desired width.</param>
+        /// <param name="height">Desired height.</param>
+        /// <param name="rectX">X origin point of the cropped rectangle.</param>
+        /// <param name="rectY">Y origin point of the cropped rectangle.</param>
+        /// <param name="rectWidth">Width of the cropped rectangle.</param>
+        /// <param name="rectHeight">Height of the cropped rectangle.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A new Photo class instance which has a custom URL.</returns>
+        public async Task<Photo?> GetPhoto(string id, int width, int height, int rectX, int rectY, int rectWidth, int rectHeight, CancellationToken cancellationToken) {
             var url = string.Format("{0}/{1}?w={2}&h={3}&rect={4},{5},{6},{7}",
                                     GetUrl("photos"), id, width, height, rectX, rectY, rectWidth, rectHeight);
 
-            return await FetchPhoto(url).ConfigureAwait(false);
+            return await FetchPhoto(url, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -259,9 +288,18 @@ namespace Unsplasharp {
         /// </summary>
         /// <returns>A new Photo class instance.</returns>
         public async Task<Photo?> GetRandomPhoto() {
+            return await GetRandomPhoto(CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Retrieve a single random photo.
+        /// </summary>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A new Photo class instance.</returns>
+        public async Task<Photo?> GetRandomPhoto(CancellationToken cancellationToken) {
             _logger.LogInformation("Fetching random photo");
             var url = string.Format("{0}/random", GetUrl("photos"));
-            var photo = await FetchPhoto(url).ConfigureAwait(false);
+            var photo = await FetchPhoto(url, cancellationToken).ConfigureAwait(false);
 
             if (photo != null) {
                 _logger.LogInformation("Successfully retrieved random photo with ID {PhotoId}", photo.Id);
@@ -278,20 +316,40 @@ namespace Unsplasharp {
         /// <param name="collectionId">Public collection ID to filter selection.</param>
         /// <returns>A new Photo class instance.</returns>
         public async Task<Photo?> GetRandomPhoto(string collectionId) {
+            return await GetRandomPhoto(collectionId, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Retrieve a single random photo from a specific collection.
+        /// </summary>
+        /// <param name="collectionId">Public collection ID to filter selection.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A new Photo class instance.</returns>
+        public async Task<Photo?> GetRandomPhoto(string collectionId, CancellationToken cancellationToken) {
             var url = string.Format("{0}/random?collections={1}", GetUrl("photos"), collectionId);
-            return await FetchPhoto(url).ConfigureAwait(false);
+            return await FetchPhoto(url, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Retrieve a single random photo from specific collections.
+        /// </summary>
+        /// <param name="collectionIds">Public collection ID('s) to filter selection.</param>
+        /// <returns>A new Photo class instance.</returns>
+        public async Task<Photo?> GetRandomPhoto(string[] collectionIds) {
+            return await GetRandomPhoto(collectionIds, CancellationToken.None).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Retrieve a single random photo from specific collections.
         /// </summary>
         /// <param name="collectionIds">Public collection ID(‘s) to filter selection.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
         /// <returns>A new Photo class instance.</returns>
-        public async Task<Photo?> GetRandomPhoto(string[] collectionIds) {
+        public async Task<Photo?> GetRandomPhoto(string[] collectionIds, CancellationToken cancellationToken) {
             var url = string.Format("{0}/random?collections={1}",
                 GetUrl("photos"), string.Join(",", collectionIds));
 
-            return await FetchPhoto(url).ConfigureAwait(false);
+            return await FetchPhoto(url, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -453,11 +511,23 @@ namespace Unsplasharp {
         /// <param name="orderBy">How to sort the photos.</param>
         /// <returns>List of all  photos.</returns>
         public async Task<List<Photo>> ListPhotos(int page = 1, int perPage = 10, OrderBy orderBy = OrderBy.Latest) {
+            return await ListPhotos(page, perPage, orderBy, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns a list of all  photos.
+        /// </summary>
+        /// <param name="page">Page number to retrieve.</param>
+        /// <param name="perPage">Number of items per page.</param>
+        /// <param name="orderBy">How to sort the photos.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>List of all  photos.</returns>
+        public async Task<List<Photo>> ListPhotos(int page, int perPage, OrderBy orderBy, CancellationToken cancellationToken) {
             var url = string.Format(
-                "{0}?page={1}&per_page={2}&order_by={3}", 
+                "{0}?page={1}&per_page={2}&order_by={3}",
                 GetUrl("photos"), page, perPage, ConvertOderBy(orderBy));
 
-            return await FetchPhotosList(url).ConfigureAwait(false);
+            return await FetchPhotosList(url, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -466,10 +536,20 @@ namespace Unsplasharp {
         /// <param name="url">API endpoint to fetch the photos' list.</param>
         /// <returns>A list of photos.</returns>
         public async Task<List<Photo>> FetchPhotosList(string url) {
+            return await FetchPhotosList(url, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Return a list of photos from the specified URL.
+        /// </summary>
+        /// <param name="url">API endpoint to fetch the photos' list.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A list of photos.</returns>
+        public async Task<List<Photo>> FetchPhotosList(string url, CancellationToken cancellationToken) {
             var listPhotos = new List<Photo>();
 
             try {
-                var responseBodyAsText = await Fetch(url).ConfigureAwait(false);
+                var responseBodyAsText = await Fetch(url, cancellationToken).ConfigureAwait(false);
                 if (responseBodyAsText == null) return listPhotos;
 
                 using var document = JsonDocument.Parse(responseBodyAsText);
@@ -496,7 +576,17 @@ namespace Unsplasharp {
         /// <param name="url">URL to fetch photo from.</param>
         /// <returns>A single photo instance.</returns>
         public async Task<Photo?> FetchPhoto(string url) {
-            var response = await Fetch(url).ConfigureAwait(false);
+            return await FetchPhoto(url, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Fetch a photo from an Unplash specified URL
+        /// </summary>
+        /// <param name="url">URL to fetch photo from.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A single photo instance.</returns>
+        public async Task<Photo?> FetchPhoto(string url, CancellationToken cancellationToken) {
+            var response = await Fetch(url, cancellationToken).ConfigureAwait(false);
 
             if (response == null) return null;
 
@@ -516,9 +606,20 @@ namespace Unsplasharp {
         /// <returns>A new Photo class instance.</returns>
         /// <exception cref="UnsplasharpException">Thrown when the request fails</exception>
         public async Task<Photo> GetRandomPhotoAsync() {
+            return await GetRandomPhotoAsync(CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Retrieve a single random photo with comprehensive error handling.
+        /// This method throws specific exceptions for different error scenarios.
+        /// </summary>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A new Photo class instance.</returns>
+        /// <exception cref="UnsplasharpException">Thrown when the request fails</exception>
+        public async Task<Photo> GetRandomPhotoAsync(CancellationToken cancellationToken) {
             _logger.LogInformation("Fetching random photo with exception handling");
             var url = string.Format("{0}/random", GetUrl("photos"));
-            var photo = await FetchPhotoWithExceptions(url).ConfigureAwait(false);
+            var photo = await FetchPhotoWithExceptions(url, cancellationToken).ConfigureAwait(false);
 
             _logger.LogInformation("Successfully retrieved random photo with ID {PhotoId}", photo.Id);
             return photo;
@@ -535,12 +636,27 @@ namespace Unsplasharp {
         /// <exception cref="UnsplasharpException">Thrown when the request fails</exception>
         /// <exception cref="UnsplasharpNotFoundException">Thrown when the photo is not found</exception>
         public async Task<Photo> GetPhotoAsync(string id, int width = 0, int height = 0) {
+            return await GetPhotoAsync(id, width, height, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns the photo corresponding to the given id with comprehensive error handling.
+        /// This method throws specific exceptions for different error scenarios.
+        /// </summary>
+        /// <param name="id">Photo's unique id to find.</param>
+        /// <param name="width">Desired width.</param>
+        /// <param name="height">Desired height.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A new Photo class instance.</returns>
+        /// <exception cref="UnsplasharpException">Thrown when the request fails</exception>
+        /// <exception cref="UnsplasharpNotFoundException">Thrown when the photo is not found</exception>
+        public async Task<Photo> GetPhotoAsync(string id, int width, int height, CancellationToken cancellationToken) {
             var url = string.Format("{0}/{1}", GetUrl("photos"), id);
 
             if (width != 0) { url = AddQueryString(url, "w", width); }
             if (height != 0) { url = AddQueryString(url, "h", height); }
 
-            return await FetchPhotoWithExceptions(url).ConfigureAwait(false);
+            return await FetchPhotoWithExceptions(url, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -552,7 +668,20 @@ namespace Unsplasharp {
         /// <exception cref="UnsplasharpException">Thrown when the request fails</exception>
         /// <exception cref="UnsplasharpParsingException">Thrown when JSON parsing fails</exception>
         private async Task<Photo> FetchPhotoWithExceptions(string url) {
-            var response = await FetchWithExceptions(url).ConfigureAwait(false);
+            return await FetchPhotoWithExceptions(url, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Fetch a photo from an Unsplash specified URL with comprehensive error handling.
+        /// This method throws specific exceptions for different error scenarios.
+        /// </summary>
+        /// <param name="url">URL to fetch photo from.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A single photo instance.</returns>
+        /// <exception cref="UnsplasharpException">Thrown when the request fails</exception>
+        /// <exception cref="UnsplasharpParsingException">Thrown when JSON parsing fails</exception>
+        private async Task<Photo> FetchPhotoWithExceptions(string url, CancellationToken cancellationToken) {
+            var response = await FetchWithExceptions(url, cancellationToken).ConfigureAwait(false);
 
             try {
                 using var document = JsonDocument.Parse(response);
@@ -581,10 +710,20 @@ namespace Unsplasharp {
         /// <param name="url">API endpoint where to fetch the photos' list.</param>
         /// <returns>Collections list</returns>
         public async Task<List<Collection>> FetchCollectionsList(string url) {
+            return await FetchCollectionsList(url, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns a list of collections (of photos) from a specified URL
+        /// </summary>
+        /// <param name="url">API endpoint where to fetch the photos' list.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>Collections list</returns>
+        public async Task<List<Collection>> FetchCollectionsList(string url, CancellationToken cancellationToken) {
             var listCollection = new List<Collection>();
 
             try {
-                var responseBodyAsText = await Fetch(url).ConfigureAwait(false);
+                var responseBodyAsText = await Fetch(url, cancellationToken).ConfigureAwait(false);
                 if (responseBodyAsText == null) return listCollection;
 
                 using var document = JsonDocument.Parse(responseBodyAsText);
@@ -611,8 +750,18 @@ namespace Unsplasharp {
         /// <param name="id">Collection's id to find.</param>
         /// <returns>A new collection instance.</returns>
         public async Task<Collection?> GetCollection(string id) {
+            return await GetCollection(id, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Returns the photos collection corresponding to the given id.
+        /// </summary>
+        /// <param name="id">Collection's id to find.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A new collection instance.</returns>
+        public async Task<Collection?> GetCollection(string id, CancellationToken cancellationToken) {
             var url = string.Format("{0}/{1}", GetUrl("collections"), id);
-            var response = await Fetch(url);
+            var response = await Fetch(url, cancellationToken);
 
             if (response == null) return null;
 
@@ -628,11 +777,23 @@ namespace Unsplasharp {
         /// <param name="perPage">Number of items per page. (Max: 30)</param>
         /// <returns>A list of photos in the collection</returns>
         public async Task<List<Photo>> GetCollectionPhotos(string id, int page = 1, int perPage = 10) {
+            return await GetCollectionPhotos(id, page, perPage, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Retrieve a collection's photos.
+        /// </summary>
+        /// <param name="id">The collection's ID.</param>
+        /// <param name="page">Page number to retrieve.</param>
+        /// <param name="perPage">Number of items per page. (Max: 30)</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A list of photos in the collection</returns>
+        public async Task<List<Photo>> GetCollectionPhotos(string id, int page, int perPage, CancellationToken cancellationToken) {
             var url = string.Format(
                 "{0}/{1}/photos?page={2}&per_page={3}",
                 GetUrl("collections"), id, page, perPage);
 
-            return await FetchPhotosList(url);
+            return await FetchPhotosList(url, cancellationToken);
         }
 
         /// <summary>
@@ -642,11 +803,22 @@ namespace Unsplasharp {
         /// <param name="perPage">Number of items per page. (Max: 30)</param>
         /// <returns>List of recent collections</returns>
         public async Task<List<Collection>> ListCollections(int page = 1, int perPage = 10) {
+            return await ListCollections(page, perPage, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get a single page from the list of all collections.
+        /// </summary>
+        /// <param name="page">Page number to retrieve.</param>
+        /// <param name="perPage">Number of items per page. (Max: 30)</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>List of recent collections</returns>
+        public async Task<List<Collection>> ListCollections(int page, int perPage, CancellationToken cancellationToken) {
             var url = string.Format(
-                "{0}?page={1}&per_page={2}", 
+                "{0}?page={1}&per_page={2}",
                 GetUrl("collections"), page, perPage);
 
-            return await FetchCollectionsList(url).ConfigureAwait(false);
+            return await FetchCollectionsList(url, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -656,11 +828,22 @@ namespace Unsplasharp {
         /// <param name="perPage">Number of items per page. (Max: 30)</param>
         /// <returns>A list of collections.</returns>
         public async Task<List<Collection>> ListFeaturedCollections(int page = 1, int perPage = 10) {
+            return await ListFeaturedCollections(page, perPage, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get a single page from the list of featured collections.
+        /// </summary>
+        /// <param name="page">Page number to retrieve.</param>
+        /// <param name="perPage">Number of items per page. (Max: 30)</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A list of collections.</returns>
+        public async Task<List<Collection>> ListFeaturedCollections(int page, int perPage, CancellationToken cancellationToken) {
             var url = string.Format(
-                "{0}/featured?page={1}&per_page={2}", 
+                "{0}/featured?page={1}&per_page={2}",
                 GetUrl("collections"), page, perPage);
 
-            return await FetchCollectionsList(url);
+            return await FetchCollectionsList(url, cancellationToken);
         }
 
         /// <summary>
@@ -669,8 +852,18 @@ namespace Unsplasharp {
         /// <param name="id">The collection’s ID.</param>
         /// <returns>A list of collections.</returns>
         public async Task<List<Collection>> ListRelatedCollections(string id) {
+            return await ListRelatedCollections(id, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get a collection's related collections.
+        /// </summary>
+        /// <param name="id">The collection's ID.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A list of collections.</returns>
+        public async Task<List<Collection>> ListRelatedCollections(string id, CancellationToken cancellationToken) {
             var url = string.Format("{0}/{1}/related", GetUrl("collections"), id);
-            return await FetchCollectionsList(url);
+            return await FetchCollectionsList(url, cancellationToken);
         }
 
         #endregion collections
@@ -684,12 +877,24 @@ namespace Unsplasharp {
         /// <param name="height">Profile image height in pixels.</param>
         /// <returns>User corresponding to the username if found.</returns>
         public async Task<User?> GetUser(string username, int width = 0, int height = 0) {
+            return await GetUser(username, width, height, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Return the User corresponding to the given username.
+        /// </summary>
+        /// <param name="username">The user's username to find. Required.</param>
+        /// <param name="width">Profile image width in pixels.</param>
+        /// <param name="height">Profile image height in pixels.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>User corresponding to the username if found.</returns>
+        public async Task<User?> GetUser(string username, int width, int height, CancellationToken cancellationToken) {
             var url = string.Format("{0}/{1}", GetUrl("users"), username);
 
             if (width != 0) { url = AddQueryString(url, "w", width); }
             if (height != 0) { url = AddQueryString(url, "w", height); }
 
-            var response = await Fetch(url);
+            var response = await Fetch(url, cancellationToken);
 
             if (response == null) return null;
 
@@ -814,6 +1019,18 @@ namespace Unsplasharp {
         /// <param name="perPage">Number of items per page.</param>
         /// <returns>A list of photos found.</returns>
         public async Task<List<Photo>> SearchPhotos(string query, int page = 1, int perPage = 10) {
+            return await SearchPhotos(query, page, perPage, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get a single page of photo results for a query.
+        /// </summary>
+        /// <param name="query">Search terms.</param>
+        /// <param name="page">Page number to retrieve.</param>
+        /// <param name="perPage">Number of items per page.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A list of photos found.</returns>
+        public async Task<List<Photo>> SearchPhotos(string query, int page, int perPage, CancellationToken cancellationToken) {
             _logger.LogInformation("Searching photos with query '{Query}', page {Page}, perPage {PerPage}",
                 query, page, perPage);
 
@@ -822,7 +1039,7 @@ namespace Unsplasharp {
                 GetUrl("search_photos"), query, page, perPage);
 
             LastPhotosSearchQuery = query;
-            var results = await FetchSearchPhotosList(url).ConfigureAwait(false);
+            var results = await FetchSearchPhotosList(url, cancellationToken).ConfigureAwait(false);
 
             _logger.LogInformation("Photo search completed. Found {ResultCount} photos, total results: {TotalResults}",
                 results.Count, LastPhotosSearchTotalResults);
@@ -839,12 +1056,25 @@ namespace Unsplasharp {
         /// <param name="perPage">Number of items per page.</param>
         /// <returns>A list of photos found.</returns>
         public async Task<List<Photo>> SearchPhotos(string query, string collectionId, int page = 1, int perPage = 10) {
+            return await SearchPhotos(query, collectionId, page, perPage, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get a single page of photo results for a query.
+        /// </summary>
+        /// <param name="query">Search terms.</param>
+        /// <param name="collectionId">Collection ID to narrow search.</param>
+        /// <param name="page">Page number to retrieve.</param>
+        /// <param name="perPage">Number of items per page.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A list of photos found.</returns>
+        public async Task<List<Photo>> SearchPhotos(string query, string collectionId, int page, int perPage, CancellationToken cancellationToken) {
             var url = string.Format(
                 "{0}?query={1}&page={2}&per_page={3}&collections={4}",
                 GetUrl("search_photos"), query, page, perPage, collectionId);
 
             LastPhotosSearchQuery = query;
-            return await FetchSearchPhotosList(url).ConfigureAwait(false);
+            return await FetchSearchPhotosList(url, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -856,12 +1086,25 @@ namespace Unsplasharp {
         /// <param name="perPage">Number of items per page.</param>
         /// <returns>A list of photos found.</returns>
         public async Task<List<Photo>> SearchPhotos(string query, string[] collectionIds, int page = 1, int perPage = 10) {
+            return await SearchPhotos(query, collectionIds, page, perPage, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get a single page of photo results for a query.
+        /// </summary>
+        /// <param name="query">Search terms.</param>
+        /// <param name="collectionIds">Collection ID's to narrow search.</param>
+        /// <param name="page">Page number to retrieve.</param>
+        /// <param name="perPage">Number of items per page.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A list of photos found.</returns>
+        public async Task<List<Photo>> SearchPhotos(string query, string[] collectionIds, int page, int perPage, CancellationToken cancellationToken) {
             var url = string.Format(
                 "{0}?query={1}&page={2}&per_page={3}&collections={4}",
                 GetUrl("search_photos"), query, page, perPage, string.Join(",", collectionIds));
 
             LastPhotosSearchQuery = query;
-            return await FetchSearchPhotosList(url).ConfigureAwait(false);
+            return await FetchSearchPhotosList(url, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -872,12 +1115,24 @@ namespace Unsplasharp {
         /// <param name="perPage">Number of items per page.</param>
         /// <returns>A list of collections found.</returns>
         public async Task<List<Collection>> SearchCollections(string query, int page = 1, int perPage = 10) {
+            return await SearchCollections(query, page, perPage, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get a single page of collection results for a query.
+        /// </summary>
+        /// <param name="query">Search terms.</param>
+        /// <param name="page">Page number to retrieve.</param>
+        /// <param name="perPage">Number of items per page.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A list of collections found.</returns>
+        public async Task<List<Collection>> SearchCollections(string query, int page, int perPage, CancellationToken cancellationToken) {
             var url = string.Format(
                 "{0}?query={1}&page={2}&per_page={3}",
                 GetUrl("search_collections"), query, page, perPage);
 
             LastCollectionsSearchQuery = query;
-            return await FetchSearcCollectionsList(url).ConfigureAwait(false);
+            return await FetchSearcCollectionsList(url, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -902,10 +1157,20 @@ namespace Unsplasharp {
         /// <param name="url">API endpoint to fetch the photos' list. Must be a search url.</param>
         /// <returns>A list of photos found.</returns>
         public async Task<List<Photo>> FetchSearchPhotosList(string url) {
+            return await FetchSearchPhotosList(url, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Return a list of found photos from a search query.
+        /// </summary>
+        /// <param name="url">API endpoint to fetch the photos' list. Must be a search url.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A list of photos found.</returns>
+        public async Task<List<Photo>> FetchSearchPhotosList(string url, CancellationToken cancellationToken) {
             var listPhotos = new List<Photo>();
 
             try {
-                var responseBodyAsText = await Fetch(url).ConfigureAwait(false);
+                var responseBodyAsText = await Fetch(url, cancellationToken).ConfigureAwait(false);
                 if (responseBodyAsText == null) {
                     LastPhotosSearchTotalResults = 0;
                     LastPhotosSearchTotalPages = 0;
@@ -943,10 +1208,20 @@ namespace Unsplasharp {
         /// <param name="url">API endpoint to fetch the collections' list. Must be a search url.</param>
         /// <returns>A list of collections found.</returns>
         public async Task<List<Collection>> FetchSearcCollectionsList(string url) {
+            return await FetchSearcCollectionsList(url, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Return a list of found collections from a search query.
+        /// </summary>
+        /// <param name="url">API endpoint to fetch the collections' list. Must be a search url.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A list of collections found.</returns>
+        public async Task<List<Collection>> FetchSearcCollectionsList(string url, CancellationToken cancellationToken) {
             var listCollections = new List<Collection>();
 
             try {
-                var responseBodyAsText = await Fetch(url);
+                var responseBodyAsText = await Fetch(url, cancellationToken);
                 if (responseBodyAsText == null) {
                     LastCollectionsSearchTotalResults = 0;
                     LastCollectionsSearchTotalPages = 0;
@@ -1026,10 +1301,19 @@ namespace Unsplasharp {
         /// </summary>
         /// <returns>A list of Unplash's stats.</returns>
         public async Task<UnplashTotalStats?> GetTotalStats() {
+            return await GetTotalStats(CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get a list of counts for all of Unsplash.
+        /// </summary>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A list of Unplash's stats.</returns>
+        public async Task<UnplashTotalStats?> GetTotalStats(CancellationToken cancellationToken) {
             var url = GetUrl("total_stats");
             if (url == null) return null;
 
-            var response = await Fetch(url).ConfigureAwait(false);
+            var response = await Fetch(url, cancellationToken).ConfigureAwait(false);
 
             if (response == null) return null;
 
@@ -1154,8 +1438,19 @@ namespace Unsplasharp {
         /// <param name="url">URL to reach.</param>
         /// <returns>Body response as string, or null if an error occurred.</returns>
         private async Task<string?> Fetch(string url) {
+            return await Fetch(url, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get a string body response async, and update rate limits.
+        /// This method maintains backward compatibility by returning null on errors.
+        /// </summary>
+        /// <param name="url">URL to reach.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>Body response as string, or null if an error occurred.</returns>
+        private async Task<string?> Fetch(string url, CancellationToken cancellationToken) {
             try {
-                return await FetchWithExceptions(url).ConfigureAwait(false);
+                return await FetchWithExceptions(url, cancellationToken).ConfigureAwait(false);
             } catch (UnsplasharpException ex) {
                 _logger.LogError(ex, "HTTP request failed for URL {Url} after retries. Context: {Context}",
                     url, ex.Context?.ToSummary());
@@ -1174,6 +1469,18 @@ namespace Unsplasharp {
         /// <returns>Body response as string.</returns>
         /// <exception cref="UnsplasharpException">Thrown when the request fails</exception>
         private async Task<string> FetchWithExceptions(string url) {
+            return await FetchWithExceptions(url, CancellationToken.None).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get a string body response async with comprehensive error handling.
+        /// This method throws specific exceptions for different error scenarios.
+        /// </summary>
+        /// <param name="url">URL to reach.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>Body response as string.</returns>
+        /// <exception cref="UnsplasharpException">Thrown when the request fails</exception>
+        private async Task<string> FetchWithExceptions(string url, CancellationToken cancellationToken) {
             var correlationId = Guid.NewGuid().ToString("N").Substring(0, 8);
             _logger.LogDebug("[{CorrelationId}] Making HTTP request to {Url}", correlationId, url);
 
@@ -1183,9 +1490,11 @@ namespace Unsplasharp {
                 var http = GetHttpClient();
 
                 // Use retry policy for HTTP requests
-                var result = await _retryPolicy.ExecuteAsync(async (cancellationToken) =>
+                var result = await _retryPolicy.ExecuteAsync(async (retryToken) =>
                 {
-                    var response = await http.GetAsync(url, cancellationToken).ConfigureAwait(false);
+                    // Combine the provided cancellation token with the retry policy's token
+                    using var combinedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, retryToken);
+                    var response = await http.GetAsync(url, combinedTokenSource.Token).ConfigureAwait(false);
 
                     // Check for error status codes and throw appropriate exceptions
                     if (!response.IsSuccessStatusCode) {
@@ -1200,7 +1509,7 @@ namespace Unsplasharp {
                         correlationId, RateLimitRemaining, MaxRateLimit);
 
                     return responseBodyAsText;
-                }, CancellationToken.None).ConfigureAwait(false);
+                }, cancellationToken).ConfigureAwait(false);
 
                 return result;
 
@@ -1209,6 +1518,12 @@ namespace Unsplasharp {
                 _logger.LogError(ex, "[{CorrelationId}] HTTP request failed for URL {Url} after retries. Elapsed: {Elapsed}ms",
                     correlationId, url, elapsed.TotalMilliseconds);
                 throw UnsplasharpException.FromHttpRequestException(ex, url, "GET", ApplicationId, correlationId);
+            } catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested) {
+                // If the provided cancellation token was cancelled, re-throw as OperationCanceledException
+                var elapsed = DateTimeOffset.UtcNow - startTime;
+                _logger.LogInformation("[{CorrelationId}] HTTP request cancelled for URL {Url}. Elapsed: {Elapsed}ms",
+                    correlationId, url, elapsed.TotalMilliseconds);
+                throw;
             } catch (TaskCanceledException ex) {
                 var elapsed = DateTimeOffset.UtcNow - startTime;
                 _logger.LogWarning(ex, "[{CorrelationId}] HTTP request timed out for URL {Url} after retries. Elapsed: {Elapsed}ms",

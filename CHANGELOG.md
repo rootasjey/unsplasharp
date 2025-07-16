@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - 2025-01-16
 
 ### Added
+- **Cancellation Token Support**: Comprehensive `CancellationToken` support for all async methods
+  - All public async methods now have `CancellationToken` overloads
+  - Proper cancellation token propagation through HTTP layer and retry policies
+  - Request cancellation and timeout support
+  - Exception handling distinguishes user cancellation from timeouts
+  - 100% backward compatible - existing code works unchanged
+  - Enables modern async patterns and ASP.NET Core integration
+
 - **Structured Logging Support**: Added Microsoft.Extensions.Logging integration
   - Optional `ILogger<UnsplasharpClient>` parameter in constructor
   - Detailed logging of HTTP requests, responses, and errors
