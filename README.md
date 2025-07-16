@@ -3,9 +3,19 @@
 > ⚠️ Looking for maintenairs
 > I don't have much time to work on this lib.
 
-Unofficial C# wrapper around [Unsplash](https://unsplash.com) API targeting .NET Standard 1.4.
+Unofficial C# wrapper around [Unsplash](https://unsplash.com) API targeting .NET Standard 2.0.
 
-This lib is compatible with .NET Core, .NET Framework 4.6.1, Xamarin (iOS, Android), Universal Windows Platform.
+This lib is compatible with .NET Core, .NET Framework 4.6.1+, Xamarin (iOS, Android), Universal Windows Platform.
+
+## ✨ Recent Improvements
+
+This library has been enhanced with modern .NET practices and reliability features:
+
+- **🔄 Async/Await Patterns**: Improved async patterns with proper `ConfigureAwait(false)` usage
+- **📊 Structured Logging**: Built-in support for Microsoft.Extensions.Logging with detailed request/response logging
+- **🔁 Retry Policies**: Automatic retry logic using Polly for resilient HTTP requests
+- **⚡ Performance**: Better exception handling and resource management
+- **🛡️ Reliability**: Enhanced error handling with exponential backoff retry strategies
 
 **Currently incomplete** 🚧
 
@@ -17,12 +27,40 @@ This lib is compatible with .NET Core, .NET Framework 4.6.1, Xamarin (iOS, Andro
 
 ## Usage
 
+### Basic Usage
+
 ```csharp
 using Unsplasharp;
 
 var client = new UnsplasharpClient("YOUR_APPLICATION_ID");
-var photosFound = await client.SearchPhoto("mountains");
+var photosFound = await client.SearchPhotos("mountains");
 ```
+
+### Advanced Usage with Logging
+
+```csharp
+using Unsplasharp;
+using Microsoft.Extensions.Logging;
+
+// Create a logger factory
+using var loggerFactory = LoggerFactory.Create(builder =>
+    builder.AddConsole().SetMinimumLevel(LogLevel.Debug));
+
+var logger = loggerFactory.CreateLogger<UnsplasharpClient>();
+
+// Create client with logging support
+var client = new UnsplasharpClient("YOUR_APPLICATION_ID", logger: logger);
+
+// The client will now log HTTP requests, retries, and errors
+var photos = await client.SearchPhotos("nature");
+```
+
+### Features
+
+- **Automatic Retries**: Failed requests are automatically retried up to 3 times with exponential backoff
+- **Structured Logging**: Detailed logging of HTTP requests, responses, and retry attempts
+- **Rate Limit Tracking**: Built-in rate limit monitoring and logging
+- **Async/Await**: All methods use proper async patterns with `ConfigureAwait(false)`
 
 ## API documentation
 

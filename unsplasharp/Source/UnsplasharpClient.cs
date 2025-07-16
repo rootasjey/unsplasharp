@@ -7,6 +7,10 @@ using Unsplasharp.Models;
 using System.Linq;
 using System;
 using System.Collections.Concurrent;
+using System.Threading;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+using Polly;
 
 namespace Unsplasharp {
     /// <summary>
@@ -15,9 +19,9 @@ namespace Unsplasharp {
     public class UnsplasharpClient {
         #region variables
         /// <summary>
-        /// API Key 
+        /// API Key
         /// </summary>
-        public string Secret { get; set; }
+        public string? Secret { get; set; }
 
         /// <summary>
         /// Identify the application making API calls
@@ -39,6 +43,16 @@ namespace Unsplasharp {
         /// Keep a single http client per application id, to avoid https://www.aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/
         /// </summary>
         private static readonly ConcurrentDictionary<string, Lazy<HttpClient>> httpClients = new ConcurrentDictionary<string, Lazy<HttpClient>>();
+
+        /// <summary>
+        /// Logger instance for structured logging
+        /// </summary>
+        private readonly ILogger<UnsplasharpClient> _logger;
+
+        /// <summary>
+        /// Retry policy for HTTP requests
+        /// </summary>
+        private readonly ResiliencePipeline _retryPolicy;
 
         /// <summary>
         /// Unplash endpoints
@@ -72,7 +86,7 @@ namespace Unsplasharp {
         /// <summary>
         /// Last photo search query
         /// </summary>
-        public string LastPhotosSearchQuery { get; set; }
+        public string? LastPhotosSearchQuery { get; set; }
 
         /// <summary>
         /// Total pages of last search photos query
@@ -91,7 +105,7 @@ namespace Unsplasharp {
         /// <summary>
         /// Last collection search query
         /// </summary>
-        public string LastCollectionsSearchQuery { get; set; }
+        public string? LastCollectionsSearchQuery { get; set; }
 
         /// <summary>
         /// Total pages of last search collections query
@@ -110,7 +124,7 @@ namespace Unsplasharp {
         /// <summary>
         /// Last collection search query
         /// </summary>
-        public string LastUsersSearchQuery { get; set; }
+        public string? LastUsersSearchQuery { get; set; }
 
         /// <summary>
         /// Total pages of last search collections query
@@ -179,9 +193,29 @@ namespace Unsplasharp {
         /// </summary>
         /// <param name="applicationId">A string to identify the current application performing a request.</param>
         /// <param name="secret">A string representing an API secret key to make HTTP authentified calls to Unplash services.</param>
-        public UnsplasharpClient(string applicationId, string secret = "") {
-            ApplicationId = applicationId;
+        /// <param name="logger">Optional logger for structured logging.</param>
+        public UnsplasharpClient(string applicationId, string? secret = null, ILogger<UnsplasharpClient>? logger = null) {
+            ApplicationId = applicationId ?? throw new ArgumentNullException(nameof(applicationId));
             Secret = secret;
+            _logger = logger ?? NullLogger<UnsplasharpClient>.Instance;
+
+            // Initialize retry policy
+            _retryPolicy = new ResiliencePipelineBuilder()
+                .AddRetry(new Polly.Retry.RetryStrategyOptions
+                {
+                    ShouldHandle = new PredicateBuilder().Handle<HttpRequestException>()
+                        .Handle<TaskCanceledException>(),
+                    MaxRetryAttempts = 3,
+                    Delay = TimeSpan.FromSeconds(1),
+                    BackoffType = Polly.DelayBackoffType.Exponential,
+                    OnRetry = args =>
+                    {
+                        _logger.LogWarning("Retrying HTTP request (attempt {AttemptNumber}/{MaxAttempts}). Exception: {Exception}",
+                            args.AttemptNumber + 1, 3, args.Outcome.Exception?.Message);
+                        return default;
+                    }
+                })
+                .Build();
         }
 
 
@@ -198,13 +232,13 @@ namespace Unsplasharp {
         /// <param name="width">Desired width.</param>
         /// <param name="height">Desired height.</param>
         /// <returns>A new Photo class instance.</returns>
-        public async Task<Photo> GetPhoto(string id, int width = 0, int height = 0) {
+        public async Task<Photo?> GetPhoto(string id, int width = 0, int height = 0) {
             var url = string.Format("{0}/{1}", GetUrl("photos"), id);
 
             if (width != 0) { url = AddQueryString(url, "w", width); }
             if (height != 0) { url = AddQueryString(url, "h", height); }
 
-            return await FetchPhoto(url);
+            return await FetchPhoto(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -219,20 +253,29 @@ namespace Unsplasharp {
         /// <param name="rectWidth">Width of the cropped rectangle.</param>
         /// <param name="rectHeight">Height of the cropped rectangle.</param>
         /// <returns>A new Photo class instance which has a custom URL.</returns>
-        public async Task<Photo> GetPhoto(string id, int width, int height, int rectX, int rectY, int rectWidth, int rectHeight) {
-            var url = string.Format("{0}/{1}?w={2}&h={3}&rect={4},{5},{6},{7}", 
+        public async Task<Photo?> GetPhoto(string id, int width, int height, int rectX, int rectY, int rectWidth, int rectHeight) {
+            var url = string.Format("{0}/{1}?w={2}&h={3}&rect={4},{5},{6},{7}",
                                     GetUrl("photos"), id, width, height, rectX, rectY, rectWidth, rectHeight);
 
-            return await FetchPhoto(url);
+            return await FetchPhoto(url).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Retrieve a single random photo.
         /// </summary>
         /// <returns>A new Photo class instance.</returns>
-        public async Task<Photo> GetRandomPhoto() {
+        public async Task<Photo?> GetRandomPhoto() {
+            _logger.LogInformation("Fetching random photo");
             var url = string.Format("{0}/random", GetUrl("photos"));
-            return await FetchPhoto(url);
+            var photo = await FetchPhoto(url).ConfigureAwait(false);
+
+            if (photo != null) {
+                _logger.LogInformation("Successfully retrieved random photo with ID {PhotoId}", photo.Id);
+            } else {
+                _logger.LogWarning("Failed to retrieve random photo");
+            }
+
+            return photo;
         }
 
         /// <summary>
@@ -240,9 +283,9 @@ namespace Unsplasharp {
         /// </summary>
         /// <param name="collectionId">Public collection ID to filter selection.</param>
         /// <returns>A new Photo class instance.</returns>
-        public async Task<Photo> GetRandomPhoto(string collectionId) {
+        public async Task<Photo?> GetRandomPhoto(string collectionId) {
             var url = string.Format("{0}/random?collections={1}", GetUrl("photos"), collectionId);
-            return await FetchPhoto(url);
+            return await FetchPhoto(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -250,11 +293,11 @@ namespace Unsplasharp {
         /// </summary>
         /// <param name="collectionIds">Public collection ID(‘s) to filter selection.</param>
         /// <returns>A new Photo class instance.</returns>
-        public async Task<Photo> GetRandomPhoto(string[] collectionIds) {
-            var url = string.Format("{0}/random?collections={1}", 
+        public async Task<Photo?> GetRandomPhoto(string[] collectionIds) {
+            var url = string.Format("{0}/random?collections={1}",
                 GetUrl("photos"), string.Join(",", collectionIds));
 
-            return await FetchPhoto(url);
+            return await FetchPhoto(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -303,7 +346,7 @@ namespace Unsplasharp {
             if (width != 0) { url += string.Format("&w={0}", width); }
             if (height != 0) { url += string.Format("&h={0}", height); }
 
-            return await FetchPhotosList(url);
+            return await FetchPhotosList(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -354,11 +397,11 @@ namespace Unsplasharp {
             if (width != 0) { url += string.Format("&w={0}", width); }
             if (height != 0) { url += string.Format("&h={0}", height); }
 
-            return await FetchPhotosList(url);
+            return await FetchPhotosList(url).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Retrieve total number of downloads, 
+        /// Retrieve total number of downloads,
         /// views and likes of a single photo, 
         /// as well as the historical breakdown 
         /// of these stats in a specific timeframe (default is 30 days).
@@ -373,7 +416,7 @@ namespace Unsplasharp {
                 GetUrl("photos"), id, ConvertResolution(resolution), quantity);
 
             try {
-                string responseBodyAsText = await Fetch(url);
+                string responseBodyAsText = await Fetch(url).ConfigureAwait(false);
                 var data = JObject.Parse(responseBodyAsText);
 
                 return new PhotoStats() {
@@ -426,7 +469,7 @@ namespace Unsplasharp {
                 "{0}?page={1}&per_page={2}&order_by={3}", 
                 GetUrl("photos"), page, perPage, ConvertOderBy(orderBy));
 
-            return await FetchPhotosList(url);
+            return await FetchPhotosList(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -438,7 +481,7 @@ namespace Unsplasharp {
             var listPhotos = new List<Photo>();
 
             try {
-                var responseBodyAsText = await Fetch(url);
+                var responseBodyAsText = await Fetch(url).ConfigureAwait(false);
                 var data = JArray.Parse(responseBodyAsText);
 
                 foreach (JObject rawPhoto in data) {
@@ -458,8 +501,8 @@ namespace Unsplasharp {
         /// </summary>
         /// <param name="url">URL to fetch photo from.</param>
         /// <returns>A single photo instance.</returns>
-        public async Task<Photo> FetchPhoto(string url) {
-            var response = await Fetch(url);
+        public async Task<Photo?> FetchPhoto(string url) {
+            var response = await Fetch(url).ConfigureAwait(false);
 
             if (response == null) return null;
             var data = JObject.Parse(response);
@@ -480,7 +523,7 @@ namespace Unsplasharp {
             var listCollection = new List<Collection>();
 
             try {
-                var responseBodyAsText = await Fetch(url);
+                var responseBodyAsText = await Fetch(url).ConfigureAwait(false);
                 var jsonList = JArray.Parse(responseBodyAsText);
 
                 foreach (JObject item in jsonList) {
@@ -536,7 +579,7 @@ namespace Unsplasharp {
                 "{0}?page={1}&per_page={2}", 
                 GetUrl("collections"), page, perPage);
 
-            return await FetchCollectionsList(url);
+            return await FetchCollectionsList(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -674,7 +717,7 @@ namespace Unsplasharp {
                 GetUrl("users"), username, ConvertResolution(resolution), quantity);
 
             try {
-                string responseBodyAsText = await Fetch(url);
+                string responseBodyAsText = await Fetch(url).ConfigureAwait(false);
                 var data = JObject.Parse(responseBodyAsText);
 
                 return new UserStats() {
@@ -710,12 +753,20 @@ namespace Unsplasharp {
         /// <param name="perPage">Number of items per page.</param>
         /// <returns>A list of photos found.</returns>
         public async Task<List<Photo>> SearchPhotos(string query, int page = 1, int perPage = 10) {
+            _logger.LogInformation("Searching photos with query '{Query}', page {Page}, perPage {PerPage}",
+                query, page, perPage);
+
             var url = string.Format(
                 "{0}?query={1}&page={2}&per_page={3}",
                 GetUrl("search_photos"), query, page, perPage);
 
             LastPhotosSearchQuery = query;
-            return await FetchSearchPhotosList(url);
+            var results = await FetchSearchPhotosList(url).ConfigureAwait(false);
+
+            _logger.LogInformation("Photo search completed. Found {ResultCount} photos, total results: {TotalResults}",
+                results.Count, LastPhotosSearchTotalResults);
+
+            return results;
         }
 
         /// <summary>
@@ -732,7 +783,7 @@ namespace Unsplasharp {
                 GetUrl("search_photos"), query, page, perPage, collectionId);
 
             LastPhotosSearchQuery = query;
-            return await FetchSearchPhotosList(url);
+            return await FetchSearchPhotosList(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -749,7 +800,7 @@ namespace Unsplasharp {
                 GetUrl("search_photos"), query, page, perPage, string.Join(",", collectionIds));
 
             LastPhotosSearchQuery = query;
-            return await FetchSearchPhotosList(url);
+            return await FetchSearchPhotosList(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -765,7 +816,7 @@ namespace Unsplasharp {
                 GetUrl("search_collections"), query, page, perPage);
 
             LastCollectionsSearchQuery = query;
-            return await FetchSearcCollectionsList(url);
+            return await FetchSearcCollectionsList(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -793,7 +844,7 @@ namespace Unsplasharp {
             var listPhotos = new List<Photo>();
 
             try {
-                var responseBodyAsText = await Fetch(url);
+                var responseBodyAsText = await Fetch(url).ConfigureAwait(false);
                 var data = JObject.Parse(responseBodyAsText);
                 var results = (JArray)data["results"];
 
@@ -882,7 +933,7 @@ namespace Unsplasharp {
         /// <returns>A list of Unplash's stats.</returns>
         public async Task<UnplashTotalStats> GetTotalStats() {
             var url = GetUrl("total_stats");
-            var response = await Fetch(url);
+            var response = await Fetch(url).ConfigureAwait(false);
 
             if (response == null) return null;
             var data = JObject.Parse(response);
@@ -908,7 +959,7 @@ namespace Unsplasharp {
         /// <returns>A list of Unplash's stats.</returns>
         public async Task<UnplashMonthlyStats> GetMonthlyStats() {
             var url = GetUrl("monthly_stats");
-            var response = await Fetch(url);
+            var response = await Fetch(url).ConfigureAwait(false);
 
             if (response == null) return null;
             var data = JObject.Parse(response);
@@ -966,10 +1017,10 @@ namespace Unsplasharp {
         /// </summary>
         /// <param name="url">URL to reach.</param>
         /// <returns>Body response as string.</returns>
-        private async Task<string> Fetch(string url) {
-            HttpResponseMessage response = null;
-
+        private async Task<string?> Fetch(string url) {
             var appID = ApplicationId ?? "";
+
+            _logger.LogDebug("Making HTTP request to {Url}", url);
 
             try {
                 var http = httpClients.GetOrAdd(appID, (key) =>
@@ -979,19 +1030,36 @@ namespace Unsplasharp {
                         HttpClient client = new HttpClient();
                         client.DefaultRequestHeaders.Authorization =
                                 new AuthenticationHeaderValue("Client-ID", key);
+                        _logger.LogDebug("Created new HttpClient for application ID {ApplicationId}", key);
                         return client;
                     });
                 }).Value;
 
-                response = await http.GetAsync(url);
-                response.EnsureSuccessStatusCode();
-                var responseBodyAsText = await response.Content.ReadAsStringAsync();
+                // Use retry policy for HTTP requests
+                var result = await _retryPolicy.ExecuteAsync(async (cancellationToken) =>
+                {
+                    var response = await http.GetAsync(url, cancellationToken).ConfigureAwait(false);
+                    response.EnsureSuccessStatusCode();
+                    var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                UpdateRateLimit(response);
+                    UpdateRateLimit(response);
 
-                return responseBodyAsText;
+                    _logger.LogDebug("HTTP request successful. Rate limit: {RateLimitRemaining}/{MaxRateLimit}",
+                        RateLimitRemaining, MaxRateLimit);
 
-            } catch {
+                    return responseBodyAsText;
+                }, CancellationToken.None).ConfigureAwait(false);
+
+                return result;
+
+            } catch (HttpRequestException ex) {
+                _logger.LogError(ex, "HTTP request failed for URL {Url} after retries", url);
+                return null;
+            } catch (TaskCanceledException ex) {
+                _logger.LogWarning(ex, "HTTP request timed out for URL {Url} after retries", url);
+                return null;
+            } catch (Exception ex) {
+                _logger.LogError(ex, "Unexpected error during HTTP request to {Url} after retries", url);
                 return null;
             }
         }
