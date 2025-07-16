@@ -2,8 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading.Tasks;
 using System.Net.Http;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
 using Unsplasharp;
 using UnsplashsharpTest.Data;
 
@@ -24,23 +23,25 @@ namespace UnsplashsharpTest
         }
 
         [TestMethod]
-        public void NewtonsoftJsonVersionTest()
+        public void SystemTextJsonVersionTest()
         {
-            // Test that we can use Newtonsoft.Json 13.0.3 features
+            // Test that we can use System.Text.Json features
             var testObject = new { name = "test", value = 123, date = DateTime.Now };
-            var json = JsonConvert.SerializeObject(testObject);
-            var deserialized = JsonConvert.DeserializeObject<dynamic>(json);
-            
+            var json = JsonSerializer.Serialize(testObject);
+
+            using var document = JsonDocument.Parse(json);
+            var root = document.RootElement;
+
             Assert.IsNotNull(json);
-            Assert.IsNotNull(deserialized);
-            Assert.AreEqual("test", (string)deserialized.name);
-            Assert.AreEqual(123, (int)deserialized.value);
+            Assert.IsNotNull(root);
+            Assert.AreEqual("test", root.GetProperty("name").GetString());
+            Assert.AreEqual(123, root.GetProperty("value").GetInt32());
         }
 
         [TestMethod]
-        public void JsonParsingWithJObjectTest()
+        public void JsonParsingWithJsonDocumentTest()
         {
-            // Test JObject parsing which is heavily used in the library
+            // Test JsonDocument parsing which is now used in the library
             var jsonString = @"{
                 ""id"": ""test123"",
                 ""width"": 1920,
@@ -51,14 +52,15 @@ namespace UnsplashsharpTest
                 }
             }";
 
-            var jObject = JObject.Parse(jsonString);
-            
-            Assert.IsNotNull(jObject);
-            Assert.AreEqual("test123", (string)jObject["id"]);
-            Assert.AreEqual(1920, (int)jObject["width"]);
-            Assert.AreEqual(1080, (int)jObject["height"]);
-            Assert.IsNotNull(jObject["urls"]);
-            Assert.AreEqual("https://example.com/raw", (string)jObject["urls"]["raw"]);
+            using var document = JsonDocument.Parse(jsonString);
+            var root = document.RootElement;
+
+            Assert.IsNotNull(root);
+            Assert.AreEqual("test123", root.GetProperty("id").GetString());
+            Assert.AreEqual(1920, root.GetProperty("width").GetInt32());
+            Assert.AreEqual(1080, root.GetProperty("height").GetInt32());
+            Assert.IsTrue(root.TryGetProperty("urls", out var urlsElement));
+            Assert.AreEqual("https://example.com/raw", urlsElement.GetProperty("raw").GetString());
         }
 
         [TestMethod]

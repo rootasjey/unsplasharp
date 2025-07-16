@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Text.Json.Serialization;
 
 namespace Unsplasharp.Models {
     /// <summary>
@@ -12,16 +13,19 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// Photo's unique identifier composed of Unicode characters.
         /// </summary>
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// Photo's description
         /// </summary>
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
         /// <summary>
         /// Date indicating when the photo has been created.
         /// </summary>
+        [JsonPropertyName("created_at")]
         public string CreatedAt { get; set; }
 
         private string _UpdatedAt;

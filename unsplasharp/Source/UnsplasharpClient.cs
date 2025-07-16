@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Text.Json;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -10,6 +10,7 @@ using System.Collections.Concurrent;
 using System.Threading;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Http;
 using Polly;
 
 namespace Unsplasharp {
@@ -53,6 +54,11 @@ namespace Unsplasharp {
         /// Retry policy for HTTP requests
         /// </summary>
         private readonly ResiliencePipeline _retryPolicy;
+
+        /// <summary>
+        /// Optional IHttpClientFactory for modern HTTP client management
+        /// </summary>
+        private readonly IHttpClientFactory? _httpClientFactory;
 
         /// <summary>
         /// Unplash endpoints
@@ -194,10 +200,12 @@ namespace Unsplasharp {
         /// <param name="applicationId">A string to identify the current application performing a request.</param>
         /// <param name="secret">A string representing an API secret key to make HTTP authentified calls to Unplash services.</param>
         /// <param name="logger">Optional logger for structured logging.</param>
-        public UnsplasharpClient(string applicationId, string? secret = null, ILogger<UnsplasharpClient>? logger = null) {
+        /// <param name="httpClientFactory">Optional IHttpClientFactory for modern HTTP client management. If not provided, falls back to legacy HttpClient management.</param>
+        public UnsplasharpClient(string applicationId, string? secret = null, ILogger<UnsplasharpClient>? logger = null, IHttpClientFactory? httpClientFactory = null) {
             ApplicationId = applicationId ?? throw new ArgumentNullException(nameof(applicationId));
             Secret = secret;
             _logger = logger ?? NullLogger<UnsplasharpClient>.Instance;
+            _httpClientFactory = httpClientFactory;
 
             // Initialize retry policy
             _retryPolicy = new ResiliencePipelineBuilder()
@@ -417,22 +425,15 @@ namespace Unsplasharp {
 
             try {
                 string responseBodyAsText = await Fetch(url).ConfigureAwait(false);
-                var data = JObject.Parse(responseBodyAsText);
+
+                using var document = JsonDocument.Parse(responseBodyAsText);
+                var data = document.RootElement;
 
                 return new PhotoStats() {
-                    Id = (string)data["id"],
-                    Downloads = new StatsData() {
-                        Total = int.Parse((string)data["downloads"]["total"]),
-                        Historical = ExtractHistorical(data["downloads"])
-                    },
-                    Views = new StatsData() {
-                        Total = int.Parse((string)data["views"]["total"]),
-                        Historical = ExtractHistorical(data["views"])
-                    },
-                    Likes = new StatsData() {
-                        Total = int.Parse((string)data["likes"]["total"]),
-                        Historical = ExtractHistorical(data["likes"])
-                    }
+                    Id = data.GetString("id"),
+                    Downloads = ExtractStatsData(data, "downloads"),
+                    Views = ExtractStatsData(data, "views"),
+                    Likes = ExtractStatsData(data, "likes")
                 };
 
             } catch {
@@ -452,9 +453,9 @@ namespace Unsplasharp {
             var response = await Fetch(url);
 
             if (response == null) return null;
-            var data = JObject.Parse(response);
 
-            return (string)data["url"];
+            using var document = JsonDocument.Parse(response);
+            return document.RootElement.GetString("url");
         }
 
         /// <summary>
@@ -482,11 +483,16 @@ namespace Unsplasharp {
 
             try {
                 var responseBodyAsText = await Fetch(url).ConfigureAwait(false);
-                var data = JArray.Parse(responseBodyAsText);
 
-                foreach (JObject rawPhoto in data) {
-                    var photo = ExtractPhoto(rawPhoto);
-                    listPhotos.Add(photo);
+                using var document = JsonDocument.Parse(responseBodyAsText);
+
+                if (document.RootElement.ValueKind == JsonValueKind.Array) {
+                    foreach (var photoElement in document.RootElement.EnumerateArray()) {
+                        var photo = ExtractPhoto(photoElement);
+                        if (photo != null) {
+                            listPhotos.Add(photo);
+                        }
+                    }
                 }
 
                 return listPhotos;
@@ -505,9 +511,9 @@ namespace Unsplasharp {
             var response = await Fetch(url).ConfigureAwait(false);
 
             if (response == null) return null;
-            var data = JObject.Parse(response);
 
-            var photo = ExtractPhoto(data);
+            using var document = JsonDocument.Parse(response);
+            var photo = ExtractPhoto(document.RootElement);
             return photo;
         }
 
@@ -524,11 +530,16 @@ namespace Unsplasharp {
 
             try {
                 var responseBodyAsText = await Fetch(url).ConfigureAwait(false);
-                var jsonList = JArray.Parse(responseBodyAsText);
 
-                foreach (JObject item in jsonList) {
-                    var collection = ExtractCollection(item);
-                    listCollection.Add(collection);
+                using var document = JsonDocument.Parse(responseBodyAsText);
+
+                if (document.RootElement.ValueKind == JsonValueKind.Array) {
+                    foreach (var collectionElement in document.RootElement.EnumerateArray()) {
+                        var collection = ExtractCollection(collectionElement);
+                        if (collection != null) {
+                            listCollection.Add(collection);
+                        }
+                    }
                 }
 
                 return listCollection;
@@ -548,9 +559,9 @@ namespace Unsplasharp {
             var response = await Fetch(url);
 
             if (response == null) return null;
-            var data = JObject.Parse(response);
 
-            return ExtractCollection(data);
+            using var document = JsonDocument.Parse(response);
+            return ExtractCollection(document.RootElement);
         }
 
         /// <summary>
@@ -625,9 +636,9 @@ namespace Unsplasharp {
             var response = await Fetch(url);
 
             if (response == null) return null;
-            var data = JObject.Parse(response);
 
-            return ExtractUser(data);
+            using var document = JsonDocument.Parse(response);
+            return ExtractUser(document.RootElement);
         }
 
         /// <summary>
@@ -640,9 +651,9 @@ namespace Unsplasharp {
             var response = await Fetch(url);
 
             if (response == null) return null;
-            var data = JObject.Parse(response);
 
-            return (string)data["url"];
+            using var document = JsonDocument.Parse(response);
+            return document.RootElement.GetString("url");
         }
 
         /// <summary>
@@ -718,27 +729,20 @@ namespace Unsplasharp {
 
             try {
                 string responseBodyAsText = await Fetch(url).ConfigureAwait(false);
-                var data = JObject.Parse(responseBodyAsText);
+
+                using var document = JsonDocument.Parse(responseBodyAsText);
+                var data = document.RootElement;
 
                 return new UserStats() {
-                    Username = (string)data["username"],
-                    Downloads = new StatsData() {
-                        Total = int.Parse((string)data["downloads"]["total"]),
-                        Historical = ExtractHistorical(data["downloads"])
-                    },
-                    Views = new StatsData() {
-                        Total = int.Parse((string)data["views"]["total"]),
-                        Historical = ExtractHistorical(data["views"])
-                    },
-                    Likes = new StatsData() {
-                        Total = int.Parse((string)data["likes"]["total"]),
-                        Historical = ExtractHistorical(data["likes"])
-                    }
+                    Username = data.GetString("username"),
+                    Downloads = ExtractStatsData(data, "downloads"),
+                    Views = ExtractStatsData(data, "views"),
+                    Likes = ExtractStatsData(data, "likes")
                 };
 
             } catch {
                 return null;
-            }            
+            }
         }
 
         #endregion user
@@ -845,15 +849,21 @@ namespace Unsplasharp {
 
             try {
                 var responseBodyAsText = await Fetch(url).ConfigureAwait(false);
-                var data = JObject.Parse(responseBodyAsText);
-                var results = (JArray)data["results"];
 
-                LastPhotosSearchTotalResults = (int)data["total"];
-                LastPhotosSearchTotalPages = (int)data["total_pages"];
+                using var document = JsonDocument.Parse(responseBodyAsText);
+                var data = document.RootElement;
 
-                foreach (JObject item in results) {
-                    var photo = ExtractPhoto(item);
-                    listPhotos.Add(photo);
+                LastPhotosSearchTotalResults = data.GetInt32("total");
+                LastPhotosSearchTotalPages = data.GetInt32("total_pages");
+
+                if (data.TryGetProperty("results", out var resultsElement) &&
+                    resultsElement.ValueKind == JsonValueKind.Array) {
+                    foreach (var photoElement in resultsElement.EnumerateArray()) {
+                        var photo = ExtractPhoto(photoElement);
+                        if (photo != null) {
+                            listPhotos.Add(photo);
+                        }
+                    }
                 }
 
                 return listPhotos;
@@ -875,15 +885,21 @@ namespace Unsplasharp {
 
             try {
                 var responseBodyAsText = await Fetch(url);
-                var data = JObject.Parse(responseBodyAsText);
-                var results = (JArray)data["results"];
 
-                LastCollectionsSearchTotalResults = (int)data["total"];
-                LastCollectionsSearchTotalPages = (int)data["total_pages"];
+                using var document = JsonDocument.Parse(responseBodyAsText);
+                var data = document.RootElement;
 
-                foreach (JObject item in results) {
-                    var collection = ExtractCollection(item);
-                    listCollections.Add(collection);
+                LastCollectionsSearchTotalResults = data.GetInt32("total");
+                LastCollectionsSearchTotalPages = data.GetInt32("total_pages");
+
+                if (data.TryGetProperty("results", out var resultsElement) &&
+                    resultsElement.ValueKind == JsonValueKind.Array) {
+                    foreach (var collectionElement in resultsElement.EnumerateArray()) {
+                        var collection = ExtractCollection(collectionElement);
+                        if (collection != null) {
+                            listCollections.Add(collection);
+                        }
+                    }
                 }
 
                 return listCollections;
@@ -905,15 +921,21 @@ namespace Unsplasharp {
 
             try {
                 var responseBodyAsText = await Fetch(url);
-                var data = JObject.Parse(responseBodyAsText);
-                var results = (JArray)data["results"];
 
-                LastUsersSearchTotalResults = (int)data["total"];
-                LastUsersSearchTotalPages = (int)data["total_pages"];
+                using var document = JsonDocument.Parse(responseBodyAsText);
+                var data = document.RootElement;
 
-                foreach (JObject item in results) {
-                    var user = ExtractUser(item);
-                    listUsers.Add(user);
+                LastUsersSearchTotalResults = data.GetInt32("total");
+                LastUsersSearchTotalPages = data.GetInt32("total_pages");
+
+                if (data.TryGetProperty("results", out var resultsElement) &&
+                    resultsElement.ValueKind == JsonValueKind.Array) {
+                    foreach (var userElement in resultsElement.EnumerateArray()) {
+                        var user = ExtractUser(userElement);
+                        if (user != null) {
+                            listUsers.Add(user);
+                        }
+                    }
                 }
 
                 return listUsers;
@@ -936,20 +958,22 @@ namespace Unsplasharp {
             var response = await Fetch(url).ConfigureAwait(false);
 
             if (response == null) return null;
-            var data = JObject.Parse(response);
+
+            using var document = JsonDocument.Parse(response);
+            var data = document.RootElement;
 
             return new UnplashTotalStats() {
-                Photos = double.Parse((string)data["photos"]),
-                Downloads = double.Parse((string)data["downloads"]),
-                Views = double.Parse((string)data["views"]),
-                Likes = double.Parse((string)data["likes"] ?? "0"),
-                Photographers = double.Parse((string)data["photographers"]),
-                Pixels = double.Parse((string)data["pixels"]),
-                DownloadsPerSecond = double.Parse((string)data["downloads_per_second"]),
-                ViewsPerSecond = double.Parse((string)data["views_per_second"]),
-                Developers = int.Parse((string)data["developers"]),
-                Applications = int.Parse((string)data["applications"]),
-                Requests = double.Parse((string)data["requests"])
+                Photos = data.GetDouble("photos"),
+                Downloads = data.GetDouble("downloads"),
+                Views = data.GetDouble("views"),
+                Likes = data.GetDouble("likes"),
+                Photographers = data.GetDouble("photographers"),
+                Pixels = data.GetDouble("pixels"),
+                DownloadsPerSecond = data.GetDouble("downloads_per_second"),
+                ViewsPerSecond = data.GetDouble("views_per_second"),
+                Developers = data.GetInt32("developers"),
+                Applications = data.GetInt32("applications"),
+                Requests = data.GetDouble("requests")
             };
         }
 
@@ -962,18 +986,20 @@ namespace Unsplasharp {
             var response = await Fetch(url).ConfigureAwait(false);
 
             if (response == null) return null;
-            var data = JObject.Parse(response);
+
+            using var document = JsonDocument.Parse(response);
+            var data = document.RootElement;
 
             return new UnplashMonthlyStats() {
-                Downloads = double.Parse((string)data["downloads"]),
-                Views = double.Parse((string)data["views"]),
-                Likes = double.Parse((string)data["likes"] ?? "0"),
-                NewPhotos = double.Parse((string)data["new_photos"]),
-                NewPhotographers = double.Parse((string)data["new_photographers"]),
-                NewPixels = double.Parse((string)data["new_pixels"]),
-                NewDevelopers = int.Parse((string)data["new_developers"]),
-                NewApplications = int.Parse((string)data["new_applications"]),
-                NewRequests = double.Parse((string)data["new_requests"])
+                Downloads = data.GetDouble("downloads"),
+                Views = data.GetDouble("views"),
+                Likes = data.GetDouble("likes"),
+                NewPhotos = data.GetDouble("new_photos"),
+                NewPhotographers = data.GetDouble("new_photographers"),
+                NewPixels = data.GetDouble("new_pixels"),
+                NewDevelopers = data.GetInt32("new_developers"),
+                NewApplications = data.GetInt32("new_applications"),
+                NewRequests = data.GetDouble("new_requests")
             };
         }
         #endregion others
@@ -1013,27 +1039,48 @@ namespace Unsplasharp {
         }
 
         /// <summary>
+        /// Get HttpClient instance using IHttpClientFactory if available, otherwise fall back to legacy pattern
+        /// </summary>
+        /// <returns>HttpClient instance</returns>
+        private HttpClient GetHttpClient() {
+            if (_httpClientFactory != null) {
+                _logger.LogDebug("Using IHttpClientFactory to create HttpClient");
+                var client = _httpClientFactory.CreateClient("unsplash");
+
+                // Set authorization header if not already set
+                if (client.DefaultRequestHeaders.Authorization == null) {
+                    client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Client-ID", ApplicationId);
+                }
+
+                return client;
+            }
+
+            // Fall back to legacy HttpClient management
+            var appID = ApplicationId ?? "";
+            return httpClients.GetOrAdd(appID, (key) =>
+            {
+                return new Lazy<HttpClient>(() =>
+                {
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Authorization =
+                            new AuthenticationHeaderValue("Client-ID", key);
+                    _logger.LogDebug("Created new HttpClient for application ID {ApplicationId} (legacy pattern)", key);
+                    return client;
+                });
+            }).Value;
+        }
+
+        /// <summary>
         /// Get a string body response async, and update rate limits.
         /// </summary>
         /// <param name="url">URL to reach.</param>
         /// <returns>Body response as string.</returns>
         private async Task<string?> Fetch(string url) {
-            var appID = ApplicationId ?? "";
-
             _logger.LogDebug("Making HTTP request to {Url}", url);
 
             try {
-                var http = httpClients.GetOrAdd(appID, (key) =>
-                {
-                    return new Lazy<HttpClient>(() =>
-                    {
-                        HttpClient client = new HttpClient();
-                        client.DefaultRequestHeaders.Authorization =
-                                new AuthenticationHeaderValue("Client-ID", key);
-                        _logger.LogDebug("Created new HttpClient for application ID {ApplicationId}", key);
-                        return client;
-                    });
-                }).Value;
+                var http = GetHttpClient();
 
                 // Use retry policy for HTTP requests
                 var result = await _retryPolicy.ExecuteAsync(async (cancellationToken) =>
@@ -1065,17 +1112,6 @@ namespace Unsplasharp {
         }
 
         /// <summary>
-        /// Returns true if the specified data is null.
-        /// </summary>
-        /// <param name="data">Data to test.</param>
-        /// <returns>True if the data is null</returns>
-        private bool IsNull(JToken data) {
-            return data == null ||
-                   data.Type == JTokenType.Null ||
-                   data.Type == JTokenType.String;
-        }
-
-        /// <summary>
         /// Return true is the string is neither null nor empty.
         /// </summary>
         /// <param name="s">String to test.</param>
@@ -1084,222 +1120,294 @@ namespace Unsplasharp {
             return !string.IsNullOrEmpty(s) && !string.IsNullOrWhiteSpace(s);
         }
 
-        private int ExtractNumber(JToken data) {
-            if (IsNull(data)) return 0;
-            return string.IsNullOrEmpty((string)data) ? 0 : int.Parse((string)data);
+
+
+
+
+
+
+        private Exif? ExtractExif(JsonElement data) {
+            if (!data.TryGetProperty("exif", out var exifElement) ||
+                exifElement.ValueKind == JsonValueKind.Null)
+                return null;
+
+            return new Exif() {
+                Make = exifElement.GetString("make"),
+                Model = exifElement.GetString("model"),
+                Iso = exifElement.GetNullableInt32("iso"),
+                FocalLength = exifElement.GetString("focal_length"),
+                Aperture = exifElement.GetString("aperture")
+            };
         }
 
-        private bool ExtractBoolean(JToken data) {
-            if (IsNull(data)) return false;
-            return string.IsNullOrEmpty((string)data) ? false : (bool)data;
+        private Location? ExtractLocation(JsonElement data) {
+            if (!data.TryGetProperty("location", out var locationElement) ||
+                locationElement.ValueKind == JsonValueKind.Null)
+                return null;
+
+            return new Location() {
+                Title = locationElement.GetString("title"),
+                Name = locationElement.GetString("name"),
+                City = locationElement.GetString("city"),
+                Country = locationElement.GetString("country"),
+                Position = ExtractPosition(locationElement)
+            };
         }
 
-        private List<Category> ExtractCategories(JToken data) {
+        private Position? ExtractPosition(JsonElement data) {
+            if (!data.TryGetProperty("position", out var positionElement) ||
+                positionElement.ValueKind == JsonValueKind.Null)
+                return null;
+
+            return new Position() {
+                Latitude = positionElement.GetInt32("latitude"),
+                Longitude = positionElement.GetInt32("longitude")
+            };
+        }
+
+        private List<Category> ExtractCategories(JsonElement data) {
             var categories = new List<Category>();
-            if (IsNull(data)) return categories;
 
-            var dataCategories = (JArray)data;
+            if (!data.TryGetProperty("categories", out var categoriesElement) ||
+                categoriesElement.ValueKind != JsonValueKind.Array)
+                return categories;
 
-            if (dataCategories.Count == 0) return categories;
-
-            foreach (JObject item in dataCategories) {
+            foreach (var categoryElement in categoriesElement.EnumerateArray()) {
                 var category = new Category() {
-                    Id = (string)item["id"],
-                    Title = (string)item["title"],
-                    PhotoCount = (int)item["photo_count"],
-                    Links = new CategoryLinks() {
-                        Self = (string)item["links"]["self"],
-                        Photos = (string)item["links"]["photos"],
-                    }
+                    Id = categoryElement.GetString("id"),
+                    Title = categoryElement.GetString("title"),
+                    PhotoCount = categoryElement.GetInt32("photo_count"),
+                    Links = ExtractCategoryLinks(categoryElement)
                 };
-
                 categories.Add(category);
             }
 
             return categories;
         }
 
-        private Badge ExtractBadge(JToken data) {
-            if (IsNull(data)) return null;
+        private CategoryLinks? ExtractCategoryLinks(JsonElement data) {
+            if (!data.TryGetProperty("links", out var linksElement) ||
+                linksElement.ValueKind == JsonValueKind.Null)
+                return null;
 
-            return new Badge() {
-                Title = (string)data["title"],
-                Primary = (bool)data["primary"],
-                Slug = (string)data["slug"],
-                Link = (string)data["link"]
+            return new CategoryLinks() {
+                Self = linksElement.GetString("self"),
+                Photos = linksElement.GetString("photos")
             };
         }
 
-        private User ExtractUser(JToken data) {
-            if (IsNull(data)) return null;
+        private User? ExtractUser(JsonElement data) {
+            if (!data.TryGetProperty("user", out var userElement) ||
+                userElement.ValueKind == JsonValueKind.Null)
+                return null;
 
             return new User() {
-                Id = (string)data["id"],
-                UpdatedAt = (string)data["updated_at"],
-                FirstName = (string)data["first_name"],
-                LastName = (string)data["last_name"],
-                Username = (string)data["username"],
-                Name = (string)data["name"],
-                TwitterUsername = (string)data["twitter_username"],
-                PortfolioUrl = (string)data["portfolio_url"],
-                Bio = (string)data["bio"],
-                Location = (string)data["location"],
-                TotalLikes = ExtractNumber(data["total_likes"]),
-                TotalPhotos = ExtractNumber(data["total_photos"]),
-                TotalCollections = ExtractNumber(data["total_collections"]),
-                FollowedByUser = ExtractBoolean(data["followed_by_user"]),
-                FollowersCount = ExtractNumber(data["followers_count"]),
-                FollowingCount = ExtractNumber(data["following_count"]),
-
-                ProfileImage = new ProfileImage() {
-                    Small = (string)data["profile_image"]["small"],
-                    Medium = (string)data["profile_image"]["medium"],
-                    Large = (string)data["profile_image"]["large"]
-                },
-
-                Badge = ExtractBadge(data["badge"]),
-
-                Links = new UserLinks() {
-                    Self = (string)data["links"]["self"],
-                    Html = (string)data["links"]["html"],
-                    Photos = (string)data["links"]["photos"],
-                    Likes = (string)data["links"]["likes"],
-                    Portfolio = (string)data["links"]["portfolio"],
-                }
+                Id = userElement.GetString("id"),
+                UpdatedAt = userElement.GetString("updated_at"),
+                FirstName = userElement.GetString("first_name"),
+                LastName = userElement.GetString("last_name"),
+                Username = userElement.GetString("username"),
+                Name = userElement.GetString("name"),
+                TwitterUsername = userElement.GetString("twitter_username"),
+                PortfolioUrl = userElement.GetString("portfolio_url"),
+                Bio = userElement.GetString("bio"),
+                Location = userElement.GetString("location"),
+                TotalLikes = userElement.GetInt32("total_likes"),
+                TotalPhotos = userElement.GetInt32("total_photos"),
+                TotalCollections = userElement.GetInt32("total_collections"),
+                FollowedByUser = userElement.GetBoolean("followed_by_user"),
+                FollowersCount = userElement.GetInt32("followers_count"),
+                FollowingCount = userElement.GetInt32("following_count"),
+                ProfileImage = ExtractProfileImage(userElement),
+                Badge = ExtractBadge(userElement),
+                Links = ExtractUserLinks(userElement)
             };
         }
 
-        private Exif ExtractExif(JToken data) {
-            if (IsNull(data)) return null;
+        private ProfileImage? ExtractProfileImage(JsonElement data) {
+            if (!data.TryGetProperty("profile_image", out var profileElement) ||
+                profileElement.ValueKind == JsonValueKind.Null)
+                return null;
 
-            return new Exif() {
-                Make = (string)data["make"],
-                Model = (string)data["model"],
-                Iso = (int?)data["iso"],
-                FocalLength = (string)data["focal_length"],
-                Aperture = (string)data["aperture"],
+            return new ProfileImage() {
+                Small = profileElement.GetString("small"),
+                Medium = profileElement.GetString("medium"),
+                Large = profileElement.GetString("large")
             };
         }
 
-        private Location ExtractLocation(JToken data) {
-            if (IsNull(data)) return null;
+        private Badge? ExtractBadge(JsonElement data) {
+            if (!data.TryGetProperty("badge", out var badgeElement) ||
+                badgeElement.ValueKind == JsonValueKind.Null)
+                return null;
 
-            return new Location() {
-                Title = (string)data["title"],
-                Name = (string)data["name"],
-                City = (string)data["city"],
-                Country = (string)data["country"],
-
-                Position = new Position() {
-                    Latitude = IsNull(data["position"]["latitude"]) ? 0 : (int)data["position"]["latitude"],
-                    Longitude = IsNull(data["position"]["longitude"]) ? 0 : (int)data["position"]["longitude"],
-                }
+            return new Badge() {
+                Title = badgeElement.GetString("title"),
+                Primary = badgeElement.GetBoolean("primary"),
+                Slug = badgeElement.GetString("slug"),
+                Link = badgeElement.GetString("link")
             };
         }
 
-        private Photo ExtractPhoto(JToken data) {
-            if (IsNull(data)) return null;
+        private UserLinks? ExtractUserLinks(JsonElement data) {
+            if (!data.TryGetProperty("links", out var linksElement) ||
+                linksElement.ValueKind == JsonValueKind.Null)
+                return null;
 
-            return new Photo() {
-                Id = (string)data["id"],
-                Color = (string)data["color"],
-                BlurHash = (string)data["blur_hash"],
-                CreatedAt = (string)data["created_at"],
-                UpdatedAt = (string)data["updated_at"],
-                Description = (string)data["description"],
-                Downloads = ExtractNumber(data["downloads"]),
-                Likes = ExtractNumber(data["likes"] ?? "0"),
-                IsLikedByUser = ExtractBoolean(data["liked_by_user"]),
-                Width = ExtractNumber(data["width"]),
-                Height = ExtractNumber(data["height"]),
-
-                Exif = ExtractExif(data["exif"]),
-
-                Location = ExtractLocation(data["location"]),
-
-                Urls = new Urls() {
-                    Raw = (string)data["urls"]["raw"],
-                    Full = (string)data["urls"]["full"],
-                    Regular = (string)data["urls"]["regular"],
-                    Small = (string)data["urls"]["small"],
-                    Thumbnail = (string)data["urls"]["thumb"],
-                    Custom = (string)data["urls"]["custom"]
-                },
-
-                Categories = ExtractCategories(data["categories"]),
-
-                Links = new PhotoLinks() {
-                    Download = (string)data["links"]["download"],
-                    DownloadLocation = (string)data["links"]["download_location"],
-                    Html = (string)data["links"]["html"],
-                    Self = (string)data["links"]["self"],
-                },
-
-                User = ExtractUser(data["user"])
+            return new UserLinks() {
+                Self = linksElement.GetString("self"),
+                Html = linksElement.GetString("html"),
+                Photos = linksElement.GetString("photos"),
+                Likes = linksElement.GetString("likes"),
+                Portfolio = linksElement.GetString("portfolio")
             };
         }
 
-        private Collection ExtractCollection(JToken data) {
-            if (IsNull(data)) return null;
+        private Urls? ExtractUrls(JsonElement data) {
+            if (!data.TryGetProperty("urls", out var urlsElement) ||
+                urlsElement.ValueKind == JsonValueKind.Null)
+                return null;
+
+            return new Urls() {
+                Raw = urlsElement.GetString("raw"),
+                Full = urlsElement.GetString("full"),
+                Regular = urlsElement.GetString("regular"),
+                Small = urlsElement.GetString("small"),
+                Thumbnail = urlsElement.GetString("thumb"),
+                Custom = urlsElement.GetString("custom")
+            };
+        }
+
+        private PhotoLinks? ExtractPhotoLinks(JsonElement data) {
+            if (!data.TryGetProperty("links", out var linksElement) ||
+                linksElement.ValueKind == JsonValueKind.Null)
+                return null;
+
+            return new PhotoLinks() {
+                Download = linksElement.GetString("download"),
+                DownloadLocation = linksElement.GetString("download_location"),
+                Html = linksElement.GetString("html"),
+                Self = linksElement.GetString("self")
+            };
+        }
+
+        private StatsData? ExtractStatsData(JsonElement data, string propertyName) {
+            if (!data.TryGetProperty(propertyName, out var statsElement) ||
+                statsElement.ValueKind == JsonValueKind.Null)
+                return null;
+
+            return new StatsData() {
+                Total = statsElement.GetInt32("total"),
+                Historical = ExtractHistorical(statsElement)
+            };
+        }
+
+        private Collection? ExtractCollection(JsonElement data) {
+            if (data.ValueKind == JsonValueKind.Null || data.ValueKind == JsonValueKind.Undefined)
+                return null;
 
             return new Collection() {
-                Id = (string)data["id"],
-                Title = (string)data["title"],
-                Description = (string)data["description"],
-                PublishedAt = (string)data["published_at"],
-                UpdatedAt = (string)data["updated_at"],
-                IsCurated = ExtractBoolean(data["curated"]),
-                IsFeatured = ExtractBoolean(data["featured"]),
-                TotalPhotos = ExtractNumber(data["total_photos"]),
-                IsPrivate = ExtractBoolean(data["private"]),
-                ShareKey = (string)data["share_key"],
-
-                CoverPhoto = ExtractPhoto(data["cover_photo"]),
-
-                User = ExtractUser(data["user"]),
-
-                Links = new CollectionLinks() {
-                    Self = (string)data["links"]["self"],
-                    Html = (string)data["links"]["html"],
-                    Photos = (string)data["links"]["photos"],
-                    Related = (string)data["links"]["related"],
-                }
+                Id = data.GetString("id"),
+                Title = data.GetString("title"),
+                Description = data.GetString("description"),
+                PublishedAt = data.GetString("published_at"),
+                UpdatedAt = data.GetString("updated_at"),
+                IsCurated = data.GetBoolean("curated"),
+                IsFeatured = data.GetBoolean("featured"),
+                TotalPhotos = data.GetInt32("total_photos"),
+                IsPrivate = data.GetBoolean("private"),
+                ShareKey = data.GetString("share_key"),
+                CoverPhoto = ExtractCoverPhoto(data),
+                User = ExtractUser(data),
+                Links = ExtractCollectionLinks(data)
             };
         }
 
-        private StatsHistorical ExtractHistorical(JToken data) {
-            if (IsNull(data)) return null;
+        private Photo? ExtractCoverPhoto(JsonElement data) {
+            if (!data.TryGetProperty("cover_photo", out var coverPhotoElement) ||
+                coverPhotoElement.ValueKind == JsonValueKind.Null)
+                return null;
+
+            return ExtractPhoto(coverPhotoElement);
+        }
+
+        private CollectionLinks? ExtractCollectionLinks(JsonElement data) {
+            if (!data.TryGetProperty("links", out var linksElement) ||
+                linksElement.ValueKind == JsonValueKind.Null)
+                return null;
+
+            return new CollectionLinks() {
+                Self = linksElement.GetString("self"),
+                Html = linksElement.GetString("html"),
+                Photos = linksElement.GetString("photos"),
+                Related = linksElement.GetString("related")
+            };
+        }
+
+        private StatsHistorical? ExtractHistorical(JsonElement data) {
+            if (!data.TryGetProperty("historical", out var historicalElement) ||
+                historicalElement.ValueKind == JsonValueKind.Null)
+                return null;
 
             return new StatsHistorical() {
-                Change = double.Parse((string)data["historical"]["change"]),
-                Average = string.IsNullOrEmpty((string)data["historical"]["average"]) ? 
-                            0 : int.Parse((string)data["historical"]["average"]),
-                Resolution = (string)data["historical"]["resolution"],
-                Quantity = int.Parse((string)data["historical"]["quantity"]),
-                Values = ExtractStatsValues(data["historical"]["values"])
+                Change = historicalElement.GetDouble("change"),
+                Average = historicalElement.GetInt32("average"),
+                Resolution = historicalElement.GetString("resolution"),
+                Quantity = historicalElement.GetInt32("quantity"),
+                Values = ExtractStatsValues(historicalElement)
             };
         }
 
-        private List<StatsValue> ExtractStatsValues(JToken data) {
+        private List<StatsValue> ExtractStatsValues(JsonElement data) {
             var listStatsValues = new List<StatsValue>();
 
-            if (IsNull(data)) return listStatsValues;
+            if (!data.TryGetProperty("values", out var valuesElement) ||
+                valuesElement.ValueKind != JsonValueKind.Array)
+                return listStatsValues;
 
-            var dataStatsValues = (JArray)data;
-
-            if (dataStatsValues.Count == 0) return listStatsValues;
-
-            foreach (JObject item in dataStatsValues) {
-                var statsValues = new StatsValue() {
-                    Date = (string)item["date"],
-                    Value = double.Parse((string)item["value"])
+            foreach (var valueElement in valuesElement.EnumerateArray()) {
+                var statsValue = new StatsValue() {
+                    Date = valueElement.GetString("date"),
+                    Value = valueElement.GetDouble("value")
                 };
-
-                listStatsValues.Add(statsValues);
+                listStatsValues.Add(statsValue);
             }
 
             return listStatsValues;
         }
+
+        private Photo ExtractPhoto(JsonElement data) {
+            if (data.ValueKind == JsonValueKind.Null || data.ValueKind == JsonValueKind.Undefined)
+                return null;
+
+            return new Photo() {
+                Id = data.GetString("id"),
+                Color = data.GetString("color"),
+                BlurHash = data.GetString("blur_hash"),
+                CreatedAt = data.GetString("created_at"),
+                UpdatedAt = data.GetString("updated_at"),
+                Description = data.GetString("description"),
+                Downloads = data.GetInt32("downloads"),
+                Likes = data.GetInt32("likes"),
+                IsLikedByUser = data.GetBoolean("liked_by_user"),
+                Width = data.GetInt32("width"),
+                Height = data.GetInt32("height"),
+
+                Exif = ExtractExif(data),
+
+                Location = ExtractLocation(data),
+
+                Urls = ExtractUrls(data),
+
+                Categories = ExtractCategories(data),
+
+                Links = ExtractPhotoLinks(data),
+
+                User = ExtractUser(data)
+            };
+        }
+
+
 
         private string ConvertOderBy(OrderBy orderBy) {
             switch (orderBy) {

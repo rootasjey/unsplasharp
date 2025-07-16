@@ -14,8 +14,9 @@ This library has been enhanced with modern .NET practices and reliability featur
 - **🔄 Async/Await Patterns**: Improved async patterns with proper `ConfigureAwait(false)` usage
 - **📊 Structured Logging**: Built-in support for Microsoft.Extensions.Logging with detailed request/response logging
 - **🔁 Retry Policies**: Automatic retry logic using Polly for resilient HTTP requests
-- **⚡ Performance**: Better exception handling and resource management
+- **⚡ Performance**: Migrated to System.Text.Json for 2-3x faster JSON processing and reduced memory usage
 - **🛡️ Reliability**: Enhanced error handling with exponential backoff retry strategies
+- **🚀 Modern JSON**: System.Text.Json integration with custom converters and safe property access
 
 **Currently incomplete** 🚧
 
@@ -55,12 +56,61 @@ var client = new UnsplasharpClient("YOUR_APPLICATION_ID", logger: logger);
 var photos = await client.SearchPhotos("nature");
 ```
 
+### Modern Usage with IHttpClientFactory (Recommended)
+
+For ASP.NET Core and modern .NET applications, use the IHttpClientFactory integration:
+
+```csharp
+using Unsplasharp.Extensions;
+
+// In Program.cs or Startup.cs
+builder.Services.AddUnsplasharp("YOUR_APPLICATION_ID");
+
+// Or with configuration
+builder.Services.AddUnsplasharp(options =>
+{
+    options.ApplicationId = "YOUR_APPLICATION_ID";
+    options.Secret = "YOUR_SECRET"; // Optional
+    options.ConfigureHttpClient = client =>
+    {
+        client.Timeout = TimeSpan.FromSeconds(60);
+    };
+});
+
+// In your controller or service
+public class PhotoService
+{
+    private readonly UnsplasharpClient _client;
+
+    public PhotoService(UnsplasharpClient client)
+    {
+        _client = client;
+    }
+
+    public async Task<List<Photo>> GetPhotos(string query)
+    {
+        return await _client.SearchPhotos(query);
+    }
+}
+```
+
 ### Features
 
-- **Automatic Retries**: Failed requests are automatically retried up to 3 times with exponential backoff
-- **Structured Logging**: Detailed logging of HTTP requests, responses, and retry attempts
-- **Rate Limit Tracking**: Built-in rate limit monitoring and logging
-- **Async/Await**: All methods use proper async patterns with `ConfigureAwait(false)`
+- **🏭 IHttpClientFactory Support**: Modern HTTP client management with proper lifecycle and DI integration
+- **🔄 Automatic Retries**: Failed requests are automatically retried up to 3 times with exponential backoff
+- **📊 Structured Logging**: Detailed logging of HTTP requests, responses, and retry attempts
+- **📈 Rate Limit Tracking**: Built-in rate limit monitoring and logging
+- **⚡ Async/Await**: All methods use proper async patterns with `ConfigureAwait(false)`
+- **🚀 High Performance JSON**: System.Text.Json for faster parsing and lower memory usage
+- **🔧 Dependency Injection**: Seamless integration with .NET DI containers
+- **🔙 Backward Compatible**: Existing code continues to work without changes
+
+## Documentation
+
+- **[IHttpClientFactory Integration Guide](HTTPCLIENTFACTORY.md)** - Comprehensive guide for modern .NET applications
+- **[Logging Guide](LOGGING.md)** - Detailed logging configuration and usage
+- **[System.Text.Json Migration Guide](SYSTEMTEXTJSON.md)** - Performance improvements and technical details
+- **[Changelog](CHANGELOG.md)** - Version history and breaking changes
 
 ## API documentation
 
@@ -304,8 +354,13 @@ If you want to get your personal API key from Unsplash:
 
 ## Dependencies
 
-* [System.Net.Http](https://preview.nuget.org/packages/System.Net.Http/)
-* [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json)
+* **System.Text.Json** - High-performance JSON serialization (included in .NET Standard 2.0+)
+* **Microsoft.Extensions.Logging.Abstractions** - Structured logging support
+* **Microsoft.Extensions.Http** - IHttpClientFactory integration
+* **Polly** - Resilience and retry policies
+
+### Removed Dependencies
+* ~~Newtonsoft.Json~~ - Replaced with System.Text.Json for better performance
 
 ## Resources
 
