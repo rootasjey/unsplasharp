@@ -14,7 +14,7 @@ namespace UnsplashsharpTest
     [TestClass]
     public class DependencyValidationTests
     {
-        private UnsplasharpClient _client;
+        private UnsplasharpClient _client = null!;
 
         [TestInitialize]
         public void Setup()

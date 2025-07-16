@@ -14,21 +14,21 @@ namespace Unsplasharp.Models {
         /// Photo's unique identifier composed of Unicode characters.
         /// </summary>
         [JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = string.Empty;
 
         /// <summary>
         /// Photo's description
         /// </summary>
         [JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
         /// <summary>
         /// Date indicating when the photo has been created.
         /// </summary>
         [JsonPropertyName("created_at")]
-        public string CreatedAt { get; set; }
+        public string CreatedAt { get; set; } = string.Empty;
 
-        private string _UpdatedAt;
+        private string _UpdatedAt = string.Empty;
         /// <summary>
         /// Date indicating the last time the photo has been updated.
         /// </summary>
@@ -57,11 +57,11 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// The main color composing the photo.
         /// </summary>
-        public string Color { get; set; }
+        public string Color { get; set; } = string.Empty;
         /// <summary>
         /// BlurHash Placeholders
         /// </summary>
-        public string BlurHash { get; set; }
+        public string BlurHash { get; set; } = string.Empty;
 
         private int _Downloads;
 
@@ -113,7 +113,7 @@ namespace Unsplasharp.Models {
 
         #region composed properties
 
-        private List<Collection> _CurrentUserCollection;
+        private List<Collection> _CurrentUserCollection = new();
         /// <summary>
         /// The photo's collection where the photo is included, if any.
         /// </summary>
@@ -128,14 +128,14 @@ namespace Unsplasharp.Models {
                 }
             }
         }
-    
+
 
         /// <summary>
         /// Absolute photo's URLs (for different photo's sizes).
         /// </summary>
-        public Urls Urls { get; set; }
+        public Urls Urls { get; set; } = new();
 
-        private List<Category> _Categories;
+        private List<Category> _Categories = new();
         /// <summary>
         /// Photo's matched categories.
         /// </summary>
@@ -154,9 +154,9 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// Photo's owner (who's uploaded the content).
         /// </summary>
-        public User User { get; set; }
+        public User User { get; set; } = new();
 
-        private Exif _Exif;
+        private Exif _Exif = new();
         /// <summary>
         /// Camera specifications.
         /// </summary>
@@ -172,7 +172,7 @@ namespace Unsplasharp.Models {
             }
         }
 
-        private Location _Location;
+        private Location _Location = new();
         /// <summary>
         /// Where the photo has been shot.
         /// </summary>
@@ -189,7 +189,7 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// Photo's link relations
         /// </summary>
-        public PhotoLinks Links { get; set; }
+        public PhotoLinks Links { get; set; } = new();
 
         #endregion composed properties
 
@@ -197,7 +197,7 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// Event raised when a property is modified
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private void NotifyPropertyChanged(String propertyName) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -212,22 +212,22 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// API location of this photo.
         /// </summary>
-        public string Self { get; set; }
+        public string Self { get; set; } = string.Empty;
 
         /// <summary>
         /// HTML location of this photo.
         /// </summary>
-        public string Html { get; set; }
+        public string Html { get; set; } = string.Empty;
 
         /// <summary>
         /// Download location of this photo.
         /// </summary>
-        public string Download { get; set; }
+        public string Download { get; set; } = string.Empty;
 
         /// <summary>
         ///  API Download location of this photo (check if direct download).
         /// </summary>
-        public string DownloadLocation { get; set; }
+        public string DownloadLocation { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -237,27 +237,27 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// Camera’s brand.
         /// </summary>
-        public string Make { get; set; }
+        public string Make { get; set; } = string.Empty;
 
         /// <summary>
         /// Camera’s model.
         /// </summary>
-        public string Model { get; set; }
+        public string Model { get; set; } = string.Empty;
 
         /// <summary>
         /// Camera’s exposure time.
         /// </summary>
-        public string ExposureTime { get; set; }
+        public string ExposureTime { get; set; } = string.Empty;
 
         /// <summary>
         /// Camera’s aperture value.
         /// </summary>
-        public string Aperture { get; set; }
+        public string Aperture { get; set; } = string.Empty;
 
         /// <summary>
         /// Camera’s focal length.
         /// </summary>
-        public string FocalLength { get; set; }
+        public string FocalLength { get; set; } = string.Empty;
 
         /// <summary>
         /// Camera’s iso.
@@ -269,7 +269,7 @@ namespace Unsplasharp.Models {
     /// The photo's location.
     /// </summary>
     public class Location {
-        private string _Title;
+        private string _Title = string.Empty;
 
         /// <summary>
         /// Full location's name (district + city + country (if available))
@@ -279,7 +279,7 @@ namespace Unsplasharp.Models {
             set { _Title = value; }
         }
 
-        private string _Name;
+        private string _Name = string.Empty;
 
         /// <summary>
         /// Location's name
@@ -289,7 +289,7 @@ namespace Unsplasharp.Models {
             set { _Name = value; }
         }
 
-        private string _City;
+        private string _City = string.Empty;
 
         /// <summary>
         /// Location’s city.
@@ -299,7 +299,7 @@ namespace Unsplasharp.Models {
             set { _City = value; }
         }
 
-        private string _Country;
+        private string _Country = string.Empty;
 
         /// <summary>
         /// Location’s country.
@@ -309,7 +309,7 @@ namespace Unsplasharp.Models {
             set { _Country = value; }
         }        
 
-        private Position _Position;
+        private Position _Position = new();
 
         /// <summary>
         /// Location’s position (latitude, longitude).
@@ -353,32 +353,32 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// URL linking to the photo in native resolution and uncompressed.
         /// </summary>
-        public string Raw { get; set; }
+        public string Raw { get; set; } = string.Empty;
 
         /// <summary>
         /// URL linking to the photo in a large size.
         /// </summary>
-        public string Full { get; set; }
+        public string Full { get; set; } = string.Empty;
 
         /// <summary>
         /// URL linking to the photo in a medium size.
         /// </summary>
-        public string Regular { get; set; }
+        public string Regular { get; set; } = string.Empty;
 
         /// <summary>
         /// URL linking to the photo in a small size.
         /// </summary>
-        public string Small { get; set; }
+        public string Small { get; set; } = string.Empty;
 
         /// <summary>
         /// URL linking to the photo in a thumbnail size.
         /// </summary>
-        public string Thumbnail { get; set; }
+        public string Thumbnail { get; set; } = string.Empty;
 
         /// <summary>
         /// URL linking to the photo in a custom size if specified by the user.
         /// </summary>
-        public string Custom { get; set; }
+        public string Custom { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -388,12 +388,12 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// Category's identifier.
         /// </summary>
-        public string Id { get; set; }
+        public string Id { get; set; } = string.Empty;
 
         /// <summary>
         /// Category's title.
         /// </summary>
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         /// <summary>
         /// Number of photos in this category.
@@ -403,7 +403,7 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// Category's links.
         /// </summary>
-        public CategoryLinks Links { get; set; }
+        public CategoryLinks Links { get; set; } = new();
     }
 
     /// <summary>
@@ -413,12 +413,12 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// Link of this category.
         /// </summary>
-        public string Self { get; set; }
+        public string Self { get; set; } = string.Empty;
 
         /// <summary>
         /// Link to all photos in this category.
         /// </summary>
-        public string Photos { get; set; }
+        public string Photos { get; set; } = string.Empty;
 
     }
 }

@@ -10,44 +10,44 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// Unique user's identifer
         /// </summary>
-        public string Id { get; set; }
+        public string Id { get; set; } = string.Empty;
 
         /// <summary>
         /// User's name
         /// </summary>
-        public string Username { get; set; }
+        public string Username { get; set; } = string.Empty;
 
         /// <summary>
         /// User's name
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// User's first name.
         /// </summary>
-        public string FirstName { get; set; }
+        public string FirstName { get; set; } = string.Empty;
 
         /// <summary>
         /// User's last name.
         /// </summary>
-        public string LastName { get; set; }
+        public string LastName { get; set; } = string.Empty;
 
         /// <summary>
         /// User's twitter username
         /// </summary>
-        public string TwitterUsername { get; set; }
+        public string TwitterUsername { get; set; } = string.Empty;
 
         /// <summary>
         /// Portfolio/personal URL.
         /// </summary>
-        public string PortfolioUrl { get; set; }
+        public string PortfolioUrl { get; set; } = string.Empty;
 
         /// <summary>
         /// About/bio.
         /// </summary>
-        public string Bio { get; set; }
+        public string Bio { get; set; } = string.Empty;
 
-        private string _Location;
+        private string _Location = string.Empty;
         /// <summary>
         /// User's location
         /// </summary>
@@ -111,7 +111,7 @@ namespace Unsplasharp.Models {
             }
         }
 
-        private string _UpdatedAt;
+        private string _UpdatedAt = string.Empty;
         /// <summary>
         /// Last user profile update
         /// </summary>
@@ -198,9 +198,9 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// User's avatar
         /// </summary>
-        public ProfileImage ProfileImage { get; set; }
+        public ProfileImage ProfileImage { get; set; } = new();
 
-        private Badge _Badge;
+        private Badge _Badge = new();
         /// <summary>
         /// User's badge
         /// </summary>
@@ -219,15 +219,15 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// User's link relations
         /// </summary>
-        public UserLinks Links { get; set; }
-        
+        public UserLinks Links { get; set; } = new();
+
         #endregion composed properties
 
         #region events
         /// <summary>
         /// Event raised when a property is modified
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private void NotifyPropertyChanged(String propertyName) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -242,17 +242,17 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// Small size profile image.
         /// </summary>
-        public string Small { get; set; }
+        public string Small { get; set; } = string.Empty;
 
         /// <summary>
         /// Medium size profile image.
         /// </summary>
-        public string Medium { get; set; }
+        public string Medium { get; set; } = string.Empty;
 
         /// <summary>
         /// Large size profile image.
         /// </summary>
-        public string Large { get; set; }
+        public string Large { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -262,7 +262,7 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// Badge's title (e.g. book contributor).
         /// </summary>
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         /// <summary>
         /// True if it's the primary badge.
@@ -272,12 +272,12 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// Badge's description.
         /// </summary>
-        public string Slug { get; set; }
+        public string Slug { get; set; } = string.Empty;
 
         /// <summary>
         /// Badge's page's link.
         /// </summary>
-        public string Link { get; set; }
+        public string Link { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -287,26 +287,26 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// API location of this user.
         /// </summary>
-        public string Self { get; set; }
+        public string Self { get; set; } = string.Empty;
 
         /// <summary>
         /// HTML location of this user.
         /// </summary>
-        public string Html { get; set; }
+        public string Html { get; set; } = string.Empty;
 
         /// <summary>
         /// API location of this user's photo.
         /// </summary>
-        public string Photos { get; set; }
+        public string Photos { get; set; } = string.Empty;
 
         /// <summary>
         /// API location of this user's liked photo.
         /// </summary>
-        public string Likes { get; set; }
+        public string Likes { get; set; } = string.Empty;
 
         /// <summary>
         /// API location of this user's portfolio.
         /// </summary>
-        public string Portfolio { get; set; }
+        public string Portfolio { get; set; } = string.Empty;
     }
 }

@@ -12,7 +12,7 @@ namespace UnsplashsharpTest
     [TestClass]
     public class IntegrationTests
     {
-        private UnsplasharpClient _client;
+        private UnsplasharpClient _client = null!;
 
         [TestInitialize]
         public void Setup()

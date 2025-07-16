@@ -46,6 +46,7 @@ namespace UnsplashsharpTest {
             var client = new UnsplasharpClient(Credentials.ApplicationId);
             var listCollection = await client.ListCollections();
             var collection = await client.GetCollection(listCollection[0].Id);
+            Assert.IsNotNull(collection);
             var listPhotos = await client.GetCollectionPhotos(collection.Id);
 
             Assert.IsNotNull(listPhotos);

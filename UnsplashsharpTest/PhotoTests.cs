@@ -93,6 +93,7 @@ namespace UnsplashsharpTest {
             var client = new UnsplasharpClient(Credentials.ApplicationId);
             var photo = await client.GetPhoto(id);
 
+            Assert.IsNotNull(photo);
             photo.Downloads = 20000;
         }
     }

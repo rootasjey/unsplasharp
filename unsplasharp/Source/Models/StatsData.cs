@@ -13,7 +13,7 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// Stat's history.
         /// </summary>
-        public StatsHistorical Historical { get; set; }
+        public StatsHistorical Historical { get; set; } = new();
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// The frequency of the stats.
         /// </summary>
-        public string Resolution { get; set; }
+        public string Resolution { get; set; } = string.Empty;
 
         /// <summary>
         /// The amount of for each stat.
@@ -43,7 +43,7 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// List of data sets.
         /// </summary>
-        public List<StatsValue> Values { get; set; }
+        public List<StatsValue> Values { get; set; } = new();
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ namespace Unsplasharp.Models {
         /// <summary>
         /// Stat's date.
         /// </summary>
-        public string Date { get; set; }
+        public string Date { get; set; } = string.Empty;
 
         /// <summary>
         /// Stat's value.

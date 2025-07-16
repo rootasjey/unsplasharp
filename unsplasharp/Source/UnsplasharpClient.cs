@@ -418,22 +418,23 @@ namespace Unsplasharp {
         /// <param name="resolution">The frequency of the stats.</param>
         /// <param name="quantity">The amount of for each stat.</param>
         /// <returns></returns>
-        public async Task<PhotoStats> GetPhotoStats(string id, Resolution resolution = Resolution.Days, int quantity = 30) {
+        public async Task<PhotoStats?> GetPhotoStats(string id, Resolution resolution = Resolution.Days, int quantity = 30) {
             var url = string.Format(
-                "{0}/{1}/statistics?resolution={2}&quantity={3}", 
+                "{0}/{1}/statistics?resolution={2}&quantity={3}",
                 GetUrl("photos"), id, ConvertResolution(resolution), quantity);
 
             try {
-                string responseBodyAsText = await Fetch(url).ConfigureAwait(false);
+                string? responseBodyAsText = await Fetch(url).ConfigureAwait(false);
+                if (responseBodyAsText == null) return null;
 
                 using var document = JsonDocument.Parse(responseBodyAsText);
                 var data = document.RootElement;
 
                 return new PhotoStats() {
-                    Id = data.GetString("id"),
-                    Downloads = ExtractStatsData(data, "downloads"),
-                    Views = ExtractStatsData(data, "views"),
-                    Likes = ExtractStatsData(data, "likes")
+                    Id = data.GetString("id") ?? string.Empty,
+                    Downloads = ExtractStatsData(data, "downloads") ?? new StatsData(),
+                    Views = ExtractStatsData(data, "views") ?? new StatsData(),
+                    Likes = ExtractStatsData(data, "likes") ?? new StatsData()
                 };
 
             } catch {
@@ -448,7 +449,7 @@ namespace Unsplasharp {
         /// </summary>
         /// <param name="id">The photo’s ID.</param>
         /// <returns>The photo's download link</returns>
-        public async Task<string> GetPhotoDownloadLink(string id) {
+        public async Task<string?> GetPhotoDownloadLink(string id) {
             var url = string.Format("{0}/{1}/download", GetUrl("photos"), id);
             var response = await Fetch(url);
 
@@ -483,6 +484,7 @@ namespace Unsplasharp {
 
             try {
                 var responseBodyAsText = await Fetch(url).ConfigureAwait(false);
+                if (responseBodyAsText == null) return listPhotos;
 
                 using var document = JsonDocument.Parse(responseBodyAsText);
 
@@ -530,6 +532,7 @@ namespace Unsplasharp {
 
             try {
                 var responseBodyAsText = await Fetch(url).ConfigureAwait(false);
+                if (responseBodyAsText == null) return listCollection;
 
                 using var document = JsonDocument.Parse(responseBodyAsText);
 
@@ -554,7 +557,7 @@ namespace Unsplasharp {
         /// </summary>
         /// <param name="id">Collection's id to find.</param>
         /// <returns>A new collection instance.</returns>
-        public async Task<Collection> GetCollection(string id) {
+        public async Task<Collection?> GetCollection(string id) {
             var url = string.Format("{0}/{1}", GetUrl("collections"), id);
             var response = await Fetch(url);
 
@@ -627,7 +630,7 @@ namespace Unsplasharp {
         /// <param name="width">Profile image width in pixels.</param>
         /// <param name="height">Profile image height in pixels.</param>
         /// <returns>User corresponding to the username if found.</returns>
-        public async Task<User> GetUser(string username, int width = 0, int height = 0) {
+        public async Task<User?> GetUser(string username, int width = 0, int height = 0) {
             var url = string.Format("{0}/{1}", GetUrl("users"), username);
 
             if (width != 0) { url = AddQueryString(url, "w", width); }
@@ -646,7 +649,7 @@ namespace Unsplasharp {
         /// </summary>
         /// <param name="username">User's name to get portfolio link from.</param>
         /// <returns>The user's porfolio link</returns>
-        public async Task<string> GetUserPorfolioLink(string username) {
+        public async Task<string?> GetUserPorfolioLink(string username) {
             var url = string.Format("{0}/{1}/portfolio", GetUrl("users"), username);
             var response = await Fetch(url);
 
@@ -719,25 +722,26 @@ namespace Unsplasharp {
         /// <param name="resolution">The frequency of the stats. (Optional; default: “days”).</param>
         /// <param name="quantity">The amount of for each stat. (Optional; default: 30)</param>
         /// <returns>User's statistics</returns>
-        public async Task<UserStats> GetUserStats(
-            string username, 
-            Resolution resolution = Resolution.Days, 
+        public async Task<UserStats?> GetUserStats(
+            string username,
+            Resolution resolution = Resolution.Days,
             int quantity = 30) {
 
-            var url = string.Format("{0}/{1}/statistics?resolution={2}&quantity={3}", 
+            var url = string.Format("{0}/{1}/statistics?resolution={2}&quantity={3}",
                 GetUrl("users"), username, ConvertResolution(resolution), quantity);
 
             try {
-                string responseBodyAsText = await Fetch(url).ConfigureAwait(false);
+                string? responseBodyAsText = await Fetch(url).ConfigureAwait(false);
+                if (responseBodyAsText == null) return null;
 
                 using var document = JsonDocument.Parse(responseBodyAsText);
                 var data = document.RootElement;
 
                 return new UserStats() {
-                    Username = data.GetString("username"),
-                    Downloads = ExtractStatsData(data, "downloads"),
-                    Views = ExtractStatsData(data, "views"),
-                    Likes = ExtractStatsData(data, "likes")
+                    Username = data.GetString("username") ?? string.Empty,
+                    Downloads = ExtractStatsData(data, "downloads") ?? new StatsData(),
+                    Views = ExtractStatsData(data, "views") ?? new StatsData(),
+                    Likes = ExtractStatsData(data, "likes") ?? new StatsData()
                 };
 
             } catch {
@@ -849,6 +853,11 @@ namespace Unsplasharp {
 
             try {
                 var responseBodyAsText = await Fetch(url).ConfigureAwait(false);
+                if (responseBodyAsText == null) {
+                    LastPhotosSearchTotalResults = 0;
+                    LastPhotosSearchTotalPages = 0;
+                    return listPhotos;
+                }
 
                 using var document = JsonDocument.Parse(responseBodyAsText);
                 var data = document.RootElement;
@@ -885,6 +894,11 @@ namespace Unsplasharp {
 
             try {
                 var responseBodyAsText = await Fetch(url);
+                if (responseBodyAsText == null) {
+                    LastCollectionsSearchTotalResults = 0;
+                    LastCollectionsSearchTotalPages = 0;
+                    return listCollections;
+                }
 
                 using var document = JsonDocument.Parse(responseBodyAsText);
                 var data = document.RootElement;
@@ -921,6 +935,11 @@ namespace Unsplasharp {
 
             try {
                 var responseBodyAsText = await Fetch(url);
+                if (responseBodyAsText == null) {
+                    LastUsersSearchTotalResults = 0;
+                    LastUsersSearchTotalPages = 0;
+                    return listUsers;
+                }
 
                 using var document = JsonDocument.Parse(responseBodyAsText);
                 var data = document.RootElement;
@@ -953,8 +972,10 @@ namespace Unsplasharp {
         /// Get a list of counts for all of Unsplash.
         /// </summary>
         /// <returns>A list of Unplash's stats.</returns>
-        public async Task<UnplashTotalStats> GetTotalStats() {
+        public async Task<UnplashTotalStats?> GetTotalStats() {
             var url = GetUrl("total_stats");
+            if (url == null) return null;
+
             var response = await Fetch(url).ConfigureAwait(false);
 
             if (response == null) return null;
@@ -981,8 +1002,10 @@ namespace Unsplasharp {
         /// Get the overall Unsplash stats for the past 30 days.
         /// </summary>
         /// <returns>A list of Unplash's stats.</returns>
-        public async Task<UnplashMonthlyStats> GetMonthlyStats() {
+        public async Task<UnplashMonthlyStats?> GetMonthlyStats() {
             var url = GetUrl("monthly_stats");
+            if (url == null) return null;
+
             var response = await Fetch(url).ConfigureAwait(false);
 
             if (response == null) return null;
@@ -1013,7 +1036,7 @@ namespace Unsplasharp {
         /// </summary>
         /// <param name="type">URL shortname to retrieve.</param>
         /// <returns>An URL</returns>
-        private string GetUrl(string type) {
+        private string? GetUrl(string type) {
             switch (type) {
                 case "photos":
                     return URIBase + URIEndpoints["photos"];
@@ -1132,11 +1155,11 @@ namespace Unsplasharp {
                 return null;
 
             return new Exif() {
-                Make = exifElement.GetString("make"),
-                Model = exifElement.GetString("model"),
+                Make = exifElement.GetString("make") ?? string.Empty,
+                Model = exifElement.GetString("model") ?? string.Empty,
                 Iso = exifElement.GetNullableInt32("iso"),
-                FocalLength = exifElement.GetString("focal_length"),
-                Aperture = exifElement.GetString("aperture")
+                FocalLength = exifElement.GetString("focal_length") ?? string.Empty,
+                Aperture = exifElement.GetString("aperture") ?? string.Empty
             };
         }
 
@@ -1146,11 +1169,11 @@ namespace Unsplasharp {
                 return null;
 
             return new Location() {
-                Title = locationElement.GetString("title"),
-                Name = locationElement.GetString("name"),
-                City = locationElement.GetString("city"),
-                Country = locationElement.GetString("country"),
-                Position = ExtractPosition(locationElement)
+                Title = locationElement.GetString("title") ?? string.Empty,
+                Name = locationElement.GetString("name") ?? string.Empty,
+                City = locationElement.GetString("city") ?? string.Empty,
+                Country = locationElement.GetString("country") ?? string.Empty,
+                Position = ExtractPosition(locationElement) ?? new Position()
             };
         }
 
@@ -1174,10 +1197,10 @@ namespace Unsplasharp {
 
             foreach (var categoryElement in categoriesElement.EnumerateArray()) {
                 var category = new Category() {
-                    Id = categoryElement.GetString("id"),
-                    Title = categoryElement.GetString("title"),
+                    Id = categoryElement.GetString("id") ?? string.Empty,
+                    Title = categoryElement.GetString("title") ?? string.Empty,
                     PhotoCount = categoryElement.GetInt32("photo_count"),
-                    Links = ExtractCategoryLinks(categoryElement)
+                    Links = ExtractCategoryLinks(categoryElement) ?? new CategoryLinks()
                 };
                 categories.Add(category);
             }
@@ -1191,8 +1214,8 @@ namespace Unsplasharp {
                 return null;
 
             return new CategoryLinks() {
-                Self = linksElement.GetString("self"),
-                Photos = linksElement.GetString("photos")
+                Self = linksElement.GetString("self") ?? string.Empty,
+                Photos = linksElement.GetString("photos") ?? string.Empty
             };
         }
 
@@ -1202,25 +1225,25 @@ namespace Unsplasharp {
                 return null;
 
             return new User() {
-                Id = userElement.GetString("id"),
-                UpdatedAt = userElement.GetString("updated_at"),
-                FirstName = userElement.GetString("first_name"),
-                LastName = userElement.GetString("last_name"),
-                Username = userElement.GetString("username"),
-                Name = userElement.GetString("name"),
-                TwitterUsername = userElement.GetString("twitter_username"),
-                PortfolioUrl = userElement.GetString("portfolio_url"),
-                Bio = userElement.GetString("bio"),
-                Location = userElement.GetString("location"),
+                Id = userElement.GetString("id") ?? string.Empty,
+                UpdatedAt = userElement.GetString("updated_at") ?? string.Empty,
+                FirstName = userElement.GetString("first_name") ?? string.Empty,
+                LastName = userElement.GetString("last_name") ?? string.Empty,
+                Username = userElement.GetString("username") ?? string.Empty,
+                Name = userElement.GetString("name") ?? string.Empty,
+                TwitterUsername = userElement.GetString("twitter_username") ?? string.Empty,
+                PortfolioUrl = userElement.GetString("portfolio_url") ?? string.Empty,
+                Bio = userElement.GetString("bio") ?? string.Empty,
+                Location = userElement.GetString("location") ?? string.Empty,
                 TotalLikes = userElement.GetInt32("total_likes"),
                 TotalPhotos = userElement.GetInt32("total_photos"),
                 TotalCollections = userElement.GetInt32("total_collections"),
                 FollowedByUser = userElement.GetBoolean("followed_by_user"),
                 FollowersCount = userElement.GetInt32("followers_count"),
                 FollowingCount = userElement.GetInt32("following_count"),
-                ProfileImage = ExtractProfileImage(userElement),
-                Badge = ExtractBadge(userElement),
-                Links = ExtractUserLinks(userElement)
+                ProfileImage = ExtractProfileImage(userElement) ?? new ProfileImage(),
+                Badge = ExtractBadge(userElement) ?? new Badge(),
+                Links = ExtractUserLinks(userElement) ?? new UserLinks()
             };
         }
 
@@ -1230,9 +1253,9 @@ namespace Unsplasharp {
                 return null;
 
             return new ProfileImage() {
-                Small = profileElement.GetString("small"),
-                Medium = profileElement.GetString("medium"),
-                Large = profileElement.GetString("large")
+                Small = profileElement.GetString("small") ?? string.Empty,
+                Medium = profileElement.GetString("medium") ?? string.Empty,
+                Large = profileElement.GetString("large") ?? string.Empty
             };
         }
 
@@ -1242,10 +1265,10 @@ namespace Unsplasharp {
                 return null;
 
             return new Badge() {
-                Title = badgeElement.GetString("title"),
+                Title = badgeElement.GetString("title") ?? string.Empty,
                 Primary = badgeElement.GetBoolean("primary"),
-                Slug = badgeElement.GetString("slug"),
-                Link = badgeElement.GetString("link")
+                Slug = badgeElement.GetString("slug") ?? string.Empty,
+                Link = badgeElement.GetString("link") ?? string.Empty
             };
         }
 
@@ -1255,11 +1278,11 @@ namespace Unsplasharp {
                 return null;
 
             return new UserLinks() {
-                Self = linksElement.GetString("self"),
-                Html = linksElement.GetString("html"),
-                Photos = linksElement.GetString("photos"),
-                Likes = linksElement.GetString("likes"),
-                Portfolio = linksElement.GetString("portfolio")
+                Self = linksElement.GetString("self") ?? string.Empty,
+                Html = linksElement.GetString("html") ?? string.Empty,
+                Photos = linksElement.GetString("photos") ?? string.Empty,
+                Likes = linksElement.GetString("likes") ?? string.Empty,
+                Portfolio = linksElement.GetString("portfolio") ?? string.Empty
             };
         }
 
@@ -1269,12 +1292,12 @@ namespace Unsplasharp {
                 return null;
 
             return new Urls() {
-                Raw = urlsElement.GetString("raw"),
-                Full = urlsElement.GetString("full"),
-                Regular = urlsElement.GetString("regular"),
-                Small = urlsElement.GetString("small"),
-                Thumbnail = urlsElement.GetString("thumb"),
-                Custom = urlsElement.GetString("custom")
+                Raw = urlsElement.GetString("raw") ?? string.Empty,
+                Full = urlsElement.GetString("full") ?? string.Empty,
+                Regular = urlsElement.GetString("regular") ?? string.Empty,
+                Small = urlsElement.GetString("small") ?? string.Empty,
+                Thumbnail = urlsElement.GetString("thumb") ?? string.Empty,
+                Custom = urlsElement.GetString("custom") ?? string.Empty
             };
         }
 
@@ -1284,10 +1307,10 @@ namespace Unsplasharp {
                 return null;
 
             return new PhotoLinks() {
-                Download = linksElement.GetString("download"),
-                DownloadLocation = linksElement.GetString("download_location"),
-                Html = linksElement.GetString("html"),
-                Self = linksElement.GetString("self")
+                Download = linksElement.GetString("download") ?? string.Empty,
+                DownloadLocation = linksElement.GetString("download_location") ?? string.Empty,
+                Html = linksElement.GetString("html") ?? string.Empty,
+                Self = linksElement.GetString("self") ?? string.Empty
             };
         }
 
@@ -1298,7 +1321,7 @@ namespace Unsplasharp {
 
             return new StatsData() {
                 Total = statsElement.GetInt32("total"),
-                Historical = ExtractHistorical(statsElement)
+                Historical = ExtractHistorical(statsElement) ?? new StatsHistorical()
             };
         }
 
@@ -1307,19 +1330,19 @@ namespace Unsplasharp {
                 return null;
 
             return new Collection() {
-                Id = data.GetString("id"),
-                Title = data.GetString("title"),
-                Description = data.GetString("description"),
-                PublishedAt = data.GetString("published_at"),
-                UpdatedAt = data.GetString("updated_at"),
+                Id = data.GetString("id") ?? string.Empty,
+                Title = data.GetString("title") ?? string.Empty,
+                Description = data.GetString("description") ?? string.Empty,
+                PublishedAt = data.GetString("published_at") ?? string.Empty,
+                UpdatedAt = data.GetString("updated_at") ?? string.Empty,
                 IsCurated = data.GetBoolean("curated"),
                 IsFeatured = data.GetBoolean("featured"),
                 TotalPhotos = data.GetInt32("total_photos"),
                 IsPrivate = data.GetBoolean("private"),
-                ShareKey = data.GetString("share_key"),
-                CoverPhoto = ExtractCoverPhoto(data),
-                User = ExtractUser(data),
-                Links = ExtractCollectionLinks(data)
+                ShareKey = data.GetString("share_key") ?? string.Empty,
+                CoverPhoto = ExtractCoverPhoto(data) ?? new Photo(),
+                User = ExtractUser(data) ?? new User(),
+                Links = ExtractCollectionLinks(data) ?? new CollectionLinks()
             };
         }
 
@@ -1337,10 +1360,10 @@ namespace Unsplasharp {
                 return null;
 
             return new CollectionLinks() {
-                Self = linksElement.GetString("self"),
-                Html = linksElement.GetString("html"),
-                Photos = linksElement.GetString("photos"),
-                Related = linksElement.GetString("related")
+                Self = linksElement.GetString("self") ?? string.Empty,
+                Html = linksElement.GetString("html") ?? string.Empty,
+                Photos = linksElement.GetString("photos") ?? string.Empty,
+                Related = linksElement.GetString("related") ?? string.Empty
             };
         }
 
@@ -1352,7 +1375,7 @@ namespace Unsplasharp {
             return new StatsHistorical() {
                 Change = historicalElement.GetDouble("change"),
                 Average = historicalElement.GetInt32("average"),
-                Resolution = historicalElement.GetString("resolution"),
+                Resolution = historicalElement.GetString("resolution") ?? string.Empty,
                 Quantity = historicalElement.GetInt32("quantity"),
                 Values = ExtractStatsValues(historicalElement)
             };
@@ -1367,7 +1390,7 @@ namespace Unsplasharp {
 
             foreach (var valueElement in valuesElement.EnumerateArray()) {
                 var statsValue = new StatsValue() {
-                    Date = valueElement.GetString("date"),
+                    Date = valueElement.GetString("date") ?? string.Empty,
                     Value = valueElement.GetDouble("value")
                 };
                 listStatsValues.Add(statsValue);
@@ -1376,34 +1399,34 @@ namespace Unsplasharp {
             return listStatsValues;
         }
 
-        private Photo ExtractPhoto(JsonElement data) {
+        private Photo? ExtractPhoto(JsonElement data) {
             if (data.ValueKind == JsonValueKind.Null || data.ValueKind == JsonValueKind.Undefined)
                 return null;
 
             return new Photo() {
-                Id = data.GetString("id"),
-                Color = data.GetString("color"),
-                BlurHash = data.GetString("blur_hash"),
-                CreatedAt = data.GetString("created_at"),
-                UpdatedAt = data.GetString("updated_at"),
-                Description = data.GetString("description"),
+                Id = data.GetString("id") ?? string.Empty,
+                Color = data.GetString("color") ?? string.Empty,
+                BlurHash = data.GetString("blur_hash") ?? string.Empty,
+                CreatedAt = data.GetString("created_at") ?? string.Empty,
+                UpdatedAt = data.GetString("updated_at") ?? string.Empty,
+                Description = data.GetString("description") ?? string.Empty,
                 Downloads = data.GetInt32("downloads"),
                 Likes = data.GetInt32("likes"),
                 IsLikedByUser = data.GetBoolean("liked_by_user"),
                 Width = data.GetInt32("width"),
                 Height = data.GetInt32("height"),
 
-                Exif = ExtractExif(data),
+                Exif = ExtractExif(data) ?? new Exif(),
 
-                Location = ExtractLocation(data),
+                Location = ExtractLocation(data) ?? new Location(),
 
-                Urls = ExtractUrls(data),
+                Urls = ExtractUrls(data) ?? new Urls(),
 
                 Categories = ExtractCategories(data),
 
-                Links = ExtractPhotoLinks(data),
+                Links = ExtractPhotoLinks(data) ?? new PhotoLinks(),
 
-                User = ExtractUser(data)
+                User = ExtractUser(data) ?? new User()
             };
         }
 
