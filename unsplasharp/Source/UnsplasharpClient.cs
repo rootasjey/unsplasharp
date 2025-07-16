@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Unsplasharp.Models;
+using Unsplasharp.Exceptions;
 using System.Linq;
 using System;
 using System.Collections.Concurrent;
@@ -207,23 +208,8 @@ namespace Unsplasharp {
             _logger = logger ?? NullLogger<UnsplasharpClient>.Instance;
             _httpClientFactory = httpClientFactory;
 
-            // Initialize retry policy
-            _retryPolicy = new ResiliencePipelineBuilder()
-                .AddRetry(new Polly.Retry.RetryStrategyOptions
-                {
-                    ShouldHandle = new PredicateBuilder().Handle<HttpRequestException>()
-                        .Handle<TaskCanceledException>(),
-                    MaxRetryAttempts = 3,
-                    Delay = TimeSpan.FromSeconds(1),
-                    BackoffType = Polly.DelayBackoffType.Exponential,
-                    OnRetry = args =>
-                    {
-                        _logger.LogWarning("Retrying HTTP request (attempt {AttemptNumber}/{MaxAttempts}). Exception: {Exception}",
-                            args.AttemptNumber + 1, 3, args.Outcome.Exception?.Message);
-                        return default;
-                    }
-                })
-                .Build();
+            // Initialize retry policy using the factory
+            _retryPolicy = RetryPolicyFactory.CreateComprehensivePolicy(_logger, ApplicationId);
         }
 
 
@@ -517,6 +503,73 @@ namespace Unsplasharp {
             using var document = JsonDocument.Parse(response);
             var photo = ExtractPhoto(document.RootElement);
             return photo;
+        }
+
+        // ---------------
+        // EXCEPTION-THROWING VARIANTS
+        // ---------------
+
+        /// <summary>
+        /// Retrieve a single random photo with comprehensive error handling.
+        /// This method throws specific exceptions for different error scenarios.
+        /// </summary>
+        /// <returns>A new Photo class instance.</returns>
+        /// <exception cref="UnsplasharpException">Thrown when the request fails</exception>
+        public async Task<Photo> GetRandomPhotoAsync() {
+            _logger.LogInformation("Fetching random photo with exception handling");
+            var url = string.Format("{0}/random", GetUrl("photos"));
+            var photo = await FetchPhotoWithExceptions(url).ConfigureAwait(false);
+
+            _logger.LogInformation("Successfully retrieved random photo with ID {PhotoId}", photo.Id);
+            return photo;
+        }
+
+        /// <summary>
+        /// Returns the photo corresponding to the given id with comprehensive error handling.
+        /// This method throws specific exceptions for different error scenarios.
+        /// </summary>
+        /// <param name="id">Photo's unique id to find.</param>
+        /// <param name="width">Desired width.</param>
+        /// <param name="height">Desired height.</param>
+        /// <returns>A new Photo class instance.</returns>
+        /// <exception cref="UnsplasharpException">Thrown when the request fails</exception>
+        /// <exception cref="UnsplasharpNotFoundException">Thrown when the photo is not found</exception>
+        public async Task<Photo> GetPhotoAsync(string id, int width = 0, int height = 0) {
+            var url = string.Format("{0}/{1}", GetUrl("photos"), id);
+
+            if (width != 0) { url = AddQueryString(url, "w", width); }
+            if (height != 0) { url = AddQueryString(url, "h", height); }
+
+            return await FetchPhotoWithExceptions(url).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Fetch a photo from an Unsplash specified URL with comprehensive error handling.
+        /// This method throws specific exceptions for different error scenarios.
+        /// </summary>
+        /// <param name="url">URL to fetch photo from.</param>
+        /// <returns>A single photo instance.</returns>
+        /// <exception cref="UnsplasharpException">Thrown when the request fails</exception>
+        /// <exception cref="UnsplasharpParsingException">Thrown when JSON parsing fails</exception>
+        private async Task<Photo> FetchPhotoWithExceptions(string url) {
+            var response = await FetchWithExceptions(url).ConfigureAwait(false);
+
+            try {
+                using var document = JsonDocument.Parse(response);
+                var photo = ExtractPhoto(document.RootElement);
+
+                if (photo == null) {
+                    var context = new ErrorContext(ApplicationId);
+                    throw new UnsplasharpParsingException(
+                        "Failed to extract photo data from API response",
+                        new InvalidOperationException("ExtractPhoto returned null"),
+                        response, "Photo", url, "GET", context);
+                }
+
+                return photo;
+            } catch (JsonException ex) {
+                throw UnsplasharpException.FromJsonException(ex, response, "Photo", url, "GET", ApplicationId);
+            }
         }
 
         #endregion photos
@@ -1096,11 +1149,35 @@ namespace Unsplasharp {
 
         /// <summary>
         /// Get a string body response async, and update rate limits.
+        /// This method maintains backward compatibility by returning null on errors.
+        /// </summary>
+        /// <param name="url">URL to reach.</param>
+        /// <returns>Body response as string, or null if an error occurred.</returns>
+        private async Task<string?> Fetch(string url) {
+            try {
+                return await FetchWithExceptions(url).ConfigureAwait(false);
+            } catch (UnsplasharpException ex) {
+                _logger.LogError(ex, "HTTP request failed for URL {Url} after retries. Context: {Context}",
+                    url, ex.Context?.ToSummary());
+                return null;
+            } catch (Exception ex) {
+                _logger.LogError(ex, "Unexpected error during HTTP request to {Url} after retries", url);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Get a string body response async with comprehensive error handling.
+        /// This method throws specific exceptions for different error scenarios.
         /// </summary>
         /// <param name="url">URL to reach.</param>
         /// <returns>Body response as string.</returns>
-        private async Task<string?> Fetch(string url) {
-            _logger.LogDebug("Making HTTP request to {Url}", url);
+        /// <exception cref="UnsplasharpException">Thrown when the request fails</exception>
+        private async Task<string> FetchWithExceptions(string url) {
+            var correlationId = Guid.NewGuid().ToString("N").Substring(0, 8);
+            _logger.LogDebug("[{CorrelationId}] Making HTTP request to {Url}", correlationId, url);
+
+            var startTime = DateTimeOffset.UtcNow;
 
             try {
                 var http = GetHttpClient();
@@ -1109,13 +1186,18 @@ namespace Unsplasharp {
                 var result = await _retryPolicy.ExecuteAsync(async (cancellationToken) =>
                 {
                     var response = await http.GetAsync(url, cancellationToken).ConfigureAwait(false);
-                    response.EnsureSuccessStatusCode();
-                    var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
+                    // Check for error status codes and throw appropriate exceptions
+                    if (!response.IsSuccessStatusCode) {
+                        var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                        throw UnsplasharpException.FromHttpResponse(response, responseContent, ApplicationId, correlationId);
+                    }
+
+                    var responseBodyAsText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     UpdateRateLimit(response);
 
-                    _logger.LogDebug("HTTP request successful. Rate limit: {RateLimitRemaining}/{MaxRateLimit}",
-                        RateLimitRemaining, MaxRateLimit);
+                    _logger.LogDebug("[{CorrelationId}] HTTP request successful. Rate limit: {RateLimitRemaining}/{MaxRateLimit}",
+                        correlationId, RateLimitRemaining, MaxRateLimit);
 
                     return responseBodyAsText;
                 }, CancellationToken.None).ConfigureAwait(false);
@@ -1123,14 +1205,23 @@ namespace Unsplasharp {
                 return result;
 
             } catch (HttpRequestException ex) {
-                _logger.LogError(ex, "HTTP request failed for URL {Url} after retries", url);
-                return null;
+                var elapsed = DateTimeOffset.UtcNow - startTime;
+                _logger.LogError(ex, "[{CorrelationId}] HTTP request failed for URL {Url} after retries. Elapsed: {Elapsed}ms",
+                    correlationId, url, elapsed.TotalMilliseconds);
+                throw UnsplasharpException.FromHttpRequestException(ex, url, "GET", ApplicationId, correlationId);
             } catch (TaskCanceledException ex) {
-                _logger.LogWarning(ex, "HTTP request timed out for URL {Url} after retries", url);
-                return null;
+                var elapsed = DateTimeOffset.UtcNow - startTime;
+                _logger.LogWarning(ex, "[{CorrelationId}] HTTP request timed out for URL {Url} after retries. Elapsed: {Elapsed}ms",
+                    correlationId, url, elapsed.TotalMilliseconds);
+                throw UnsplasharpException.FromTaskCanceledException(ex, TimeSpan.FromSeconds(30), url, "GET", ApplicationId, correlationId);
+            } catch (UnsplasharpException) {
+                // Re-throw Unsplasharp exceptions as-is
+                throw;
             } catch (Exception ex) {
-                _logger.LogError(ex, "Unexpected error during HTTP request to {Url} after retries", url);
-                return null;
+                var elapsed = DateTimeOffset.UtcNow - startTime;
+                _logger.LogError(ex, "[{CorrelationId}] Unexpected error during HTTP request to {Url} after retries. Elapsed: {Elapsed}ms",
+                    correlationId, url, elapsed.TotalMilliseconds);
+                throw ExceptionFactory.FromGenericException(ex, url, "GET", ApplicationId, correlationId);
             }
         }
 

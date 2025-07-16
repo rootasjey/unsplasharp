@@ -15,7 +15,7 @@ This library has been enhanced with modern .NET practices and reliability featur
 - **📊 Structured Logging**: Built-in support for Microsoft.Extensions.Logging with detailed request/response logging
 - **🔁 Retry Policies**: Automatic retry logic using Polly for resilient HTTP requests
 - **⚡ Performance**: Migrated to System.Text.Json for 2-3x faster JSON processing and reduced memory usage
-- **🛡️ Reliability**: Enhanced error handling with exponential backoff retry strategies
+- **🛡️ Comprehensive Error Handling**: Structured exceptions with rich context for better debugging and error recovery
 - **🚀 Modern JSON**: System.Text.Json integration with custom converters and safe property access
 
 **Currently incomplete** 🚧
@@ -105,8 +105,47 @@ public class PhotoService
 - **🔧 Dependency Injection**: Seamless integration with .NET DI containers
 - **🔙 Backward Compatible**: Existing code continues to work without changes
 
+### Comprehensive Error Handling
+
+Unsplasharp now provides structured exception handling with rich context information for better debugging and error recovery:
+
+```csharp
+try {
+    // New methods that throw specific exceptions
+    var photo = await client.GetRandomPhotoAsync();
+    var specificPhoto = await client.GetPhotoAsync("photo-id");
+} catch (UnsplasharpNotFoundException ex) {
+    // Handle resource not found (404)
+    Console.WriteLine($"Photo '{ex.ResourceId}' not found");
+} catch (UnsplasharpRateLimitException ex) {
+    // Handle rate limiting (429)
+    Console.WriteLine($"Rate limit exceeded. Reset at: {ex.RateLimitReset}");
+    await Task.Delay(ex.TimeUntilReset ?? TimeSpan.FromMinutes(1));
+} catch (UnsplasharpAuthenticationException ex) {
+    // Handle authentication errors (401)
+    Console.WriteLine("Invalid application ID or access token");
+} catch (UnsplasharpNetworkException ex) when (ex.IsRetryable) {
+    // Handle retryable network errors
+    Console.WriteLine("Temporary network error, will retry automatically");
+} catch (UnsplasharpException ex) {
+    // Handle any other API errors
+    Console.WriteLine($"API Error: {ex.Message}");
+    Console.WriteLine($"Context: {ex.Context?.ToSummary()}");
+}
+```
+
+**Key Features:**
+- **🎯 Specific Exception Types**: Different exceptions for different error scenarios
+- **📋 Rich Error Context**: Correlation IDs, timing, rate limits, and request details
+- **🔄 Intelligent Retries**: Automatic retry logic based on error types
+- **🔙 Backward Compatibility**: Existing methods still return null/empty on errors
+- **📊 Enhanced Logging**: Structured logging with correlation IDs for debugging
+
+For detailed information, see the **[Error Handling Guide](ERROR_HANDLING.md)**.
+
 ## Documentation
 
+- **[Error Handling Guide](ERROR_HANDLING.md)** - Comprehensive error handling with structured exceptions
 - **[IHttpClientFactory Integration Guide](HTTPCLIENTFACTORY.md)** - Comprehensive guide for modern .NET applications
 - **[Logging Guide](LOGGING.md)** - Detailed logging configuration and usage
 - **[System.Text.Json Migration Guide](SYSTEMTEXTJSON.md)** - Performance improvements and technical details
