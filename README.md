@@ -1,7 +1,18 @@
-# Unsplasharp 📷
 
-> ⚠️ Looking for maintenairs
-> I don't have much time to work on this lib.
+
+<p align="center">
+  <h1 align="center">Unsplasharp</h1>
+</p>
+
+<p align="center">
+  <a href="https://github.com/rootasjey/unsplasharp">
+    <img src="./icon.png" alt="Unsplasharp" width="200" height="200" />
+  </a>
+</p>
+
+[![NuGet](https://img.shields.io/nuget/v/unsplasharp.api.svg)](https://www.nuget.org/packages/unsplasharp.api/)
+[![NuGet](https://img.shields.io/nuget/dt/unsplasharp.api.svg)](https://www.nuget.org/packages/unsplasharp.api/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/rootasjey/unsplasharp/blob/master/LICENSE)
 
 Unofficial C# wrapper around [Unsplash](https://unsplash.com) API targeting .NET Standard 2.0.
 
