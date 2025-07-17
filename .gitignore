@@ -289,3 +289,6 @@ __pycache__/
 
 # macOS
 .DS_Store
+
+# Documentation build output (GitHub Pages will build from source)
+docs/_site/
