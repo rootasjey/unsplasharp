@@ -1,0 +1,147 @@
+### YamlMime:ManagedReference
+items:
+- uid: Unsplasharp.UnsplasharpClient.Orientation
+  commentId: T:Unsplasharp.UnsplasharpClient.Orientation
+  id: UnsplasharpClient.Orientation
+  parent: Unsplasharp
+  children:
+  - Unsplasharp.UnsplasharpClient.Orientation.Landscape
+  - Unsplasharp.UnsplasharpClient.Orientation.Portrait
+  - Unsplasharp.UnsplasharpClient.Orientation.Squarish
+  langs:
+  - csharp
+  - vb
+  name: UnsplasharpClient.Orientation
+  nameWithType: UnsplasharpClient.Orientation
+  fullName: Unsplasharp.UnsplasharpClient.Orientation
+  type: Enum
+  source:
+    remote:
+      path: src/unsplasharp/Source/UnsplasharpClient.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Orientation
+    path: ../src/unsplasharp/Source/UnsplasharpClient.cs
+    startLine: 168
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp
+  summary: Photo orientation.
+  example: []
+  syntax:
+    content: public enum UnsplasharpClient.Orientation
+    content.vb: Public Enum UnsplasharpClient.Orientation
+- uid: Unsplasharp.UnsplasharpClient.Orientation.Landscape
+  commentId: F:Unsplasharp.UnsplasharpClient.Orientation.Landscape
+  id: Landscape
+  parent: Unsplasharp.UnsplasharpClient.Orientation
+  langs:
+  - csharp
+  - vb
+  name: Landscape
+  nameWithType: UnsplasharpClient.Orientation.Landscape
+  fullName: Unsplasharp.UnsplasharpClient.Orientation.Landscape
+  type: Field
+  source:
+    remote:
+      path: src/unsplasharp/Source/UnsplasharpClient.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Landscape
+    path: ../src/unsplasharp/Source/UnsplasharpClient.cs
+    startLine: 172
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp
+  summary: Landscape orientation.
+  example: []
+  syntax:
+    content: Landscape = 0
+    return:
+      type: Unsplasharp.UnsplasharpClient.Orientation
+- uid: Unsplasharp.UnsplasharpClient.Orientation.Portrait
+  commentId: F:Unsplasharp.UnsplasharpClient.Orientation.Portrait
+  id: Portrait
+  parent: Unsplasharp.UnsplasharpClient.Orientation
+  langs:
+  - csharp
+  - vb
+  name: Portrait
+  nameWithType: UnsplasharpClient.Orientation.Portrait
+  fullName: Unsplasharp.UnsplasharpClient.Orientation.Portrait
+  type: Field
+  source:
+    remote:
+      path: src/unsplasharp/Source/UnsplasharpClient.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Portrait
+    path: ../src/unsplasharp/Source/UnsplasharpClient.cs
+    startLine: 177
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp
+  summary: Portrait orientation.
+  example: []
+  syntax:
+    content: Portrait = 1
+    return:
+      type: Unsplasharp.UnsplasharpClient.Orientation
+- uid: Unsplasharp.UnsplasharpClient.Orientation.Squarish
+  commentId: F:Unsplasharp.UnsplasharpClient.Orientation.Squarish
+  id: Squarish
+  parent: Unsplasharp.UnsplasharpClient.Orientation
+  langs:
+  - csharp
+  - vb
+  name: Squarish
+  nameWithType: UnsplasharpClient.Orientation.Squarish
+  fullName: Unsplasharp.UnsplasharpClient.Orientation.Squarish
+  type: Field
+  source:
+    remote:
+      path: src/unsplasharp/Source/UnsplasharpClient.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Squarish
+    path: ../src/unsplasharp/Source/UnsplasharpClient.cs
+    startLine: 182
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp
+  summary: Squarish orientation.
+  example: []
+  syntax:
+    content: Squarish = 2
+    return:
+      type: Unsplasharp.UnsplasharpClient.Orientation
+references:
+- uid: Unsplasharp
+  commentId: N:Unsplasharp
+  href: Unsplasharp.html
+  name: Unsplasharp
+  nameWithType: Unsplasharp
+  fullName: Unsplasharp
+- uid: Unsplasharp.UnsplasharpClient.Orientation
+  commentId: T:Unsplasharp.UnsplasharpClient.Orientation
+  parent: Unsplasharp
+  href: Unsplasharp.UnsplasharpClient.html
+  name: UnsplasharpClient.Orientation
+  nameWithType: UnsplasharpClient.Orientation
+  fullName: Unsplasharp.UnsplasharpClient.Orientation
+  spec.csharp:
+  - uid: Unsplasharp.UnsplasharpClient
+    name: UnsplasharpClient
+    href: Unsplasharp.UnsplasharpClient.html
+  - name: .
+  - uid: Unsplasharp.UnsplasharpClient.Orientation
+    name: Orientation
+    href: Unsplasharp.UnsplasharpClient.Orientation.html
+  spec.vb:
+  - uid: Unsplasharp.UnsplasharpClient
+    name: UnsplasharpClient
+    href: Unsplasharp.UnsplasharpClient.html
+  - name: .
+  - uid: Unsplasharp.UnsplasharpClient.Orientation
+    name: Orientation
+    href: Unsplasharp.UnsplasharpClient.Orientation.html

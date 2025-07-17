@@ -1,0 +1,740 @@
+### YamlMime:ManagedReference
+items:
+- uid: Unsplasharp.Models.UnplashTotalStats
+  commentId: T:Unsplasharp.Models.UnplashTotalStats
+  id: UnplashTotalStats
+  parent: Unsplasharp.Models
+  children:
+  - Unsplasharp.Models.UnplashTotalStats.Applications
+  - Unsplasharp.Models.UnplashTotalStats.Developers
+  - Unsplasharp.Models.UnplashTotalStats.Downloads
+  - Unsplasharp.Models.UnplashTotalStats.DownloadsPerSecond
+  - Unsplasharp.Models.UnplashTotalStats.Likes
+  - Unsplasharp.Models.UnplashTotalStats.Photographers
+  - Unsplasharp.Models.UnplashTotalStats.Photos
+  - Unsplasharp.Models.UnplashTotalStats.Pixels
+  - Unsplasharp.Models.UnplashTotalStats.Requests
+  - Unsplasharp.Models.UnplashTotalStats.Views
+  - Unsplasharp.Models.UnplashTotalStats.ViewsPerSecond
+  langs:
+  - csharp
+  - vb
+  name: UnplashTotalStats
+  nameWithType: UnplashTotalStats
+  fullName: Unsplasharp.Models.UnplashTotalStats
+  type: Class
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/UnplashStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: UnplashTotalStats
+    path: ../src/unsplasharp/Source/Models/UnplashStats.cs
+    startLine: 4
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Unsplash statistics counts.
+  example: []
+  syntax:
+    content: public class UnplashTotalStats
+    content.vb: Public Class UnplashTotalStats
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Unsplasharp.Models.UnplashTotalStats.Photos
+  commentId: P:Unsplasharp.Models.UnplashTotalStats.Photos
+  id: Photos
+  parent: Unsplasharp.Models.UnplashTotalStats
+  langs:
+  - csharp
+  - vb
+  name: Photos
+  nameWithType: UnplashTotalStats.Photos
+  fullName: Unsplasharp.Models.UnplashTotalStats.Photos
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/UnplashStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Photos
+    path: ../src/unsplasharp/Source/Models/UnplashStats.cs
+    startLine: 8
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: All available photos.
+  example: []
+  syntax:
+    content: public double Photos { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Photos As Double
+  overload: Unsplasharp.Models.UnplashTotalStats.Photos*
+- uid: Unsplasharp.Models.UnplashTotalStats.Downloads
+  commentId: P:Unsplasharp.Models.UnplashTotalStats.Downloads
+  id: Downloads
+  parent: Unsplasharp.Models.UnplashTotalStats
+  langs:
+  - csharp
+  - vb
+  name: Downloads
+  nameWithType: UnplashTotalStats.Downloads
+  fullName: Unsplasharp.Models.UnplashTotalStats.Downloads
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/UnplashStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Downloads
+    path: ../src/unsplasharp/Source/Models/UnplashStats.cs
+    startLine: 13
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: All photos downloads.
+  example: []
+  syntax:
+    content: public double Downloads { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Downloads As Double
+  overload: Unsplasharp.Models.UnplashTotalStats.Downloads*
+- uid: Unsplasharp.Models.UnplashTotalStats.Views
+  commentId: P:Unsplasharp.Models.UnplashTotalStats.Views
+  id: Views
+  parent: Unsplasharp.Models.UnplashTotalStats
+  langs:
+  - csharp
+  - vb
+  name: Views
+  nameWithType: UnplashTotalStats.Views
+  fullName: Unsplasharp.Models.UnplashTotalStats.Views
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/UnplashStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Views
+    path: ../src/unsplasharp/Source/Models/UnplashStats.cs
+    startLine: 18
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: All photos views.
+  example: []
+  syntax:
+    content: public double Views { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Views As Double
+  overload: Unsplasharp.Models.UnplashTotalStats.Views*
+- uid: Unsplasharp.Models.UnplashTotalStats.Likes
+  commentId: P:Unsplasharp.Models.UnplashTotalStats.Likes
+  id: Likes
+  parent: Unsplasharp.Models.UnplashTotalStats
+  langs:
+  - csharp
+  - vb
+  name: Likes
+  nameWithType: UnplashTotalStats.Likes
+  fullName: Unsplasharp.Models.UnplashTotalStats.Likes
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/UnplashStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Likes
+    path: ../src/unsplasharp/Source/Models/UnplashStats.cs
+    startLine: 23
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: All photos likes.
+  example: []
+  syntax:
+    content: public double Likes { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Likes As Double
+  overload: Unsplasharp.Models.UnplashTotalStats.Likes*
+- uid: Unsplasharp.Models.UnplashTotalStats.Photographers
+  commentId: P:Unsplasharp.Models.UnplashTotalStats.Photographers
+  id: Photographers
+  parent: Unsplasharp.Models.UnplashTotalStats
+  langs:
+  - csharp
+  - vb
+  name: Photographers
+  nameWithType: UnplashTotalStats.Photographers
+  fullName: Unsplasharp.Models.UnplashTotalStats.Photographers
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/UnplashStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Photographers
+    path: ../src/unsplasharp/Source/Models/UnplashStats.cs
+    startLine: 28
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: All photographers.
+  example: []
+  syntax:
+    content: public double Photographers { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Photographers As Double
+  overload: Unsplasharp.Models.UnplashTotalStats.Photographers*
+- uid: Unsplasharp.Models.UnplashTotalStats.Pixels
+  commentId: P:Unsplasharp.Models.UnplashTotalStats.Pixels
+  id: Pixels
+  parent: Unsplasharp.Models.UnplashTotalStats
+  langs:
+  - csharp
+  - vb
+  name: Pixels
+  nameWithType: UnplashTotalStats.Pixels
+  fullName: Unsplasharp.Models.UnplashTotalStats.Pixels
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/UnplashStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Pixels
+    path: ../src/unsplasharp/Source/Models/UnplashStats.cs
+    startLine: 33
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: All pixels.
+  example: []
+  syntax:
+    content: public double Pixels { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Pixels As Double
+  overload: Unsplasharp.Models.UnplashTotalStats.Pixels*
+- uid: Unsplasharp.Models.UnplashTotalStats.DownloadsPerSecond
+  commentId: P:Unsplasharp.Models.UnplashTotalStats.DownloadsPerSecond
+  id: DownloadsPerSecond
+  parent: Unsplasharp.Models.UnplashTotalStats
+  langs:
+  - csharp
+  - vb
+  name: DownloadsPerSecond
+  nameWithType: UnplashTotalStats.DownloadsPerSecond
+  fullName: Unsplasharp.Models.UnplashTotalStats.DownloadsPerSecond
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/UnplashStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: DownloadsPerSecond
+    path: ../src/unsplasharp/Source/Models/UnplashStats.cs
+    startLine: 38
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Average number of downloads per second for the past 7 days.
+  example: []
+  syntax:
+    content: public double DownloadsPerSecond { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property DownloadsPerSecond As Double
+  overload: Unsplasharp.Models.UnplashTotalStats.DownloadsPerSecond*
+- uid: Unsplasharp.Models.UnplashTotalStats.ViewsPerSecond
+  commentId: P:Unsplasharp.Models.UnplashTotalStats.ViewsPerSecond
+  id: ViewsPerSecond
+  parent: Unsplasharp.Models.UnplashTotalStats
+  langs:
+  - csharp
+  - vb
+  name: ViewsPerSecond
+  nameWithType: UnplashTotalStats.ViewsPerSecond
+  fullName: Unsplasharp.Models.UnplashTotalStats.ViewsPerSecond
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/UnplashStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: ViewsPerSecond
+    path: ../src/unsplasharp/Source/Models/UnplashStats.cs
+    startLine: 43
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Average number of views per second for the past 7 days.
+  example: []
+  syntax:
+    content: public double ViewsPerSecond { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property ViewsPerSecond As Double
+  overload: Unsplasharp.Models.UnplashTotalStats.ViewsPerSecond*
+- uid: Unsplasharp.Models.UnplashTotalStats.Developers
+  commentId: P:Unsplasharp.Models.UnplashTotalStats.Developers
+  id: Developers
+  parent: Unsplasharp.Models.UnplashTotalStats
+  langs:
+  - csharp
+  - vb
+  name: Developers
+  nameWithType: UnplashTotalStats.Developers
+  fullName: Unsplasharp.Models.UnplashTotalStats.Developers
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/UnplashStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Developers
+    path: ../src/unsplasharp/Source/Models/UnplashStats.cs
+    startLine: 48
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: All developeres.
+  example: []
+  syntax:
+    content: public int Developers { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Developers As Integer
+  overload: Unsplasharp.Models.UnplashTotalStats.Developers*
+- uid: Unsplasharp.Models.UnplashTotalStats.Applications
+  commentId: P:Unsplasharp.Models.UnplashTotalStats.Applications
+  id: Applications
+  parent: Unsplasharp.Models.UnplashTotalStats
+  langs:
+  - csharp
+  - vb
+  name: Applications
+  nameWithType: UnplashTotalStats.Applications
+  fullName: Unsplasharp.Models.UnplashTotalStats.Applications
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/UnplashStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Applications
+    path: ../src/unsplasharp/Source/Models/UnplashStats.cs
+    startLine: 53
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: All applications.
+  example: []
+  syntax:
+    content: public int Applications { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Applications As Integer
+  overload: Unsplasharp.Models.UnplashTotalStats.Applications*
+- uid: Unsplasharp.Models.UnplashTotalStats.Requests
+  commentId: P:Unsplasharp.Models.UnplashTotalStats.Requests
+  id: Requests
+  parent: Unsplasharp.Models.UnplashTotalStats
+  langs:
+  - csharp
+  - vb
+  name: Requests
+  nameWithType: UnplashTotalStats.Requests
+  fullName: Unsplasharp.Models.UnplashTotalStats.Requests
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/UnplashStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Requests
+    path: ../src/unsplasharp/Source/Models/UnplashStats.cs
+    startLine: 58
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: All requests.
+  example: []
+  syntax:
+    content: public double Requests { get; set; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Property Requests As Double
+  overload: Unsplasharp.Models.UnplashTotalStats.Requests*
+references:
+- uid: Unsplasharp.Models
+  commentId: N:Unsplasharp.Models
+  href: Unsplasharp.html
+  name: Unsplasharp.Models
+  nameWithType: Unsplasharp.Models
+  fullName: Unsplasharp.Models
+  spec.csharp:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Models
+    name: Models
+    href: Unsplasharp.Models.html
+  spec.vb:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Models
+    name: Models
+    href: Unsplasharp.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Unsplasharp.Models.UnplashTotalStats.Photos*
+  commentId: Overload:Unsplasharp.Models.UnplashTotalStats.Photos
+  href: Unsplasharp.Models.UnplashTotalStats.html#Unsplasharp_Models_UnplashTotalStats_Photos
+  name: Photos
+  nameWithType: UnplashTotalStats.Photos
+  fullName: Unsplasharp.Models.UnplashTotalStats.Photos
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Unsplasharp.Models.UnplashTotalStats.Downloads*
+  commentId: Overload:Unsplasharp.Models.UnplashTotalStats.Downloads
+  href: Unsplasharp.Models.UnplashTotalStats.html#Unsplasharp_Models_UnplashTotalStats_Downloads
+  name: Downloads
+  nameWithType: UnplashTotalStats.Downloads
+  fullName: Unsplasharp.Models.UnplashTotalStats.Downloads
+- uid: Unsplasharp.Models.UnplashTotalStats.Views*
+  commentId: Overload:Unsplasharp.Models.UnplashTotalStats.Views
+  href: Unsplasharp.Models.UnplashTotalStats.html#Unsplasharp_Models_UnplashTotalStats_Views
+  name: Views
+  nameWithType: UnplashTotalStats.Views
+  fullName: Unsplasharp.Models.UnplashTotalStats.Views
+- uid: Unsplasharp.Models.UnplashTotalStats.Likes*
+  commentId: Overload:Unsplasharp.Models.UnplashTotalStats.Likes
+  href: Unsplasharp.Models.UnplashTotalStats.html#Unsplasharp_Models_UnplashTotalStats_Likes
+  name: Likes
+  nameWithType: UnplashTotalStats.Likes
+  fullName: Unsplasharp.Models.UnplashTotalStats.Likes
+- uid: Unsplasharp.Models.UnplashTotalStats.Photographers*
+  commentId: Overload:Unsplasharp.Models.UnplashTotalStats.Photographers
+  href: Unsplasharp.Models.UnplashTotalStats.html#Unsplasharp_Models_UnplashTotalStats_Photographers
+  name: Photographers
+  nameWithType: UnplashTotalStats.Photographers
+  fullName: Unsplasharp.Models.UnplashTotalStats.Photographers
+- uid: Unsplasharp.Models.UnplashTotalStats.Pixels*
+  commentId: Overload:Unsplasharp.Models.UnplashTotalStats.Pixels
+  href: Unsplasharp.Models.UnplashTotalStats.html#Unsplasharp_Models_UnplashTotalStats_Pixels
+  name: Pixels
+  nameWithType: UnplashTotalStats.Pixels
+  fullName: Unsplasharp.Models.UnplashTotalStats.Pixels
+- uid: Unsplasharp.Models.UnplashTotalStats.DownloadsPerSecond*
+  commentId: Overload:Unsplasharp.Models.UnplashTotalStats.DownloadsPerSecond
+  href: Unsplasharp.Models.UnplashTotalStats.html#Unsplasharp_Models_UnplashTotalStats_DownloadsPerSecond
+  name: DownloadsPerSecond
+  nameWithType: UnplashTotalStats.DownloadsPerSecond
+  fullName: Unsplasharp.Models.UnplashTotalStats.DownloadsPerSecond
+- uid: Unsplasharp.Models.UnplashTotalStats.ViewsPerSecond*
+  commentId: Overload:Unsplasharp.Models.UnplashTotalStats.ViewsPerSecond
+  href: Unsplasharp.Models.UnplashTotalStats.html#Unsplasharp_Models_UnplashTotalStats_ViewsPerSecond
+  name: ViewsPerSecond
+  nameWithType: UnplashTotalStats.ViewsPerSecond
+  fullName: Unsplasharp.Models.UnplashTotalStats.ViewsPerSecond
+- uid: Unsplasharp.Models.UnplashTotalStats.Developers*
+  commentId: Overload:Unsplasharp.Models.UnplashTotalStats.Developers
+  href: Unsplasharp.Models.UnplashTotalStats.html#Unsplasharp_Models_UnplashTotalStats_Developers
+  name: Developers
+  nameWithType: UnplashTotalStats.Developers
+  fullName: Unsplasharp.Models.UnplashTotalStats.Developers
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Unsplasharp.Models.UnplashTotalStats.Applications*
+  commentId: Overload:Unsplasharp.Models.UnplashTotalStats.Applications
+  href: Unsplasharp.Models.UnplashTotalStats.html#Unsplasharp_Models_UnplashTotalStats_Applications
+  name: Applications
+  nameWithType: UnplashTotalStats.Applications
+  fullName: Unsplasharp.Models.UnplashTotalStats.Applications
+- uid: Unsplasharp.Models.UnplashTotalStats.Requests*
+  commentId: Overload:Unsplasharp.Models.UnplashTotalStats.Requests
+  href: Unsplasharp.Models.UnplashTotalStats.html#Unsplasharp_Models_UnplashTotalStats_Requests
+  name: Requests
+  nameWithType: UnplashTotalStats.Requests
+  fullName: Unsplasharp.Models.UnplashTotalStats.Requests

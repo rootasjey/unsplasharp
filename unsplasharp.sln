@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unsplasharp", "unsplasharp\Unsplasharp.csproj", "{F6C40D2F-B55E-4169-818C-3843D27E4072}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unsplasharp", "src\unsplasharp\Unsplasharp.csproj", "{F6C40D2F-B55E-4169-818C-3843D27E4072}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnsplashsharpTests", "UnsplashsharpTest\UnsplashsharpTests.csproj", "{9A963C1B-2AE3-4ECD-9AF9-BCEC832CBE5A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnsplashsharpTests", "src\UnsplashsharpTest\UnsplashsharpTests.csproj", "{9A963C1B-2AE3-4ECD-9AF9-BCEC832CBE5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

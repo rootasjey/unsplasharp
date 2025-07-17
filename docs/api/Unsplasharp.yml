@@ -1,0 +1,101 @@
+### YamlMime:ManagedReference
+items:
+- uid: Unsplasharp
+  commentId: N:Unsplasharp
+  id: Unsplasharp
+  children:
+  - Unsplasharp.UnsplasharpClient
+  - Unsplasharp.UnsplasharpClient.OrderBy
+  - Unsplasharp.UnsplasharpClient.Orientation
+  - Unsplasharp.UnsplasharpClient.Resolution
+  langs:
+  - csharp
+  - vb
+  name: Unsplasharp
+  nameWithType: Unsplasharp
+  fullName: Unsplasharp
+  type: Namespace
+  assemblies:
+  - Unsplasharp
+references:
+- uid: Unsplasharp.UnsplasharpClient
+  commentId: T:Unsplasharp.UnsplasharpClient
+  href: Unsplasharp.UnsplasharpClient.html
+  name: UnsplasharpClient
+  nameWithType: UnsplasharpClient
+  fullName: Unsplasharp.UnsplasharpClient
+- uid: Unsplasharp.UnsplasharpClient.OrderBy
+  commentId: T:Unsplasharp.UnsplasharpClient.OrderBy
+  parent: Unsplasharp
+  href: Unsplasharp.UnsplasharpClient.html
+  name: UnsplasharpClient.OrderBy
+  nameWithType: UnsplasharpClient.OrderBy
+  fullName: Unsplasharp.UnsplasharpClient.OrderBy
+  spec.csharp:
+  - uid: Unsplasharp.UnsplasharpClient
+    name: UnsplasharpClient
+    href: Unsplasharp.UnsplasharpClient.html
+  - name: .
+  - uid: Unsplasharp.UnsplasharpClient.OrderBy
+    name: OrderBy
+    href: Unsplasharp.UnsplasharpClient.OrderBy.html
+  spec.vb:
+  - uid: Unsplasharp.UnsplasharpClient
+    name: UnsplasharpClient
+    href: Unsplasharp.UnsplasharpClient.html
+  - name: .
+  - uid: Unsplasharp.UnsplasharpClient.OrderBy
+    name: OrderBy
+    href: Unsplasharp.UnsplasharpClient.OrderBy.html
+- uid: Unsplasharp.UnsplasharpClient.Orientation
+  commentId: T:Unsplasharp.UnsplasharpClient.Orientation
+  parent: Unsplasharp
+  href: Unsplasharp.UnsplasharpClient.html
+  name: UnsplasharpClient.Orientation
+  nameWithType: UnsplasharpClient.Orientation
+  fullName: Unsplasharp.UnsplasharpClient.Orientation
+  spec.csharp:
+  - uid: Unsplasharp.UnsplasharpClient
+    name: UnsplasharpClient
+    href: Unsplasharp.UnsplasharpClient.html
+  - name: .
+  - uid: Unsplasharp.UnsplasharpClient.Orientation
+    name: Orientation
+    href: Unsplasharp.UnsplasharpClient.Orientation.html
+  spec.vb:
+  - uid: Unsplasharp.UnsplasharpClient
+    name: UnsplasharpClient
+    href: Unsplasharp.UnsplasharpClient.html
+  - name: .
+  - uid: Unsplasharp.UnsplasharpClient.Orientation
+    name: Orientation
+    href: Unsplasharp.UnsplasharpClient.Orientation.html
+- uid: Unsplasharp.UnsplasharpClient.Resolution
+  commentId: T:Unsplasharp.UnsplasharpClient.Resolution
+  parent: Unsplasharp
+  href: Unsplasharp.UnsplasharpClient.html
+  name: UnsplasharpClient.Resolution
+  nameWithType: UnsplasharpClient.Resolution
+  fullName: Unsplasharp.UnsplasharpClient.Resolution
+  spec.csharp:
+  - uid: Unsplasharp.UnsplasharpClient
+    name: UnsplasharpClient
+    href: Unsplasharp.UnsplasharpClient.html
+  - name: .
+  - uid: Unsplasharp.UnsplasharpClient.Resolution
+    name: Resolution
+    href: Unsplasharp.UnsplasharpClient.Resolution.html
+  spec.vb:
+  - uid: Unsplasharp.UnsplasharpClient
+    name: UnsplasharpClient
+    href: Unsplasharp.UnsplasharpClient.html
+  - name: .
+  - uid: Unsplasharp.UnsplasharpClient.Resolution
+    name: Resolution
+    href: Unsplasharp.UnsplasharpClient.Resolution.html
+- uid: Unsplasharp
+  commentId: N:Unsplasharp
+  href: Unsplasharp.html
+  name: Unsplasharp
+  nameWithType: Unsplasharp
+  fullName: Unsplasharp

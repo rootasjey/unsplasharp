@@ -1,0 +1,590 @@
+### YamlMime:ManagedReference
+items:
+- uid: Unsplasharp.Models.Exif
+  commentId: T:Unsplasharp.Models.Exif
+  id: Exif
+  parent: Unsplasharp.Models
+  children:
+  - Unsplasharp.Models.Exif.Aperture
+  - Unsplasharp.Models.Exif.ExposureTime
+  - Unsplasharp.Models.Exif.FocalLength
+  - Unsplasharp.Models.Exif.Iso
+  - Unsplasharp.Models.Exif.Make
+  - Unsplasharp.Models.Exif.Model
+  langs:
+  - csharp
+  - vb
+  name: Exif
+  nameWithType: Exif
+  fullName: Unsplasharp.Models.Exif
+  type: Class
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/Photo.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Exif
+    path: ../src/unsplasharp/Source/Models/Photo.cs
+    startLine: 235
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Camera specifications.
+  example: []
+  syntax:
+    content: public class Exif
+    content.vb: Public Class Exif
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Unsplasharp.Models.Exif.Make
+  commentId: P:Unsplasharp.Models.Exif.Make
+  id: Make
+  parent: Unsplasharp.Models.Exif
+  langs:
+  - csharp
+  - vb
+  name: Make
+  nameWithType: Exif.Make
+  fullName: Unsplasharp.Models.Exif.Make
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/Photo.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Make
+    path: ../src/unsplasharp/Source/Models/Photo.cs
+    startLine: 239
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Camera’s brand.
+  example: []
+  syntax:
+    content: public string Make { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Make As String
+  overload: Unsplasharp.Models.Exif.Make*
+- uid: Unsplasharp.Models.Exif.Model
+  commentId: P:Unsplasharp.Models.Exif.Model
+  id: Model
+  parent: Unsplasharp.Models.Exif
+  langs:
+  - csharp
+  - vb
+  name: Model
+  nameWithType: Exif.Model
+  fullName: Unsplasharp.Models.Exif.Model
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/Photo.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Model
+    path: ../src/unsplasharp/Source/Models/Photo.cs
+    startLine: 244
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Camera’s model.
+  example: []
+  syntax:
+    content: public string Model { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Model As String
+  overload: Unsplasharp.Models.Exif.Model*
+- uid: Unsplasharp.Models.Exif.ExposureTime
+  commentId: P:Unsplasharp.Models.Exif.ExposureTime
+  id: ExposureTime
+  parent: Unsplasharp.Models.Exif
+  langs:
+  - csharp
+  - vb
+  name: ExposureTime
+  nameWithType: Exif.ExposureTime
+  fullName: Unsplasharp.Models.Exif.ExposureTime
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/Photo.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: ExposureTime
+    path: ../src/unsplasharp/Source/Models/Photo.cs
+    startLine: 249
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Camera’s exposure time.
+  example: []
+  syntax:
+    content: public string ExposureTime { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ExposureTime As String
+  overload: Unsplasharp.Models.Exif.ExposureTime*
+- uid: Unsplasharp.Models.Exif.Aperture
+  commentId: P:Unsplasharp.Models.Exif.Aperture
+  id: Aperture
+  parent: Unsplasharp.Models.Exif
+  langs:
+  - csharp
+  - vb
+  name: Aperture
+  nameWithType: Exif.Aperture
+  fullName: Unsplasharp.Models.Exif.Aperture
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/Photo.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Aperture
+    path: ../src/unsplasharp/Source/Models/Photo.cs
+    startLine: 254
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Camera’s aperture value.
+  example: []
+  syntax:
+    content: public string Aperture { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Aperture As String
+  overload: Unsplasharp.Models.Exif.Aperture*
+- uid: Unsplasharp.Models.Exif.FocalLength
+  commentId: P:Unsplasharp.Models.Exif.FocalLength
+  id: FocalLength
+  parent: Unsplasharp.Models.Exif
+  langs:
+  - csharp
+  - vb
+  name: FocalLength
+  nameWithType: Exif.FocalLength
+  fullName: Unsplasharp.Models.Exif.FocalLength
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/Photo.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: FocalLength
+    path: ../src/unsplasharp/Source/Models/Photo.cs
+    startLine: 259
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Camera’s focal length.
+  example: []
+  syntax:
+    content: public string FocalLength { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property FocalLength As String
+  overload: Unsplasharp.Models.Exif.FocalLength*
+- uid: Unsplasharp.Models.Exif.Iso
+  commentId: P:Unsplasharp.Models.Exif.Iso
+  id: Iso
+  parent: Unsplasharp.Models.Exif
+  langs:
+  - csharp
+  - vb
+  name: Iso
+  nameWithType: Exif.Iso
+  fullName: Unsplasharp.Models.Exif.Iso
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/Photo.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Iso
+    path: ../src/unsplasharp/Source/Models/Photo.cs
+    startLine: 264
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Camera’s iso.
+  example: []
+  syntax:
+    content: public int? Iso { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property Iso As Integer?
+  overload: Unsplasharp.Models.Exif.Iso*
+references:
+- uid: Unsplasharp.Models
+  commentId: N:Unsplasharp.Models
+  href: Unsplasharp.html
+  name: Unsplasharp.Models
+  nameWithType: Unsplasharp.Models
+  fullName: Unsplasharp.Models
+  spec.csharp:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Models
+    name: Models
+    href: Unsplasharp.Models.html
+  spec.vb:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Models
+    name: Models
+    href: Unsplasharp.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Unsplasharp.Models.Exif.Make*
+  commentId: Overload:Unsplasharp.Models.Exif.Make
+  href: Unsplasharp.Models.Exif.html#Unsplasharp_Models_Exif_Make
+  name: Make
+  nameWithType: Exif.Make
+  fullName: Unsplasharp.Models.Exif.Make
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Unsplasharp.Models.Exif.Model*
+  commentId: Overload:Unsplasharp.Models.Exif.Model
+  href: Unsplasharp.Models.Exif.html#Unsplasharp_Models_Exif_Model
+  name: Model
+  nameWithType: Exif.Model
+  fullName: Unsplasharp.Models.Exif.Model
+- uid: Unsplasharp.Models.Exif.ExposureTime*
+  commentId: Overload:Unsplasharp.Models.Exif.ExposureTime
+  href: Unsplasharp.Models.Exif.html#Unsplasharp_Models_Exif_ExposureTime
+  name: ExposureTime
+  nameWithType: Exif.ExposureTime
+  fullName: Unsplasharp.Models.Exif.ExposureTime
+- uid: Unsplasharp.Models.Exif.Aperture*
+  commentId: Overload:Unsplasharp.Models.Exif.Aperture
+  href: Unsplasharp.Models.Exif.html#Unsplasharp_Models_Exif_Aperture
+  name: Aperture
+  nameWithType: Exif.Aperture
+  fullName: Unsplasharp.Models.Exif.Aperture
+- uid: Unsplasharp.Models.Exif.FocalLength*
+  commentId: Overload:Unsplasharp.Models.Exif.FocalLength
+  href: Unsplasharp.Models.Exif.html#Unsplasharp_Models_Exif_FocalLength
+  name: FocalLength
+  nameWithType: Exif.FocalLength
+  fullName: Unsplasharp.Models.Exif.FocalLength
+- uid: Unsplasharp.Models.Exif.Iso*
+  commentId: Overload:Unsplasharp.Models.Exif.Iso
+  href: Unsplasharp.Models.Exif.html#Unsplasharp_Models_Exif_Iso
+  name: Iso
+  nameWithType: Exif.Iso
+  fullName: Unsplasharp.Models.Exif.Iso
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

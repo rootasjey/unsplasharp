@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Unsplasharp.Extensions
+  commentId: N:Unsplasharp.Extensions
+  id: Unsplasharp.Extensions
+  children:
+  - Unsplasharp.Extensions.ServiceCollectionExtensions
+  - Unsplasharp.Extensions.UnsplasharpOptions
+  langs:
+  - csharp
+  - vb
+  name: Unsplasharp.Extensions
+  nameWithType: Unsplasharp.Extensions
+  fullName: Unsplasharp.Extensions
+  type: Namespace
+  assemblies:
+  - Unsplasharp
+references:
+- uid: Unsplasharp.Extensions.ServiceCollectionExtensions
+  commentId: T:Unsplasharp.Extensions.ServiceCollectionExtensions
+  href: Unsplasharp.Extensions.ServiceCollectionExtensions.html
+  name: ServiceCollectionExtensions
+  nameWithType: ServiceCollectionExtensions
+  fullName: Unsplasharp.Extensions.ServiceCollectionExtensions
+- uid: Unsplasharp.Extensions.UnsplasharpOptions
+  commentId: T:Unsplasharp.Extensions.UnsplasharpOptions
+  href: Unsplasharp.Extensions.UnsplasharpOptions.html
+  name: UnsplasharpOptions
+  nameWithType: UnsplasharpOptions
+  fullName: Unsplasharp.Extensions.UnsplasharpOptions

@@ -1,0 +1,130 @@
+### YamlMime:TableOfContent
+items:
+- uid: Unsplasharp
+  name: Unsplasharp
+  type: Namespace
+  items:
+  - uid: Unsplasharp.UnsplasharpClient
+    name: UnsplasharpClient
+    type: Class
+  - uid: Unsplasharp.UnsplasharpClient.OrderBy
+    name: UnsplasharpClient.OrderBy
+    type: Enum
+  - uid: Unsplasharp.UnsplasharpClient.Orientation
+    name: UnsplasharpClient.Orientation
+    type: Enum
+  - uid: Unsplasharp.UnsplasharpClient.Resolution
+    name: UnsplasharpClient.Resolution
+    type: Enum
+- uid: Unsplasharp.Exceptions
+  name: Unsplasharp.Exceptions
+  type: Namespace
+  items:
+  - uid: Unsplasharp.Exceptions.ErrorContext
+    name: ErrorContext
+    type: Class
+  - uid: Unsplasharp.Exceptions.RateLimitInfo
+    name: RateLimitInfo
+    type: Class
+  - uid: Unsplasharp.Exceptions.UnsplasharpAuthenticationException
+    name: UnsplasharpAuthenticationException
+    type: Class
+  - uid: Unsplasharp.Exceptions.UnsplasharpException
+    name: UnsplasharpException
+    type: Class
+  - uid: Unsplasharp.Exceptions.UnsplasharpHttpException
+    name: UnsplasharpHttpException
+    type: Class
+  - uid: Unsplasharp.Exceptions.UnsplasharpNetworkException
+    name: UnsplasharpNetworkException
+    type: Class
+  - uid: Unsplasharp.Exceptions.UnsplasharpNotFoundException
+    name: UnsplasharpNotFoundException
+    type: Class
+  - uid: Unsplasharp.Exceptions.UnsplasharpParsingException
+    name: UnsplasharpParsingException
+    type: Class
+  - uid: Unsplasharp.Exceptions.UnsplasharpRateLimitException
+    name: UnsplasharpRateLimitException
+    type: Class
+  - uid: Unsplasharp.Exceptions.UnsplasharpTimeoutException
+    name: UnsplasharpTimeoutException
+    type: Class
+- uid: Unsplasharp.Extensions
+  name: Unsplasharp.Extensions
+  type: Namespace
+  items:
+  - uid: Unsplasharp.Extensions.ServiceCollectionExtensions
+    name: ServiceCollectionExtensions
+    type: Class
+  - uid: Unsplasharp.Extensions.UnsplasharpOptions
+    name: UnsplasharpOptions
+    type: Class
+- uid: Unsplasharp.Models
+  name: Unsplasharp.Models
+  type: Namespace
+  items:
+  - uid: Unsplasharp.Models.Badge
+    name: Badge
+    type: Class
+  - uid: Unsplasharp.Models.Category
+    name: Category
+    type: Class
+  - uid: Unsplasharp.Models.CategoryLinks
+    name: CategoryLinks
+    type: Class
+  - uid: Unsplasharp.Models.Collection
+    name: Collection
+    type: Class
+  - uid: Unsplasharp.Models.CollectionLinks
+    name: CollectionLinks
+    type: Class
+  - uid: Unsplasharp.Models.Exif
+    name: Exif
+    type: Class
+  - uid: Unsplasharp.Models.Location
+    name: Location
+    type: Class
+  - uid: Unsplasharp.Models.Photo
+    name: Photo
+    type: Class
+  - uid: Unsplasharp.Models.PhotoLinks
+    name: PhotoLinks
+    type: Class
+  - uid: Unsplasharp.Models.PhotoStats
+    name: PhotoStats
+    type: Class
+  - uid: Unsplasharp.Models.Position
+    name: Position
+    type: Class
+  - uid: Unsplasharp.Models.ProfileImage
+    name: ProfileImage
+    type: Class
+  - uid: Unsplasharp.Models.StatsData
+    name: StatsData
+    type: Class
+  - uid: Unsplasharp.Models.StatsHistorical
+    name: StatsHistorical
+    type: Class
+  - uid: Unsplasharp.Models.StatsValue
+    name: StatsValue
+    type: Class
+  - uid: Unsplasharp.Models.UnplashMonthlyStats
+    name: UnplashMonthlyStats
+    type: Class
+  - uid: Unsplasharp.Models.UnplashTotalStats
+    name: UnplashTotalStats
+    type: Class
+  - uid: Unsplasharp.Models.Urls
+    name: Urls
+    type: Class
+  - uid: Unsplasharp.Models.User
+    name: User
+    type: Class
+  - uid: Unsplasharp.Models.UserLinks
+    name: UserLinks
+    type: Class
+  - uid: Unsplasharp.Models.UserStats
+    name: UserStats
+    type: Class
+memberLayout: SamePage

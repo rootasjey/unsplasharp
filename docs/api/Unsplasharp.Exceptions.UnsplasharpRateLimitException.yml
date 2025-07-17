@@ -1,0 +1,1175 @@
+### YamlMime:ManagedReference
+items:
+- uid: Unsplasharp.Exceptions.UnsplasharpRateLimitException
+  commentId: T:Unsplasharp.Exceptions.UnsplasharpRateLimitException
+  id: UnsplasharpRateLimitException
+  parent: Unsplasharp.Exceptions
+  children:
+  - Unsplasharp.Exceptions.UnsplasharpRateLimitException.#ctor(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.DateTimeOffset},System.String,System.String,Unsplasharp.Exceptions.ErrorContext)
+  - Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimit
+  - Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitRemaining
+  - Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitReset
+  langs:
+  - csharp
+  - vb
+  name: UnsplasharpRateLimitException
+  nameWithType: UnsplasharpRateLimitException
+  fullName: Unsplasharp.Exceptions.UnsplasharpRateLimitException
+  type: Class
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/UnsplasharpException.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: UnsplasharpRateLimitException
+    path: ../src/unsplasharp/Source/Exceptions/UnsplasharpException.cs
+    startLine: 138
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: Exception thrown when the API rate limit is exceeded
+  example: []
+  syntax:
+    content: 'public class UnsplasharpRateLimitException : UnsplasharpHttpException, ISerializable'
+    content.vb: Public Class UnsplasharpRateLimitException Inherits UnsplasharpHttpException Implements ISerializable
+  inheritance:
+  - System.Object
+  - System.Exception
+  - Unsplasharp.Exceptions.UnsplasharpException
+  - Unsplasharp.Exceptions.UnsplasharpHttpException
+  implements:
+  - System.Runtime.Serialization.ISerializable
+  inheritedMembers:
+  - Unsplasharp.Exceptions.UnsplasharpHttpException.StatusCode
+  - Unsplasharp.Exceptions.UnsplasharpHttpException.ResponseContent
+  - Unsplasharp.Exceptions.UnsplasharpHttpException.IsRetryable
+  - Unsplasharp.Exceptions.UnsplasharpException.FromHttpResponse(System.Net.Http.HttpResponseMessage,System.String,System.String,System.String)
+  - Unsplasharp.Exceptions.UnsplasharpException.FromHttpRequestException(System.Net.Http.HttpRequestException,System.String,System.String,System.String,System.String)
+  - Unsplasharp.Exceptions.UnsplasharpException.FromTaskCanceledException(System.Threading.Tasks.TaskCanceledException,System.Nullable{System.TimeSpan},System.String,System.String,System.String,System.String)
+  - Unsplasharp.Exceptions.UnsplasharpException.FromJsonException(System.Text.Json.JsonException,System.String,System.String,System.String,System.String,System.String,System.String)
+  - Unsplasharp.Exceptions.UnsplasharpException.RequestUrl
+  - Unsplasharp.Exceptions.UnsplasharpException.HttpMethod
+  - Unsplasharp.Exceptions.UnsplasharpException.Context
+  - System.Exception.GetBaseException
+  - System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.Exception.GetType
+  - System.Exception.ToString
+  - System.Exception.Data
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.Message
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Exception.SerializeObjectState
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimit
+  commentId: P:Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimit
+  id: RateLimit
+  parent: Unsplasharp.Exceptions.UnsplasharpRateLimitException
+  langs:
+  - csharp
+  - vb
+  name: RateLimit
+  nameWithType: UnsplasharpRateLimitException.RateLimit
+  fullName: Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimit
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/UnsplasharpException.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: RateLimit
+    path: ../src/unsplasharp/Source/Exceptions/UnsplasharpException.cs
+    startLine: 143
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: The current rate limit
+  example: []
+  syntax:
+    content: public int? RateLimit { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public ReadOnly Property RateLimit As Integer?
+  overload: Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimit*
+- uid: Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitRemaining
+  commentId: P:Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitRemaining
+  id: RateLimitRemaining
+  parent: Unsplasharp.Exceptions.UnsplasharpRateLimitException
+  langs:
+  - csharp
+  - vb
+  name: RateLimitRemaining
+  nameWithType: UnsplasharpRateLimitException.RateLimitRemaining
+  fullName: Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitRemaining
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/UnsplasharpException.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: RateLimitRemaining
+    path: ../src/unsplasharp/Source/Exceptions/UnsplasharpException.cs
+    startLine: 148
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: The remaining requests in the current window
+  example: []
+  syntax:
+    content: public int? RateLimitRemaining { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public ReadOnly Property RateLimitRemaining As Integer?
+  overload: Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitRemaining*
+- uid: Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitReset
+  commentId: P:Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitReset
+  id: RateLimitReset
+  parent: Unsplasharp.Exceptions.UnsplasharpRateLimitException
+  langs:
+  - csharp
+  - vb
+  name: RateLimitReset
+  nameWithType: UnsplasharpRateLimitException.RateLimitReset
+  fullName: Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitReset
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/UnsplasharpException.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: RateLimitReset
+    path: ../src/unsplasharp/Source/Exceptions/UnsplasharpException.cs
+    startLine: 153
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: When the rate limit resets (Unix timestamp)
+  example: []
+  syntax:
+    content: public DateTimeOffset? RateLimitReset { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTimeOffset}
+    content.vb: Public ReadOnly Property RateLimitReset As DateTimeOffset?
+  overload: Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitReset*
+- uid: Unsplasharp.Exceptions.UnsplasharpRateLimitException.#ctor(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.DateTimeOffset},System.String,System.String,Unsplasharp.Exceptions.ErrorContext)
+  commentId: M:Unsplasharp.Exceptions.UnsplasharpRateLimitException.#ctor(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.DateTimeOffset},System.String,System.String,Unsplasharp.Exceptions.ErrorContext)
+  id: '#ctor(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.DateTimeOffset},System.String,System.String,Unsplasharp.Exceptions.ErrorContext)'
+  parent: Unsplasharp.Exceptions.UnsplasharpRateLimitException
+  langs:
+  - csharp
+  - vb
+  name: UnsplasharpRateLimitException(string, int?, int?, DateTimeOffset?, string?, string?, ErrorContext?)
+  nameWithType: UnsplasharpRateLimitException.UnsplasharpRateLimitException(string, int?, int?, DateTimeOffset?, string?, string?, ErrorContext?)
+  fullName: Unsplasharp.Exceptions.UnsplasharpRateLimitException.UnsplasharpRateLimitException(string, int?, int?, System.DateTimeOffset?, string?, string?, Unsplasharp.Exceptions.ErrorContext?)
+  type: Constructor
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/UnsplasharpException.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: .ctor
+    path: ../src/unsplasharp/Source/Exceptions/UnsplasharpException.cs
+    startLine: 165
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: Initializes a new instance of the UnsplasharpRateLimitException class
+  example: []
+  syntax:
+    content: public UnsplasharpRateLimitException(string message, int? rateLimit, int? rateLimitRemaining, DateTimeOffset? rateLimitReset, string? requestUrl, string? httpMethod, ErrorContext? context = null)
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message
+    - id: rateLimit
+      type: System.Nullable{System.Int32}
+      description: The current rate limit
+    - id: rateLimitRemaining
+      type: System.Nullable{System.Int32}
+      description: The remaining requests
+    - id: rateLimitReset
+      type: System.Nullable{System.DateTimeOffset}
+      description: When the rate limit resets
+    - id: requestUrl
+      type: System.String
+      description: The request URL
+    - id: httpMethod
+      type: System.String
+      description: The HTTP method
+    - id: context
+      type: Unsplasharp.Exceptions.ErrorContext
+      description: Additional error context
+    content.vb: Public Sub New(message As String, rateLimit As Integer?, rateLimitRemaining As Integer?, rateLimitReset As DateTimeOffset?, requestUrl As String, httpMethod As String, context As ErrorContext = Nothing)
+  overload: Unsplasharp.Exceptions.UnsplasharpRateLimitException.#ctor*
+  nameWithType.vb: UnsplasharpRateLimitException.New(String, Integer?, Integer?, DateTimeOffset?, String, String, ErrorContext)
+  fullName.vb: Unsplasharp.Exceptions.UnsplasharpRateLimitException.New(String, Integer?, Integer?, System.DateTimeOffset?, String, String, Unsplasharp.Exceptions.ErrorContext)
+  name.vb: New(String, Integer?, Integer?, DateTimeOffset?, String, String, ErrorContext)
+references:
+- uid: Unsplasharp.Exceptions
+  commentId: N:Unsplasharp.Exceptions
+  href: Unsplasharp.html
+  name: Unsplasharp.Exceptions
+  nameWithType: Unsplasharp.Exceptions
+  fullName: Unsplasharp.Exceptions
+  spec.csharp:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Exceptions
+    name: Exceptions
+    href: Unsplasharp.Exceptions.html
+  spec.vb:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Exceptions
+    name: Exceptions
+    href: Unsplasharp.Exceptions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Unsplasharp.Exceptions.UnsplasharpException
+  commentId: T:Unsplasharp.Exceptions.UnsplasharpException
+  parent: Unsplasharp.Exceptions
+  href: Unsplasharp.Exceptions.UnsplasharpException.html
+  name: UnsplasharpException
+  nameWithType: UnsplasharpException
+  fullName: Unsplasharp.Exceptions.UnsplasharpException
+- uid: Unsplasharp.Exceptions.UnsplasharpHttpException
+  commentId: T:Unsplasharp.Exceptions.UnsplasharpHttpException
+  parent: Unsplasharp.Exceptions
+  href: Unsplasharp.Exceptions.UnsplasharpHttpException.html
+  name: UnsplasharpHttpException
+  nameWithType: UnsplasharpHttpException
+  fullName: Unsplasharp.Exceptions.UnsplasharpHttpException
+- uid: System.Runtime.Serialization.ISerializable
+  commentId: T:System.Runtime.Serialization.ISerializable
+  parent: System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.iserializable
+  name: ISerializable
+  nameWithType: ISerializable
+  fullName: System.Runtime.Serialization.ISerializable
+- uid: Unsplasharp.Exceptions.UnsplasharpHttpException.StatusCode
+  commentId: P:Unsplasharp.Exceptions.UnsplasharpHttpException.StatusCode
+  parent: Unsplasharp.Exceptions.UnsplasharpHttpException
+  href: Unsplasharp.Exceptions.UnsplasharpHttpException.html#Unsplasharp_Exceptions_UnsplasharpHttpException_StatusCode
+  name: StatusCode
+  nameWithType: UnsplasharpHttpException.StatusCode
+  fullName: Unsplasharp.Exceptions.UnsplasharpHttpException.StatusCode
+- uid: Unsplasharp.Exceptions.UnsplasharpHttpException.ResponseContent
+  commentId: P:Unsplasharp.Exceptions.UnsplasharpHttpException.ResponseContent
+  parent: Unsplasharp.Exceptions.UnsplasharpHttpException
+  href: Unsplasharp.Exceptions.UnsplasharpHttpException.html#Unsplasharp_Exceptions_UnsplasharpHttpException_ResponseContent
+  name: ResponseContent
+  nameWithType: UnsplasharpHttpException.ResponseContent
+  fullName: Unsplasharp.Exceptions.UnsplasharpHttpException.ResponseContent
+- uid: Unsplasharp.Exceptions.UnsplasharpHttpException.IsRetryable
+  commentId: P:Unsplasharp.Exceptions.UnsplasharpHttpException.IsRetryable
+  parent: Unsplasharp.Exceptions.UnsplasharpHttpException
+  href: Unsplasharp.Exceptions.UnsplasharpHttpException.html#Unsplasharp_Exceptions_UnsplasharpHttpException_IsRetryable
+  name: IsRetryable
+  nameWithType: UnsplasharpHttpException.IsRetryable
+  fullName: Unsplasharp.Exceptions.UnsplasharpHttpException.IsRetryable
+- uid: Unsplasharp.Exceptions.UnsplasharpException.FromHttpResponse(System.Net.Http.HttpResponseMessage,System.String,System.String,System.String)
+  commentId: M:Unsplasharp.Exceptions.UnsplasharpException.FromHttpResponse(System.Net.Http.HttpResponseMessage,System.String,System.String,System.String)
+  parent: Unsplasharp.Exceptions.UnsplasharpException
+  isExternal: true
+  href: Unsplasharp.Exceptions.UnsplasharpException.html#Unsplasharp_Exceptions_UnsplasharpException_FromHttpResponse_System_Net_Http_HttpResponseMessage_System_String_System_String_System_String_
+  name: FromHttpResponse(HttpResponseMessage, string, string, string)
+  nameWithType: UnsplasharpException.FromHttpResponse(HttpResponseMessage, string, string, string)
+  fullName: Unsplasharp.Exceptions.UnsplasharpException.FromHttpResponse(System.Net.Http.HttpResponseMessage, string, string, string)
+  nameWithType.vb: UnsplasharpException.FromHttpResponse(HttpResponseMessage, String, String, String)
+  fullName.vb: Unsplasharp.Exceptions.UnsplasharpException.FromHttpResponse(System.Net.Http.HttpResponseMessage, String, String, String)
+  name.vb: FromHttpResponse(HttpResponseMessage, String, String, String)
+  spec.csharp:
+  - uid: Unsplasharp.Exceptions.UnsplasharpException.FromHttpResponse(System.Net.Http.HttpResponseMessage,System.String,System.String,System.String)
+    name: FromHttpResponse
+    href: Unsplasharp.Exceptions.UnsplasharpException.html#Unsplasharp_Exceptions_UnsplasharpException_FromHttpResponse_System_Net_Http_HttpResponseMessage_System_String_System_String_System_String_
+  - name: (
+  - uid: System.Net.Http.HttpResponseMessage
+    name: HttpResponseMessage
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpresponsemessage
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Unsplasharp.Exceptions.UnsplasharpException.FromHttpResponse(System.Net.Http.HttpResponseMessage,System.String,System.String,System.String)
+    name: FromHttpResponse
+    href: Unsplasharp.Exceptions.UnsplasharpException.html#Unsplasharp_Exceptions_UnsplasharpException_FromHttpResponse_System_Net_Http_HttpResponseMessage_System_String_System_String_System_String_
+  - name: (
+  - uid: System.Net.Http.HttpResponseMessage
+    name: HttpResponseMessage
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpresponsemessage
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Unsplasharp.Exceptions.UnsplasharpException.FromHttpRequestException(System.Net.Http.HttpRequestException,System.String,System.String,System.String,System.String)
+  commentId: M:Unsplasharp.Exceptions.UnsplasharpException.FromHttpRequestException(System.Net.Http.HttpRequestException,System.String,System.String,System.String,System.String)
+  parent: Unsplasharp.Exceptions.UnsplasharpException
+  isExternal: true
+  href: Unsplasharp.Exceptions.UnsplasharpException.html#Unsplasharp_Exceptions_UnsplasharpException_FromHttpRequestException_System_Net_Http_HttpRequestException_System_String_System_String_System_String_System_String_
+  name: FromHttpRequestException(HttpRequestException, string, string, string, string)
+  nameWithType: UnsplasharpException.FromHttpRequestException(HttpRequestException, string, string, string, string)
+  fullName: Unsplasharp.Exceptions.UnsplasharpException.FromHttpRequestException(System.Net.Http.HttpRequestException, string, string, string, string)
+  nameWithType.vb: UnsplasharpException.FromHttpRequestException(HttpRequestException, String, String, String, String)
+  fullName.vb: Unsplasharp.Exceptions.UnsplasharpException.FromHttpRequestException(System.Net.Http.HttpRequestException, String, String, String, String)
+  name.vb: FromHttpRequestException(HttpRequestException, String, String, String, String)
+  spec.csharp:
+  - uid: Unsplasharp.Exceptions.UnsplasharpException.FromHttpRequestException(System.Net.Http.HttpRequestException,System.String,System.String,System.String,System.String)
+    name: FromHttpRequestException
+    href: Unsplasharp.Exceptions.UnsplasharpException.html#Unsplasharp_Exceptions_UnsplasharpException_FromHttpRequestException_System_Net_Http_HttpRequestException_System_String_System_String_System_String_System_String_
+  - name: (
+  - uid: System.Net.Http.HttpRequestException
+    name: HttpRequestException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httprequestexception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Unsplasharp.Exceptions.UnsplasharpException.FromHttpRequestException(System.Net.Http.HttpRequestException,System.String,System.String,System.String,System.String)
+    name: FromHttpRequestException
+    href: Unsplasharp.Exceptions.UnsplasharpException.html#Unsplasharp_Exceptions_UnsplasharpException_FromHttpRequestException_System_Net_Http_HttpRequestException_System_String_System_String_System_String_System_String_
+  - name: (
+  - uid: System.Net.Http.HttpRequestException
+    name: HttpRequestException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httprequestexception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Unsplasharp.Exceptions.UnsplasharpException.FromTaskCanceledException(System.Threading.Tasks.TaskCanceledException,System.Nullable{System.TimeSpan},System.String,System.String,System.String,System.String)
+  commentId: M:Unsplasharp.Exceptions.UnsplasharpException.FromTaskCanceledException(System.Threading.Tasks.TaskCanceledException,System.Nullable{System.TimeSpan},System.String,System.String,System.String,System.String)
+  parent: Unsplasharp.Exceptions.UnsplasharpException
+  isExternal: true
+  href: Unsplasharp.Exceptions.UnsplasharpException.html#Unsplasharp_Exceptions_UnsplasharpException_FromTaskCanceledException_System_Threading_Tasks_TaskCanceledException_System_Nullable_System_TimeSpan__System_String_System_String_System_String_System_String_
+  name: FromTaskCanceledException(TaskCanceledException, TimeSpan?, string, string, string, string)
+  nameWithType: UnsplasharpException.FromTaskCanceledException(TaskCanceledException, TimeSpan?, string, string, string, string)
+  fullName: Unsplasharp.Exceptions.UnsplasharpException.FromTaskCanceledException(System.Threading.Tasks.TaskCanceledException, System.TimeSpan?, string, string, string, string)
+  nameWithType.vb: UnsplasharpException.FromTaskCanceledException(TaskCanceledException, TimeSpan?, String, String, String, String)
+  fullName.vb: Unsplasharp.Exceptions.UnsplasharpException.FromTaskCanceledException(System.Threading.Tasks.TaskCanceledException, System.TimeSpan?, String, String, String, String)
+  name.vb: FromTaskCanceledException(TaskCanceledException, TimeSpan?, String, String, String, String)
+  spec.csharp:
+  - uid: Unsplasharp.Exceptions.UnsplasharpException.FromTaskCanceledException(System.Threading.Tasks.TaskCanceledException,System.Nullable{System.TimeSpan},System.String,System.String,System.String,System.String)
+    name: FromTaskCanceledException
+    href: Unsplasharp.Exceptions.UnsplasharpException.html#Unsplasharp_Exceptions_UnsplasharpException_FromTaskCanceledException_System_Threading_Tasks_TaskCanceledException_System_Nullable_System_TimeSpan__System_String_System_String_System_String_System_String_
+  - name: (
+  - uid: System.Threading.Tasks.TaskCanceledException
+    name: TaskCanceledException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.taskcanceledexception
+  - name: ','
+  - name: " "
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Unsplasharp.Exceptions.UnsplasharpException.FromTaskCanceledException(System.Threading.Tasks.TaskCanceledException,System.Nullable{System.TimeSpan},System.String,System.String,System.String,System.String)
+    name: FromTaskCanceledException
+    href: Unsplasharp.Exceptions.UnsplasharpException.html#Unsplasharp_Exceptions_UnsplasharpException_FromTaskCanceledException_System_Threading_Tasks_TaskCanceledException_System_Nullable_System_TimeSpan__System_String_System_String_System_String_System_String_
+  - name: (
+  - uid: System.Threading.Tasks.TaskCanceledException
+    name: TaskCanceledException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.taskcanceledexception
+  - name: ','
+  - name: " "
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Unsplasharp.Exceptions.UnsplasharpException.FromJsonException(System.Text.Json.JsonException,System.String,System.String,System.String,System.String,System.String,System.String)
+  commentId: M:Unsplasharp.Exceptions.UnsplasharpException.FromJsonException(System.Text.Json.JsonException,System.String,System.String,System.String,System.String,System.String,System.String)
+  parent: Unsplasharp.Exceptions.UnsplasharpException
+  isExternal: true
+  href: Unsplasharp.Exceptions.UnsplasharpException.html#Unsplasharp_Exceptions_UnsplasharpException_FromJsonException_System_Text_Json_JsonException_System_String_System_String_System_String_System_String_System_String_System_String_
+  name: FromJsonException(JsonException, string, string, string, string, string, string)
+  nameWithType: UnsplasharpException.FromJsonException(JsonException, string, string, string, string, string, string)
+  fullName: Unsplasharp.Exceptions.UnsplasharpException.FromJsonException(System.Text.Json.JsonException, string, string, string, string, string, string)
+  nameWithType.vb: UnsplasharpException.FromJsonException(JsonException, String, String, String, String, String, String)
+  fullName.vb: Unsplasharp.Exceptions.UnsplasharpException.FromJsonException(System.Text.Json.JsonException, String, String, String, String, String, String)
+  name.vb: FromJsonException(JsonException, String, String, String, String, String, String)
+  spec.csharp:
+  - uid: Unsplasharp.Exceptions.UnsplasharpException.FromJsonException(System.Text.Json.JsonException,System.String,System.String,System.String,System.String,System.String,System.String)
+    name: FromJsonException
+    href: Unsplasharp.Exceptions.UnsplasharpException.html#Unsplasharp_Exceptions_UnsplasharpException_FromJsonException_System_Text_Json_JsonException_System_String_System_String_System_String_System_String_System_String_System_String_
+  - name: (
+  - uid: System.Text.Json.JsonException
+    name: JsonException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.jsonexception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Unsplasharp.Exceptions.UnsplasharpException.FromJsonException(System.Text.Json.JsonException,System.String,System.String,System.String,System.String,System.String,System.String)
+    name: FromJsonException
+    href: Unsplasharp.Exceptions.UnsplasharpException.html#Unsplasharp_Exceptions_UnsplasharpException_FromJsonException_System_Text_Json_JsonException_System_String_System_String_System_String_System_String_System_String_System_String_
+  - name: (
+  - uid: System.Text.Json.JsonException
+    name: JsonException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.json.jsonexception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Unsplasharp.Exceptions.UnsplasharpException.RequestUrl
+  commentId: P:Unsplasharp.Exceptions.UnsplasharpException.RequestUrl
+  parent: Unsplasharp.Exceptions.UnsplasharpException
+  href: Unsplasharp.Exceptions.UnsplasharpException.html#Unsplasharp_Exceptions_UnsplasharpException_RequestUrl
+  name: RequestUrl
+  nameWithType: UnsplasharpException.RequestUrl
+  fullName: Unsplasharp.Exceptions.UnsplasharpException.RequestUrl
+- uid: Unsplasharp.Exceptions.UnsplasharpException.HttpMethod
+  commentId: P:Unsplasharp.Exceptions.UnsplasharpException.HttpMethod
+  parent: Unsplasharp.Exceptions.UnsplasharpException
+  href: Unsplasharp.Exceptions.UnsplasharpException.html#Unsplasharp_Exceptions_UnsplasharpException_HttpMethod
+  name: HttpMethod
+  nameWithType: UnsplasharpException.HttpMethod
+  fullName: Unsplasharp.Exceptions.UnsplasharpException.HttpMethod
+- uid: Unsplasharp.Exceptions.UnsplasharpException.Context
+  commentId: P:Unsplasharp.Exceptions.UnsplasharpException.Context
+  parent: Unsplasharp.Exceptions.UnsplasharpException
+  href: Unsplasharp.Exceptions.UnsplasharpException.html#Unsplasharp_Exceptions_UnsplasharpException_Context
+  name: Context
+  nameWithType: UnsplasharpException.Context
+  fullName: Unsplasharp.Exceptions.UnsplasharpException.Context
+- uid: System.Exception.GetBaseException
+  commentId: M:System.Exception.GetBaseException
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  name: GetBaseException()
+  nameWithType: Exception.GetBaseException()
+  fullName: System.Exception.GetBaseException()
+  spec.csharp:
+  - uid: System.Exception.GetBaseException
+    name: GetBaseException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.GetBaseException
+    name: GetBaseException
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getbaseexception
+  - name: (
+  - name: )
+- uid: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  commentId: M:System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.getobjectdata
+  name: GetObjectData(SerializationInfo, StreamingContext)
+  nameWithType: Exception.GetObjectData(SerializationInfo, StreamingContext)
+  fullName: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  spec.csharp:
+  - uid: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    name: GetObjectData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getobjectdata
+  - name: (
+  - uid: System.Runtime.Serialization.SerializationInfo
+    name: SerializationInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo
+  - name: ','
+  - name: " "
+  - uid: System.Runtime.Serialization.StreamingContext
+    name: StreamingContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext
+  - name: )
+  spec.vb:
+  - uid: System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    name: GetObjectData
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.getobjectdata
+  - name: (
+  - uid: System.Runtime.Serialization.SerializationInfo
+    name: SerializationInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo
+  - name: ','
+  - name: " "
+  - uid: System.Runtime.Serialization.StreamingContext
+    name: StreamingContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext
+  - name: )
+- uid: System.Exception.GetType
+  commentId: M:System.Exception.GetType
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  name: GetType()
+  nameWithType: Exception.GetType()
+  fullName: System.Exception.GetType()
+  spec.csharp:
+  - uid: System.Exception.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.gettype
+  - name: (
+  - name: )
+- uid: System.Exception.ToString
+  commentId: M:System.Exception.ToString
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  name: ToString()
+  nameWithType: Exception.ToString()
+  fullName: System.Exception.ToString()
+  spec.csharp:
+  - uid: System.Exception.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Exception.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception.tostring
+  - name: (
+  - name: )
+- uid: System.Exception.Data
+  commentId: P:System.Exception.Data
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.data
+  name: Data
+  nameWithType: Exception.Data
+  fullName: System.Exception.Data
+- uid: System.Exception.HelpLink
+  commentId: P:System.Exception.HelpLink
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.helplink
+  name: HelpLink
+  nameWithType: Exception.HelpLink
+  fullName: System.Exception.HelpLink
+- uid: System.Exception.HResult
+  commentId: P:System.Exception.HResult
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.hresult
+  name: HResult
+  nameWithType: Exception.HResult
+  fullName: System.Exception.HResult
+- uid: System.Exception.InnerException
+  commentId: P:System.Exception.InnerException
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.innerexception
+  name: InnerException
+  nameWithType: Exception.InnerException
+  fullName: System.Exception.InnerException
+- uid: System.Exception.Message
+  commentId: P:System.Exception.Message
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.message
+  name: Message
+  nameWithType: Exception.Message
+  fullName: System.Exception.Message
+- uid: System.Exception.Source
+  commentId: P:System.Exception.Source
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.source
+  name: Source
+  nameWithType: Exception.Source
+  fullName: System.Exception.Source
+- uid: System.Exception.StackTrace
+  commentId: P:System.Exception.StackTrace
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.stacktrace
+  name: StackTrace
+  nameWithType: Exception.StackTrace
+  fullName: System.Exception.StackTrace
+- uid: System.Exception.TargetSite
+  commentId: P:System.Exception.TargetSite
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.targetsite
+  name: TargetSite
+  nameWithType: Exception.TargetSite
+  fullName: System.Exception.TargetSite
+- uid: System.Exception.SerializeObjectState
+  commentId: E:System.Exception.SerializeObjectState
+  parent: System.Exception
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception.serializeobjectstate
+  name: SerializeObjectState
+  nameWithType: Exception.SerializeObjectState
+  fullName: System.Exception.SerializeObjectState
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Runtime.Serialization
+  commentId: N:System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Runtime.Serialization
+  nameWithType: System.Runtime.Serialization
+  fullName: System.Runtime.Serialization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+- uid: Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimit*
+  commentId: Overload:Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimit
+  href: Unsplasharp.Exceptions.UnsplasharpRateLimitException.html#Unsplasharp_Exceptions_UnsplasharpRateLimitException_RateLimit
+  name: RateLimit
+  nameWithType: UnsplasharpRateLimitException.RateLimit
+  fullName: Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimit
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitRemaining*
+  commentId: Overload:Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitRemaining
+  href: Unsplasharp.Exceptions.UnsplasharpRateLimitException.html#Unsplasharp_Exceptions_UnsplasharpRateLimitException_RateLimitRemaining
+  name: RateLimitRemaining
+  nameWithType: UnsplasharpRateLimitException.RateLimitRemaining
+  fullName: Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitRemaining
+- uid: Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitReset*
+  commentId: Overload:Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitReset
+  href: Unsplasharp.Exceptions.UnsplasharpRateLimitException.html#Unsplasharp_Exceptions_UnsplasharpRateLimitException_RateLimitReset
+  name: RateLimitReset
+  nameWithType: UnsplasharpRateLimitException.RateLimitReset
+  fullName: Unsplasharp.Exceptions.UnsplasharpRateLimitException.RateLimitReset
+- uid: System.Nullable{System.DateTimeOffset}
+  commentId: T:System.Nullable{System.DateTimeOffset}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset?
+  nameWithType: DateTimeOffset?
+  fullName: System.DateTimeOffset?
+  spec.csharp:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+- uid: Unsplasharp.Exceptions.UnsplasharpRateLimitException.#ctor*
+  commentId: Overload:Unsplasharp.Exceptions.UnsplasharpRateLimitException.#ctor
+  href: Unsplasharp.Exceptions.UnsplasharpRateLimitException.html#Unsplasharp_Exceptions_UnsplasharpRateLimitException__ctor_System_String_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_DateTimeOffset__System_String_System_String_Unsplasharp_Exceptions_ErrorContext_
+  name: UnsplasharpRateLimitException
+  nameWithType: UnsplasharpRateLimitException.UnsplasharpRateLimitException
+  fullName: Unsplasharp.Exceptions.UnsplasharpRateLimitException.UnsplasharpRateLimitException
+  nameWithType.vb: UnsplasharpRateLimitException.New
+  fullName.vb: Unsplasharp.Exceptions.UnsplasharpRateLimitException.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Unsplasharp.Exceptions.ErrorContext
+  commentId: T:Unsplasharp.Exceptions.ErrorContext
+  parent: Unsplasharp.Exceptions
+  href: Unsplasharp.Exceptions.ErrorContext.html
+  name: ErrorContext
+  nameWithType: ErrorContext
+  fullName: Unsplasharp.Exceptions.ErrorContext

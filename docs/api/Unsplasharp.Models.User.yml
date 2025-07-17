@@ -1,0 +1,1199 @@
+### YamlMime:ManagedReference
+items:
+- uid: Unsplasharp.Models.User
+  commentId: T:Unsplasharp.Models.User
+  id: User
+  parent: Unsplasharp.Models
+  children:
+  - Unsplasharp.Models.User.Badge
+  - Unsplasharp.Models.User.Bio
+  - Unsplasharp.Models.User.Downloads
+  - Unsplasharp.Models.User.FirstName
+  - Unsplasharp.Models.User.FollowedByUser
+  - Unsplasharp.Models.User.FollowersCount
+  - Unsplasharp.Models.User.FollowingCount
+  - Unsplasharp.Models.User.Id
+  - Unsplasharp.Models.User.LastName
+  - Unsplasharp.Models.User.Links
+  - Unsplasharp.Models.User.Location
+  - Unsplasharp.Models.User.Name
+  - Unsplasharp.Models.User.PortfolioUrl
+  - Unsplasharp.Models.User.ProfileImage
+  - Unsplasharp.Models.User.PropertyChanged
+  - Unsplasharp.Models.User.TotalCollections
+  - Unsplasharp.Models.User.TotalLikes
+  - Unsplasharp.Models.User.TotalPhotos
+  - Unsplasharp.Models.User.TwitterUsername
+  - Unsplasharp.Models.User.UpdatedAt
+  - Unsplasharp.Models.User.Username
+  langs:
+  - csharp
+  - vb
+  name: User
+  nameWithType: User
+  fullName: Unsplasharp.Models.User
+  type: Class
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: User
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 7
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Represents an user class from Unplash API.
+  example: []
+  syntax:
+    content: 'public class User : INotifyPropertyChanged'
+    content.vb: Public Class User Implements INotifyPropertyChanged
+  inheritance:
+  - System.Object
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Unsplasharp.Models.User.Id
+  commentId: P:Unsplasharp.Models.User.Id
+  id: Id
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: User.Id
+  fullName: Unsplasharp.Models.User.Id
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Id
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 12
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Unique user's identifer
+  example: []
+  syntax:
+    content: public string Id { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Id As String
+  overload: Unsplasharp.Models.User.Id*
+- uid: Unsplasharp.Models.User.Username
+  commentId: P:Unsplasharp.Models.User.Username
+  id: Username
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: Username
+  nameWithType: User.Username
+  fullName: Unsplasharp.Models.User.Username
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Username
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 17
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: User's name
+  example: []
+  syntax:
+    content: public string Username { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Username As String
+  overload: Unsplasharp.Models.User.Username*
+- uid: Unsplasharp.Models.User.Name
+  commentId: P:Unsplasharp.Models.User.Name
+  id: Name
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: User.Name
+  fullName: Unsplasharp.Models.User.Name
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Name
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 22
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: User's name
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Unsplasharp.Models.User.Name*
+- uid: Unsplasharp.Models.User.FirstName
+  commentId: P:Unsplasharp.Models.User.FirstName
+  id: FirstName
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: FirstName
+  nameWithType: User.FirstName
+  fullName: Unsplasharp.Models.User.FirstName
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: FirstName
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 27
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: User's first name.
+  example: []
+  syntax:
+    content: public string FirstName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property FirstName As String
+  overload: Unsplasharp.Models.User.FirstName*
+- uid: Unsplasharp.Models.User.LastName
+  commentId: P:Unsplasharp.Models.User.LastName
+  id: LastName
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: LastName
+  nameWithType: User.LastName
+  fullName: Unsplasharp.Models.User.LastName
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: LastName
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 32
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: User's last name.
+  example: []
+  syntax:
+    content: public string LastName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property LastName As String
+  overload: Unsplasharp.Models.User.LastName*
+- uid: Unsplasharp.Models.User.TwitterUsername
+  commentId: P:Unsplasharp.Models.User.TwitterUsername
+  id: TwitterUsername
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: TwitterUsername
+  nameWithType: User.TwitterUsername
+  fullName: Unsplasharp.Models.User.TwitterUsername
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: TwitterUsername
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 37
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: User's twitter username
+  example: []
+  syntax:
+    content: public string TwitterUsername { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TwitterUsername As String
+  overload: Unsplasharp.Models.User.TwitterUsername*
+- uid: Unsplasharp.Models.User.PortfolioUrl
+  commentId: P:Unsplasharp.Models.User.PortfolioUrl
+  id: PortfolioUrl
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: PortfolioUrl
+  nameWithType: User.PortfolioUrl
+  fullName: Unsplasharp.Models.User.PortfolioUrl
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: PortfolioUrl
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 42
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Portfolio/personal URL.
+  example: []
+  syntax:
+    content: public string PortfolioUrl { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property PortfolioUrl As String
+  overload: Unsplasharp.Models.User.PortfolioUrl*
+- uid: Unsplasharp.Models.User.Bio
+  commentId: P:Unsplasharp.Models.User.Bio
+  id: Bio
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: Bio
+  nameWithType: User.Bio
+  fullName: Unsplasharp.Models.User.Bio
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Bio
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 47
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: About/bio.
+  example: []
+  syntax:
+    content: public string Bio { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Bio As String
+  overload: Unsplasharp.Models.User.Bio*
+- uid: Unsplasharp.Models.User.Location
+  commentId: P:Unsplasharp.Models.User.Location
+  id: Location
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: Location
+  nameWithType: User.Location
+  fullName: Unsplasharp.Models.User.Location
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Location
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 53
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: User's location
+  example: []
+  syntax:
+    content: public string Location { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Location As String
+  overload: Unsplasharp.Models.User.Location*
+- uid: Unsplasharp.Models.User.TotalLikes
+  commentId: P:Unsplasharp.Models.User.TotalLikes
+  id: TotalLikes
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: TotalLikes
+  nameWithType: User.TotalLikes
+  fullName: Unsplasharp.Models.User.TotalLikes
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: TotalLikes
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 69
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: User's liked photos count
+  example: []
+  syntax:
+    content: public int TotalLikes { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TotalLikes As Integer
+  overload: Unsplasharp.Models.User.TotalLikes*
+- uid: Unsplasharp.Models.User.TotalPhotos
+  commentId: P:Unsplasharp.Models.User.TotalPhotos
+  id: TotalPhotos
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: TotalPhotos
+  nameWithType: User.TotalPhotos
+  fullName: Unsplasharp.Models.User.TotalPhotos
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: TotalPhotos
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 85
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: User's photo count
+  example: []
+  syntax:
+    content: public int TotalPhotos { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TotalPhotos As Integer
+  overload: Unsplasharp.Models.User.TotalPhotos*
+- uid: Unsplasharp.Models.User.TotalCollections
+  commentId: P:Unsplasharp.Models.User.TotalCollections
+  id: TotalCollections
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: TotalCollections
+  nameWithType: User.TotalCollections
+  fullName: Unsplasharp.Models.User.TotalCollections
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: TotalCollections
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 101
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: User's collections count
+  example: []
+  syntax:
+    content: public int TotalCollections { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TotalCollections As Integer
+  overload: Unsplasharp.Models.User.TotalCollections*
+- uid: Unsplasharp.Models.User.UpdatedAt
+  commentId: P:Unsplasharp.Models.User.UpdatedAt
+  id: UpdatedAt
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: UpdatedAt
+  nameWithType: User.UpdatedAt
+  fullName: Unsplasharp.Models.User.UpdatedAt
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: UpdatedAt
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 117
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Last user profile update
+  example: []
+  syntax:
+    content: public string UpdatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property UpdatedAt As String
+  overload: Unsplasharp.Models.User.UpdatedAt*
+- uid: Unsplasharp.Models.User.FollowedByUser
+  commentId: P:Unsplasharp.Models.User.FollowedByUser
+  id: FollowedByUser
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: FollowedByUser
+  nameWithType: User.FollowedByUser
+  fullName: Unsplasharp.Models.User.FollowedByUser
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: FollowedByUser
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 133
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: True if the current authentified user follows this user
+  example: []
+  syntax:
+    content: public bool FollowedByUser { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property FollowedByUser As Boolean
+  overload: Unsplasharp.Models.User.FollowedByUser*
+- uid: Unsplasharp.Models.User.FollowersCount
+  commentId: P:Unsplasharp.Models.User.FollowersCount
+  id: FollowersCount
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: FollowersCount
+  nameWithType: User.FollowersCount
+  fullName: Unsplasharp.Models.User.FollowersCount
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: FollowersCount
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 149
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: User dollwers count
+  example: []
+  syntax:
+    content: public int FollowersCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property FollowersCount As Integer
+  overload: Unsplasharp.Models.User.FollowersCount*
+- uid: Unsplasharp.Models.User.FollowingCount
+  commentId: P:Unsplasharp.Models.User.FollowingCount
+  id: FollowingCount
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: FollowingCount
+  nameWithType: User.FollowingCount
+  fullName: Unsplasharp.Models.User.FollowingCount
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: FollowingCount
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 165
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Users following count
+  example: []
+  syntax:
+    content: public int FollowingCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property FollowingCount As Integer
+  overload: Unsplasharp.Models.User.FollowingCount*
+- uid: Unsplasharp.Models.User.Downloads
+  commentId: P:Unsplasharp.Models.User.Downloads
+  id: Downloads
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: Downloads
+  nameWithType: User.Downloads
+  fullName: Unsplasharp.Models.User.Downloads
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Downloads
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 181
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Downloads count
+  example: []
+  syntax:
+    content: public int Downloads { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Downloads As Integer
+  overload: Unsplasharp.Models.User.Downloads*
+- uid: Unsplasharp.Models.User.ProfileImage
+  commentId: P:Unsplasharp.Models.User.ProfileImage
+  id: ProfileImage
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: ProfileImage
+  nameWithType: User.ProfileImage
+  fullName: Unsplasharp.Models.User.ProfileImage
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: ProfileImage
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 200
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: User's avatar
+  example: []
+  syntax:
+    content: public ProfileImage ProfileImage { get; set; }
+    parameters: []
+    return:
+      type: Unsplasharp.Models.ProfileImage
+    content.vb: Public Property ProfileImage As ProfileImage
+  overload: Unsplasharp.Models.User.ProfileImage*
+- uid: Unsplasharp.Models.User.Badge
+  commentId: P:Unsplasharp.Models.User.Badge
+  id: Badge
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: Badge
+  nameWithType: User.Badge
+  fullName: Unsplasharp.Models.User.Badge
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Badge
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 206
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: User's badge
+  example: []
+  syntax:
+    content: public Badge Badge { get; set; }
+    parameters: []
+    return:
+      type: Unsplasharp.Models.Badge
+    content.vb: Public Property Badge As Badge
+  overload: Unsplasharp.Models.User.Badge*
+- uid: Unsplasharp.Models.User.Links
+  commentId: P:Unsplasharp.Models.User.Links
+  id: Links
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: Links
+  nameWithType: User.Links
+  fullName: Unsplasharp.Models.User.Links
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Links
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 221
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: User's link relations
+  example: []
+  syntax:
+    content: public UserLinks Links { get; set; }
+    parameters: []
+    return:
+      type: Unsplasharp.Models.UserLinks
+    content.vb: Public Property Links As UserLinks
+  overload: Unsplasharp.Models.User.Links*
+- uid: Unsplasharp.Models.User.PropertyChanged
+  commentId: E:Unsplasharp.Models.User.PropertyChanged
+  id: PropertyChanged
+  parent: Unsplasharp.Models.User
+  langs:
+  - csharp
+  - vb
+  name: PropertyChanged
+  nameWithType: User.PropertyChanged
+  fullName: Unsplasharp.Models.User.PropertyChanged
+  type: Event
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/User.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: PropertyChanged
+    path: ../src/unsplasharp/Source/Models/User.cs
+    startLine: 229
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Event raised when a property is modified
+  example: []
+  syntax:
+    content: public event PropertyChangedEventHandler? PropertyChanged
+    return:
+      type: System.ComponentModel.PropertyChangedEventHandler
+    content.vb: Public Event PropertyChanged As PropertyChangedEventHandler
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+references:
+- uid: Unsplasharp.Models
+  commentId: N:Unsplasharp.Models
+  href: Unsplasharp.html
+  name: Unsplasharp.Models
+  nameWithType: Unsplasharp.Models
+  fullName: Unsplasharp.Models
+  spec.csharp:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Models
+    name: Models
+    href: Unsplasharp.Models.html
+  spec.vb:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Models
+    name: Models
+    href: Unsplasharp.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.ComponentModel.INotifyPropertyChanged
+  commentId: T:System.ComponentModel.INotifyPropertyChanged
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged
+  name: INotifyPropertyChanged
+  nameWithType: INotifyPropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ComponentModel
+  commentId: N:System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.ComponentModel
+  nameWithType: System.ComponentModel
+  fullName: System.ComponentModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+- uid: Unsplasharp.Models.User.Id*
+  commentId: Overload:Unsplasharp.Models.User.Id
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_Id
+  name: Id
+  nameWithType: User.Id
+  fullName: Unsplasharp.Models.User.Id
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Unsplasharp.Models.User.Username*
+  commentId: Overload:Unsplasharp.Models.User.Username
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_Username
+  name: Username
+  nameWithType: User.Username
+  fullName: Unsplasharp.Models.User.Username
+- uid: Unsplasharp.Models.User.Name*
+  commentId: Overload:Unsplasharp.Models.User.Name
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_Name
+  name: Name
+  nameWithType: User.Name
+  fullName: Unsplasharp.Models.User.Name
+- uid: Unsplasharp.Models.User.FirstName*
+  commentId: Overload:Unsplasharp.Models.User.FirstName
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_FirstName
+  name: FirstName
+  nameWithType: User.FirstName
+  fullName: Unsplasharp.Models.User.FirstName
+- uid: Unsplasharp.Models.User.LastName*
+  commentId: Overload:Unsplasharp.Models.User.LastName
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_LastName
+  name: LastName
+  nameWithType: User.LastName
+  fullName: Unsplasharp.Models.User.LastName
+- uid: Unsplasharp.Models.User.TwitterUsername*
+  commentId: Overload:Unsplasharp.Models.User.TwitterUsername
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_TwitterUsername
+  name: TwitterUsername
+  nameWithType: User.TwitterUsername
+  fullName: Unsplasharp.Models.User.TwitterUsername
+- uid: Unsplasharp.Models.User.PortfolioUrl*
+  commentId: Overload:Unsplasharp.Models.User.PortfolioUrl
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_PortfolioUrl
+  name: PortfolioUrl
+  nameWithType: User.PortfolioUrl
+  fullName: Unsplasharp.Models.User.PortfolioUrl
+- uid: Unsplasharp.Models.User.Bio*
+  commentId: Overload:Unsplasharp.Models.User.Bio
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_Bio
+  name: Bio
+  nameWithType: User.Bio
+  fullName: Unsplasharp.Models.User.Bio
+- uid: Unsplasharp.Models.User.Location*
+  commentId: Overload:Unsplasharp.Models.User.Location
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_Location
+  name: Location
+  nameWithType: User.Location
+  fullName: Unsplasharp.Models.User.Location
+- uid: Unsplasharp.Models.User.TotalLikes*
+  commentId: Overload:Unsplasharp.Models.User.TotalLikes
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_TotalLikes
+  name: TotalLikes
+  nameWithType: User.TotalLikes
+  fullName: Unsplasharp.Models.User.TotalLikes
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Unsplasharp.Models.User.TotalPhotos*
+  commentId: Overload:Unsplasharp.Models.User.TotalPhotos
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_TotalPhotos
+  name: TotalPhotos
+  nameWithType: User.TotalPhotos
+  fullName: Unsplasharp.Models.User.TotalPhotos
+- uid: Unsplasharp.Models.User.TotalCollections*
+  commentId: Overload:Unsplasharp.Models.User.TotalCollections
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_TotalCollections
+  name: TotalCollections
+  nameWithType: User.TotalCollections
+  fullName: Unsplasharp.Models.User.TotalCollections
+- uid: Unsplasharp.Models.User.UpdatedAt*
+  commentId: Overload:Unsplasharp.Models.User.UpdatedAt
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_UpdatedAt
+  name: UpdatedAt
+  nameWithType: User.UpdatedAt
+  fullName: Unsplasharp.Models.User.UpdatedAt
+- uid: Unsplasharp.Models.User.FollowedByUser*
+  commentId: Overload:Unsplasharp.Models.User.FollowedByUser
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_FollowedByUser
+  name: FollowedByUser
+  nameWithType: User.FollowedByUser
+  fullName: Unsplasharp.Models.User.FollowedByUser
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Unsplasharp.Models.User.FollowersCount*
+  commentId: Overload:Unsplasharp.Models.User.FollowersCount
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_FollowersCount
+  name: FollowersCount
+  nameWithType: User.FollowersCount
+  fullName: Unsplasharp.Models.User.FollowersCount
+- uid: Unsplasharp.Models.User.FollowingCount*
+  commentId: Overload:Unsplasharp.Models.User.FollowingCount
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_FollowingCount
+  name: FollowingCount
+  nameWithType: User.FollowingCount
+  fullName: Unsplasharp.Models.User.FollowingCount
+- uid: Unsplasharp.Models.User.Downloads*
+  commentId: Overload:Unsplasharp.Models.User.Downloads
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_Downloads
+  name: Downloads
+  nameWithType: User.Downloads
+  fullName: Unsplasharp.Models.User.Downloads
+- uid: Unsplasharp.Models.User.ProfileImage*
+  commentId: Overload:Unsplasharp.Models.User.ProfileImage
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_ProfileImage
+  name: ProfileImage
+  nameWithType: User.ProfileImage
+  fullName: Unsplasharp.Models.User.ProfileImage
+- uid: Unsplasharp.Models.ProfileImage
+  commentId: T:Unsplasharp.Models.ProfileImage
+  parent: Unsplasharp.Models
+  href: Unsplasharp.Models.ProfileImage.html
+  name: ProfileImage
+  nameWithType: ProfileImage
+  fullName: Unsplasharp.Models.ProfileImage
+- uid: Unsplasharp.Models.User.Badge*
+  commentId: Overload:Unsplasharp.Models.User.Badge
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_Badge
+  name: Badge
+  nameWithType: User.Badge
+  fullName: Unsplasharp.Models.User.Badge
+- uid: Unsplasharp.Models.Badge
+  commentId: T:Unsplasharp.Models.Badge
+  parent: Unsplasharp.Models
+  href: Unsplasharp.Models.Badge.html
+  name: Badge
+  nameWithType: Badge
+  fullName: Unsplasharp.Models.Badge
+- uid: Unsplasharp.Models.User.Links*
+  commentId: Overload:Unsplasharp.Models.User.Links
+  href: Unsplasharp.Models.User.html#Unsplasharp_Models_User_Links
+  name: Links
+  nameWithType: User.Links
+  fullName: Unsplasharp.Models.User.Links
+- uid: Unsplasharp.Models.UserLinks
+  commentId: T:Unsplasharp.Models.UserLinks
+  parent: Unsplasharp.Models
+  href: Unsplasharp.Models.UserLinks.html
+  name: UserLinks
+  nameWithType: UserLinks
+  fullName: Unsplasharp.Models.UserLinks
+- uid: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  commentId: E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  parent: System.ComponentModel.INotifyPropertyChanged
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged
+  name: PropertyChanged
+  nameWithType: INotifyPropertyChanged.PropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: System.ComponentModel.PropertyChangedEventHandler
+  commentId: T:System.ComponentModel.PropertyChangedEventHandler
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertychangedeventhandler
+  name: PropertyChangedEventHandler
+  nameWithType: PropertyChangedEventHandler
+  fullName: System.ComponentModel.PropertyChangedEventHandler

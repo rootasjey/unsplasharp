@@ -1,0 +1,1342 @@
+### YamlMime:ManagedReference
+items:
+- uid: Unsplasharp.Exceptions.ErrorContext
+  commentId: T:Unsplasharp.Exceptions.ErrorContext
+  id: ErrorContext
+  parent: Unsplasharp.Exceptions
+  children:
+  - Unsplasharp.Exceptions.ErrorContext.#ctor(System.String,System.String)
+  - Unsplasharp.Exceptions.ErrorContext.ApplicationId
+  - Unsplasharp.Exceptions.ErrorContext.CorrelationId
+  - Unsplasharp.Exceptions.ErrorContext.ElapsedTime
+  - Unsplasharp.Exceptions.ErrorContext.FromRequest(System.Net.Http.HttpRequestMessage,System.String,System.String)
+  - Unsplasharp.Exceptions.ErrorContext.FromResponse(System.Net.Http.HttpResponseMessage,System.String,System.String)
+  - Unsplasharp.Exceptions.ErrorContext.GetProperty``1(System.String)
+  - Unsplasharp.Exceptions.ErrorContext.Properties
+  - Unsplasharp.Exceptions.ErrorContext.RateLimitInfo
+  - Unsplasharp.Exceptions.ErrorContext.RequestHeaders
+  - Unsplasharp.Exceptions.ErrorContext.ResponseHeaders
+  - Unsplasharp.Exceptions.ErrorContext.RetryAttempts
+  - Unsplasharp.Exceptions.ErrorContext.Timestamp
+  - Unsplasharp.Exceptions.ErrorContext.ToSummary
+  - Unsplasharp.Exceptions.ErrorContext.WithElapsedTime(System.TimeSpan)
+  - Unsplasharp.Exceptions.ErrorContext.WithProperty(System.String,System.Object)
+  - Unsplasharp.Exceptions.ErrorContext.WithRetryAttempts(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: ErrorContext
+  nameWithType: ErrorContext
+  fullName: Unsplasharp.Exceptions.ErrorContext
+  type: Class
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: ErrorContext
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 10
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: Contains contextual information about an error for debugging and logging purposes
+  example: []
+  syntax:
+    content: public class ErrorContext
+    content.vb: Public Class ErrorContext
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Unsplasharp.Exceptions.ErrorContext.Timestamp
+  commentId: P:Unsplasharp.Exceptions.ErrorContext.Timestamp
+  id: Timestamp
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: Timestamp
+  nameWithType: ErrorContext.Timestamp
+  fullName: Unsplasharp.Exceptions.ErrorContext.Timestamp
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Timestamp
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 15
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: The timestamp when the error occurred
+  example: []
+  syntax:
+    content: public DateTimeOffset Timestamp { get; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public ReadOnly Property Timestamp As DateTimeOffset
+  overload: Unsplasharp.Exceptions.ErrorContext.Timestamp*
+- uid: Unsplasharp.Exceptions.ErrorContext.ApplicationId
+  commentId: P:Unsplasharp.Exceptions.ErrorContext.ApplicationId
+  id: ApplicationId
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: ApplicationId
+  nameWithType: ErrorContext.ApplicationId
+  fullName: Unsplasharp.Exceptions.ErrorContext.ApplicationId
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: ApplicationId
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 20
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: The application ID used for the request
+  example: []
+  syntax:
+    content: public string? ApplicationId { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property ApplicationId As String
+  overload: Unsplasharp.Exceptions.ErrorContext.ApplicationId*
+- uid: Unsplasharp.Exceptions.ErrorContext.RequestHeaders
+  commentId: P:Unsplasharp.Exceptions.ErrorContext.RequestHeaders
+  id: RequestHeaders
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: RequestHeaders
+  nameWithType: ErrorContext.RequestHeaders
+  fullName: Unsplasharp.Exceptions.ErrorContext.RequestHeaders
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: RequestHeaders
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 25
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: Request headers sent with the HTTP request
+  example: []
+  syntax:
+    content: public Dictionary<string, string> RequestHeaders { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: Public ReadOnly Property RequestHeaders As Dictionary(Of String, String)
+  overload: Unsplasharp.Exceptions.ErrorContext.RequestHeaders*
+- uid: Unsplasharp.Exceptions.ErrorContext.ResponseHeaders
+  commentId: P:Unsplasharp.Exceptions.ErrorContext.ResponseHeaders
+  id: ResponseHeaders
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: ResponseHeaders
+  nameWithType: ErrorContext.ResponseHeaders
+  fullName: Unsplasharp.Exceptions.ErrorContext.ResponseHeaders
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: ResponseHeaders
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 30
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: Response headers received from the HTTP response
+  example: []
+  syntax:
+    content: public Dictionary<string, string> ResponseHeaders { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: Public ReadOnly Property ResponseHeaders As Dictionary(Of String, String)
+  overload: Unsplasharp.Exceptions.ErrorContext.ResponseHeaders*
+- uid: Unsplasharp.Exceptions.ErrorContext.RateLimitInfo
+  commentId: P:Unsplasharp.Exceptions.ErrorContext.RateLimitInfo
+  id: RateLimitInfo
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: RateLimitInfo
+  nameWithType: ErrorContext.RateLimitInfo
+  fullName: Unsplasharp.Exceptions.ErrorContext.RateLimitInfo
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: RateLimitInfo
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 35
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: The current rate limit information
+  example: []
+  syntax:
+    content: public RateLimitInfo? RateLimitInfo { get; set; }
+    parameters: []
+    return:
+      type: Unsplasharp.Exceptions.RateLimitInfo
+    content.vb: Public Property RateLimitInfo As RateLimitInfo
+  overload: Unsplasharp.Exceptions.ErrorContext.RateLimitInfo*
+- uid: Unsplasharp.Exceptions.ErrorContext.RetryAttempts
+  commentId: P:Unsplasharp.Exceptions.ErrorContext.RetryAttempts
+  id: RetryAttempts
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: RetryAttempts
+  nameWithType: ErrorContext.RetryAttempts
+  fullName: Unsplasharp.Exceptions.ErrorContext.RetryAttempts
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: RetryAttempts
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 40
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: The number of retry attempts made
+  example: []
+  syntax:
+    content: public int RetryAttempts { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property RetryAttempts As Integer
+  overload: Unsplasharp.Exceptions.ErrorContext.RetryAttempts*
+- uid: Unsplasharp.Exceptions.ErrorContext.ElapsedTime
+  commentId: P:Unsplasharp.Exceptions.ErrorContext.ElapsedTime
+  id: ElapsedTime
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: ElapsedTime
+  nameWithType: ErrorContext.ElapsedTime
+  fullName: Unsplasharp.Exceptions.ErrorContext.ElapsedTime
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: ElapsedTime
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 45
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: The total time elapsed for the request (including retries)
+  example: []
+  syntax:
+    content: public TimeSpan? ElapsedTime { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.TimeSpan}
+    content.vb: Public ReadOnly Property ElapsedTime As TimeSpan?
+  overload: Unsplasharp.Exceptions.ErrorContext.ElapsedTime*
+- uid: Unsplasharp.Exceptions.ErrorContext.Properties
+  commentId: P:Unsplasharp.Exceptions.ErrorContext.Properties
+  id: Properties
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: Properties
+  nameWithType: ErrorContext.Properties
+  fullName: Unsplasharp.Exceptions.ErrorContext.Properties
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Properties
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 50
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: Additional custom properties for context
+  example: []
+  syntax:
+    content: public Dictionary<string, object> Properties { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Object}
+    content.vb: Public ReadOnly Property Properties As Dictionary(Of String, Object)
+  overload: Unsplasharp.Exceptions.ErrorContext.Properties*
+- uid: Unsplasharp.Exceptions.ErrorContext.CorrelationId
+  commentId: P:Unsplasharp.Exceptions.ErrorContext.CorrelationId
+  id: CorrelationId
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: CorrelationId
+  nameWithType: ErrorContext.CorrelationId
+  fullName: Unsplasharp.Exceptions.ErrorContext.CorrelationId
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: CorrelationId
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 55
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: The correlation ID for tracking requests across logs
+  example: []
+  syntax:
+    content: public string? CorrelationId { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property CorrelationId As String
+  overload: Unsplasharp.Exceptions.ErrorContext.CorrelationId*
+- uid: Unsplasharp.Exceptions.ErrorContext.#ctor(System.String,System.String)
+  commentId: M:Unsplasharp.Exceptions.ErrorContext.#ctor(System.String,System.String)
+  id: '#ctor(System.String,System.String)'
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: ErrorContext(string?, string?)
+  nameWithType: ErrorContext.ErrorContext(string?, string?)
+  fullName: Unsplasharp.Exceptions.ErrorContext.ErrorContext(string?, string?)
+  type: Constructor
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: .ctor
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 62
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: Initializes a new instance of the ErrorContext class
+  example: []
+  syntax:
+    content: public ErrorContext(string? applicationId = null, string? correlationId = null)
+    parameters:
+    - id: applicationId
+      type: System.String
+      description: The application ID
+    - id: correlationId
+      type: System.String
+      description: The correlation ID
+    content.vb: Public Sub New(applicationId As String = Nothing, correlationId As String = Nothing)
+  overload: Unsplasharp.Exceptions.ErrorContext.#ctor*
+  nameWithType.vb: ErrorContext.New(String, String)
+  fullName.vb: Unsplasharp.Exceptions.ErrorContext.New(String, String)
+  name.vb: New(String, String)
+- uid: Unsplasharp.Exceptions.ErrorContext.FromRequest(System.Net.Http.HttpRequestMessage,System.String,System.String)
+  commentId: M:Unsplasharp.Exceptions.ErrorContext.FromRequest(System.Net.Http.HttpRequestMessage,System.String,System.String)
+  id: FromRequest(System.Net.Http.HttpRequestMessage,System.String,System.String)
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: FromRequest(HttpRequestMessage, string?, string?)
+  nameWithType: ErrorContext.FromRequest(HttpRequestMessage, string?, string?)
+  fullName: Unsplasharp.Exceptions.ErrorContext.FromRequest(System.Net.Http.HttpRequestMessage, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: FromRequest
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 79
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: Creates an ErrorContext from an HTTP request message
+  example: []
+  syntax:
+    content: public static ErrorContext FromRequest(HttpRequestMessage request, string? applicationId = null, string? correlationId = null)
+    parameters:
+    - id: request
+      type: System.Net.Http.HttpRequestMessage
+      description: The HTTP request message
+    - id: applicationId
+      type: System.String
+      description: The application ID
+    - id: correlationId
+      type: System.String
+      description: The correlation ID
+    return:
+      type: Unsplasharp.Exceptions.ErrorContext
+      description: A new ErrorContext instance
+    content.vb: Public Shared Function FromRequest(request As HttpRequestMessage, applicationId As String = Nothing, correlationId As String = Nothing) As ErrorContext
+  overload: Unsplasharp.Exceptions.ErrorContext.FromRequest*
+  nameWithType.vb: ErrorContext.FromRequest(HttpRequestMessage, String, String)
+  fullName.vb: Unsplasharp.Exceptions.ErrorContext.FromRequest(System.Net.Http.HttpRequestMessage, String, String)
+  name.vb: FromRequest(HttpRequestMessage, String, String)
+- uid: Unsplasharp.Exceptions.ErrorContext.FromResponse(System.Net.Http.HttpResponseMessage,System.String,System.String)
+  commentId: M:Unsplasharp.Exceptions.ErrorContext.FromResponse(System.Net.Http.HttpResponseMessage,System.String,System.String)
+  id: FromResponse(System.Net.Http.HttpResponseMessage,System.String,System.String)
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: FromResponse(HttpResponseMessage, string?, string?)
+  nameWithType: ErrorContext.FromResponse(HttpResponseMessage, string?, string?)
+  fullName: Unsplasharp.Exceptions.ErrorContext.FromResponse(System.Net.Http.HttpResponseMessage, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: FromResponse
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 107
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: Creates an ErrorContext from an HTTP response message
+  example: []
+  syntax:
+    content: public static ErrorContext FromResponse(HttpResponseMessage response, string? applicationId = null, string? correlationId = null)
+    parameters:
+    - id: response
+      type: System.Net.Http.HttpResponseMessage
+      description: The HTTP response message
+    - id: applicationId
+      type: System.String
+      description: The application ID
+    - id: correlationId
+      type: System.String
+      description: The correlation ID
+    return:
+      type: Unsplasharp.Exceptions.ErrorContext
+      description: A new ErrorContext instance
+    content.vb: Public Shared Function FromResponse(response As HttpResponseMessage, applicationId As String = Nothing, correlationId As String = Nothing) As ErrorContext
+  overload: Unsplasharp.Exceptions.ErrorContext.FromResponse*
+  nameWithType.vb: ErrorContext.FromResponse(HttpResponseMessage, String, String)
+  fullName.vb: Unsplasharp.Exceptions.ErrorContext.FromResponse(System.Net.Http.HttpResponseMessage, String, String)
+  name.vb: FromResponse(HttpResponseMessage, String, String)
+- uid: Unsplasharp.Exceptions.ErrorContext.WithProperty(System.String,System.Object)
+  commentId: M:Unsplasharp.Exceptions.ErrorContext.WithProperty(System.String,System.Object)
+  id: WithProperty(System.String,System.Object)
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: WithProperty(string, object)
+  nameWithType: ErrorContext.WithProperty(string, object)
+  fullName: Unsplasharp.Exceptions.ErrorContext.WithProperty(string, object)
+  type: Method
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: WithProperty
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 154
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: Adds a custom property to the context
+  example: []
+  syntax:
+    content: public ErrorContext WithProperty(string key, object value)
+    parameters:
+    - id: key
+      type: System.String
+      description: The property key
+    - id: value
+      type: System.Object
+      description: The property value
+    return:
+      type: Unsplasharp.Exceptions.ErrorContext
+      description: This ErrorContext instance for method chaining
+    content.vb: Public Function WithProperty(key As String, value As Object) As ErrorContext
+  overload: Unsplasharp.Exceptions.ErrorContext.WithProperty*
+  nameWithType.vb: ErrorContext.WithProperty(String, Object)
+  fullName.vb: Unsplasharp.Exceptions.ErrorContext.WithProperty(String, Object)
+  name.vb: WithProperty(String, Object)
+- uid: Unsplasharp.Exceptions.ErrorContext.WithRetryAttempts(System.Int32)
+  commentId: M:Unsplasharp.Exceptions.ErrorContext.WithRetryAttempts(System.Int32)
+  id: WithRetryAttempts(System.Int32)
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: WithRetryAttempts(int)
+  nameWithType: ErrorContext.WithRetryAttempts(int)
+  fullName: Unsplasharp.Exceptions.ErrorContext.WithRetryAttempts(int)
+  type: Method
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: WithRetryAttempts
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 165
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: Sets the retry attempts count
+  example: []
+  syntax:
+    content: public ErrorContext WithRetryAttempts(int attempts)
+    parameters:
+    - id: attempts
+      type: System.Int32
+      description: The number of retry attempts
+    return:
+      type: Unsplasharp.Exceptions.ErrorContext
+      description: This ErrorContext instance for method chaining
+    content.vb: Public Function WithRetryAttempts(attempts As Integer) As ErrorContext
+  overload: Unsplasharp.Exceptions.ErrorContext.WithRetryAttempts*
+  nameWithType.vb: ErrorContext.WithRetryAttempts(Integer)
+  fullName.vb: Unsplasharp.Exceptions.ErrorContext.WithRetryAttempts(Integer)
+  name.vb: WithRetryAttempts(Integer)
+- uid: Unsplasharp.Exceptions.ErrorContext.WithElapsedTime(System.TimeSpan)
+  commentId: M:Unsplasharp.Exceptions.ErrorContext.WithElapsedTime(System.TimeSpan)
+  id: WithElapsedTime(System.TimeSpan)
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: WithElapsedTime(TimeSpan)
+  nameWithType: ErrorContext.WithElapsedTime(TimeSpan)
+  fullName: Unsplasharp.Exceptions.ErrorContext.WithElapsedTime(System.TimeSpan)
+  type: Method
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: WithElapsedTime
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 175
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: Sets the elapsed time
+  example: []
+  syntax:
+    content: public ErrorContext WithElapsedTime(TimeSpan elapsed)
+    parameters:
+    - id: elapsed
+      type: System.TimeSpan
+      description: The elapsed time
+    return:
+      type: Unsplasharp.Exceptions.ErrorContext
+      description: This ErrorContext instance for method chaining
+    content.vb: Public Function WithElapsedTime(elapsed As TimeSpan) As ErrorContext
+  overload: Unsplasharp.Exceptions.ErrorContext.WithElapsedTime*
+- uid: Unsplasharp.Exceptions.ErrorContext.GetProperty``1(System.String)
+  commentId: M:Unsplasharp.Exceptions.ErrorContext.GetProperty``1(System.String)
+  id: GetProperty``1(System.String)
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: GetProperty<T>(string)
+  nameWithType: ErrorContext.GetProperty<T>(string)
+  fullName: Unsplasharp.Exceptions.ErrorContext.GetProperty<T>(string)
+  type: Method
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: GetProperty
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 186
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: Gets a property value by key
+  example: []
+  syntax:
+    content: public T? GetProperty<T>(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: The property key
+    typeParameters:
+    - id: T
+      description: The expected type of the property
+    return:
+      type: '{T}'
+      description: The property value, or default(T) if not found
+    content.vb: Public Function GetProperty(Of T)(key As String) As T
+  overload: Unsplasharp.Exceptions.ErrorContext.GetProperty*
+  nameWithType.vb: ErrorContext.GetProperty(Of T)(String)
+  fullName.vb: Unsplasharp.Exceptions.ErrorContext.GetProperty(Of T)(String)
+  name.vb: GetProperty(Of T)(String)
+- uid: Unsplasharp.Exceptions.ErrorContext.ToSummary
+  commentId: M:Unsplasharp.Exceptions.ErrorContext.ToSummary
+  id: ToSummary
+  parent: Unsplasharp.Exceptions.ErrorContext
+  langs:
+  - csharp
+  - vb
+  name: ToSummary()
+  nameWithType: ErrorContext.ToSummary()
+  fullName: Unsplasharp.Exceptions.ErrorContext.ToSummary()
+  type: Method
+  source:
+    remote:
+      path: src/unsplasharp/Source/Exceptions/ErrorContext.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: ToSummary
+    path: ../src/unsplasharp/Source/Exceptions/ErrorContext.cs
+    startLine: 199
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Exceptions
+  summary: Creates a summary string of the error context for logging
+  example: []
+  syntax:
+    content: public string ToSummary()
+    return:
+      type: System.String
+      description: A formatted summary string
+    content.vb: Public Function ToSummary() As String
+  overload: Unsplasharp.Exceptions.ErrorContext.ToSummary*
+references:
+- uid: Unsplasharp.Exceptions
+  commentId: N:Unsplasharp.Exceptions
+  href: Unsplasharp.html
+  name: Unsplasharp.Exceptions
+  nameWithType: Unsplasharp.Exceptions
+  fullName: Unsplasharp.Exceptions
+  spec.csharp:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Exceptions
+    name: Exceptions
+    href: Unsplasharp.Exceptions.html
+  spec.vb:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Exceptions
+    name: Exceptions
+    href: Unsplasharp.Exceptions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Unsplasharp.Exceptions.ErrorContext.Timestamp*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.Timestamp
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_Timestamp
+  name: Timestamp
+  nameWithType: ErrorContext.Timestamp
+  fullName: Unsplasharp.Exceptions.ErrorContext.Timestamp
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: Unsplasharp.Exceptions.ErrorContext.ApplicationId*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.ApplicationId
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_ApplicationId
+  name: ApplicationId
+  nameWithType: ErrorContext.ApplicationId
+  fullName: Unsplasharp.Exceptions.ErrorContext.ApplicationId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Unsplasharp.Exceptions.ErrorContext.RequestHeaders*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.RequestHeaders
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_RequestHeaders
+  name: RequestHeaders
+  nameWithType: ErrorContext.RequestHeaders
+  fullName: Unsplasharp.Exceptions.ErrorContext.RequestHeaders
+- uid: System.Collections.Generic.Dictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, string>
+  nameWithType: Dictionary<string, string>
+  fullName: System.Collections.Generic.Dictionary<string, string>
+  nameWithType.vb: Dictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, String)
+  name.vb: Dictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Unsplasharp.Exceptions.ErrorContext.ResponseHeaders*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.ResponseHeaders
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_ResponseHeaders
+  name: ResponseHeaders
+  nameWithType: ErrorContext.ResponseHeaders
+  fullName: Unsplasharp.Exceptions.ErrorContext.ResponseHeaders
+- uid: Unsplasharp.Exceptions.ErrorContext.RateLimitInfo*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.RateLimitInfo
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_RateLimitInfo
+  name: RateLimitInfo
+  nameWithType: ErrorContext.RateLimitInfo
+  fullName: Unsplasharp.Exceptions.ErrorContext.RateLimitInfo
+- uid: Unsplasharp.Exceptions.RateLimitInfo
+  commentId: T:Unsplasharp.Exceptions.RateLimitInfo
+  parent: Unsplasharp.Exceptions
+  href: Unsplasharp.Exceptions.RateLimitInfo.html
+  name: RateLimitInfo
+  nameWithType: RateLimitInfo
+  fullName: Unsplasharp.Exceptions.RateLimitInfo
+- uid: Unsplasharp.Exceptions.ErrorContext.RetryAttempts*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.RetryAttempts
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_RetryAttempts
+  name: RetryAttempts
+  nameWithType: ErrorContext.RetryAttempts
+  fullName: Unsplasharp.Exceptions.ErrorContext.RetryAttempts
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Unsplasharp.Exceptions.ErrorContext.ElapsedTime*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.ElapsedTime
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_ElapsedTime
+  name: ElapsedTime
+  nameWithType: ErrorContext.ElapsedTime
+  fullName: Unsplasharp.Exceptions.ErrorContext.ElapsedTime
+- uid: System.Nullable{System.TimeSpan}
+  commentId: T:System.Nullable{System.TimeSpan}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan?
+  nameWithType: TimeSpan?
+  fullName: System.TimeSpan?
+  spec.csharp:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+  spec.vb:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Unsplasharp.Exceptions.ErrorContext.Properties*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.Properties
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_Properties
+  name: Properties
+  nameWithType: ErrorContext.Properties
+  fullName: Unsplasharp.Exceptions.ErrorContext.Properties
+- uid: System.Collections.Generic.Dictionary{System.String,System.Object}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, object>
+  nameWithType: Dictionary<string, object>
+  fullName: System.Collections.Generic.Dictionary<string, object>
+  nameWithType.vb: Dictionary(Of String, Object)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Object)
+  name.vb: Dictionary(Of String, Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Unsplasharp.Exceptions.ErrorContext.CorrelationId*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.CorrelationId
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_CorrelationId
+  name: CorrelationId
+  nameWithType: ErrorContext.CorrelationId
+  fullName: Unsplasharp.Exceptions.ErrorContext.CorrelationId
+- uid: Unsplasharp.Exceptions.ErrorContext.#ctor*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.#ctor
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext__ctor_System_String_System_String_
+  name: ErrorContext
+  nameWithType: ErrorContext.ErrorContext
+  fullName: Unsplasharp.Exceptions.ErrorContext.ErrorContext
+  nameWithType.vb: ErrorContext.New
+  fullName.vb: Unsplasharp.Exceptions.ErrorContext.New
+  name.vb: New
+- uid: Unsplasharp.Exceptions.ErrorContext.FromRequest*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.FromRequest
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_FromRequest_System_Net_Http_HttpRequestMessage_System_String_System_String_
+  name: FromRequest
+  nameWithType: ErrorContext.FromRequest
+  fullName: Unsplasharp.Exceptions.ErrorContext.FromRequest
+- uid: System.Net.Http.HttpRequestMessage
+  commentId: T:System.Net.Http.HttpRequestMessage
+  parent: System.Net.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.http.httprequestmessage
+  name: HttpRequestMessage
+  nameWithType: HttpRequestMessage
+  fullName: System.Net.Http.HttpRequestMessage
+- uid: Unsplasharp.Exceptions.ErrorContext
+  commentId: T:Unsplasharp.Exceptions.ErrorContext
+  parent: Unsplasharp.Exceptions
+  href: Unsplasharp.Exceptions.ErrorContext.html
+  name: ErrorContext
+  nameWithType: ErrorContext
+  fullName: Unsplasharp.Exceptions.ErrorContext
+- uid: System.Net.Http
+  commentId: N:System.Net.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Net.Http
+  nameWithType: System.Net.Http
+  fullName: System.Net.Http
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Http
+    name: Http
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Http
+    name: Http
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http
+- uid: Unsplasharp.Exceptions.ErrorContext.FromResponse*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.FromResponse
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_FromResponse_System_Net_Http_HttpResponseMessage_System_String_System_String_
+  name: FromResponse
+  nameWithType: ErrorContext.FromResponse
+  fullName: Unsplasharp.Exceptions.ErrorContext.FromResponse
+- uid: System.Net.Http.HttpResponseMessage
+  commentId: T:System.Net.Http.HttpResponseMessage
+  parent: System.Net.Http
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.http.httpresponsemessage
+  name: HttpResponseMessage
+  nameWithType: HttpResponseMessage
+  fullName: System.Net.Http.HttpResponseMessage
+- uid: Unsplasharp.Exceptions.ErrorContext.WithProperty*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.WithProperty
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_WithProperty_System_String_System_Object_
+  name: WithProperty
+  nameWithType: ErrorContext.WithProperty
+  fullName: Unsplasharp.Exceptions.ErrorContext.WithProperty
+- uid: Unsplasharp.Exceptions.ErrorContext.WithRetryAttempts*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.WithRetryAttempts
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_WithRetryAttempts_System_Int32_
+  name: WithRetryAttempts
+  nameWithType: ErrorContext.WithRetryAttempts
+  fullName: Unsplasharp.Exceptions.ErrorContext.WithRetryAttempts
+- uid: Unsplasharp.Exceptions.ErrorContext.WithElapsedTime*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.WithElapsedTime
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_WithElapsedTime_System_TimeSpan_
+  name: WithElapsedTime
+  nameWithType: ErrorContext.WithElapsedTime
+  fullName: Unsplasharp.Exceptions.ErrorContext.WithElapsedTime
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: Unsplasharp.Exceptions.ErrorContext.GetProperty*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.GetProperty
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_GetProperty__1_System_String_
+  name: GetProperty
+  nameWithType: ErrorContext.GetProperty
+  fullName: Unsplasharp.Exceptions.ErrorContext.GetProperty
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  commentId: '!:T'
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Unsplasharp.Exceptions.ErrorContext.ToSummary*
+  commentId: Overload:Unsplasharp.Exceptions.ErrorContext.ToSummary
+  href: Unsplasharp.Exceptions.ErrorContext.html#Unsplasharp_Exceptions_ErrorContext_ToSummary
+  name: ToSummary
+  nameWithType: ErrorContext.ToSummary
+  fullName: Unsplasharp.Exceptions.ErrorContext.ToSummary

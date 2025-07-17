@@ -1,0 +1,115 @@
+### YamlMime:ManagedReference
+items:
+- uid: Unsplasharp.Exceptions
+  commentId: N:Unsplasharp.Exceptions
+  id: Unsplasharp.Exceptions
+  children:
+  - Unsplasharp.Exceptions.ErrorContext
+  - Unsplasharp.Exceptions.RateLimitInfo
+  - Unsplasharp.Exceptions.UnsplasharpAuthenticationException
+  - Unsplasharp.Exceptions.UnsplasharpException
+  - Unsplasharp.Exceptions.UnsplasharpHttpException
+  - Unsplasharp.Exceptions.UnsplasharpNetworkException
+  - Unsplasharp.Exceptions.UnsplasharpNotFoundException
+  - Unsplasharp.Exceptions.UnsplasharpParsingException
+  - Unsplasharp.Exceptions.UnsplasharpRateLimitException
+  - Unsplasharp.Exceptions.UnsplasharpTimeoutException
+  langs:
+  - csharp
+  - vb
+  name: Unsplasharp.Exceptions
+  nameWithType: Unsplasharp.Exceptions
+  fullName: Unsplasharp.Exceptions
+  type: Namespace
+  assemblies:
+  - Unsplasharp
+references:
+- uid: Unsplasharp.Exceptions.ErrorContext
+  commentId: T:Unsplasharp.Exceptions.ErrorContext
+  parent: Unsplasharp.Exceptions
+  href: Unsplasharp.Exceptions.ErrorContext.html
+  name: ErrorContext
+  nameWithType: ErrorContext
+  fullName: Unsplasharp.Exceptions.ErrorContext
+- uid: Unsplasharp.Exceptions.RateLimitInfo
+  commentId: T:Unsplasharp.Exceptions.RateLimitInfo
+  parent: Unsplasharp.Exceptions
+  href: Unsplasharp.Exceptions.RateLimitInfo.html
+  name: RateLimitInfo
+  nameWithType: RateLimitInfo
+  fullName: Unsplasharp.Exceptions.RateLimitInfo
+- uid: Unsplasharp.Exceptions.UnsplasharpException
+  commentId: T:Unsplasharp.Exceptions.UnsplasharpException
+  parent: Unsplasharp.Exceptions
+  href: Unsplasharp.Exceptions.UnsplasharpException.html
+  name: UnsplasharpException
+  nameWithType: UnsplasharpException
+  fullName: Unsplasharp.Exceptions.UnsplasharpException
+- uid: Unsplasharp.Exceptions.UnsplasharpHttpException
+  commentId: T:Unsplasharp.Exceptions.UnsplasharpHttpException
+  parent: Unsplasharp.Exceptions
+  href: Unsplasharp.Exceptions.UnsplasharpHttpException.html
+  name: UnsplasharpHttpException
+  nameWithType: UnsplasharpHttpException
+  fullName: Unsplasharp.Exceptions.UnsplasharpHttpException
+- uid: Unsplasharp.Exceptions.UnsplasharpRateLimitException
+  commentId: T:Unsplasharp.Exceptions.UnsplasharpRateLimitException
+  href: Unsplasharp.Exceptions.UnsplasharpRateLimitException.html
+  name: UnsplasharpRateLimitException
+  nameWithType: UnsplasharpRateLimitException
+  fullName: Unsplasharp.Exceptions.UnsplasharpRateLimitException
+- uid: Unsplasharp.Exceptions.UnsplasharpAuthenticationException
+  commentId: T:Unsplasharp.Exceptions.UnsplasharpAuthenticationException
+  href: Unsplasharp.Exceptions.UnsplasharpAuthenticationException.html
+  name: UnsplasharpAuthenticationException
+  nameWithType: UnsplasharpAuthenticationException
+  fullName: Unsplasharp.Exceptions.UnsplasharpAuthenticationException
+- uid: Unsplasharp.Exceptions.UnsplasharpNotFoundException
+  commentId: T:Unsplasharp.Exceptions.UnsplasharpNotFoundException
+  href: Unsplasharp.Exceptions.UnsplasharpNotFoundException.html
+  name: UnsplasharpNotFoundException
+  nameWithType: UnsplasharpNotFoundException
+  fullName: Unsplasharp.Exceptions.UnsplasharpNotFoundException
+- uid: Unsplasharp.Exceptions.UnsplasharpParsingException
+  commentId: T:Unsplasharp.Exceptions.UnsplasharpParsingException
+  parent: Unsplasharp.Exceptions
+  href: Unsplasharp.Exceptions.UnsplasharpParsingException.html
+  name: UnsplasharpParsingException
+  nameWithType: UnsplasharpParsingException
+  fullName: Unsplasharp.Exceptions.UnsplasharpParsingException
+- uid: Unsplasharp.Exceptions.UnsplasharpNetworkException
+  commentId: T:Unsplasharp.Exceptions.UnsplasharpNetworkException
+  parent: Unsplasharp.Exceptions
+  href: Unsplasharp.Exceptions.UnsplasharpNetworkException.html
+  name: UnsplasharpNetworkException
+  nameWithType: UnsplasharpNetworkException
+  fullName: Unsplasharp.Exceptions.UnsplasharpNetworkException
+- uid: Unsplasharp.Exceptions.UnsplasharpTimeoutException
+  commentId: T:Unsplasharp.Exceptions.UnsplasharpTimeoutException
+  parent: Unsplasharp.Exceptions
+  href: Unsplasharp.Exceptions.UnsplasharpTimeoutException.html
+  name: UnsplasharpTimeoutException
+  nameWithType: UnsplasharpTimeoutException
+  fullName: Unsplasharp.Exceptions.UnsplasharpTimeoutException
+- uid: Unsplasharp.Exceptions
+  commentId: N:Unsplasharp.Exceptions
+  href: Unsplasharp.html
+  name: Unsplasharp.Exceptions
+  nameWithType: Unsplasharp.Exceptions
+  fullName: Unsplasharp.Exceptions
+  spec.csharp:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Exceptions
+    name: Exceptions
+    href: Unsplasharp.Exceptions.html
+  spec.vb:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Exceptions
+    name: Exceptions
+    href: Unsplasharp.Exceptions.html

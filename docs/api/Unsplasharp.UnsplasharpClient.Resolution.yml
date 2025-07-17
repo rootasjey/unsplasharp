@@ -1,0 +1,89 @@
+### YamlMime:ManagedReference
+items:
+- uid: Unsplasharp.UnsplasharpClient.Resolution
+  commentId: T:Unsplasharp.UnsplasharpClient.Resolution
+  id: UnsplasharpClient.Resolution
+  parent: Unsplasharp
+  children:
+  - Unsplasharp.UnsplasharpClient.Resolution.Days
+  langs:
+  - csharp
+  - vb
+  name: UnsplasharpClient.Resolution
+  nameWithType: UnsplasharpClient.Resolution
+  fullName: Unsplasharp.UnsplasharpClient.Resolution
+  type: Enum
+  source:
+    remote:
+      path: src/unsplasharp/Source/UnsplasharpClient.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Resolution
+    path: ../src/unsplasharp/Source/UnsplasharpClient.cs
+    startLine: 188
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp
+  summary: The frequency of the stats.
+  example: []
+  syntax:
+    content: public enum UnsplasharpClient.Resolution
+    content.vb: Public Enum UnsplasharpClient.Resolution
+- uid: Unsplasharp.UnsplasharpClient.Resolution.Days
+  commentId: F:Unsplasharp.UnsplasharpClient.Resolution.Days
+  id: Days
+  parent: Unsplasharp.UnsplasharpClient.Resolution
+  langs:
+  - csharp
+  - vb
+  name: Days
+  nameWithType: UnsplasharpClient.Resolution.Days
+  fullName: Unsplasharp.UnsplasharpClient.Resolution.Days
+  type: Field
+  source:
+    remote:
+      path: src/unsplasharp/Source/UnsplasharpClient.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Days
+    path: ../src/unsplasharp/Source/UnsplasharpClient.cs
+    startLine: 192
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp
+  summary: Stats for each day.
+  example: []
+  syntax:
+    content: Days = 0
+    return:
+      type: Unsplasharp.UnsplasharpClient.Resolution
+references:
+- uid: Unsplasharp
+  commentId: N:Unsplasharp
+  href: Unsplasharp.html
+  name: Unsplasharp
+  nameWithType: Unsplasharp
+  fullName: Unsplasharp
+- uid: Unsplasharp.UnsplasharpClient.Resolution
+  commentId: T:Unsplasharp.UnsplasharpClient.Resolution
+  parent: Unsplasharp
+  href: Unsplasharp.UnsplasharpClient.html
+  name: UnsplasharpClient.Resolution
+  nameWithType: UnsplasharpClient.Resolution
+  fullName: Unsplasharp.UnsplasharpClient.Resolution
+  spec.csharp:
+  - uid: Unsplasharp.UnsplasharpClient
+    name: UnsplasharpClient
+    href: Unsplasharp.UnsplasharpClient.html
+  - name: .
+  - uid: Unsplasharp.UnsplasharpClient.Resolution
+    name: Resolution
+    href: Unsplasharp.UnsplasharpClient.Resolution.html
+  spec.vb:
+  - uid: Unsplasharp.UnsplasharpClient
+    name: UnsplasharpClient
+    href: Unsplasharp.UnsplasharpClient.html
+  - name: .
+  - uid: Unsplasharp.UnsplasharpClient.Resolution
+    name: Resolution
+    href: Unsplasharp.UnsplasharpClient.Resolution.html

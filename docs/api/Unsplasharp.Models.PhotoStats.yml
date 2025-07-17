@@ -1,0 +1,470 @@
+### YamlMime:ManagedReference
+items:
+- uid: Unsplasharp.Models.PhotoStats
+  commentId: T:Unsplasharp.Models.PhotoStats
+  id: PhotoStats
+  parent: Unsplasharp.Models
+  children:
+  - Unsplasharp.Models.PhotoStats.Downloads
+  - Unsplasharp.Models.PhotoStats.Id
+  - Unsplasharp.Models.PhotoStats.Likes
+  - Unsplasharp.Models.PhotoStats.Views
+  langs:
+  - csharp
+  - vb
+  name: PhotoStats
+  nameWithType: PhotoStats
+  fullName: Unsplasharp.Models.PhotoStats
+  type: Class
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/PhotoStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: PhotoStats
+    path: ../src/unsplasharp/Source/Models/PhotoStats.cs
+    startLine: 4
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Photo's statistics.
+  example: []
+  syntax:
+    content: public class PhotoStats
+    content.vb: Public Class PhotoStats
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Unsplasharp.Models.PhotoStats.Id
+  commentId: P:Unsplasharp.Models.PhotoStats.Id
+  id: Id
+  parent: Unsplasharp.Models.PhotoStats
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: PhotoStats.Id
+  fullName: Unsplasharp.Models.PhotoStats.Id
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/PhotoStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Id
+    path: ../src/unsplasharp/Source/Models/PhotoStats.cs
+    startLine: 8
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Photo's statistics id.
+  example: []
+  syntax:
+    content: public string Id { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Id As String
+  overload: Unsplasharp.Models.PhotoStats.Id*
+- uid: Unsplasharp.Models.PhotoStats.Downloads
+  commentId: P:Unsplasharp.Models.PhotoStats.Downloads
+  id: Downloads
+  parent: Unsplasharp.Models.PhotoStats
+  langs:
+  - csharp
+  - vb
+  name: Downloads
+  nameWithType: PhotoStats.Downloads
+  fullName: Unsplasharp.Models.PhotoStats.Downloads
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/PhotoStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Downloads
+    path: ../src/unsplasharp/Source/Models/PhotoStats.cs
+    startLine: 13
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Photo's downloads statistics.
+  example: []
+  syntax:
+    content: public StatsData Downloads { get; set; }
+    parameters: []
+    return:
+      type: Unsplasharp.Models.StatsData
+    content.vb: Public Property Downloads As StatsData
+  overload: Unsplasharp.Models.PhotoStats.Downloads*
+- uid: Unsplasharp.Models.PhotoStats.Views
+  commentId: P:Unsplasharp.Models.PhotoStats.Views
+  id: Views
+  parent: Unsplasharp.Models.PhotoStats
+  langs:
+  - csharp
+  - vb
+  name: Views
+  nameWithType: PhotoStats.Views
+  fullName: Unsplasharp.Models.PhotoStats.Views
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/PhotoStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Views
+    path: ../src/unsplasharp/Source/Models/PhotoStats.cs
+    startLine: 18
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Photo's views statistics.
+  example: []
+  syntax:
+    content: public StatsData Views { get; set; }
+    parameters: []
+    return:
+      type: Unsplasharp.Models.StatsData
+    content.vb: Public Property Views As StatsData
+  overload: Unsplasharp.Models.PhotoStats.Views*
+- uid: Unsplasharp.Models.PhotoStats.Likes
+  commentId: P:Unsplasharp.Models.PhotoStats.Likes
+  id: Likes
+  parent: Unsplasharp.Models.PhotoStats
+  langs:
+  - csharp
+  - vb
+  name: Likes
+  nameWithType: PhotoStats.Likes
+  fullName: Unsplasharp.Models.PhotoStats.Likes
+  type: Property
+  source:
+    remote:
+      path: src/unsplasharp/Source/Models/PhotoStats.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Likes
+    path: ../src/unsplasharp/Source/Models/PhotoStats.cs
+    startLine: 23
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Models
+  summary: Photo's likes statistics.
+  example: []
+  syntax:
+    content: public StatsData Likes { get; set; }
+    parameters: []
+    return:
+      type: Unsplasharp.Models.StatsData
+    content.vb: Public Property Likes As StatsData
+  overload: Unsplasharp.Models.PhotoStats.Likes*
+references:
+- uid: Unsplasharp.Models
+  commentId: N:Unsplasharp.Models
+  href: Unsplasharp.html
+  name: Unsplasharp.Models
+  nameWithType: Unsplasharp.Models
+  fullName: Unsplasharp.Models
+  spec.csharp:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Models
+    name: Models
+    href: Unsplasharp.Models.html
+  spec.vb:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Models
+    name: Models
+    href: Unsplasharp.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Unsplasharp.Models.PhotoStats.Id*
+  commentId: Overload:Unsplasharp.Models.PhotoStats.Id
+  href: Unsplasharp.Models.PhotoStats.html#Unsplasharp_Models_PhotoStats_Id
+  name: Id
+  nameWithType: PhotoStats.Id
+  fullName: Unsplasharp.Models.PhotoStats.Id
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Unsplasharp.Models.PhotoStats.Downloads*
+  commentId: Overload:Unsplasharp.Models.PhotoStats.Downloads
+  href: Unsplasharp.Models.PhotoStats.html#Unsplasharp_Models_PhotoStats_Downloads
+  name: Downloads
+  nameWithType: PhotoStats.Downloads
+  fullName: Unsplasharp.Models.PhotoStats.Downloads
+- uid: Unsplasharp.Models.StatsData
+  commentId: T:Unsplasharp.Models.StatsData
+  parent: Unsplasharp.Models
+  href: Unsplasharp.Models.StatsData.html
+  name: StatsData
+  nameWithType: StatsData
+  fullName: Unsplasharp.Models.StatsData
+- uid: Unsplasharp.Models.PhotoStats.Views*
+  commentId: Overload:Unsplasharp.Models.PhotoStats.Views
+  href: Unsplasharp.Models.PhotoStats.html#Unsplasharp_Models_PhotoStats_Views
+  name: Views
+  nameWithType: PhotoStats.Views
+  fullName: Unsplasharp.Models.PhotoStats.Views
+- uid: Unsplasharp.Models.PhotoStats.Likes*
+  commentId: Overload:Unsplasharp.Models.PhotoStats.Likes
+  href: Unsplasharp.Models.PhotoStats.html#Unsplasharp_Models_PhotoStats_Likes
+  name: Likes
+  nameWithType: PhotoStats.Likes
+  fullName: Unsplasharp.Models.PhotoStats.Likes

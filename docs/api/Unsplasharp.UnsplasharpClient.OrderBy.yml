@@ -1,0 +1,147 @@
+### YamlMime:ManagedReference
+items:
+- uid: Unsplasharp.UnsplasharpClient.OrderBy
+  commentId: T:Unsplasharp.UnsplasharpClient.OrderBy
+  id: UnsplasharpClient.OrderBy
+  parent: Unsplasharp
+  children:
+  - Unsplasharp.UnsplasharpClient.OrderBy.Latest
+  - Unsplasharp.UnsplasharpClient.OrderBy.Oldest
+  - Unsplasharp.UnsplasharpClient.OrderBy.Popular
+  langs:
+  - csharp
+  - vb
+  name: UnsplasharpClient.OrderBy
+  nameWithType: UnsplasharpClient.OrderBy
+  fullName: Unsplasharp.UnsplasharpClient.OrderBy
+  type: Enum
+  source:
+    remote:
+      path: src/unsplasharp/Source/UnsplasharpClient.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: OrderBy
+    path: ../src/unsplasharp/Source/UnsplasharpClient.cs
+    startLine: 148
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp
+  summary: How to sort the data.
+  example: []
+  syntax:
+    content: public enum UnsplasharpClient.OrderBy
+    content.vb: Public Enum UnsplasharpClient.OrderBy
+- uid: Unsplasharp.UnsplasharpClient.OrderBy.Latest
+  commentId: F:Unsplasharp.UnsplasharpClient.OrderBy.Latest
+  id: Latest
+  parent: Unsplasharp.UnsplasharpClient.OrderBy
+  langs:
+  - csharp
+  - vb
+  name: Latest
+  nameWithType: UnsplasharpClient.OrderBy.Latest
+  fullName: Unsplasharp.UnsplasharpClient.OrderBy.Latest
+  type: Field
+  source:
+    remote:
+      path: src/unsplasharp/Source/UnsplasharpClient.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Latest
+    path: ../src/unsplasharp/Source/UnsplasharpClient.cs
+    startLine: 152
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp
+  summary: Sort the data from the most recent to the oldest.
+  example: []
+  syntax:
+    content: Latest = 0
+    return:
+      type: Unsplasharp.UnsplasharpClient.OrderBy
+- uid: Unsplasharp.UnsplasharpClient.OrderBy.Oldest
+  commentId: F:Unsplasharp.UnsplasharpClient.OrderBy.Oldest
+  id: Oldest
+  parent: Unsplasharp.UnsplasharpClient.OrderBy
+  langs:
+  - csharp
+  - vb
+  name: Oldest
+  nameWithType: UnsplasharpClient.OrderBy.Oldest
+  fullName: Unsplasharp.UnsplasharpClient.OrderBy.Oldest
+  type: Field
+  source:
+    remote:
+      path: src/unsplasharp/Source/UnsplasharpClient.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Oldest
+    path: ../src/unsplasharp/Source/UnsplasharpClient.cs
+    startLine: 157
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp
+  summary: Sort the data from the the oldest to the most recent.
+  example: []
+  syntax:
+    content: Oldest = 1
+    return:
+      type: Unsplasharp.UnsplasharpClient.OrderBy
+- uid: Unsplasharp.UnsplasharpClient.OrderBy.Popular
+  commentId: F:Unsplasharp.UnsplasharpClient.OrderBy.Popular
+  id: Popular
+  parent: Unsplasharp.UnsplasharpClient.OrderBy
+  langs:
+  - csharp
+  - vb
+  name: Popular
+  nameWithType: UnsplasharpClient.OrderBy.Popular
+  fullName: Unsplasharp.UnsplasharpClient.OrderBy.Popular
+  type: Field
+  source:
+    remote:
+      path: src/unsplasharp/Source/UnsplasharpClient.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: Popular
+    path: ../src/unsplasharp/Source/UnsplasharpClient.cs
+    startLine: 162
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp
+  summary: Sort the data from the most popular to the least.
+  example: []
+  syntax:
+    content: Popular = 2
+    return:
+      type: Unsplasharp.UnsplasharpClient.OrderBy
+references:
+- uid: Unsplasharp
+  commentId: N:Unsplasharp
+  href: Unsplasharp.html
+  name: Unsplasharp
+  nameWithType: Unsplasharp
+  fullName: Unsplasharp
+- uid: Unsplasharp.UnsplasharpClient.OrderBy
+  commentId: T:Unsplasharp.UnsplasharpClient.OrderBy
+  parent: Unsplasharp
+  href: Unsplasharp.UnsplasharpClient.html
+  name: UnsplasharpClient.OrderBy
+  nameWithType: UnsplasharpClient.OrderBy
+  fullName: Unsplasharp.UnsplasharpClient.OrderBy
+  spec.csharp:
+  - uid: Unsplasharp.UnsplasharpClient
+    name: UnsplasharpClient
+    href: Unsplasharp.UnsplasharpClient.html
+  - name: .
+  - uid: Unsplasharp.UnsplasharpClient.OrderBy
+    name: OrderBy
+    href: Unsplasharp.UnsplasharpClient.OrderBy.html
+  spec.vb:
+  - uid: Unsplasharp.UnsplasharpClient
+    name: UnsplasharpClient
+    href: Unsplasharp.UnsplasharpClient.html
+  - name: .
+  - uid: Unsplasharp.UnsplasharpClient.OrderBy
+    name: OrderBy
+    href: Unsplasharp.UnsplasharpClient.OrderBy.html

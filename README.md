@@ -23,6 +23,23 @@ This library has been enhanced with modern .NET practices and reliability featur
 
 * Missing [user's authentication actions](https://unsplash.com/documentation#user-authentication)
 
+## 📖 Documentation
+
+Comprehensive documentation is available with guides for all experience levels:
+
+- **[📚 Complete Documentation Hub](docs/index.md)** - Start here for everything
+- **[🚀 Getting Started Guide](docs/docs/getting-started.md)** - Step-by-step setup and examples
+- **[🔍 API Reference](docs/api-reference.md)** - Complete method documentation
+- **[💡 Code Examples](docs/code-examples.md)** - Practical examples and recipes
+- **[⚡ Quick Reference](docs/quick-reference.md)** - Fast reference for common operations
+
+### Quick Navigation
+- **New to Unsplasharp?** → [Getting Started](docs/docs/getting-started.md)
+- **Need specific examples?** → [Code Examples](docs/code-examples.md)
+- **Having issues?** → [Error Handling Guide](docs/error-handling.md)
+- **Building for production?** → [Best Practices](docs/testing-best-practices.md)
+- **Upgrading versions?** → [Migration Guide](docs/migration-guide.md)
+
 ## Installation
 
 [NuGet](https://www.nuget.org/packages/unsplasharp.api/): ```Install-Package unsplasharp.api```

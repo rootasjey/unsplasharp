@@ -1,0 +1,550 @@
+### YamlMime:ManagedReference
+items:
+- uid: Unsplasharp.Extensions.ServiceCollectionExtensions
+  commentId: T:Unsplasharp.Extensions.ServiceCollectionExtensions
+  id: ServiceCollectionExtensions
+  parent: Unsplasharp.Extensions
+  children:
+  - Unsplasharp.Extensions.ServiceCollectionExtensions.AddUnsplasharp(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Unsplasharp.Extensions.UnsplasharpOptions})
+  - Unsplasharp.Extensions.ServiceCollectionExtensions.AddUnsplasharp(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.Action{System.Net.Http.HttpClient})
+  langs:
+  - csharp
+  - vb
+  name: ServiceCollectionExtensions
+  nameWithType: ServiceCollectionExtensions
+  fullName: Unsplasharp.Extensions.ServiceCollectionExtensions
+  type: Class
+  source:
+    remote:
+      path: src/unsplasharp/Source/Extensions/ServiceCollectionExtensions.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: ServiceCollectionExtensions
+    path: ../src/unsplasharp/Source/Extensions/ServiceCollectionExtensions.cs
+    startLine: 12
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Extensions
+  summary: Extension methods for configuring Unsplasharp with IServiceCollection
+  example: []
+  syntax:
+    content: public static class ServiceCollectionExtensions
+    content.vb: Public Module ServiceCollectionExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Unsplasharp.Extensions.ServiceCollectionExtensions.AddUnsplasharp(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.Action{System.Net.Http.HttpClient})
+  commentId: M:Unsplasharp.Extensions.ServiceCollectionExtensions.AddUnsplasharp(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.Action{System.Net.Http.HttpClient})
+  id: AddUnsplasharp(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.Action{System.Net.Http.HttpClient})
+  isExtensionMethod: true
+  parent: Unsplasharp.Extensions.ServiceCollectionExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddUnsplasharp(IServiceCollection, string, string?, Action<HttpClient>?)
+  nameWithType: ServiceCollectionExtensions.AddUnsplasharp(IServiceCollection, string, string?, Action<HttpClient>?)
+  fullName: Unsplasharp.Extensions.ServiceCollectionExtensions.AddUnsplasharp(Microsoft.Extensions.DependencyInjection.IServiceCollection, string, string?, System.Action<System.Net.Http.HttpClient>?)
+  type: Method
+  source:
+    remote:
+      path: src/unsplasharp/Source/Extensions/ServiceCollectionExtensions.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: AddUnsplasharp
+    path: ../src/unsplasharp/Source/Extensions/ServiceCollectionExtensions.cs
+    startLine: 22
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Extensions
+  summary: Adds Unsplasharp client to the service collection with IHttpClientFactory support
+  example: []
+  syntax:
+    content: public static IServiceCollection AddUnsplasharp(this IServiceCollection services, string applicationId, string? secret = null, Action<HttpClient>? configureHttpClient = null)
+    parameters:
+    - id: services
+      type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+      description: The service collection
+    - id: applicationId
+      type: System.String
+      description: Unsplash application ID
+    - id: secret
+      type: System.String
+      description: Optional secret for authenticated requests
+    - id: configureHttpClient
+      type: System.Action{System.Net.Http.HttpClient}
+      description: Optional action to configure the HttpClient
+    return:
+      type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+      description: The service collection for chaining
+    content.vb: Public Shared Function AddUnsplasharp(services As IServiceCollection, applicationId As String, secret As String = Nothing, configureHttpClient As Action(Of HttpClient) = Nothing) As IServiceCollection
+  overload: Unsplasharp.Extensions.ServiceCollectionExtensions.AddUnsplasharp*
+  nameWithType.vb: ServiceCollectionExtensions.AddUnsplasharp(IServiceCollection, String, String, Action(Of HttpClient))
+  fullName.vb: Unsplasharp.Extensions.ServiceCollectionExtensions.AddUnsplasharp(Microsoft.Extensions.DependencyInjection.IServiceCollection, String, String, System.Action(Of System.Net.Http.HttpClient))
+  name.vb: AddUnsplasharp(IServiceCollection, String, String, Action(Of HttpClient))
+- uid: Unsplasharp.Extensions.ServiceCollectionExtensions.AddUnsplasharp(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Unsplasharp.Extensions.UnsplasharpOptions})
+  commentId: M:Unsplasharp.Extensions.ServiceCollectionExtensions.AddUnsplasharp(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Unsplasharp.Extensions.UnsplasharpOptions})
+  id: AddUnsplasharp(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Unsplasharp.Extensions.UnsplasharpOptions})
+  isExtensionMethod: true
+  parent: Unsplasharp.Extensions.ServiceCollectionExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddUnsplasharp(IServiceCollection, Action<UnsplasharpOptions>)
+  nameWithType: ServiceCollectionExtensions.AddUnsplasharp(IServiceCollection, Action<UnsplasharpOptions>)
+  fullName: Unsplasharp.Extensions.ServiceCollectionExtensions.AddUnsplasharp(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Action<Unsplasharp.Extensions.UnsplasharpOptions>)
+  type: Method
+  source:
+    remote:
+      path: src/unsplasharp/Source/Extensions/ServiceCollectionExtensions.cs
+      branch: master
+      repo: https://github.com/rootasjey/unsplasharp.git
+    id: AddUnsplasharp
+    path: ../src/unsplasharp/Source/Extensions/ServiceCollectionExtensions.cs
+    startLine: 65
+  assemblies:
+  - Unsplasharp
+  namespace: Unsplasharp.Extensions
+  summary: Adds Unsplasharp client to the service collection with custom configuration
+  example: []
+  syntax:
+    content: public static IServiceCollection AddUnsplasharp(this IServiceCollection services, Action<UnsplasharpOptions> configure)
+    parameters:
+    - id: services
+      type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+      description: The service collection
+    - id: configure
+      type: System.Action{Unsplasharp.Extensions.UnsplasharpOptions}
+      description: Configuration action
+    return:
+      type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+      description: The service collection for chaining
+    content.vb: Public Shared Function AddUnsplasharp(services As IServiceCollection, configure As Action(Of UnsplasharpOptions)) As IServiceCollection
+  overload: Unsplasharp.Extensions.ServiceCollectionExtensions.AddUnsplasharp*
+  nameWithType.vb: ServiceCollectionExtensions.AddUnsplasharp(IServiceCollection, Action(Of UnsplasharpOptions))
+  fullName.vb: Unsplasharp.Extensions.ServiceCollectionExtensions.AddUnsplasharp(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Action(Of Unsplasharp.Extensions.UnsplasharpOptions))
+  name.vb: AddUnsplasharp(IServiceCollection, Action(Of UnsplasharpOptions))
+references:
+- uid: Unsplasharp.Extensions
+  commentId: N:Unsplasharp.Extensions
+  href: Unsplasharp.html
+  name: Unsplasharp.Extensions
+  nameWithType: Unsplasharp.Extensions
+  fullName: Unsplasharp.Extensions
+  spec.csharp:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Extensions
+    name: Extensions
+    href: Unsplasharp.Extensions.html
+  spec.vb:
+  - uid: Unsplasharp
+    name: Unsplasharp
+    href: Unsplasharp.html
+  - name: .
+  - uid: Unsplasharp.Extensions
+    name: Extensions
+    href: Unsplasharp.Extensions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Unsplasharp.Extensions.ServiceCollectionExtensions.AddUnsplasharp*
+  commentId: Overload:Unsplasharp.Extensions.ServiceCollectionExtensions.AddUnsplasharp
+  href: Unsplasharp.Extensions.ServiceCollectionExtensions.html#Unsplasharp_Extensions_ServiceCollectionExtensions_AddUnsplasharp_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_System_Action_System_Net_Http_HttpClient__
+  name: AddUnsplasharp
+  nameWithType: ServiceCollectionExtensions.AddUnsplasharp
+  fullName: Unsplasharp.Extensions.ServiceCollectionExtensions.AddUnsplasharp
+- uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+  commentId: T:Microsoft.Extensions.DependencyInjection.IServiceCollection
+  parent: Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  name: IServiceCollection
+  nameWithType: IServiceCollection
+  fullName: Microsoft.Extensions.DependencyInjection.IServiceCollection
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Action{System.Net.Http.HttpClient}
+  commentId: T:System.Action{System.Net.Http.HttpClient}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<HttpClient>
+  nameWithType: Action<HttpClient>
+  fullName: System.Action<System.Net.Http.HttpClient>
+  nameWithType.vb: Action(Of HttpClient)
+  fullName.vb: System.Action(Of System.Net.Http.HttpClient)
+  name.vb: Action(Of HttpClient)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Net.Http.HttpClient
+    name: HttpClient
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpclient
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Net.Http.HttpClient
+    name: HttpClient
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.http.httpclient
+  - name: )
+- uid: Microsoft.Extensions.DependencyInjection
+  commentId: N:Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.DependencyInjection
+  nameWithType: Microsoft.Extensions.DependencyInjection
+  fullName: Microsoft.Extensions.DependencyInjection
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Action{Unsplasharp.Extensions.UnsplasharpOptions}
+  commentId: T:System.Action{Unsplasharp.Extensions.UnsplasharpOptions}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<UnsplasharpOptions>
+  nameWithType: Action<UnsplasharpOptions>
+  fullName: System.Action<Unsplasharp.Extensions.UnsplasharpOptions>
+  nameWithType.vb: Action(Of UnsplasharpOptions)
+  fullName.vb: System.Action(Of Unsplasharp.Extensions.UnsplasharpOptions)
+  name.vb: Action(Of UnsplasharpOptions)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Unsplasharp.Extensions.UnsplasharpOptions
+    name: UnsplasharpOptions
+    href: Unsplasharp.Extensions.UnsplasharpOptions.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Unsplasharp.Extensions.UnsplasharpOptions
+    name: UnsplasharpOptions
+    href: Unsplasharp.Extensions.UnsplasharpOptions.html
+  - name: )
