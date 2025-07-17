@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Unsplasharp Quick Reference | Unsplasharp Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Unsplasharp Quick Reference | Unsplasharp Documentation ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/rootasjey/unsplasharp/blob/master/docs/quick-reference.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="Unsplasharp">
+            Unsplasharp
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="unsplasharp-quick-reference">Unsplasharp Quick Reference</h1>
+
+<p>Fast reference for common operations and patterns. Perfect for developers who need quick access to code snippets and method signatures.</p>
+<h2 id="-quick-setup">🚀 Quick Setup</h2>
+<pre><code class="lang-csharp">// Basic setup
+var client = new UnsplasharpClient(&quot;YOUR_APPLICATION_ID&quot;);
+
+// With dependency injection
+services.AddUnsplasharp(&quot;YOUR_APPLICATION_ID&quot;);
+
+// With logging
+var logger = loggerFactory.CreateLogger&lt;UnsplasharpClient&gt;();
+var client = new UnsplasharpClient(&quot;YOUR_APPLICATION_ID&quot;, logger: logger);
+</code></pre>
+<h2 id="-common-operations">📸 Common Operations</h2>
+<h3 id="get-random-photo">Get Random Photo</h3>
+<pre><code class="lang-csharp">// Basic
+var photo = await client.GetRandomPhotoAsync();
+
+// With query
+var photo = await client.GetRandomPhotoAsync(query: &quot;nature&quot;);
+
+// With filters
+var photo = await client.GetRandomPhotoAsync(
+    query: &quot;landscape&quot;, 
+    orientation: Orientation.Landscape
+);
+</code></pre>
+<h3 id="search-photos">Search Photos</h3>
+<pre><code class="lang-csharp">// Basic search
+var photos = await client.SearchPhotosAsync(&quot;mountain&quot;);
+
+// Advanced search
+var photos = await client.SearchPhotosAsync(
+    query: &quot;sunset beach&quot;,
+    page: 1,
+    perPage: 20,
+    orderBy: OrderBy.Popular,
+    color: &quot;orange&quot;,
+    orientation: Orientation.Landscape
+);
+</code></pre>
+<h3 id="get-specific-photo">Get Specific Photo</h3>
+<pre><code class="lang-csharp">// By ID
+var photo = await client.GetPhotoAsync(&quot;photo-id&quot;);
+
+// With custom size
+var photo = await client.GetPhoto(&quot;photo-id&quot;, width: 800, height: 600);
+</code></pre>
+<h3 id="get-user-information">Get User Information</h3>
+<pre><code class="lang-csharp">// User profile
+var user = await client.GetUserAsync(&quot;username&quot;);
+
+// User's photos
+var photos = await client.GetUserPhotosAsync(&quot;username&quot;, perPage: 20);
+
+// User's likes
+var likes = await client.GetUserLikesAsync(&quot;username&quot;);
+</code></pre>
+<h3 id="collections">Collections</h3>
+<pre><code class="lang-csharp">// Get collection
+var collection = await client.GetCollectionAsync(&quot;collection-id&quot;);
+
+// Collection photos
+var photos = await client.GetCollectionPhotosAsync(&quot;collection-id&quot;);
+
+// Search collections
+var collections = await client.SearchCollectionsAsync(&quot;travel&quot;);
+</code></pre>
+<h2 id="-error-handling">⚠️ Error Handling</h2>
+<h3 id="basic-pattern">Basic Pattern</h3>
+<pre><code class="lang-csharp">try
+{
+    var photo = await client.GetPhotoAsync(&quot;photo-id&quot;);
+    // Success
+}
+catch (UnsplasharpNotFoundException)
+{
+    // Photo not found
+}
+catch (UnsplasharpRateLimitException ex)
+{
+    // Rate limited - wait until ex.RateLimitReset
+}
+catch (UnsplasharpException ex)
+{
+    // Other API errors
+}
+</code></pre>
+<h3 id="exception-types">Exception Types</h3>
+<ul>
+<li><code>UnsplasharpNotFoundException</code> - Resource not found (404)</li>
+<li><code>UnsplasharpRateLimitException</code> - Rate limit exceeded (429)</li>
+<li><code>UnsplasharpAuthenticationException</code> - Invalid API key (401)</li>
+<li><code>UnsplasharpNetworkException</code> - Network/connection issues</li>
+<li><code>UnsplasharpTimeoutException</code> - Request timeout</li>
+<li><code>UnsplasharpException</code> - Base exception type</li>
+</ul>
+<h2 id="-rate-limiting">🔄 Rate Limiting</h2>
+<h3 id="check-rate-limit">Check Rate Limit</h3>
+<pre><code class="lang-csharp">Console.WriteLine($&quot;Rate limit: {client.RateLimitRemaining}/{client.MaxRateLimit}&quot;);
+</code></pre>
+<h3 id="handle-rate-limits">Handle Rate Limits</h3>
+<pre><code class="lang-csharp">try
+{
+    var photos = await client.SearchPhotosAsync(&quot;nature&quot;);
+}
+catch (UnsplasharpRateLimitException ex)
+{
+    var waitTime = ex.TimeUntilReset ?? TimeSpan.FromMinutes(1);
+    await Task.Delay(waitTime);
+    // Retry request
+}
+</code></pre>
+<h2 id="-data-models">📊 Data Models</h2>
+<h3 id="photo-properties">Photo Properties</h3>
+<pre><code class="lang-csharp">photo.Id              // Unique identifier
+photo.Description     // Photo description
+photo.Width           // Width in pixels
+photo.Height          // Height in pixels
+photo.Color           // Dominant color (hex)
+photo.Likes           // Like count
+photo.Downloads       // Download count
+photo.User            // Photographer info
+photo.Urls            // Different sizes
+photo.Exif            // Camera data
+photo.Location        // GPS location
+</code></pre>
+<h3 id="photo-urls">Photo URLs</h3>
+<pre><code class="lang-csharp">photo.Urls.Thumbnail  // ~200px
+photo.Urls.Small      // ~400px
+photo.Urls.Regular    // ~1080px
+photo.Urls.Full       // ~2048px
+photo.Urls.Raw        // Original size
+</code></pre>
+<h3 id="user-properties">User Properties</h3>
+<pre><code class="lang-csharp">user.Id               // Unique identifier
+user.Username         // Username
+user.Name             // Display name
+user.Bio              // Biography
+user.Location         // Location
+user.TotalPhotos      // Photo count
+user.TotalLikes       // Likes received
+user.ProfileImage     // Avatar URLs
+</code></pre>
+<h2 id="-search-parameters">🔍 Search Parameters</h2>
+<h3 id="common-parameters">Common Parameters</h3>
+<pre><code class="lang-csharp">query: &quot;search term&quot;           // Search query
+page: 1                        // Page number (1-based)
+perPage: 20                    // Results per page (max 30)
+orderBy: OrderBy.Popular       // Latest, Oldest, Popular, Relevant
+</code></pre>
+<h3 id="photo-search-filters">Photo Search Filters</h3>
+<pre><code class="lang-csharp">color: &quot;blue&quot;                  // Color filter
+orientation: Orientation.Landscape  // Landscape, Portrait, Squarish
+contentFilter: &quot;high&quot;          // Content safety (low, high)
+</code></pre>
+<h3 id="orientation-options">Orientation Options</h3>
+<ul>
+<li><code>Orientation.All</code> - All orientations</li>
+<li><code>Orientation.Landscape</code> - Landscape only</li>
+<li><code>Orientation.Portrait</code> - Portrait only</li>
+<li><code>Orientation.Squarish</code> - Square-ish only</li>
+</ul>
+<h3 id="order-options">Order Options</h3>
+<ul>
+<li><code>OrderBy.Latest</code> - Most recent first</li>
+<li><code>OrderBy.Oldest</code> - Oldest first</li>
+<li><code>OrderBy.Popular</code> - Most popular first</li>
+<li><code>OrderBy.Relevant</code> - Most relevant (search only)</li>
+</ul>
+<h2 id="-caching-example">💾 Caching Example</h2>
+<pre><code class="lang-csharp">public class CachedPhotoService
+{
+    private readonly UnsplasharpClient _client;
+    private readonly IMemoryCache _cache;
+
+    public async Task&lt;Photo?&gt; GetPhotoAsync(string photoId)
+    {
+        var cacheKey = $&quot;photo:{photoId}&quot;;
+        
+        if (_cache.TryGetValue(cacheKey, out Photo cachedPhoto))
+            return cachedPhoto;
+
+        try
+        {
+            var photo = await _client.GetPhotoAsync(photoId);
+            _cache.Set(cacheKey, photo, TimeSpan.FromHours(1));
+            return photo;
+        }
+        catch (UnsplasharpNotFoundException)
+        {
+            _cache.Set(cacheKey, (Photo?)null, TimeSpan.FromMinutes(5));
+            return null;
+        }
+    }
+}
+</code></pre>
+<h2 id="-configuration">🔧 Configuration</h2>
+<h3 id="aspnet-core-setup">ASP.NET Core Setup</h3>
+<pre><code class="lang-csharp">// Program.cs
+services.AddUnsplasharp(options =&gt;
+{
+    options.ApplicationId = Configuration[&quot;Unsplash:ApplicationId&quot;];
+    options.ConfigureHttpClient = client =&gt;
+    {
+        client.Timeout = TimeSpan.FromSeconds(30);
+    };
+});
+</code></pre>
+<h3 id="appsettingsjson">appsettings.json</h3>
+<pre><code class="lang-json">{
+  &quot;Unsplash&quot;: {
+    &quot;ApplicationId&quot;: &quot;your-app-id-here&quot;
+  }
+}
+</code></pre>
+<h2 id="-download-images">📥 Download Images</h2>
+<pre><code class="lang-csharp">public async Task DownloadPhoto(Photo photo, string filePath)
+{
+    using var httpClient = new HttpClient();
+    var imageBytes = await httpClient.GetByteArrayAsync(photo.Urls.Regular);
+    await File.WriteAllBytesAsync(filePath, imageBytes);
+}
+</code></pre>
+<h2 id="-pagination">🔄 Pagination</h2>
+<pre><code class="lang-csharp">public async Task&lt;List&lt;Photo&gt;&gt; GetAllPhotos(string query, int maxPhotos = 100)
+{
+    var allPhotos = new List&lt;Photo&gt;();
+    var page = 1;
+    var perPage = 30;
+
+    while (allPhotos.Count &lt; maxPhotos)
+    {
+        var photos = await client.SearchPhotosAsync(query, page: page, perPage: perPage);
+        
+        if (photos.Count == 0) break;
+        
+        allPhotos.AddRange(photos);
+        page++;
+        
+        // Rate limiting courtesy delay
+        await Task.Delay(100);
+    }
+
+    return allPhotos.Take(maxPhotos).ToList();
+}
+</code></pre>
+<h2 id="-testing">🧪 Testing</h2>
+<h3 id="unit-test-example">Unit Test Example</h3>
+<pre><code class="lang-csharp">[Test]
+public async Task GetPhoto_WithValidId_ReturnsPhoto()
+{
+    // Arrange
+    var mockClient = new Mock&lt;UnsplasharpClient&gt;(&quot;test-app-id&quot;);
+    var expectedPhoto = new Photo { Id = &quot;test-id&quot; };
+    mockClient.Setup(c =&gt; c.GetPhotoAsync(&quot;test-id&quot;, It.IsAny&lt;CancellationToken&gt;()))
+              .ReturnsAsync(expectedPhoto);
+
+    // Act
+    var result = await mockClient.Object.GetPhotoAsync(&quot;test-id&quot;);
+
+    // Assert
+    Assert.AreEqual(&quot;test-id&quot;, result.Id);
+}
+</code></pre>
+<h2 id="-common-pitfalls">🚨 Common Pitfalls</h2>
+<h3 id="-dont-do-this">❌ Don't Do This</h3>
+<pre><code class="lang-csharp">// Don't ignore rate limits
+for (int i = 0; i &lt; 100; i++)
+{
+    await client.GetRandomPhotoAsync(); // Will hit rate limit
+}
+
+// Don't create multiple clients
+var client1 = new UnsplasharpClient(&quot;app-id&quot;);
+var client2 = new UnsplasharpClient(&quot;app-id&quot;); // Wasteful
+
+// Don't hardcode API keys
+var client = new UnsplasharpClient(&quot;hardcoded-key&quot;); // Security risk
+</code></pre>
+<h3 id="-do-this-instead">✅ Do This Instead</h3>
+<pre><code class="lang-csharp">// Handle rate limits
+try
+{
+    await client.GetRandomPhotoAsync();
+}
+catch (UnsplasharpRateLimitException ex)
+{
+    await Task.Delay(ex.TimeUntilReset ?? TimeSpan.FromMinutes(1));
+}
+
+// Use dependency injection
+services.AddUnsplasharp(&quot;app-id&quot;);
+
+// Use configuration
+var appId = Configuration[&quot;Unsplash:ApplicationId&quot;];
+var client = new UnsplasharpClient(appId);
+</code></pre>
+<h2 id="-method-signatures-quick-reference">📱 Method Signatures Quick Reference</h2>
+<pre><code class="lang-csharp">// Photos
+Task&lt;Photo&gt; GetPhotoAsync(string id, CancellationToken cancellationToken = default)
+Task&lt;Photo&gt; GetRandomPhotoAsync(CancellationToken cancellationToken = default)
+Task&lt;List&lt;Photo&gt;&gt; SearchPhotosAsync(string query, int page = 1, int perPage = 10, ...)
+Task&lt;List&lt;Photo&gt;&gt; ListPhotosAsync(int page = 1, int perPage = 10, ...)
+
+// Users
+Task&lt;User&gt; GetUserAsync(string username, CancellationToken cancellationToken = default)
+Task&lt;List&lt;Photo&gt;&gt; GetUserPhotosAsync(string username, int page = 1, int perPage = 10, ...)
+Task&lt;List&lt;Photo&gt;&gt; GetUserLikesAsync(string username, int page = 1, int perPage = 10, ...)
+
+// Collections
+Task&lt;Collection&gt; GetCollectionAsync(string id, CancellationToken cancellationToken = default)
+Task&lt;List&lt;Photo&gt;&gt; GetCollectionPhotosAsync(string collectionId, int page = 1, int perPage = 10, ...)
+Task&lt;List&lt;Collection&gt;&gt; SearchCollectionsAsync(string query, int page = 1, int perPage = 10, ...)
+
+// Statistics
+Task&lt;UnplashTotalStats&gt; GetTotalStatsAsync(CancellationToken cancellationToken = default)
+Task&lt;UnplashMonthlyStats&gt; GetMonthlyStatsAsync(CancellationToken cancellationToken = default)
+</code></pre>
+<hr>
+<p><strong>Need more details?</strong> Check the <a href="index.html">complete documentation</a> or <a href="api-reference.html">API reference</a>.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/rootasjey/unsplasharp/blob/master/docs/quick-reference.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

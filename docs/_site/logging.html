@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Logging Guide | Unsplasharp Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Logging Guide | Unsplasharp Documentation ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/rootasjey/unsplasharp/blob/master/docs/logging.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="Unsplasharp">
+            Unsplasharp
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="logging-guide">Logging Guide</h1>
+
+<p>This document explains how to use the structured logging features in Unsplasharp.</p>
+<h2 id="overview">Overview</h2>
+<p>Unsplasharp now includes built-in support for Microsoft.Extensions.Logging, providing detailed insights into:</p>
+<ul>
+<li>HTTP requests and responses</li>
+<li>Retry attempts and failures</li>
+<li>Rate limit information</li>
+<li>Error conditions and exceptions</li>
+</ul>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="basic-setup">Basic Setup</h3>
+<pre><code class="lang-csharp">using Microsoft.Extensions.Logging;
+using Unsplasharp;
+
+// Create a logger factory
+using var loggerFactory = LoggerFactory.Create(builder =&gt;
+    builder.AddConsole().SetMinimumLevel(LogLevel.Information));
+
+var logger = loggerFactory.CreateLogger&lt;UnsplasharpClient&gt;();
+
+// Create client with logging
+var client = new UnsplasharpClient(&quot;YOUR_APP_ID&quot;, logger: logger);
+</code></pre>
+<h3 id="aspnet-core-integration">ASP.NET Core Integration</h3>
+<pre><code class="lang-csharp">// In Startup.cs or Program.cs
+services.AddScoped&lt;UnsplasharpClient&gt;(provider =&gt;
+{
+    var logger = provider.GetRequiredService&lt;ILogger&lt;UnsplasharpClient&gt;&gt;();
+    return new UnsplasharpClient(&quot;YOUR_APP_ID&quot;, logger: logger);
+});
+</code></pre>
+<h2 id="log-levels">Log Levels</h2>
+<h3 id="debug-level">Debug Level</h3>
+<ul>
+<li>HTTP request URLs</li>
+<li>HttpClient creation events</li>
+<li>Rate limit status after successful requests</li>
+</ul>
+<pre><code>[Debug] Making HTTP request to https://api.unsplash.com/photos/random
+[Debug] Created new HttpClient for application ID your-app-id
+[Debug] HTTP request successful. Rate limit: 4999/5000
+</code></pre>
+<h3 id="information-level">Information Level</h3>
+<ul>
+<li>Search operations with parameters and results</li>
+<li>Photo retrieval operations</li>
+<li>High-level operation outcomes</li>
+</ul>
+<pre><code>[Information] Searching photos with query 'nature', page 1, perPage 10
+[Information] Photo search completed. Found 10 photos, total results: 1500
+[Information] Fetching random photo
+[Information] Successfully retrieved random photo with ID abc123
+</code></pre>
+<h3 id="warning-level">Warning Level</h3>
+<ul>
+<li>Retry attempts due to transient failures</li>
+<li>Timeout scenarios</li>
+<li>Failed photo retrievals</li>
+</ul>
+<pre><code>[Warning] Retrying HTTP request (attempt 2/3). Exception: The operation was canceled.
+[Warning] HTTP request timed out for URL https://api.unsplash.com/photos/random after retries
+[Warning] Failed to retrieve random photo
+</code></pre>
+<h3 id="error-level">Error Level</h3>
+<ul>
+<li>HTTP request failures after all retries</li>
+<li>Unexpected exceptions</li>
+<li>Network-related errors</li>
+</ul>
+<pre><code>[Error] HTTP request failed for URL https://api.unsplash.com/photos/random after retries
+[Error] Unexpected error during HTTP request to https://api.unsplash.com/search/photos after retries
+</code></pre>
+<h2 id="configuration-examples">Configuration Examples</h2>
+<h3 id="console-logging-with-custom-format">Console Logging with Custom Format</h3>
+<pre><code class="lang-csharp">using var loggerFactory = LoggerFactory.Create(builder =&gt;
+    builder.AddConsole(options =&gt;
+    {
+        options.IncludeScopes = true;
+        options.TimestampFormat = &quot;yyyy-MM-dd HH:mm:ss &quot;;
+    })
+    .SetMinimumLevel(LogLevel.Debug));
+</code></pre>
+<h3 id="file-logging-with-serilog">File Logging with Serilog</h3>
+<pre><code class="lang-csharp">using Serilog;
+using Microsoft.Extensions.Logging;
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.File(&quot;unsplasharp.log&quot;)
+    .CreateLogger();
+
+using var loggerFactory = LoggerFactory.Create(builder =&gt;
+    builder.AddSerilog());
+
+var logger = loggerFactory.CreateLogger&lt;UnsplasharpClient&gt;();
+var client = new UnsplasharpClient(&quot;YOUR_APP_ID&quot;, logger: logger);
+</code></pre>
+<h3 id="structured-logging-with-properties">Structured Logging with Properties</h3>
+<p>The library uses structured logging with named properties:</p>
+<pre><code class="lang-csharp">// Example log entries with structured properties
+_logger.LogInformation(&quot;Searching photos with query '{Query}', page {Page}, perPage {PerPage}&quot;, 
+    query, page, perPage);
+
+_logger.LogWarning(&quot;Retrying HTTP request (attempt {AttemptNumber}/{MaxAttempts}). Exception: {Exception}&quot;, 
+    attemptNumber, maxAttempts, exception.Message);
+</code></pre>
+<h2 id="filtering-logs">Filtering Logs</h2>
+<h3 id="by-category">By Category</h3>
+<pre><code class="lang-csharp">builder.AddFilter(&quot;Unsplasharp.UnsplasharpClient&quot;, LogLevel.Information);
+</code></pre>
+<h3 id="by-log-level">By Log Level</h3>
+<pre><code class="lang-csharp">builder.SetMinimumLevel(LogLevel.Warning); // Only warnings and errors
+</code></pre>
+<h3 id="custom-filtering">Custom Filtering</h3>
+<pre><code class="lang-csharp">builder.AddFilter((category, level) =&gt;
+    category.Contains(&quot;Unsplasharp&quot;) &amp;&amp; level &gt;= LogLevel.Information);
+</code></pre>
+<h2 id="monitoring-and-observability">Monitoring and Observability</h2>
+<h3 id="application-insights-integration">Application Insights Integration</h3>
+<pre><code class="lang-csharp">services.AddApplicationInsightsTelemetry();
+services.AddLogging(builder =&gt; builder.AddApplicationInsights());
+</code></pre>
+<h3 id="custom-log-processors">Custom Log Processors</h3>
+<pre><code class="lang-csharp">public class UnsplasharpLogProcessor : ILoggerProvider
+{
+    public ILogger CreateLogger(string categoryName)
+    {
+        if (categoryName.Contains(&quot;UnsplasharpClient&quot;))
+        {
+            return new CustomUnsplasharpLogger();
+        }
+        return NullLogger.Instance;
+    }
+    
+    public void Dispose() { }
+}
+</code></pre>
+<h2 id="performance-considerations">Performance Considerations</h2>
+<ul>
+<li>Logging is designed to have minimal performance impact</li>
+<li>Debug-level logging may affect performance in high-throughput scenarios</li>
+<li>Consider using Information level or higher in production</li>
+<li>Structured logging properties are efficiently formatted</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<ol>
+<li><strong>No logs appearing</strong>: Check log level configuration</li>
+<li><strong>Too many logs</strong>: Increase minimum log level</li>
+<li><strong>Missing retry logs</strong>: Ensure Warning level is enabled</li>
+</ol>
+<h3 id="debug-mode">Debug Mode</h3>
+<p>Enable debug logging to see detailed HTTP request information:</p>
+<pre><code class="lang-csharp">builder.SetMinimumLevel(LogLevel.Debug);
+</code></pre>
+<p>This will show:</p>
+<ul>
+<li>Exact URLs being requested</li>
+<li>HttpClient lifecycle events</li>
+<li>Rate limit information</li>
+<li>Detailed retry attempt information</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/rootasjey/unsplasharp/blob/master/docs/logging.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

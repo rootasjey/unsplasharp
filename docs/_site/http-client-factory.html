@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>IHttpClientFactory Integration Guide | Unsplasharp Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="IHttpClientFactory Integration Guide | Unsplasharp Documentation ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/rootasjey/unsplasharp/blob/master/docs/http-client-factory.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="Unsplasharp">
+            Unsplasharp
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ihttpclientfactory-integration-guide">IHttpClientFactory Integration Guide</h1>
+
+<p>This document explains how to use Unsplasharp with <code>IHttpClientFactory</code> for modern .NET applications.</p>
+<h2 id="overview">Overview</h2>
+<p>Unsplasharp now supports <code>IHttpClientFactory</code>, Microsoft's recommended pattern for managing HttpClient instances in .NET applications. This provides several benefits:</p>
+<ul>
+<li><strong>Proper HttpClient lifecycle management</strong> - Automatic DNS refresh and connection pooling</li>
+<li><strong>Dependency injection integration</strong> - Seamless integration with DI containers</li>
+<li><strong>Configuration centralization</strong> - Configure HTTP clients in one place</li>
+<li><strong>Better testability</strong> - Easy to mock and test HTTP interactions</li>
+<li><strong>Resource management</strong> - Prevents socket exhaustion and DNS issues</li>
+</ul>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="aspnet-core-integration">ASP.NET Core Integration</h3>
+<pre><code class="lang-csharp">// Program.cs or Startup.cs
+using Unsplasharp.Extensions;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add Unsplasharp with IHttpClientFactory
+builder.Services.AddUnsplasharp(&quot;YOUR_APPLICATION_ID&quot;);
+
+// Or with configuration
+builder.Services.AddUnsplasharp(options =&gt;
+{
+    options.ApplicationId = &quot;YOUR_APPLICATION_ID&quot;;
+    options.Secret = &quot;YOUR_SECRET&quot;; // Optional
+    options.ConfigureHttpClient = client =&gt;
+    {
+        client.Timeout = TimeSpan.FromSeconds(60);
+        // Add custom headers, etc.
+    };
+});
+
+var app = builder.Build();
+</code></pre>
+<h3 id="using-in-controllers">Using in Controllers</h3>
+<pre><code class="lang-csharp">[ApiController]
+[Route(&quot;api/[controller]&quot;)]
+public class PhotosController : ControllerBase
+{
+    private readonly UnsplasharpClient _unsplashClient;
+
+    public PhotosController(UnsplasharpClient unsplashClient)
+    {
+        _unsplashClient = unsplashClient;
+    }
+
+    [HttpGet(&quot;random&quot;)]
+    public async Task&lt;IActionResult&gt; GetRandomPhoto()
+    {
+        var photo = await _unsplashClient.GetRandomPhoto();
+        return Ok(photo);
+    }
+
+    [HttpGet(&quot;search&quot;)]
+    public async Task&lt;IActionResult&gt; SearchPhotos(string query, int page = 1)
+    {
+        var photos = await _unsplashClient.SearchPhotos(query, page);
+        return Ok(photos);
+    }
+}
+</code></pre>
+<h2 id="manual-configuration">Manual Configuration</h2>
+<h3 id="console-application">Console Application</h3>
+<pre><code class="lang-csharp">using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Unsplasharp;
+using Unsplasharp.Extensions;
+
+var host = Host.CreateDefaultBuilder(args)
+    .ConfigureServices((context, services) =&gt;
+    {
+        // Add logging
+        services.AddLogging(builder =&gt; builder.AddConsole());
+        
+        // Add Unsplasharp
+        services.AddUnsplasharp(&quot;YOUR_APPLICATION_ID&quot;);
+    })
+    .Build();
+
+// Use the client
+var unsplashClient = host.Services.GetRequiredService&lt;UnsplasharpClient&gt;();
+var photo = await unsplashClient.GetRandomPhoto();
+
+Console.WriteLine($&quot;Photo by {photo?.User?.Name}: {photo?.Urls?.Regular}&quot;);
+</code></pre>
+<h3 id="manual-di-setup">Manual DI Setup</h3>
+<pre><code class="lang-csharp">using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Http;
+using Microsoft.Extensions.Logging;
+using Unsplasharp;
+
+var services = new ServiceCollection();
+
+// Add required services
+services.AddHttpClient();
+services.AddLogging();
+
+// Add Unsplasharp manually
+services.AddScoped&lt;UnsplasharpClient&gt;(provider =&gt;
+{
+    var httpClientFactory = provider.GetRequiredService&lt;IHttpClientFactory&gt;();
+    var logger = provider.GetService&lt;ILogger&lt;UnsplasharpClient&gt;&gt;();
+    
+    return new UnsplasharpClient(
+        applicationId: &quot;YOUR_APPLICATION_ID&quot;,
+        secret: null, // Optional
+        logger: logger,
+        httpClientFactory: httpClientFactory
+    );
+});
+
+var serviceProvider = services.BuildServiceProvider();
+var client = serviceProvider.GetRequiredService&lt;UnsplasharpClient&gt;();
+</code></pre>
+<h2 id="advanced-configuration">Advanced Configuration</h2>
+<h3 id="custom-httpclient-configuration">Custom HttpClient Configuration</h3>
+<pre><code class="lang-csharp">services.AddUnsplasharp(options =&gt;
+{
+    options.ApplicationId = &quot;YOUR_APPLICATION_ID&quot;;
+    options.ConfigureHttpClient = client =&gt;
+    {
+        // Custom timeout
+        client.Timeout = TimeSpan.FromMinutes(2);
+        
+        // Custom headers
+        client.DefaultRequestHeaders.Add(&quot;X-Custom-Header&quot;, &quot;MyValue&quot;);
+        
+        // Custom user agent
+        client.DefaultRequestHeaders.UserAgent.ParseAdd(&quot;MyApp/1.0&quot;);
+    };
+});
+</code></pre>
+<h3 id="multiple-clients-with-different-configurations">Multiple Clients with Different Configurations</h3>
+<pre><code class="lang-csharp">// Register multiple named clients
+services.AddHttpClient(&quot;unsplash-primary&quot;, client =&gt;
+{
+    client.DefaultRequestHeaders.Authorization = 
+        new AuthenticationHeaderValue(&quot;Client-ID&quot;, &quot;PRIMARY_APP_ID&quot;);
+    client.Timeout = TimeSpan.FromSeconds(30);
+});
+
+services.AddHttpClient(&quot;unsplash-secondary&quot;, client =&gt;
+{
+    client.DefaultRequestHeaders.Authorization = 
+        new AuthenticationHeaderValue(&quot;Client-ID&quot;, &quot;SECONDARY_APP_ID&quot;);
+    client.Timeout = TimeSpan.FromSeconds(60);
+});
+
+// Register clients manually
+services.AddScoped&lt;UnsplasharpClient&gt;(&quot;primary&quot;, provider =&gt;
+{
+    var factory = provider.GetRequiredService&lt;IHttpClientFactory&gt;();
+    var logger = provider.GetService&lt;ILogger&lt;UnsplasharpClient&gt;&gt;();
+    return new UnsplasharpClient(&quot;PRIMARY_APP_ID&quot;, logger: logger, httpClientFactory: factory);
+});
+</code></pre>
+<h3 id="configuration-from-appsettingsjson">Configuration from appsettings.json</h3>
+<pre><code class="lang-json">{
+  &quot;Unsplash&quot;: {
+    &quot;ApplicationId&quot;: &quot;YOUR_APPLICATION_ID&quot;,
+    &quot;Secret&quot;: &quot;YOUR_SECRET&quot;,
+    &quot;Timeout&quot;: &quot;00:01:00&quot;
+  }
+}
+</code></pre>
+<pre><code class="lang-csharp">// Configuration class
+public class UnsplashOptions
+{
+    public string ApplicationId { get; set; } = string.Empty;
+    public string? Secret { get; set; }
+    public TimeSpan Timeout { get; set; } = TimeSpan.FromSeconds(30);
+}
+
+// In Program.cs
+var unsplashOptions = builder.Configuration.GetSection(&quot;Unsplash&quot;).Get&lt;UnsplashOptions&gt;();
+
+builder.Services.AddUnsplasharp(options =&gt;
+{
+    options.ApplicationId = unsplashOptions.ApplicationId;
+    options.Secret = unsplashOptions.Secret;
+    options.ConfigureHttpClient = client =&gt;
+    {
+        client.Timeout = unsplashOptions.Timeout;
+    };
+});
+</code></pre>
+<h2 id="backward-compatibility">Backward Compatibility</h2>
+<p>The library maintains full backward compatibility. Existing code will continue to work:</p>
+<pre><code class="lang-csharp">// Legacy usage (still works)
+var client = new UnsplasharpClient(&quot;YOUR_APPLICATION_ID&quot;);
+var photos = await client.SearchPhotos(&quot;nature&quot;);
+
+// With logging (still works)
+var logger = loggerFactory.CreateLogger&lt;UnsplasharpClient&gt;();
+var client = new UnsplasharpClient(&quot;YOUR_APPLICATION_ID&quot;, logger: logger);
+</code></pre>
+<h2 id="benefits-of-ihttpclientfactory">Benefits of IHttpClientFactory</h2>
+<h3 id="automatic-resource-management">Automatic Resource Management</h3>
+<ul>
+<li>Prevents socket exhaustion</li>
+<li>Handles DNS changes automatically</li>
+<li>Manages connection pooling</li>
+</ul>
+<h3 id="better-performance">Better Performance</h3>
+<ul>
+<li>Reuses connections efficiently</li>
+<li>Reduces memory allocations</li>
+<li>Optimizes network usage</li>
+</ul>
+<h3 id="enhanced-reliability">Enhanced Reliability</h3>
+<ul>
+<li>Built-in retry policies (when configured)</li>
+<li>Better error handling</li>
+<li>Improved timeout management</li>
+</ul>
+<h3 id="improved-testability">Improved Testability</h3>
+<pre><code class="lang-csharp">// Easy to mock for testing
+var mockFactory = new Mock&lt;IHttpClientFactory&gt;();
+var mockHttpClient = new Mock&lt;HttpClient&gt;();
+mockFactory.Setup(f =&gt; f.CreateClient(&quot;unsplash&quot;)).Returns(mockHttpClient.Object);
+
+var client = new UnsplasharpClient(&quot;test&quot;, httpClientFactory: mockFactory.Object);
+</code></pre>
+<h2 id="migration-guide">Migration Guide</h2>
+<h3 id="from-legacy-to-ihttpclientfactory">From Legacy to IHttpClientFactory</h3>
+<ol>
+<li><p><strong>Add the extension method</strong>:</p>
+<pre><code class="lang-csharp">// Old
+services.AddScoped(_ =&gt; new UnsplasharpClient(&quot;APP_ID&quot;));
+
+// New
+services.AddUnsplasharp(&quot;APP_ID&quot;);
+</code></pre>
+</li>
+<li><p><strong>Update constructor calls</strong>:</p>
+<pre><code class="lang-csharp">// Old
+var client = new UnsplasharpClient(&quot;APP_ID&quot;);
+
+// New (in DI context)
+// Inject UnsplasharpClient directly
+</code></pre>
+</li>
+<li><p><strong>Configuration changes</strong>:</p>
+<pre><code class="lang-csharp">// Old - manual HttpClient management
+// No centralized configuration
+
+// New - centralized configuration
+services.AddUnsplasharp(options =&gt;
+{
+    options.ApplicationId = &quot;APP_ID&quot;;
+    options.ConfigureHttpClient = client =&gt; { /* configure */ };
+});
+</code></pre>
+</li>
+</ol>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<ol>
+<li><strong>Missing HttpClient registration</strong>: Ensure <code>AddHttpClient()</code> is called</li>
+<li><strong>DI scope issues</strong>: Register as Scoped or Transient, not Singleton</li>
+<li><strong>Configuration not applied</strong>: Check that ConfigureHttpClient is called correctly</li>
+</ol>
+<h3 id="debug-logging">Debug Logging</h3>
+<p>Enable debug logging to see HTTP client creation:</p>
+<pre><code class="lang-csharp">services.AddLogging(builder =&gt;
+{
+    builder.AddConsole();
+    builder.SetMinimumLevel(LogLevel.Debug);
+});
+</code></pre>
+<p>This will show when HttpClients are created and reused.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/rootasjey/unsplasharp/blob/master/docs/http-client-factory.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

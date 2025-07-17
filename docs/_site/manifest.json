@@ -1,0 +1,812 @@
+{
+  "source_base_path": "/Users/rootasjey/GitHub/unsplasharp/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "advanced-usage.md",
+      "output": {
+        ".html": {
+          "relative_path": "advanced-usage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api-reference.md",
+      "output": {
+        ".html": {
+          "relative_path": "api-reference.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Exceptions.ErrorContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Exceptions.ErrorContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Exceptions.ErrorContext",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Exceptions.ErrorContext.yml\" sourcestartlinenumber=\"1\">Contains contextual information about an error for debugging and logging purposes</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Exceptions.RateLimitInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Exceptions.RateLimitInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Exceptions.RateLimitInfo",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Exceptions.RateLimitInfo.yml\" sourcestartlinenumber=\"1\">Contains rate limit information extracted from HTTP headers</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Exceptions.UnsplasharpAuthenticationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Exceptions.UnsplasharpAuthenticationException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Exceptions.UnsplasharpAuthenticationException",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Exceptions.UnsplasharpAuthenticationException.yml\" sourcestartlinenumber=\"1\">Exception thrown when authentication fails</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Exceptions.UnsplasharpException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Exceptions.UnsplasharpException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Exceptions.UnsplasharpException",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Exceptions.UnsplasharpException.yml\" sourcestartlinenumber=\"1\">Base exception class for all Unsplasharp-related errors (partial class for factory methods)</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Exceptions.UnsplasharpHttpException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Exceptions.UnsplasharpHttpException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Exceptions.UnsplasharpHttpException",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Exceptions.UnsplasharpHttpException.yml\" sourcestartlinenumber=\"1\">Exception thrown when an HTTP request fails</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Exceptions.UnsplasharpNetworkException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Exceptions.UnsplasharpNetworkException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Exceptions.UnsplasharpNetworkException",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Exceptions.UnsplasharpNetworkException.yml\" sourcestartlinenumber=\"1\">Exception thrown when a network error occurs</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Exceptions.UnsplasharpNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Exceptions.UnsplasharpNotFoundException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Exceptions.UnsplasharpNotFoundException",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Exceptions.UnsplasharpNotFoundException.yml\" sourcestartlinenumber=\"1\">Exception thrown when a requested resource is not found</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Exceptions.UnsplasharpParsingException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Exceptions.UnsplasharpParsingException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Exceptions.UnsplasharpParsingException",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Exceptions.UnsplasharpParsingException.yml\" sourcestartlinenumber=\"1\">Exception thrown when JSON parsing fails</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Exceptions.UnsplasharpRateLimitException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Exceptions.UnsplasharpRateLimitException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Exceptions.UnsplasharpRateLimitException",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Exceptions.UnsplasharpRateLimitException.yml\" sourcestartlinenumber=\"1\">Exception thrown when the API rate limit is exceeded</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Exceptions.UnsplasharpTimeoutException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Exceptions.UnsplasharpTimeoutException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Exceptions.UnsplasharpTimeoutException",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Exceptions.UnsplasharpTimeoutException.yml\" sourcestartlinenumber=\"1\">Exception thrown when a request times out</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Exceptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Exceptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Extensions.ServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Extensions.ServiceCollectionExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Extensions.ServiceCollectionExtensions",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Extensions.ServiceCollectionExtensions.yml\" sourcestartlinenumber=\"1\">Extension methods for configuring Unsplasharp with IServiceCollection</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Extensions.UnsplasharpOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Extensions.UnsplasharpOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Extensions.UnsplasharpOptions",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Extensions.UnsplasharpOptions.yml\" sourcestartlinenumber=\"1\">Configuration options for Unsplasharp</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Extensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Extensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.Badge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.Badge.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.Badge",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.Badge.yml\" sourcestartlinenumber=\"1\">Badge (a user specific role).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.Category.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.Category.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.Category",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.Category.yml\" sourcestartlinenumber=\"1\">Photo's category.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.CategoryLinks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.CategoryLinks.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.CategoryLinks",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.CategoryLinks.yml\" sourcestartlinenumber=\"1\">Photo's link to its categories.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.Collection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.Collection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.Collection",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.Collection.yml\" sourcestartlinenumber=\"1\">Represents a collection of photos.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.CollectionLinks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.CollectionLinks.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.CollectionLinks",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.CollectionLinks.yml\" sourcestartlinenumber=\"1\">Collection's link.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.Exif.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.Exif.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.Exif",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.Exif.yml\" sourcestartlinenumber=\"1\">Camera specifications.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.Location.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.Location.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.Location",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.Location.yml\" sourcestartlinenumber=\"1\">The photo's location.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.Photo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.Photo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.Photo",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.Photo.yml\" sourcestartlinenumber=\"1\">Represents a photo class from Unsplash API.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.PhotoLinks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.PhotoLinks.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.PhotoLinks",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.PhotoLinks.yml\" sourcestartlinenumber=\"1\">Photo's link relations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.PhotoStats.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.PhotoStats.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.PhotoStats",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.PhotoStats.yml\" sourcestartlinenumber=\"1\">Photo's statistics.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.Position.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.Position.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.Position",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.Position.yml\" sourcestartlinenumber=\"1\">Represents a geographical position (latitude, longitude).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.ProfileImage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.ProfileImage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.ProfileImage",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.ProfileImage.yml\" sourcestartlinenumber=\"1\">Profile image at different sizes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.StatsData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.StatsData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.StatsData",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.StatsData.yml\" sourcestartlinenumber=\"1\">Data statistics.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.StatsHistorical.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.StatsHistorical.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.StatsHistorical",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.StatsHistorical.yml\" sourcestartlinenumber=\"1\">Stat's history.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.StatsValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.StatsValue.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.StatsValue",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.StatsValue.yml\" sourcestartlinenumber=\"1\">A data set.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.UnplashMonthlyStats.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.UnplashMonthlyStats.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.UnplashMonthlyStats",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.UnplashMonthlyStats.yml\" sourcestartlinenumber=\"1\">Unsplash statistics counts for the past 30 days.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.UnplashTotalStats.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.UnplashTotalStats.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.UnplashTotalStats",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.UnplashTotalStats.yml\" sourcestartlinenumber=\"1\">Unsplash statistics counts.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.Urls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.Urls.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.Urls",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.Urls.yml\" sourcestartlinenumber=\"1\">Photo's URLs linking to the direct photo (full screen).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.User.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.User",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.User.yml\" sourcestartlinenumber=\"1\">Represents an user class from Unplash API.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.UserLinks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.UserLinks.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.UserLinks",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.UserLinks.yml\" sourcestartlinenumber=\"1\">User's link relations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.UserStats.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.UserStats.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models.UserStats",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.Models.UserStats.yml\" sourcestartlinenumber=\"1\">User's statistics.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.Models.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.Models",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.UnsplasharpClient.OrderBy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.UnsplasharpClient.OrderBy.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.UnsplasharpClient.OrderBy",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.UnsplasharpClient.OrderBy.yml\" sourcestartlinenumber=\"1\">How to sort the data.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.UnsplasharpClient.Orientation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.UnsplasharpClient.Orientation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.UnsplasharpClient.Orientation",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.UnsplasharpClient.Orientation.yml\" sourcestartlinenumber=\"1\">Photo orientation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.UnsplasharpClient.Resolution.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.UnsplasharpClient.Resolution.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.UnsplasharpClient.Resolution",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.UnsplasharpClient.Resolution.yml\" sourcestartlinenumber=\"1\">The frequency of the stats.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.UnsplasharpClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.UnsplasharpClient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp.UnsplasharpClient",
+      "Summary": "<p sourcefile=\"api/Unsplasharp.UnsplasharpClient.yml\" sourcestartlinenumber=\"1\">Represents a Unsplasharp class which can be used to communicate with Unplash APIs.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unsplasharp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unsplasharp.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Unsplasharp",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "code-examples.md",
+      "output": {
+        ".html": {
+          "relative_path": "code-examples.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/downloading-a-photo.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/downloading-a-photo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/obtaining-an-api-key.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/obtaining-an-api-key.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "error-handling.md",
+      "output": {
+        ".html": {
+          "relative_path": "error-handling.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "http-client-factory.md",
+      "output": {
+        ".html": {
+          "relative_path": "http-client-factory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "logging.md",
+      "output": {
+        ".html": {
+          "relative_path": "logging.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "migration-guide.md",
+      "output": {
+        ".html": {
+          "relative_path": "migration-guide.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "models-reference.md",
+      "output": {
+        ".html": {
+          "relative_path": "models-reference.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "navigation.md",
+      "output": {
+        ".html": {
+          "relative_path": "navigation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "quick-reference.md",
+      "output": {
+        ".html": {
+          "relative_path": "quick-reference.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "system-text-json.md",
+      "output": {
+        ".html": {
+          "relative_path": "system-text-json.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "table-of-contents.md",
+      "output": {
+        ".html": {
+          "relative_path": "table-of-contents.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "testing-best-practices.md",
+      "output": {
+        ".html": {
+          "relative_path": "testing-best-practices.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

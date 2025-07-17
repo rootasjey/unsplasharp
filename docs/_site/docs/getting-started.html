@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Getting Started with Unsplasharp | Unsplasharp Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Getting Started with Unsplasharp | Unsplasharp Documentation ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/rootasjey/unsplasharp/blob/master/docs/docs/getting-started.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Unsplasharp">
+            Unsplasharp
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="getting-started-with-unsplasharp">Getting Started with Unsplasharp</h1>
+
+<p>This comprehensive guide will walk you through setting up and using Unsplasharp in your .NET application, from basic installation to advanced usage patterns.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#getting-your-api-key">Getting Your API Key</a></li>
+<li><a href="#basic-setup">Basic Setup</a></li>
+<li><a href="#your-first-request">Your First Request</a></li>
+<li><a href="#common-use-cases">Common Use Cases</a></li>
+<li><a href="#error-handling">Error Handling</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before you begin, ensure you have:</p>
+<ul>
+<li><strong>.NET 6.0 or later</strong> (or .NET Framework 4.6.1+, .NET Standard 2.0+)</li>
+<li><strong>An Unsplash API key</strong> - See <a href="#getting-your-api-key">Getting Your API Key</a> below</li>
+<li><strong>Basic knowledge of C# and async/await</strong></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<h3 id="package-manager-console">Package Manager Console</h3>
+<pre><code class="lang-powershell">Install-Package Unsplasharp
+</code></pre>
+<h3 id="net-cli">.NET CLI</h3>
+<pre><code class="lang-bash">dotnet add package Unsplasharp
+</code></pre>
+<h3 id="packagereference-in-csproj">PackageReference (in .csproj)</h3>
+<pre><code class="lang-xml">&lt;PackageReference Include=&quot;Unsplasharp&quot; Version=&quot;*&quot; /&gt;
+</code></pre>
+<h2 id="getting-your-api-key">Getting Your API Key</h2>
+<ol>
+<li><strong>Create an Unsplash Account</strong>: Visit <a href="https://unsplash.com">unsplash.com</a> and sign up</li>
+<li><strong>Join as Developer</strong>: Go to <a href="https://unsplash.com/developers">Unsplash for Developers</a></li>
+<li><strong>Create New Application</strong>:
+<ul>
+<li>Visit your <a href="https://unsplash.com/oauth/applications">applications dashboard</a></li>
+<li>Click &quot;New Application&quot;</li>
+<li>Accept the API terms</li>
+<li>Fill in your application details</li>
+</ul>
+</li>
+<li><strong>Get Your Access Key</strong>: Copy the &quot;Access Key&quot; - this is your <code>ApplicationId</code></li>
+</ol>
+<blockquote>
+<p><strong>Important</strong>: Keep your API key secure and never expose it in client-side code or public repositories.</p>
+</blockquote>
+<h2 id="basic-setup">Basic Setup</h2>
+<h3 id="simple-console-application">Simple Console Application</h3>
+<pre><code class="lang-csharp">using Unsplasharp;
+using System;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        // Replace with your actual Application ID
+        var client = new UnsplasharpClient(&quot;YOUR_APPLICATION_ID&quot;);
+
+        try
+        {
+            var photo = await client.GetRandomPhoto();
+            Console.WriteLine($&quot;Random photo by {photo?.User?.Name}&quot;);
+            Console.WriteLine($&quot;URL: {photo?.Urls?.Regular}&quot;);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($&quot;Error: {ex.Message}&quot;);
+        }
+    }
+}
+</code></pre>
+<h3 id="aspnet-core-setup">ASP.NET Core Setup</h3>
+<p><strong>Program.cs:</strong></p>
+<pre><code class="lang-csharp">using Unsplasharp.Extensions;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add Unsplasharp to dependency injection
+builder.Services.AddUnsplasharp(&quot;YOUR_APPLICATION_ID&quot;);
+
+// Or configure from appsettings.json
+builder.Services.AddUnsplasharp(options =&gt;
+{
+    options.ApplicationId = builder.Configuration[&quot;Unsplash:ApplicationId&quot;];
+    options.ConfigureHttpClient = client =&gt;
+    {
+        client.Timeout = TimeSpan.FromSeconds(30);
+    };
+});
+
+var app = builder.Build();
+</code></pre>
+<p><strong>Controller:</strong></p>
+<pre><code class="lang-csharp">[ApiController]
+[Route(&quot;api/[controller]&quot;)]
+public class PhotosController : ControllerBase
+{
+    private readonly UnsplasharpClient _unsplashClient;
+
+    public PhotosController(UnsplasharpClient unsplashClient)
+    {
+        _unsplashClient = unsplashClient;
+    }
+
+    [HttpGet(&quot;random&quot;)]
+    public async Task&lt;IActionResult&gt; GetRandomPhoto()
+    {
+        try
+        {
+            var photo = await _unsplashClient.GetRandomPhoto();
+            return Ok(new {
+                id = photo?.Id,
+                description = photo?.Description,
+                author = photo?.User?.Name,
+                url = photo?.Urls?.Regular
+            });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { error = ex.Message });
+        }
+    }
+}
+</code></pre>
+<h2 id="your-first-request">Your First Request</h2>
+<p>Let's start with a simple example that demonstrates the basic workflow:</p>
+<pre><code class="lang-csharp">using Unsplasharp;
+using System;
+using System.Threading.Tasks;
+
+public class UnsplashExample
+{
+    private readonly UnsplasharpClient _client;
+
+    public UnsplashExample()
+    {
+        _client = new UnsplasharpClient(&quot;YOUR_APPLICATION_ID&quot;);
+    }
+
+    public async Task GetRandomPhotoExample()
+    {
+        try
+        {
+            // Get a random photo
+            var photo = await _client.GetRandomPhoto();
+
+            if (photo != null)
+            {
+                Console.WriteLine(&quot;=== Random Photo ===&quot;);
+                Console.WriteLine($&quot;ID: {photo.Id}&quot;);
+                Console.WriteLine($&quot;Description: {photo.Description ?? &quot;No description&quot;}&quot;);
+                Console.WriteLine($&quot;Author: {photo.User.Name} (@{photo.User.Username})&quot;);
+                Console.WriteLine($&quot;Dimensions: {photo.Width}x{photo.Height}&quot;);
+                Console.WriteLine($&quot;Likes: {photo.Likes:N0}&quot;);
+                Console.WriteLine($&quot;Downloads: {photo.Downloads:N0}&quot;);
+                Console.WriteLine($&quot;Color: {photo.Color}&quot;);
+                Console.WriteLine($&quot;Regular URL: {photo.Urls.Regular}&quot;);
+                Console.WriteLine($&quot;Small URL: {photo.Urls.Small}&quot;);
+
+                // Check if location data is available
+                if (!string.IsNullOrEmpty(photo.Location.Name))
+                {
+                    Console.WriteLine($&quot;Location: {photo.Location.Name}&quot;);
+                }
+
+                // Check EXIF data
+                if (!string.IsNullOrEmpty(photo.Exif.Make))
+                {
+                    Console.WriteLine($&quot;Camera: {photo.Exif.Make} {photo.Exif.Model}&quot;);
+                }
+            }
+            else
+            {
+                Console.WriteLine(&quot;No photo received&quot;);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($&quot;Error getting random photo: {ex.Message}&quot;);
+        }
+    }
+}
+</code></pre>
+<h2 id="common-use-cases">Common Use Cases</h2>
+<h3 id="1-search-for-photos">1. Search for Photos</h3>
+<pre><code class="lang-csharp">public async Task SearchPhotosExample()
+{
+    try
+    {
+        // Basic search
+        var photos = await _client.SearchPhotos(&quot;mountain landscape&quot;, page: 1, perPage: 10);
+
+        Console.WriteLine($&quot;Found {photos.Count} photos&quot;);
+        Console.WriteLine($&quot;Total results: {_client.LastPhotosSearchTotalResults:N0}&quot;);
+        Console.WriteLine($&quot;Total pages: {_client.LastPhotosSearchTotalPages}&quot;);
+
+        foreach (var photo in photos)
+        {
+            Console.WriteLine($&quot;- {photo.Id}: {photo.Description ?? &quot;Untitled&quot;}&quot;);
+            Console.WriteLine($&quot;  By: {photo.User.Name} | Likes: {photo.Likes}&quot;);
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($&quot;Search error: {ex.Message}&quot;);
+    }
+}
+</code></pre>
+<h3 id="2-get-photos-from-a-collection">2. Get Photos from a Collection</h3>
+<pre><code class="lang-csharp">public async Task GetCollectionPhotosExample()
+{
+    try
+    {
+        // First, get collection details
+        var collection = await _client.GetCollection(&quot;499830&quot;); // Nature collection
+
+        if (collection != null)
+        {
+            Console.WriteLine($&quot;Collection: {collection.Title}&quot;);
+            Console.WriteLine($&quot;Description: {collection.Description}&quot;);
+            Console.WriteLine($&quot;Total photos: {collection.TotalPhotos}&quot;);
+            Console.WriteLine($&quot;Created by: {collection.User.Name}&quot;);
+
+            // Get photos from the collection
+            var photos = await _client.GetCollectionPhotos(collection.Id, page: 1, perPage: 5);
+
+            Console.WriteLine(&quot;\nFirst 5 photos:&quot;);
+            foreach (var photo in photos)
+            {
+                Console.WriteLine($&quot;- {photo.Description ?? &quot;Untitled&quot;} by {photo.User.Name}&quot;);
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($&quot;Collection error: {ex.Message}&quot;);
+    }
+}
+</code></pre>
+<h3 id="3-get-user-information-and-photos">3. Get User Information and Photos</h3>
+<pre><code class="lang-csharp">public async Task GetUserPhotosExample()
+{
+    try
+    {
+        var username = &quot;chrisjoelcampbell&quot;;
+
+        // Get user profile
+        var user = await _client.GetUser(username);
+
+        if (user != null)
+        {
+            Console.WriteLine($&quot;User: {user.Name} (@{user.Username})&quot;);
+            Console.WriteLine($&quot;Bio: {user.Bio}&quot;);
+            Console.WriteLine($&quot;Location: {user.Location}&quot;);
+            Console.WriteLine($&quot;Total photos: {user.TotalPhotos:N0}&quot;);
+            Console.WriteLine($&quot;Total likes: {user.TotalLikes:N0}&quot;);
+            Console.WriteLine($&quot;Portfolio: {user.PortfolioUrl}&quot;);
+
+            // Get user's photos
+            var userPhotos = await _client.GetUserPhotos(username, page: 1, perPage: 5);
+
+            Console.WriteLine($&quot;\nRecent photos by {user.Name}:&quot;);
+            foreach (var photo in userPhotos)
+            {
+                Console.WriteLine($&quot;- {photo.Description ?? &quot;Untitled&quot;}&quot;);
+                Console.WriteLine($&quot;  {photo.Width}x{photo.Height} | {photo.Likes} likes&quot;);
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($&quot;User error: {ex.Message}&quot;);
+    }
+}
+</code></pre>
+<h3 id="4-download-a-photo">4. Download a Photo</h3>
+<pre><code class="lang-csharp">public async Task DownloadPhotoExample()
+{
+    try
+    {
+        var photoId = &quot;qcs09SwNPHY&quot;; // Example photo ID
+
+        // Get photo details
+        var photo = await _client.GetPhoto(photoId);
+
+        if (photo != null)
+        {
+            Console.WriteLine($&quot;Downloading: {photo.Description ?? &quot;Untitled&quot;}&quot;);
+            Console.WriteLine($&quot;By: {photo.User.Name}&quot;);
+
+            // Use HttpClient to download the image
+            using var httpClient = new HttpClient();
+
+            // Download different sizes
+            var sizes = new Dictionary&lt;string, string&gt;
+            {
+                [&quot;thumbnail&quot;] = photo.Urls.Thumbnail,
+                [&quot;small&quot;] = photo.Urls.Small,
+                [&quot;regular&quot;] = photo.Urls.Regular
+            };
+
+            foreach (var (sizeName, url) in sizes)
+            {
+                try
+                {
+                    var imageBytes = await httpClient.GetByteArrayAsync(url);
+                    var fileName = $&quot;{photo.Id}_{sizeName}.jpg&quot;;
+                    await File.WriteAllBytesAsync(fileName, imageBytes);
+                    Console.WriteLine($&quot;Downloaded {sizeName}: {fileName} ({imageBytes.Length:N0} bytes)&quot;);
+                }
+                catch (Exception downloadEx)
+                {
+                    Console.WriteLine($&quot;Failed to download {sizeName}: {downloadEx.Message}&quot;);
+                }
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($&quot;Download error: {ex.Message}&quot;);
+    }
+}
+</code></pre>
+<h3 id="5-pagination-example">5. Pagination Example</h3>
+<pre><code class="lang-csharp">public async Task PaginationExample()
+{
+    try
+    {
+        var query = &quot;sunset&quot;;
+        var allPhotos = new List&lt;Photo&gt;();
+        var maxPages = 3; // Limit for demo
+
+        Console.WriteLine($&quot;Searching for '{query}' across {maxPages} pages...&quot;);
+
+        for (int page = 1; page &lt;= maxPages; page++)
+        {
+            var photos = await _client.SearchPhotos(query, page: page, perPage: 20);
+
+            if (photos.Count == 0)
+            {
+                Console.WriteLine($&quot;No more results at page {page}&quot;);
+                break;
+            }
+
+            allPhotos.AddRange(photos);
+            Console.WriteLine($&quot;Page {page}: {photos.Count} photos&quot;);
+
+            // Be respectful of rate limits
+            await Task.Delay(100);
+        }
+
+        Console.WriteLine($&quot;Total photos collected: {allPhotos.Count}&quot;);
+        Console.WriteLine($&quot;Total available: {_client.LastPhotosSearchTotalResults:N0}&quot;);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($&quot;Pagination error: {ex.Message}&quot;);
+    }
+}
+</code></pre>
+<h3 id="6-advanced-search-with-filters">6. Advanced Search with Filters</h3>
+<pre><code class="lang-csharp">public async Task AdvancedSearchExample()
+{
+    try
+    {
+        // Search with multiple filters
+        var photos = await _client.SearchPhotos(
+            query: &quot;ocean waves&quot;,
+            page: 1,
+            perPage: 15,
+            orderBy: OrderBy.Popular,
+            color: &quot;blue&quot;,
+            orientation: Orientation.Landscape
+        );
+
+        Console.WriteLine(&quot;Advanced search results:&quot;);
+        Console.WriteLine($&quot;Query: ocean waves&quot;);
+        Console.WriteLine($&quot;Filters: blue color, landscape orientation, popular order&quot;);
+        Console.WriteLine($&quot;Results: {photos.Count} photos&quot;);
+
+        foreach (var photo in photos.Take(5))
+        {
+            Console.WriteLine($&quot;- {photo.Description ?? &quot;Untitled&quot;}&quot;);
+            Console.WriteLine($&quot;  {photo.Width}x{photo.Height} | Color: {photo.Color}&quot;);
+            Console.WriteLine($&quot;  Likes: {photo.Likes} | Downloads: {photo.Downloads}&quot;);
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($&quot;Advanced search error: {ex.Message}&quot;);
+    }
+}
+</code></pre>
+<h2 id="error-handling">Error Handling</h2>
+<p>Unsplasharp provides comprehensive error handling with specific exception types. Here's how to handle different error scenarios:</p>
+<h3 id="basic-error-handling">Basic Error Handling</h3>
+<pre><code class="lang-csharp">public async Task BasicErrorHandlingExample()
+{
+    try
+    {
+        var photo = await _client.GetPhoto(&quot;invalid-photo-id&quot;);
+        // Handle success
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($&quot;Error: {ex.Message}&quot;);
+        // Basic error handling - not recommended for production
+    }
+}
+</code></pre>
+<h3 id="advanced-error-handling-recommended">Advanced Error Handling (Recommended)</h3>
+<pre><code class="lang-csharp">public async Task AdvancedErrorHandlingExample()
+{
+    try
+    {
+        // Use the exception-throwing version for better error handling
+        var photo = await _client.GetPhotoAsync(&quot;some-photo-id&quot;);
+
+        Console.WriteLine($&quot;Successfully retrieved: {photo.Description}&quot;);
+    }
+    catch (UnsplasharpNotFoundException ex)
+    {
+        Console.WriteLine(&quot;Photo not found - it may have been deleted or made private&quot;);
+        // Handle gracefully - maybe show a placeholder or try alternative
+    }
+    catch (UnsplasharpRateLimitException ex)
+    {
+        Console.WriteLine($&quot;Rate limit exceeded: {ex.RateLimitRemaining}/{ex.RateLimit}&quot;);
+        Console.WriteLine($&quot;Reset time: {ex.RateLimitReset}&quot;);
+
+        // Wait until reset time
+        if (ex.RateLimitReset.HasValue)
+        {
+            var waitTime = ex.RateLimitReset.Value - DateTimeOffset.UtcNow;
+            if (waitTime &gt; TimeSpan.Zero)
+            {
+                Console.WriteLine($&quot;Waiting {waitTime.TotalMinutes:F1} minutes...&quot;);
+                await Task.Delay(waitTime);
+                // Retry the request
+            }
+        }
+    }
+    catch (UnsplasharpAuthenticationException ex)
+    {
+        Console.WriteLine(&quot;Authentication failed - check your API key&quot;);
+        // Log the error and potentially refresh credentials
+    }
+    catch (UnsplasharpNetworkException ex)
+    {
+        Console.WriteLine($&quot;Network error: {ex.Message}&quot;);
+        if (ex.IsRetryable)
+        {
+            Console.WriteLine(&quot;This error is retryable - implementing exponential backoff&quot;);
+            // Implement retry logic with exponential backoff
+        }
+    }
+    catch (UnsplasharpTimeoutException ex)
+    {
+        Console.WriteLine($&quot;Request timed out after {ex.Timeout}&quot;);
+        // Consider increasing timeout or checking network conditions
+    }
+    catch (UnsplasharpException ex)
+    {
+        Console.WriteLine($&quot;Unsplash API error: {ex.Message}&quot;);
+
+        // Access rich error context
+        if (ex.Context != null)
+        {
+            Console.WriteLine($&quot;Correlation ID: {ex.Context.CorrelationId}&quot;);
+            Console.WriteLine($&quot;Timestamp: {ex.Context.Timestamp}&quot;);
+            Console.WriteLine($&quot;Request URL: {ex.RequestUrl}&quot;);
+
+            // Check rate limit info
+            if (ex.Context.RateLimitInfo != null)
+            {
+                var rateLimit = ex.Context.RateLimitInfo;
+                Console.WriteLine($&quot;Rate limit: {rateLimit.Remaining}/{rateLimit.Limit}&quot;);
+            }
+        }
+    }
+}
+</code></pre>
+<h3 id="retry-logic-with-exponential-backoff">Retry Logic with Exponential Backoff</h3>
+<pre><code class="lang-csharp">public async Task&lt;Photo?&gt; GetPhotoWithRetry(string photoId, int maxRetries = 3)
+{
+    for (int attempt = 1; attempt &lt;= maxRetries; attempt++)
+    {
+        try
+        {
+            return await _client.GetPhotoAsync(photoId);
+        }
+        catch (UnsplasharpNetworkException ex) when (ex.IsRetryable &amp;&amp; attempt &lt; maxRetries)
+        {
+            var delay = TimeSpan.FromSeconds(Math.Pow(2, attempt)); // Exponential backoff
+            Console.WriteLine($&quot;Attempt {attempt} failed, retrying in {delay.TotalSeconds}s...&quot;);
+            await Task.Delay(delay);
+        }
+        catch (UnsplasharpRateLimitException ex) when (attempt &lt; maxRetries)
+        {
+            var delay = ex.TimeUntilReset ?? TimeSpan.FromMinutes(1);
+            Console.WriteLine($&quot;Rate limited, waiting {delay.TotalMinutes:F1} minutes...&quot;);
+            await Task.Delay(delay);
+        }
+        catch (UnsplasharpNotFoundException)
+        {
+            // Don't retry for not found errors
+            Console.WriteLine($&quot;Photo {photoId} not found&quot;);
+            return null;
+        }
+    }
+
+    throw new InvalidOperationException($&quot;Failed to get photo after {maxRetries} attempts&quot;);
+}
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="1-use-dependency-injection">1. Use Dependency Injection</h3>
+<pre><code class="lang-csharp">// In Program.cs or Startup.cs
+services.AddUnsplasharp(options =&gt;
+{
+    options.ApplicationId = configuration[&quot;Unsplash:ApplicationId&quot;];
+    options.ConfigureHttpClient = client =&gt;
+    {
+        client.Timeout = TimeSpan.FromSeconds(30);
+    };
+});
+
+// In your service
+public class PhotoService
+{
+    private readonly UnsplasharpClient _client;
+    private readonly ILogger&lt;PhotoService&gt; _logger;
+
+    public PhotoService(UnsplasharpClient client, ILogger&lt;PhotoService&gt; logger)
+    {
+        _client = client;
+        _logger = logger;
+    }
+
+    public async Task&lt;List&lt;Photo&gt;&gt; GetFeaturedPhotos(int count = 10)
+    {
+        try
+        {
+            return await _client.ListPhotos(page: 1, perPage: count, orderBy: OrderBy.Popular);
+        }
+        catch (UnsplasharpException ex)
+        {
+            _logger.LogError(ex, &quot;Failed to get featured photos&quot;);
+            return new List&lt;Photo&gt;();
+        }
+    }
+}
+</code></pre>
+<h3 id="2-implement-caching">2. Implement Caching</h3>
+<pre><code class="lang-csharp">public class CachedPhotoService
+{
+    private readonly UnsplasharpClient _client;
+    private readonly IMemoryCache _cache;
+    private readonly ILogger&lt;CachedPhotoService&gt; _logger;
+
+    public CachedPhotoService(UnsplasharpClient client, IMemoryCache cache, ILogger&lt;CachedPhotoService&gt; logger)
+    {
+        _client = client;
+        _cache = cache;
+        _logger = logger;
+    }
+
+    public async Task&lt;Photo?&gt; GetPhotoAsync(string photoId)
+    {
+        var cacheKey = $&quot;photo:{photoId}&quot;;
+
+        if (_cache.TryGetValue(cacheKey, out Photo cachedPhoto))
+        {
+            _logger.LogDebug(&quot;Photo {PhotoId} found in cache&quot;, photoId);
+            return cachedPhoto;
+        }
+
+        try
+        {
+            var photo = await _client.GetPhotoAsync(photoId);
+
+            // Cache for 1 hour
+            _cache.Set(cacheKey, photo, TimeSpan.FromHours(1));
+
+            _logger.LogDebug(&quot;Photo {PhotoId} cached&quot;, photoId);
+            return photo;
+        }
+        catch (UnsplasharpNotFoundException)
+        {
+            // Cache negative results for shorter time
+            _cache.Set(cacheKey, (Photo?)null, TimeSpan.FromMinutes(5));
+            return null;
+        }
+    }
+}
+</code></pre>
+<h3 id="3-monitor-rate-limits">3. Monitor Rate Limits</h3>
+<pre><code class="lang-csharp">public class RateLimitAwareService
+{
+    private readonly UnsplasharpClient _client;
+    private readonly ILogger&lt;RateLimitAwareService&gt; _logger;
+
+    public RateLimitAwareService(UnsplasharpClient client, ILogger&lt;RateLimitAwareService&gt; logger)
+    {
+        _client = client;
+        _logger = logger;
+    }
+
+    public async Task&lt;List&lt;Photo&gt;&gt; SearchPhotosWithRateLimit(string query, int maxResults = 100)
+    {
+        var allPhotos = new List&lt;Photo&gt;();
+        var perPage = 30;
+        var maxPages = (maxResults + perPage - 1) / perPage;
+
+        for (int page = 1; page &lt;= maxPages; page++)
+        {
+            // Check rate limit before making request
+            if (_client.RateLimitRemaining &lt; 10)
+            {
+                _logger.LogWarning(&quot;Rate limit running low: {Remaining}/{Max}&quot;,
+                    _client.RateLimitRemaining, _client.MaxRateLimit);
+
+                // Pause to avoid hitting the limit
+                await Task.Delay(TimeSpan.FromSeconds(30));
+            }
+
+            try
+            {
+                var photos = await _client.SearchPhotosAsync(query, page: page, perPage: perPage);
+                allPhotos.AddRange(photos);
+
+                _logger.LogDebug(&quot;Page {Page}: {Count} photos, Rate limit: {Remaining}/{Max}&quot;,
+                    page, photos.Count, _client.RateLimitRemaining, _client.MaxRateLimit);
+
+                if (photos.Count &lt; perPage)
+                {
+                    // No more results
+                    break;
+                }
+            }
+            catch (UnsplasharpRateLimitException ex)
+            {
+                _logger.LogWarning(&quot;Rate limit exceeded, stopping search&quot;);
+                break;
+            }
+        }
+
+        return allPhotos.Take(maxResults).ToList();
+    }
+}
+</code></pre>
+<h3 id="4-use-cancellation-tokens">4. Use Cancellation Tokens</h3>
+<pre><code class="lang-csharp">public class ResponsivePhotoService
+{
+    private readonly UnsplasharpClient _client;
+
+    public ResponsivePhotoService(UnsplasharpClient client)
+    {
+        _client = client;
+    }
+
+    public async Task&lt;List&lt;Photo&gt;&gt; SearchWithTimeout(string query, TimeSpan timeout)
+    {
+        using var cts = new CancellationTokenSource(timeout);
+
+        try
+        {
+            return await _client.SearchPhotosAsync(query, cancellationToken: cts.Token);
+        }
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine($&quot;Search for '{query}' timed out after {timeout.TotalSeconds}s&quot;);
+            return new List&lt;Photo&gt;();
+        }
+    }
+
+    public async Task&lt;Photo?&gt; GetPhotoWithCancellation(string photoId, CancellationToken cancellationToken)
+    {
+        try
+        {
+            return await _client.GetPhotoAsync(photoId, cancellationToken);
+        }
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine(&quot;Operation was cancelled&quot;);
+            return null;
+        }
+    }
+}
+</code></pre>
+<h3 id="5-configuration-management">5. Configuration Management</h3>
+<p><strong>appsettings.json:</strong></p>
+<pre><code class="lang-json">{
+  &quot;Unsplash&quot;: {
+    &quot;ApplicationId&quot;: &quot;YOUR_APPLICATION_ID&quot;,
+    &quot;Secret&quot;: &quot;YOUR_SECRET&quot;,
+    &quot;DefaultTimeout&quot;: &quot;00:00:30&quot;,
+    &quot;MaxRetries&quot;: 3,
+    &quot;CacheEnabled&quot;: true,
+    &quot;CacheDuration&quot;: &quot;01:00:00&quot;
+  },
+  &quot;Logging&quot;: {
+    &quot;LogLevel&quot;: {
+      &quot;Unsplasharp&quot;: &quot;Information&quot;
+    }
+  }
+}
+</code></pre>
+<p><strong>Configuration class:</strong></p>
+<pre><code class="lang-csharp">public class UnsplashConfiguration
+{
+    public string ApplicationId { get; set; } = string.Empty;
+    public string? Secret { get; set; }
+    public TimeSpan DefaultTimeout { get; set; } = TimeSpan.FromSeconds(30);
+    public int MaxRetries { get; set; } = 3;
+    public bool CacheEnabled { get; set; } = true;
+    public TimeSpan CacheDuration { get; set; } = TimeSpan.FromHours(1);
+}
+</code></pre>
+<p><strong>Service registration:</strong></p>
+<pre><code class="lang-csharp">// In Program.cs
+var unsplashConfig = builder.Configuration.GetSection(&quot;Unsplash&quot;).Get&lt;UnsplashConfiguration&gt;();
+
+builder.Services.AddSingleton(unsplashConfig);
+builder.Services.AddMemoryCache();
+
+builder.Services.AddUnsplasharp(options =&gt;
+{
+    options.ApplicationId = unsplashConfig.ApplicationId;
+    options.Secret = unsplashConfig.Secret;
+    options.ConfigureHttpClient = client =&gt;
+    {
+        client.Timeout = unsplashConfig.DefaultTimeout;
+    };
+});
+</code></pre>
+<h2 id="next-steps">Next Steps</h2>
+<p>Congratulations! You now have a solid foundation for using Unsplasharp. Here are some recommended next steps:</p>
+<h3 id="1-explore-advanced-features">1. Explore Advanced Features</h3>
+<ul>
+<li><strong><a href="../api-reference.html">API Reference Guide</a></strong> - Complete method documentation</li>
+<li><strong><a href="../error-handling.html">Error Handling Guide</a></strong> - Comprehensive error handling strategies</li>
+<li><strong><a href="../http-client-factory.html">IHttpClientFactory Integration</a></strong> - Production-ready HTTP client management</li>
+<li><strong><a href="../logging.html">Logging Guide</a></strong> - Structured logging and monitoring</li>
+</ul>
+<h3 id="2-common-integration-patterns">2. Common Integration Patterns</h3>
+<ul>
+<li><strong>Image Gallery Applications</strong> - Build photo galleries with search and filtering</li>
+<li><strong>Background Image Services</strong> - Provide dynamic backgrounds for applications</li>
+<li><strong>Content Management Systems</strong> - Integrate stock photos into CMS platforms</li>
+<li><strong>Social Media Tools</strong> - Create tools for social media content creation</li>
+</ul>
+<h3 id="3-performance-optimization">3. Performance Optimization</h3>
+<ul>
+<li><strong>Implement caching</strong> to reduce API calls and improve response times</li>
+<li><strong>Use pagination</strong> effectively for large result sets</li>
+<li><strong>Monitor rate limits</strong> to avoid service interruptions</li>
+<li><strong>Implement retry logic</strong> for resilient applications</li>
+</ul>
+<h3 id="4-production-considerations">4. Production Considerations</h3>
+<ul>
+<li><strong>Security</strong>: Never expose API keys in client-side code</li>
+<li><strong>Monitoring</strong>: Set up logging and monitoring for API usage</li>
+<li><strong>Error Handling</strong>: Implement comprehensive error handling strategies</li>
+<li><strong>Testing</strong>: Write unit tests for your Unsplash integration</li>
+</ul>
+<h3 id="5-sample-projects">5. Sample Projects</h3>
+<p>Consider building these sample projects to practice:</p>
+<pre><code class="lang-csharp">// 1. Photo Search CLI Tool
+public class PhotoSearchTool
+{
+    public async Task RunAsync(string[] args)
+    {
+        var query = args.Length &gt; 0 ? args[0] : &quot;nature&quot;;
+        var client = new UnsplasharpClient(&quot;YOUR_APP_ID&quot;);
+
+        var photos = await client.SearchPhotos(query, perPage: 10);
+
+        foreach (var photo in photos)
+        {
+            Console.WriteLine($&quot;{photo.User.Name}: {photo.Description}&quot;);
+            Console.WriteLine($&quot;  {photo.Urls.Small}&quot;);
+        }
+    }
+}
+
+// 2. Random Wallpaper Downloader
+public class WallpaperDownloader
+{
+    public async Task DownloadRandomWallpaper(string category = &quot;landscape&quot;)
+    {
+        var client = new UnsplasharpClient(&quot;YOUR_APP_ID&quot;);
+        var photo = await client.GetRandomPhoto(query: category, orientation: Orientation.Landscape);
+
+        if (photo != null)
+        {
+            using var httpClient = new HttpClient();
+            var imageBytes = await httpClient.GetByteArrayAsync(photo.Urls.Full);
+
+            var fileName = $&quot;wallpaper_{photo.Id}.jpg&quot;;
+            await File.WriteAllBytesAsync(fileName, imageBytes);
+
+            Console.WriteLine($&quot;Downloaded wallpaper: {fileName}&quot;);
+            Console.WriteLine($&quot;By: {photo.User.Name}&quot;);
+        }
+    }
+}
+
+// 3. Photo Collection Manager
+public class CollectionManager
+{
+    private readonly UnsplasharpClient _client;
+
+    public CollectionManager(string appId)
+    {
+        _client = new UnsplasharpClient(appId);
+    }
+
+    public async Task ExploreCollection(string collectionId)
+    {
+        var collection = await _client.GetCollection(collectionId);
+        var photos = await _client.GetCollectionPhotos(collectionId, perPage: 20);
+
+        Console.WriteLine($&quot;Collection: {collection?.Title}&quot;);
+        Console.WriteLine($&quot;Photos: {photos.Count}&quot;);
+
+        foreach (var photo in photos)
+        {
+            Console.WriteLine($&quot;  - {photo.Description ?? &quot;Untitled&quot;} by {photo.User.Name}&quot;);
+        }
+    }
+}
+</code></pre>
+<h3 id="6-community-and-support">6. Community and Support</h3>
+<ul>
+<li><strong>GitHub Repository</strong>: <a href="https://github.com/rootasjey/unsplasharp">github.com/rootasjey/unsplasharp</a></li>
+<li><strong>Issues and Bug Reports</strong>: Use GitHub Issues for bug reports and feature requests</li>
+<li><strong>Unsplash API Documentation</strong>: <a href="https://unsplash.com/documentation">unsplash.com/documentation</a></li>
+<li><strong>Unsplash Developer Guidelines</strong>: Follow Unsplash's API guidelines and terms of service</li>
+</ul>
+<h3 id="7-contributing">7. Contributing</h3>
+<p>If you'd like to contribute to Unsplasharp:</p>
+<ol>
+<li>Fork the repository</li>
+<li>Create a feature branch</li>
+<li>Make your changes</li>
+<li>Add tests for new functionality</li>
+<li>Submit a pull request</li>
+</ol>
+<hr>
+<p>You're now ready to build amazing applications with Unsplasharp! Remember to always respect Unsplash's API rate limits and terms of service, and consider implementing proper error handling and caching for production applications.</p>
+<pre><code></code></pre>
+<pre><code></code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/rootasjey/unsplasharp/blob/master/docs/docs/getting-started.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

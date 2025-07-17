@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Advanced Usage Patterns | Unsplasharp Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Advanced Usage Patterns | Unsplasharp Documentation ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/rootasjey/unsplasharp/blob/master/docs/advanced-usage.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="Unsplasharp">
+            Unsplasharp
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="advanced-usage-patterns">Advanced Usage Patterns</h1>
+
+<p>This guide covers advanced usage patterns, performance optimization techniques, and sophisticated integration strategies for Unsplasharp.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#advanced-pagination-strategies">Advanced Pagination Strategies</a></li>
+<li><a href="#filtering-and-search-optimization">Filtering and Search Optimization</a></li>
+<li><a href="#custom-parameters-and-url-manipulation">Custom Parameters and URL Manipulation</a></li>
+<li><a href="#performance-optimization">Performance Optimization</a></li>
+<li><a href="#batch-operations">Batch Operations</a></li>
+<li><a href="#advanced-error-handling-patterns">Advanced Error Handling Patterns</a></li>
+<li><a href="#custom-http-client-configuration">Custom HTTP Client Configuration</a></li>
+<li><a href="#monitoring-and-metrics">Monitoring and Metrics</a></li>
+</ul>
+<h2 id="advanced-pagination-strategies">Advanced Pagination Strategies</h2>
+<h3 id="infinite-scroll-implementation">Infinite Scroll Implementation</h3>
+<pre><code class="lang-csharp">public class InfiniteScrollPhotoService
+{
+    private readonly UnsplasharpClient _client;
+    private readonly ILogger&lt;InfiniteScrollPhotoService&gt; _logger;
+
+    public InfiniteScrollPhotoService(UnsplasharpClient client, ILogger&lt;InfiniteScrollPhotoService&gt; logger)
+    {
+        _client = client;
+        _logger = logger;
+    }
+
+    public async IAsyncEnumerable&lt;Photo&gt; GetPhotosAsync(
+        string query, 
+        int batchSize = 20,
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
+    {
+        int currentPage = 1;
+        bool hasMoreResults = true;
+
+        while (hasMoreResults &amp;&amp; !cancellationToken.IsCancellationRequested)
+        {
+            try
+            {
+                var photos = await _client.SearchPhotosAsync(
+                    query, 
+                    page: currentPage, 
+                    perPage: batchSize,
+                    cancellationToken: cancellationToken);
+
+                if (photos.Count == 0)
+                {
+                    hasMoreResults = false;
+                    yield break;
+                }
+
+                foreach (var photo in photos)
+                {
+                    yield return photo;
+                }
+
+                // Check if we've reached the end
+                hasMoreResults = photos.Count == batchSize &amp;&amp; 
+                                currentPage &lt; _client.LastPhotosSearchTotalPages;
+                
+                currentPage++;
+
+                // Rate limiting courtesy delay
+                await Task.Delay(100, cancellationToken);
+            }
+            catch (UnsplasharpRateLimitException ex)
+            {
+                _logger.LogWarning(&quot;Rate limit hit during pagination, waiting {Delay}ms&quot;, 
+                    ex.TimeUntilReset?.TotalMilliseconds ?? 60000);
+                
+                await Task.Delay(ex.TimeUntilReset ?? TimeSpan.FromMinutes(1), cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, &quot;Error during pagination at page {Page}&quot;, currentPage);
+                hasMoreResults = false;
+            }
+        }
+    }
+}
+
+// Usage example
+public async Task UseInfiniteScroll()
+{
+    var service = new InfiniteScrollPhotoService(_client, _logger);
+    var photoCount = 0;
+
+    await foreach (var photo in service.GetPhotosAsync(&quot;nature&quot;, batchSize: 30))
+    {
+        Console.WriteLine($&quot;{++photoCount}: {photo.Description} by {photo.User.Name}&quot;);
+        
+        // Process photo (e.g., add to UI, cache, etc.)
+        
+        if (photoCount &gt;= 100) // Limit for demo
+            break;
+    }
+}
+</code></pre>
+<h3 id="parallel-pagination">Parallel Pagination</h3>
+<pre><code class="lang-csharp">public class ParallelPaginationService
+{
+    private readonly UnsplasharpClient _client;
+    private readonly SemaphoreSlim _semaphore;
+
+    public ParallelPaginationService(UnsplasharpClient client, int maxConcurrency = 3)
+    {
+        _client = client;
+        _semaphore = new SemaphoreSlim(maxConcurrency, maxConcurrency);
+    }
+
+    public async Task&lt;List&lt;Photo&gt;&gt; GetPhotosParallelAsync(
+        string query, 
+        int totalPages = 5, 
+        int perPage = 30)
+    {
+        var tasks = new List&lt;Task&lt;List&lt;Photo&gt;&gt;&gt;();
+
+        for (int page = 1; page &lt;= totalPages; page++)
+        {
+            tasks.Add(GetPageAsync(query, page, perPage));
+        }
+
+        var results = await Task.WhenAll(tasks);
+        return results.SelectMany(photos =&gt; photos).ToList();
+    }
+
+    private async Task&lt;List&lt;Photo&gt;&gt; GetPageAsync(string query, int page, int perPage)
+    {
+        await _semaphore.WaitAsync();
+        
+        try
+        {
+            // Add jitter to avoid thundering herd
+            await Task.Delay(Random.Shared.Next(0, 500));
+            
+            return await _client.SearchPhotosAsync(query, page: page, perPage: perPage);
+        }
+        catch (UnsplasharpRateLimitException)
+        {
+            // If rate limited, return empty list and let caller handle
+            return new List&lt;Photo&gt;();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+}
+</code></pre>
+<h2 id="filtering-and-search-optimization">Filtering and Search Optimization</h2>
+<h3 id="advanced-search-builder">Advanced Search Builder</h3>
+<pre><code class="lang-csharp">public class UnsplashSearchBuilder
+{
+    private string _query = string.Empty;
+    private int _page = 1;
+    private int _perPage = 10;
+    private OrderBy _orderBy = OrderBy.Relevant;
+    private string? _color;
+    private Orientation _orientation = Orientation.All;
+    private string? _contentFilter;
+    private List&lt;string&gt; _collectionIds = new();
+
+    public UnsplashSearchBuilder Query(string query)
+    {
+        _query = query;
+        return this;
+    }
+
+    public UnsplashSearchBuilder Page(int page)
+    {
+        _page = Math.Max(1, page);
+        return this;
+    }
+
+    public UnsplashSearchBuilder PerPage(int perPage)
+    {
+        _perPage = Math.Clamp(perPage, 1, 30);
+        return this;
+    }
+
+    public UnsplashSearchBuilder OrderBy(OrderBy orderBy)
+    {
+        _orderBy = orderBy;
+        return this;
+    }
+
+    public UnsplashSearchBuilder Color(string color)
+    {
+        var validColors = new[] { &quot;black_and_white&quot;, &quot;black&quot;, &quot;white&quot;, &quot;yellow&quot;, 
+                                 &quot;orange&quot;, &quot;red&quot;, &quot;purple&quot;, &quot;magenta&quot;, &quot;green&quot;, &quot;teal&quot;, &quot;blue&quot; };
+        
+        if (validColors.Contains(color.ToLowerInvariant()))
+        {
+            _color = color;
+        }
+        return this;
+    }
+
+    public UnsplashSearchBuilder Orientation(Orientation orientation)
+    {
+        _orientation = orientation;
+        return this;
+    }
+
+    public UnsplashSearchBuilder ContentFilter(string filter)
+    {
+        if (filter == &quot;low&quot; || filter == &quot;high&quot;)
+        {
+            _contentFilter = filter;
+        }
+        return this;
+    }
+
+    public UnsplashSearchBuilder InCollections(params string[] collectionIds)
+    {
+        _collectionIds.AddRange(collectionIds);
+        return this;
+    }
+
+    public async Task&lt;List&lt;Photo&gt;&gt; ExecuteAsync(UnsplasharpClient client)
+    {
+        var collectionIdsString = _collectionIds.Count &gt; 0 ? string.Join(&quot;,&quot;, _collectionIds) : null;
+        
+        return await client.SearchPhotosAsync(
+            _query,
+            _page,
+            _perPage,
+            _orderBy,
+            collectionIdsString,
+            _contentFilter,
+            _color,
+            _orientation
+        );
+    }
+}
+
+// Usage example
+public async Task AdvancedSearchExample()
+{
+    var photos = await new UnsplashSearchBuilder()
+        .Query(&quot;mountain landscape&quot;)
+        .Color(&quot;blue&quot;)
+        .Orientation(Orientation.Landscape)
+        .OrderBy(OrderBy.Popular)
+        .PerPage(20)
+        .ContentFilter(&quot;high&quot;)
+        .InCollections(&quot;499830&quot;, &quot;194162&quot;)
+        .ExecuteAsync(_client);
+
+    Console.WriteLine($&quot;Found {photos.Count} photos matching criteria&quot;);
+}
+</code></pre>
+<h3 id="smart-search-with-fallbacks">Smart Search with Fallbacks</h3>
+<pre><code class="lang-csharp">public class SmartSearchService
+{
+    private readonly UnsplasharpClient _client;
+    private readonly ILogger&lt;SmartSearchService&gt; _logger;
+
+    public SmartSearchService(UnsplasharpClient client, ILogger&lt;SmartSearchService&gt; logger)
+    {
+        _client = client;
+        _logger = logger;
+    }
+
+    public async Task&lt;List&lt;Photo&gt;&gt; SmartSearchAsync(string query, int desiredCount = 20)
+    {
+        var searchStrategies = new List&lt;Func&lt;Task&lt;List&lt;Photo&gt;&gt;&gt;&gt;
+        {
+            // Primary search - exact query
+            () =&gt; _client.SearchPhotosAsync(query, perPage: desiredCount),
+            
+            // Fallback 1 - broader search with popular ordering
+            () =&gt; _client.SearchPhotosAsync(query, orderBy: OrderBy.Popular, perPage: desiredCount),
+            
+            // Fallback 2 - search individual words
+            () =&gt; SearchIndividualWords(query, desiredCount),
+            
+            // Fallback 3 - random photos if all else fails
+            () =&gt; GetRandomPhotosAsync(desiredCount)
+        };
+
+        foreach (var strategy in searchStrategies)
+        {
+            try
+            {
+                var results = await strategy();
+                if (results.Count &gt; 0)
+                {
+                    _logger.LogInformation(&quot;Search strategy succeeded, found {Count} photos&quot;, results.Count);
+                    return results;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, &quot;Search strategy failed, trying next approach&quot;);
+            }
+        }
+
+        _logger.LogWarning(&quot;All search strategies failed for query: {Query}&quot;, query);
+        return new List&lt;Photo&gt;();
+    }
+
+    private async Task&lt;List&lt;Photo&gt;&gt; SearchIndividualWords(string query, int desiredCount)
+    {
+        var words = query.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        var allPhotos = new List&lt;Photo&gt;();
+
+        foreach (var word in words.Take(3)) // Limit to first 3 words
+        {
+            try
+            {
+                var photos = await _client.SearchPhotosAsync(word, perPage: desiredCount / words.Length + 5);
+                allPhotos.AddRange(photos);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogDebug(ex, &quot;Failed to search for word: {Word}&quot;, word);
+            }
+        }
+
+        return allPhotos.DistinctBy(p =&gt; p.Id).Take(desiredCount).ToList();
+    }
+
+    private async Task&lt;List&lt;Photo&gt;&gt; GetRandomPhotosAsync(int count)
+    {
+        var photos = new List&lt;Photo&gt;();
+        var batchSize = Math.Min(count, 30);
+        
+        for (int i = 0; i &lt; Math.Ceiling((double)count / batchSize); i++)
+        {
+            try
+            {
+                var randomPhotos = await _client.GetRandomPhotosAsync(batchSize);
+                photos.AddRange(randomPhotos);
+                
+                if (photos.Count &gt;= count)
+                    break;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogDebug(ex, &quot;Failed to get random photos batch {Batch}&quot;, i);
+            }
+        }
+
+        return photos.Take(count).ToList();
+    }
+}
+</code></pre>
+<h2 id="custom-parameters-and-url-manipulation">Custom Parameters and URL Manipulation</h2>
+<h3 id="custom-photo-sizing">Custom Photo Sizing</h3>
+<pre><code class="lang-csharp">public class CustomPhotoService
+{
+    private readonly UnsplasharpClient _client;
+
+    public CustomPhotoService(UnsplasharpClient client)
+    {
+        _client = client;
+    }
+
+    public async Task&lt;Photo?&gt; GetPhotoWithCustomSize(string photoId, int width, int height, bool crop = false)
+    {
+        if (crop)
+        {
+            // Get original photo first to calculate crop parameters
+            var originalPhoto = await _client.GetPhotoAsync(photoId);
+
+            // Calculate center crop
+            var cropX = Math.Max(0, (originalPhoto.Width - width) / 2);
+            var cropY = Math.Max(0, (originalPhoto.Height - height) / 2);
+
+            return await _client.GetPhoto(photoId, width, height, cropX, cropY, width, height);
+        }
+        else
+        {
+            return await _client.GetPhoto(photoId, width, height);
+        }
+    }
+
+    public async Task&lt;Dictionary&lt;string, string&gt;&gt; GetMultipleSizes(string photoId)
+    {
+        var sizes = new Dictionary&lt;string, (int width, int height)&gt;
+        {
+            [&quot;thumbnail&quot;] = (200, 200),
+            [&quot;small&quot;] = (400, 300),
+            [&quot;medium&quot;] = (800, 600),
+            [&quot;large&quot;] = (1200, 900),
+            [&quot;hero&quot;] = (1920, 1080)
+        };
+
+        var results = new Dictionary&lt;string, string&gt;();
+
+        foreach (var (sizeName, (width, height)) in sizes)
+        {
+            try
+            {
+                var photo = await _client.GetPhoto(photoId, width, height);
+                if (photo?.Urls.Custom != null)
+                {
+                    results[sizeName] = photo.Urls.Custom;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($&quot;Failed to get {sizeName} size: {ex.Message}&quot;);
+            }
+        }
+
+        return results;
+    }
+}
+</code></pre>
+<h3 id="url-parameter-optimization">URL Parameter Optimization</h3>
+<pre><code class="lang-csharp">public static class UnsplashUrlHelper
+{
+    public static string OptimizePhotoUrl(string originalUrl, int? width = null, int? height = null,
+        int? quality = null, string? format = null, bool? fit = null)
+    {
+        if (string.IsNullOrEmpty(originalUrl))
+            return originalUrl;
+
+        var uriBuilder = new UriBuilder(originalUrl);
+        var query = HttpUtility.ParseQueryString(uriBuilder.Query);
+
+        if (width.HasValue)
+            query[&quot;w&quot;] = width.Value.ToString();
+
+        if (height.HasValue)
+            query[&quot;h&quot;] = height.Value.ToString();
+
+        if (quality.HasValue &amp;&amp; quality.Value &gt;= 1 &amp;&amp; quality.Value &lt;= 100)
+            query[&quot;q&quot;] = quality.Value.ToString();
+
+        if (!string.IsNullOrEmpty(format) &amp;&amp; new[] { &quot;jpg&quot;, &quot;png&quot;, &quot;webp&quot; }.Contains(format.ToLower()))
+            query[&quot;fm&quot;] = format.ToLower();
+
+        if (fit.HasValue)
+            query[&quot;fit&quot;] = fit.Value ? &quot;crop&quot; : &quot;max&quot;;
+
+        uriBuilder.Query = query.ToString();
+        return uriBuilder.ToString();
+    }
+
+    public static string AddWatermark(string photoUrl, string text, string position = &quot;bottom-right&quot;)
+    {
+        var uriBuilder = new UriBuilder(photoUrl);
+        var query = HttpUtility.ParseQueryString(uriBuilder.Query);
+
+        query[&quot;txt&quot;] = text;
+        query[&quot;txt-pos&quot;] = position;
+        query[&quot;txt-size&quot;] = &quot;24&quot;;
+        query[&quot;txt-color&quot;] = &quot;ffffff&quot;;
+
+        uriBuilder.Query = query.ToString();
+        return uriBuilder.ToString();
+    }
+}
+
+// Usage example
+public async Task CustomUrlExample()
+{
+    var photo = await _client.GetPhotoAsync(&quot;qcs09SwNPHY&quot;);
+
+    // Optimize for web display
+    var webOptimized = UnsplashUrlHelper.OptimizePhotoUrl(
+        photo.Urls.Regular,
+        width: 800,
+        height: 600,
+        quality: 80,
+        format: &quot;webp&quot;
+    );
+
+    // Add watermark
+    var watermarked = UnsplashUrlHelper.AddWatermark(
+        photo.Urls.Regular,
+        &quot;© My App&quot;,
+        &quot;bottom-right&quot;
+    );
+
+    Console.WriteLine($&quot;Original: {photo.Urls.Regular}&quot;);
+    Console.WriteLine($&quot;Optimized: {webOptimized}&quot;);
+    Console.WriteLine($&quot;Watermarked: {watermarked}&quot;);
+}
+</code></pre>
+<h2 id="performance-optimization">Performance Optimization</h2>
+<h3 id="intelligent-caching-strategy">Intelligent Caching Strategy</h3>
+<pre><code class="lang-csharp">public class IntelligentCacheService
+{
+    private readonly UnsplasharpClient _client;
+    private readonly IMemoryCache _memoryCache;
+    private readonly IDistributedCache _distributedCache;
+    private readonly ILogger&lt;IntelligentCacheService&gt; _logger;
+
+    public IntelligentCacheService(
+        UnsplasharpClient client,
+        IMemoryCache memoryCache,
+        IDistributedCache distributedCache,
+        ILogger&lt;IntelligentCacheService&gt; logger)
+    {
+        _client = client;
+        _memoryCache = memoryCache;
+        _distributedCache = distributedCache;
+        _logger = logger;
+    }
+
+    public async Task&lt;Photo?&gt; GetPhotoAsync(string photoId, CacheStrategy strategy = CacheStrategy.Intelligent)
+    {
+        var cacheKey = $&quot;photo:{photoId}&quot;;
+
+        // Try memory cache first (fastest)
+        if (_memoryCache.TryGetValue(cacheKey, out Photo cachedPhoto))
+        {
+            _logger.LogDebug(&quot;Photo {PhotoId} found in memory cache&quot;, photoId);
+            return cachedPhoto;
+        }
+
+        // Try distributed cache (Redis, etc.)
+        if (strategy &gt;= CacheStrategy.Distributed)
+        {
+            var distributedData = await _distributedCache.GetStringAsync(cacheKey);
+            if (distributedData != null)
+            {
+                try
+                {
+                    var photo = JsonSerializer.Deserialize&lt;Photo&gt;(distributedData);
+
+                    // Store in memory cache for faster future access
+                    _memoryCache.Set(cacheKey, photo, TimeSpan.FromMinutes(15));
+
+                    _logger.LogDebug(&quot;Photo {PhotoId} found in distributed cache&quot;, photoId);
+                    return photo;
+                }
+                catch (JsonException ex)
+                {
+                    _logger.LogWarning(ex, &quot;Failed to deserialize cached photo {PhotoId}&quot;, photoId);
+                }
+            }
+        }
+
+        // Fetch from API
+        try
+        {
+            var photo = await _client.GetPhotoAsync(photoId);
+
+            // Cache with intelligent TTL based on photo popularity
+            var memoryCacheDuration = CalculateMemoryCacheDuration(photo);
+            var distributedCacheDuration = CalculateDistributedCacheDuration(photo);
+
+            _memoryCache.Set(cacheKey, photo, memoryCacheDuration);
+
+            if (strategy &gt;= CacheStrategy.Distributed)
+            {
+                var serializedPhoto = JsonSerializer.Serialize(photo);
+                await _distributedCache.SetStringAsync(cacheKey, serializedPhoto,
+                    new DistributedCacheEntryOptions
+                    {
+                        AbsoluteExpirationRelativeToNow = distributedCacheDuration
+                    });
+            }
+
+            _logger.LogDebug(&quot;Photo {PhotoId} fetched from API and cached&quot;, photoId);
+            return photo;
+        }
+        catch (UnsplasharpNotFoundException)
+        {
+            // Cache negative results to avoid repeated API calls
+            _memoryCache.Set(cacheKey, (Photo?)null, TimeSpan.FromMinutes(5));
+            return null;
+        }
+    }
+
+    private TimeSpan CalculateMemoryCacheDuration(Photo photo)
+    {
+        // Popular photos (high likes/downloads) cached longer
+        var popularity = photo.Likes + (photo.Downloads / 10);
+
+        return popularity switch
+        {
+            &gt; 10000 =&gt; TimeSpan.FromHours(2),
+            &gt; 1000 =&gt; TimeSpan.FromHours(1),
+            &gt; 100 =&gt; TimeSpan.FromMinutes(30),
+            _ =&gt; TimeSpan.FromMinutes(15)
+        };
+    }
+
+    private TimeSpan CalculateDistributedCacheDuration(Photo photo)
+    {
+        // Longer cache for distributed storage
+        return CalculateMemoryCacheDuration(photo).Multiply(4);
+    }
+}
+
+public enum CacheStrategy
+{
+    None,
+    Memory,
+    Distributed,
+    Intelligent
+}
+</code></pre>
+<h3 id="connection-pooling-and-http-optimization">Connection Pooling and HTTP Optimization</h3>
+<pre><code class="lang-csharp">public static class UnsplashHttpClientConfiguration
+{
+    public static void ConfigureOptimizedHttpClient(this IServiceCollection services,
+        UnsplashConfiguration config)
+    {
+        services.AddHttpClient(&quot;unsplash&quot;, client =&gt;
+        {
+            client.BaseAddress = new Uri(&quot;https://api.unsplash.com/&quot;);
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue(&quot;Client-ID&quot;, config.ApplicationId);
+
+            // Optimize headers
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue(&quot;application/json&quot;));
+
+            client.DefaultRequestHeaders.UserAgent.ParseAdd(
+                $&quot;UnsplasharpApp/1.0 (+{config.ApplicationUrl})&quot;);
+
+            // Connection optimization
+            client.Timeout = config.DefaultTimeout;
+        })
+        .ConfigurePrimaryHttpMessageHandler(() =&gt; new SocketsHttpHandler
+        {
+            // Connection pooling settings
+            PooledConnectionLifetime = TimeSpan.FromMinutes(15),
+            PooledConnectionIdleTimeout = TimeSpan.FromMinutes(5),
+            MaxConnectionsPerServer = 10,
+
+            // Performance settings
+            EnableMultipleHttp2Connections = true,
+            UseCookies = false, // Unsplash API doesn't use cookies
+
+            // Compression
+            AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+        })
+        .AddPolicyHandler(GetRetryPolicy())
+        .AddPolicyHandler(GetCircuitBreakerPolicy());
+    }
+
+    private static IAsyncPolicy&lt;HttpResponseMessage&gt; GetRetryPolicy()
+    {
+        return Policy
+            .HandleResult&lt;HttpResponseMessage&gt;(r =&gt; !r.IsSuccessStatusCode &amp;&amp; r.StatusCode != HttpStatusCode.NotFound)
+            .Or&lt;HttpRequestException&gt;()
+            .Or&lt;TaskCanceledException&gt;()
+            .WaitAndRetryAsync(
+                retryCount: 3,
+                sleepDurationProvider: retryAttempt =&gt; TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)) +
+                                                      TimeSpan.FromMilliseconds(Random.Shared.Next(0, 1000)),
+                onRetry: (outcome, timespan, retryCount, context) =&gt;
+                {
+                    var logger = context.GetLogger();
+                    logger?.LogWarning(&quot;Retry {RetryCount} after {Delay}ms for {Url}&quot;,
+                        retryCount, timespan.TotalMilliseconds, context.OperationKey);
+                });
+    }
+
+    private static IAsyncPolicy&lt;HttpResponseMessage&gt; GetCircuitBreakerPolicy()
+    {
+        return Policy
+            .HandleResult&lt;HttpResponseMessage&gt;(r =&gt; !r.IsSuccessStatusCode)
+            .CircuitBreakerAsync(
+                handledEventsAllowedBeforeBreaking: 5,
+                durationOfBreak: TimeSpan.FromSeconds(30),
+                onBreak: (result, timespan) =&gt;
+                {
+                    // Log circuit breaker opening
+                },
+                onReset: () =&gt;
+                {
+                    // Log circuit breaker closing
+                });
+    }
+}
+</code></pre>
+<h2 id="batch-operations">Batch Operations</h2>
+<h3 id="efficient-bulk-photo-processing">Efficient Bulk Photo Processing</h3>
+<pre><code class="lang-csharp">public class BulkPhotoProcessor
+{
+    private readonly UnsplasharpClient _client;
+    private readonly SemaphoreSlim _semaphore;
+    private readonly ILogger&lt;BulkPhotoProcessor&gt; _logger;
+
+    public BulkPhotoProcessor(UnsplasharpClient client, ILogger&lt;BulkPhotoProcessor&gt; logger, int maxConcurrency = 5)
+    {
+        _client = client;
+        _logger = logger;
+        _semaphore = new SemaphoreSlim(maxConcurrency, maxConcurrency);
+    }
+
+    public async Task&lt;BulkProcessResult&lt;Photo&gt;&gt; ProcessPhotosAsync(
+        IEnumerable&lt;string&gt; photoIds,
+        CancellationToken cancellationToken = default)
+    {
+        var result = new BulkProcessResult&lt;Photo&gt;();
+        var tasks = photoIds.Select(id =&gt; ProcessSinglePhotoAsync(id, result, cancellationToken));
+
+        await Task.WhenAll(tasks);
+
+        _logger.LogInformation(&quot;Bulk processing completed: {Success} successful, {Failed} failed&quot;,
+            result.Successful.Count, result.Failed.Count);
+
+        return result;
+    }
+
+    private async Task ProcessSinglePhotoAsync(
+        string photoId,
+        BulkProcessResult&lt;Photo&gt; result,
+        CancellationToken cancellationToken)
+    {
+        await _semaphore.WaitAsync(cancellationToken);
+
+        try
+        {
+            // Add jitter to prevent thundering herd
+            await Task.Delay(Random.Shared.Next(0, 200), cancellationToken);
+
+            var photo = await _client.GetPhotoAsync(photoId, cancellationToken);
+
+            lock (result)
+            {
+                result.Successful.Add(photo);
+            }
+
+            _logger.LogDebug(&quot;Successfully processed photo {PhotoId}&quot;, photoId);
+        }
+        catch (UnsplasharpNotFoundException)
+        {
+            lock (result)
+            {
+                result.Failed.Add(new BulkProcessError(photoId, &quot;Photo not found&quot;));
+            }
+            _logger.LogWarning(&quot;Photo {PhotoId} not found&quot;, photoId);
+        }
+        catch (UnsplasharpRateLimitException ex)
+        {
+            lock (result)
+            {
+                result.Failed.Add(new BulkProcessError(photoId, &quot;Rate limit exceeded&quot;));
+            }
+            _logger.LogWarning(&quot;Rate limit exceeded for photo {PhotoId}&quot;, photoId);
+
+            // Wait for rate limit reset
+            if (ex.TimeUntilReset.HasValue)
+            {
+                await Task.Delay(ex.TimeUntilReset.Value, cancellationToken);
+            }
+        }
+        catch (Exception ex)
+        {
+            lock (result)
+            {
+                result.Failed.Add(new BulkProcessError(photoId, ex.Message));
+            }
+            _logger.LogError(ex, &quot;Error processing photo {PhotoId}&quot;, photoId);
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+}
+
+public class BulkProcessResult&lt;T&gt;
+{
+    public List&lt;T&gt; Successful { get; } = new();
+    public List&lt;BulkProcessError&gt; Failed { get; } = new();
+
+    public int TotalProcessed =&gt; Successful.Count + Failed.Count;
+    public double SuccessRate =&gt; TotalProcessed &gt; 0 ? (double)Successful.Count / TotalProcessed : 0;
+}
+
+public record BulkProcessError(string Id, string Error);
+</code></pre>
+<h3 id="batch-download-manager">Batch Download Manager</h3>
+<pre><code class="lang-csharp">public class BatchDownloadManager
+{
+    private readonly UnsplasharpClient _client;
+    private readonly HttpClient _httpClient;
+    private readonly ILogger&lt;BatchDownloadManager&gt; _logger;
+    private readonly SemaphoreSlim _downloadSemaphore;
+
+    public BatchDownloadManager(
+        UnsplasharpClient client,
+        HttpClient httpClient,
+        ILogger&lt;BatchDownloadManager&gt; logger,
+        int maxConcurrentDownloads = 3)
+    {
+        _client = client;
+        _httpClient = httpClient;
+        _logger = logger;
+        _downloadSemaphore = new SemaphoreSlim(maxConcurrentDownloads, maxConcurrentDownloads);
+    }
+
+    public async Task&lt;BatchDownloadResult&gt; DownloadPhotosAsync(
+        IEnumerable&lt;string&gt; photoIds,
+        string downloadDirectory,
+        PhotoSize size = PhotoSize.Regular,
+        IProgress&lt;DownloadProgress&gt;? progress = null,
+        CancellationToken cancellationToken = default)
+    {
+        Directory.CreateDirectory(downloadDirectory);
+
+        var result = new BatchDownloadResult();
+        var photoIdsList = photoIds.ToList();
+        var totalPhotos = photoIdsList.Count;
+        var processedCount = 0;
+
+        var downloadTasks = photoIdsList.Select(async photoId =&gt;
+        {
+            try
+            {
+                var downloadPath = await DownloadSinglePhotoAsync(photoId, downloadDirectory, size, cancellationToken);
+
+                lock (result)
+                {
+                    result.SuccessfulDownloads.Add(new DownloadResult(photoId, downloadPath));
+                    processedCount++;
+                }
+
+                progress?.Report(new DownloadProgress(processedCount, totalPhotos, photoId, true));
+            }
+            catch (Exception ex)
+            {
+                lock (result)
+                {
+                    result.FailedDownloads.Add(new DownloadError(photoId, ex.Message));
+                    processedCount++;
+                }
+
+                progress?.Report(new DownloadProgress(processedCount, totalPhotos, photoId, false));
+                _logger.LogError(ex, &quot;Failed to download photo {PhotoId}&quot;, photoId);
+            }
+        });
+
+        await Task.WhenAll(downloadTasks);
+
+        _logger.LogInformation(&quot;Batch download completed: {Success}/{Total} successful&quot;,
+            result.SuccessfulDownloads.Count, totalPhotos);
+
+        return result;
+    }
+
+    private async Task&lt;string&gt; DownloadSinglePhotoAsync(
+        string photoId,
+        string downloadDirectory,
+        PhotoSize size,
+        CancellationToken cancellationToken)
+    {
+        await _downloadSemaphore.WaitAsync(cancellationToken);
+
+        try
+        {
+            // Get photo metadata
+            var photo = await _client.GetPhotoAsync(photoId, cancellationToken);
+
+            // Select appropriate URL based on size
+            var imageUrl = size switch
+            {
+                PhotoSize.Thumbnail =&gt; photo.Urls.Thumbnail,
+                PhotoSize.Small =&gt; photo.Urls.Small,
+                PhotoSize.Regular =&gt; photo.Urls.Regular,
+                PhotoSize.Full =&gt; photo.Urls.Full,
+                PhotoSize.Raw =&gt; photo.Urls.Raw,
+                _ =&gt; photo.Urls.Regular
+            };
+
+            // Download image
+            var imageBytes = await _httpClient.GetByteArrayAsync(imageUrl, cancellationToken);
+
+            // Generate filename
+            var fileName = $&quot;{photo.Id}_{size.ToString().ToLower()}.jpg&quot;;
+            var filePath = Path.Combine(downloadDirectory, fileName);
+
+            // Save to disk
+            await File.WriteAllBytesAsync(filePath, imageBytes, cancellationToken);
+
+            _logger.LogDebug(&quot;Downloaded photo {PhotoId} to {FilePath} ({Size} bytes)&quot;,
+                photoId, filePath, imageBytes.Length);
+
+            return filePath;
+        }
+        finally
+        {
+            _downloadSemaphore.Release();
+        }
+    }
+}
+
+public enum PhotoSize
+{
+    Thumbnail,
+    Small,
+    Regular,
+    Full,
+    Raw
+}
+
+public class BatchDownloadResult
+{
+    public List&lt;DownloadResult&gt; SuccessfulDownloads { get; } = new();
+    public List&lt;DownloadError&gt; FailedDownloads { get; } = new();
+
+    public int TotalAttempted =&gt; SuccessfulDownloads.Count + FailedDownloads.Count;
+    public double SuccessRate =&gt; TotalAttempted &gt; 0 ? (double)SuccessfulDownloads.Count / TotalAttempted : 0;
+}
+
+public record DownloadResult(string PhotoId, string FilePath);
+public record DownloadError(string PhotoId, string Error);
+public record DownloadProgress(int Processed, int Total, string CurrentPhotoId, bool Success);
+</code></pre>
+<h2 id="monitoring-and-metrics">Monitoring and Metrics</h2>
+<h3 id="performance-metrics-collection">Performance Metrics Collection</h3>
+<pre><code class="lang-csharp">public class UnsplashMetricsCollector
+{
+    private readonly ILogger&lt;UnsplashMetricsCollector&gt; _logger;
+    private readonly ConcurrentDictionary&lt;string, ApiMetrics&gt; _metrics = new();
+
+    public UnsplashMetricsCollector(ILogger&lt;UnsplashMetricsCollector&gt; logger)
+    {
+        _logger = logger;
+    }
+
+    public void RecordApiCall(string endpoint, TimeSpan duration, bool success, int? statusCode = null)
+    {
+        var metrics = _metrics.GetOrAdd(endpoint, _ =&gt; new ApiMetrics());
+
+        lock (metrics)
+        {
+            metrics.TotalCalls++;
+            metrics.TotalDuration += duration;
+
+            if (success)
+            {
+                metrics.SuccessfulCalls++;
+            }
+            else
+            {
+                metrics.FailedCalls++;
+            }
+
+            if (statusCode.HasValue)
+            {
+                metrics.StatusCodes.AddOrUpdate(statusCode.Value, 1, (_, count) =&gt; count + 1);
+            }
+
+            metrics.LastCallTime = DateTimeOffset.UtcNow;
+
+            // Update min/max duration
+            if (duration &lt; metrics.MinDuration || metrics.MinDuration == TimeSpan.Zero)
+                metrics.MinDuration = duration;
+
+            if (duration &gt; metrics.MaxDuration)
+                metrics.MaxDuration = duration;
+        }
+    }
+
+    public void RecordRateLimit(int remaining, int limit, DateTimeOffset? resetTime)
+    {
+        var rateLimitMetrics = _metrics.GetOrAdd(&quot;_rate_limit&quot;, _ =&gt; new ApiMetrics());
+
+        lock (rateLimitMetrics)
+        {
+            rateLimitMetrics.RateLimitRemaining = remaining;
+            rateLimitMetrics.RateLimitTotal = limit;
+            rateLimitMetrics.RateLimitResetTime = resetTime;
+        }
+    }
+
+    public MetricsSummary GetSummary()
+    {
+        var summary = new MetricsSummary
+        {
+            GeneratedAt = DateTimeOffset.UtcNow,
+            EndpointMetrics = new Dictionary&lt;string, EndpointSummary&gt;()
+        };
+
+        foreach (var (endpoint, metrics) in _metrics)
+        {
+            if (endpoint == &quot;_rate_limit&quot;)
+            {
+                summary.RateLimitRemaining = metrics.RateLimitRemaining;
+                summary.RateLimitTotal = metrics.RateLimitTotal;
+                summary.RateLimitResetTime = metrics.RateLimitResetTime;
+                continue;
+            }
+
+            lock (metrics)
+            {
+                summary.EndpointMetrics[endpoint] = new EndpointSummary
+                {
+                    TotalCalls = metrics.TotalCalls,
+                    SuccessfulCalls = metrics.SuccessfulCalls,
+                    FailedCalls = metrics.FailedCalls,
+                    SuccessRate = metrics.TotalCalls &gt; 0 ? (double)metrics.SuccessfulCalls / metrics.TotalCalls : 0,
+                    AverageDuration = metrics.TotalCalls &gt; 0 ? metrics.TotalDuration.TotalMilliseconds / metrics.TotalCalls : 0,
+                    MinDuration = metrics.MinDuration.TotalMilliseconds,
+                    MaxDuration = metrics.MaxDuration.TotalMilliseconds,
+                    LastCallTime = metrics.LastCallTime,
+                    StatusCodeDistribution = new Dictionary&lt;int, int&gt;(metrics.StatusCodes)
+                };
+            }
+        }
+
+        return summary;
+    }
+
+    public void LogMetricsSummary()
+    {
+        var summary = GetSummary();
+
+        _logger.LogInformation(&quot;=== Unsplash API Metrics Summary ===&quot;);
+        _logger.LogInformation(&quot;Rate Limit: {Remaining}/{Total} (Reset: {ResetTime})&quot;,
+            summary.RateLimitRemaining, summary.RateLimitTotal, summary.RateLimitResetTime);
+
+        foreach (var (endpoint, metrics) in summary.EndpointMetrics)
+        {
+            _logger.LogInformation(&quot;Endpoint: {Endpoint}&quot;, endpoint);
+            _logger.LogInformation(&quot;  Calls: {Total} (Success: {Success}, Failed: {Failed}, Rate: {Rate:P2})&quot;,
+                metrics.TotalCalls, metrics.SuccessfulCalls, metrics.FailedCalls, metrics.SuccessRate);
+            _logger.LogInformation(&quot;  Duration: Avg {Avg:F1}ms, Min {Min:F1}ms, Max {Max:F1}ms&quot;,
+                metrics.AverageDuration, metrics.MinDuration, metrics.MaxDuration);
+            _logger.LogInformation(&quot;  Last Call: {LastCall}&quot;, metrics.LastCallTime);
+        }
+    }
+}
+
+public class ApiMetrics
+{
+    public int TotalCalls { get; set; }
+    public int SuccessfulCalls { get; set; }
+    public int FailedCalls { get; set; }
+    public TimeSpan TotalDuration { get; set; }
+    public TimeSpan MinDuration { get; set; }
+    public TimeSpan MaxDuration { get; set; }
+    public DateTimeOffset LastCallTime { get; set; }
+    public ConcurrentDictionary&lt;int, int&gt; StatusCodes { get; } = new();
+
+    // Rate limit tracking
+    public int RateLimitRemaining { get; set; }
+    public int RateLimitTotal { get; set; }
+    public DateTimeOffset? RateLimitResetTime { get; set; }
+}
+
+public class MetricsSummary
+{
+    public DateTimeOffset GeneratedAt { get; set; }
+    public Dictionary&lt;string, EndpointSummary&gt; EndpointMetrics { get; set; } = new();
+    public int RateLimitRemaining { get; set; }
+    public int RateLimitTotal { get; set; }
+    public DateTimeOffset? RateLimitResetTime { get; set; }
+}
+
+public class EndpointSummary
+{
+    public int TotalCalls { get; set; }
+    public int SuccessfulCalls { get; set; }
+    public int FailedCalls { get; set; }
+    public double SuccessRate { get; set; }
+    public double AverageDuration { get; set; }
+    public double MinDuration { get; set; }
+    public double MaxDuration { get; set; }
+    public DateTimeOffset LastCallTime { get; set; }
+    public Dictionary&lt;int, int&gt; StatusCodeDistribution { get; set; } = new();
+}
+</code></pre>
+<pre><code></code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/rootasjey/unsplasharp/blob/master/docs/advanced-usage.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

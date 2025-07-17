@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Models Reference Guide | Unsplasharp Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Models Reference Guide | Unsplasharp Documentation ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/rootasjey/unsplasharp/blob/master/docs/models-reference.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="Unsplasharp">
+            Unsplasharp
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="models-reference-guide">Models Reference Guide</h1>
+
+<p>This comprehensive guide covers all model classes in Unsplasharp, their properties, relationships, and usage examples.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#photo-model">Photo Model</a></li>
+<li><a href="#user-model">User Model</a></li>
+<li><a href="#collection-model">Collection Model</a></li>
+<li><a href="#url-models">URL Models</a></li>
+<li><a href="#location-and-exif-models">Location and EXIF Models</a></li>
+<li><a href="#statistics-models">Statistics Models</a></li>
+<li><a href="#link-models">Link Models</a></li>
+<li><a href="#supporting-models">Supporting Models</a></li>
+<li><a href="#model-relationships">Model Relationships</a></li>
+<li><a href="#usage-examples">Usage Examples</a></li>
+</ul>
+<h2 id="photo-model">Photo Model</h2>
+<p>The <code>Photo</code> class is the core model representing an Unsplash photo with comprehensive metadata.</p>
+<h3 id="properties">Properties</h3>
+<pre><code class="lang-csharp">public class Photo : INotifyPropertyChanged
+{
+    // Basic Properties
+    public string Id { get; set; }                    // Unique photo identifier
+    public string Description { get; set; }           // Photo description/alt text
+    public string CreatedAt { get; set; }            // ISO 8601 creation timestamp
+    public string UpdatedAt { get; set; }            // ISO 8601 last update timestamp
+    public int Width { get; set; }                   // Photo width in pixels
+    public int Height { get; set; }                 // Photo height in pixels
+    public string Color { get; set; }               // Dominant color (hex format)
+    public string BlurHash { get; set; }            // BlurHash for placeholder
+    
+    // Engagement Metrics
+    public int Downloads { get; set; }              // Total download count
+    public int Likes { get; set; }                  // Total like count
+    public bool IsLikedByUser { get; set; }         // Current user's like status
+    
+    // Complex Properties
+    public Urls Urls { get; set; }                  // Photo URLs in different sizes
+    public User User { get; set; }                  // Photo author/photographer
+    public Exif Exif { get; set; }                 // Camera EXIF data
+    public Location Location { get; set; }          // Photo location data
+    public PhotoLinks Links { get; set; }           // Related API links
+    public List&lt;Category&gt; Categories { get; set; }  // Photo categories/tags
+    public List&lt;Collection&gt; CurrentUserCollection { get; set; } // User's collections
+}
+</code></pre>
+<h3 id="usage-examples">Usage Examples</h3>
+<pre><code class="lang-csharp">// Basic photo information
+var photo = await client.GetPhotoAsync(&quot;qcs09SwNPHY&quot;);
+
+Console.WriteLine($&quot;Photo ID: {photo.Id}&quot;);
+Console.WriteLine($&quot;Title: {photo.Description ?? &quot;Untitled&quot;}&quot;);
+Console.WriteLine($&quot;Photographer: {photo.User.Name} (@{photo.User.Username})&quot;);
+Console.WriteLine($&quot;Dimensions: {photo.Width}x{photo.Height}&quot;);
+Console.WriteLine($&quot;Aspect Ratio: {(double)photo.Width / photo.Height:F2}&quot;);
+Console.WriteLine($&quot;Dominant Color: {photo.Color}&quot;);
+Console.WriteLine($&quot;Engagement: {photo.Likes:N0} likes, {photo.Downloads:N0} downloads&quot;);
+
+// Check if photo has location data
+if (!string.IsNullOrEmpty(photo.Location.Name))
+{
+    Console.WriteLine($&quot;Location: {photo.Location.Name}&quot;);
+    if (photo.Location.Position != null)
+    {
+        Console.WriteLine($&quot;Coordinates: {photo.Location.Position.Latitude}, {photo.Location.Position.Longitude}&quot;);
+    }
+}
+
+// Check camera information
+if (!string.IsNullOrEmpty(photo.Exif.Make))
+{
+    Console.WriteLine($&quot;Camera: {photo.Exif.Make} {photo.Exif.Model}&quot;);
+    Console.WriteLine($&quot;Settings: f/{photo.Exif.Aperture}, {photo.Exif.ExposureTime}s, ISO {photo.Exif.Iso}&quot;);
+}
+
+// Access different photo sizes
+Console.WriteLine(&quot;Available sizes:&quot;);
+Console.WriteLine($&quot;  Thumbnail: {photo.Urls.Thumbnail}&quot;);
+Console.WriteLine($&quot;  Small: {photo.Urls.Small}&quot;);
+Console.WriteLine($&quot;  Regular: {photo.Urls.Regular}&quot;);
+Console.WriteLine($&quot;  Full: {photo.Urls.Full}&quot;);
+Console.WriteLine($&quot;  Raw: {photo.Urls.Raw}&quot;);
+</code></pre>
+<h3 id="photo-filtering-and-analysis">Photo Filtering and Analysis</h3>
+<pre><code class="lang-csharp">public static class PhotoAnalyzer
+{
+    public static bool IsLandscape(Photo photo) =&gt; photo.Width &gt; photo.Height;
+    public static bool IsPortrait(Photo photo) =&gt; photo.Height &gt; photo.Width;
+    public static bool IsSquare(Photo photo) =&gt; Math.Abs(photo.Width - photo.Height) &lt; 50;
+    
+    public static bool IsHighResolution(Photo photo) =&gt; photo.Width &gt;= 1920 &amp;&amp; photo.Height &gt;= 1080;
+    public static bool IsPopular(Photo photo) =&gt; photo.Likes &gt; 1000 || photo.Downloads &gt; 10000;
+    
+    public static string GetOrientationDescription(Photo photo)
+    {
+        return photo.Width switch
+        {
+            var w when w &gt; photo.Height * 1.5 =&gt; &quot;Wide Landscape&quot;,
+            var w when w &gt; photo.Height =&gt; &quot;Landscape&quot;,
+            var w when w &lt; photo.Height / 1.5 =&gt; &quot;Tall Portrait&quot;,
+            var w when w &lt; photo.Height =&gt; &quot;Portrait&quot;,
+            _ =&gt; &quot;Square&quot;
+        };
+    }
+    
+    public static PhotoQuality AssessQuality(Photo photo)
+    {
+        var score = 0;
+        
+        // Resolution scoring
+        if (photo.Width &gt;= 3840 &amp;&amp; photo.Height &gt;= 2160) score += 3; // 4K+
+        else if (photo.Width &gt;= 1920 &amp;&amp; photo.Height &gt;= 1080) score += 2; // Full HD+
+        else if (photo.Width &gt;= 1280 &amp;&amp; photo.Height &gt;= 720) score += 1; // HD+
+        
+        // Engagement scoring
+        if (photo.Likes &gt; 10000) score += 3;
+        else if (photo.Likes &gt; 1000) score += 2;
+        else if (photo.Likes &gt; 100) score += 1;
+        
+        // EXIF data availability
+        if (!string.IsNullOrEmpty(photo.Exif.Make)) score += 1;
+        
+        return score switch
+        {
+            &gt;= 6 =&gt; PhotoQuality.Excellent,
+            &gt;= 4 =&gt; PhotoQuality.Good,
+            &gt;= 2 =&gt; PhotoQuality.Average,
+            _ =&gt; PhotoQuality.Basic
+        };
+    }
+}
+
+public enum PhotoQuality
+{
+    Basic,
+    Average,
+    Good,
+    Excellent
+}
+</code></pre>
+<h2 id="user-model">User Model</h2>
+<p>The <code>User</code> class represents an Unsplash photographer or user profile.</p>
+<h3 id="properties-1">Properties</h3>
+<pre><code class="lang-csharp">public class User : INotifyPropertyChanged
+{
+    // Identity
+    public string Id { get; set; }                 // Unique user identifier
+    public string Username { get; set; }           // Username (handle)
+    public string Name { get; set; }               // Display name
+    public string FirstName { get; set; }          // First name
+    public string LastName { get; set; }           // Last name
+    
+    // Profile Information
+    public string Bio { get; set; }                // User biography
+    public string Location { get; set; }           // User location
+    public string PortfolioUrl { get; set; }       // Portfolio website
+    public string TwitterUsername { get; set; }    // Twitter handle
+    public bool ForHire { get; set; }              // Available for hire
+    
+    // Statistics
+    public int TotalLikes { get; set; }            // Total likes received
+    public int TotalPhotos { get; set; }           // Total photos uploaded
+    public int TotalCollections { get; set; }      // Total collections created
+    public int FollowersCount { get; set; }        // Number of followers
+    public int FollowingCount { get; set; }        // Number of following
+    
+    // Complex Properties
+    public ProfileImage ProfileImage { get; set; } // Profile image URLs
+    public Badge Badge { get; set; }               // User badge information
+    public UserLinks Links { get; set; }           // Related API links
+}
+</code></pre>
+<h3 id="usage-examples-1">Usage Examples</h3>
+<pre><code class="lang-csharp">// Get user profile information
+var user = await client.GetUserAsync(&quot;chrisjoelcampbell&quot;);
+
+Console.WriteLine($&quot;Photographer: {user.Name} (@{user.Username})&quot;);
+Console.WriteLine($&quot;Bio: {user.Bio}&quot;);
+Console.WriteLine($&quot;Location: {user.Location}&quot;);
+Console.WriteLine($&quot;Portfolio: {user.PortfolioUrl}&quot;);
+
+// Statistics
+Console.WriteLine($&quot;Statistics:&quot;);
+Console.WriteLine($&quot;  Photos: {user.TotalPhotos:N0}&quot;);
+Console.WriteLine($&quot;  Likes received: {user.TotalLikes:N0}&quot;);
+Console.WriteLine($&quot;  Collections: {user.TotalCollections:N0}&quot;);
+Console.WriteLine($&quot;  Followers: {user.FollowersCount:N0}&quot;);
+
+// Profile images
+Console.WriteLine($&quot;Profile Images:&quot;);
+Console.WriteLine($&quot;  Small: {user.ProfileImage.Small}&quot;);
+Console.WriteLine($&quot;  Medium: {user.ProfileImage.Medium}&quot;);
+Console.WriteLine($&quot;  Large: {user.ProfileImage.Large}&quot;);
+
+// Check if user is available for hire
+if (user.ForHire)
+{
+    Console.WriteLine(&quot;✅ Available for hire&quot;);
+}
+
+// Social media links
+if (!string.IsNullOrEmpty(user.TwitterUsername))
+{
+    Console.WriteLine($&quot;Twitter: @{user.TwitterUsername}&quot;);
+}
+</code></pre>
+<h3 id="user-analysis">User Analysis</h3>
+<pre><code class="lang-csharp">public static class UserAnalyzer
+{
+    public static UserTier GetUserTier(User user)
+    {
+        return user.TotalPhotos switch
+        {
+            &gt;= 1000 =&gt; UserTier.Professional,
+            &gt;= 100 =&gt; UserTier.Advanced,
+            &gt;= 10 =&gt; UserTier.Intermediate,
+            _ =&gt; UserTier.Beginner
+        };
+    }
+    
+    public static double GetEngagementRate(User user)
+    {
+        return user.TotalPhotos &gt; 0 ? (double)user.TotalLikes / user.TotalPhotos : 0;
+    }
+    
+    public static bool IsInfluencer(User user)
+    {
+        return user.FollowersCount &gt; 10000 || 
+               user.TotalLikes &gt; 100000 || 
+               user.TotalPhotos &gt; 500;
+    }
+    
+    public static string GetUserDescription(User user)
+    {
+        var tier = GetUserTier(user);
+        var engagement = GetEngagementRate(user);
+        var isInfluencer = IsInfluencer(user);
+        
+        var description = $&quot;{tier} photographer&quot;;
+        
+        if (engagement &gt; 100)
+            description += &quot; with high engagement&quot;;
+        
+        if (isInfluencer)
+            description += &quot; and influencer status&quot;;
+        
+        if (user.ForHire)
+            description += &quot; (available for hire)&quot;;
+        
+        return description;
+    }
+}
+
+public enum UserTier
+{
+    Beginner,
+    Intermediate,
+    Advanced,
+    Professional
+}
+</code></pre>
+<h2 id="collection-model">Collection Model</h2>
+<p>The <code>Collection</code> class represents a curated collection of photos.</p>
+<h3 id="properties-2">Properties</h3>
+<pre><code class="lang-csharp">public class Collection : INotifyPropertyChanged
+{
+    // Basic Information
+    public string Id { get; set; }                  // Unique collection identifier
+    public string Title { get; set; }              // Collection title
+    public string Description { get; set; }        // Collection description
+    public string PublishedAt { get; set; }        // Publication timestamp
+    public string UpdatedAt { get; set; }          // Last update timestamp
+    
+    // Metadata
+    public int TotalPhotos { get; set; }           // Number of photos in collection
+    public bool IsPrivate { get; set; }            // Privacy status
+    public string ShareKey { get; set; }           // Share key for private collections
+    
+    // Complex Properties
+    public Photo CoverPhoto { get; set; }          // Collection cover photo
+    public User User { get; set; }                // Collection creator
+    public CollectionLinks Links { get; set; }     // Related API links
+}
+</code></pre>
+<h3 id="usage-examples-2">Usage Examples</h3>
+<pre><code class="lang-csharp">// Get collection information
+var collection = await client.GetCollectionAsync(&quot;499830&quot;);
+
+Console.WriteLine($&quot;Collection: {collection.Title}&quot;);
+Console.WriteLine($&quot;Description: {collection.Description}&quot;);
+Console.WriteLine($&quot;Created by: {collection.User.Name}&quot;);
+Console.WriteLine($&quot;Photos: {collection.TotalPhotos:N0}&quot;);
+Console.WriteLine($&quot;Published: {DateTime.Parse(collection.PublishedAt):yyyy-MM-dd}&quot;);
+Console.WriteLine($&quot;Privacy: {(collection.IsPrivate ? &quot;Private&quot; : &quot;Public&quot;)}&quot;);
+
+// Cover photo information
+if (collection.CoverPhoto != null)
+{
+    Console.WriteLine($&quot;Cover Photo:&quot;);
+    Console.WriteLine($&quot;  By: {collection.CoverPhoto.User.Name}&quot;);
+    Console.WriteLine($&quot;  URL: {collection.CoverPhoto.Urls.Regular}&quot;);
+}
+
+// Get photos from collection
+var photos = await client.GetCollectionPhotosAsync(collection.Id, perPage: 10);
+Console.WriteLine($&quot;\nFirst 10 photos:&quot;);
+foreach (var photo in photos)
+{
+    Console.WriteLine($&quot;  - {photo.Description ?? &quot;Untitled&quot;} by {photo.User.Name}&quot;);
+}
+</code></pre>
+<h2 id="url-models">URL Models</h2>
+<h3 id="urls-class">Urls Class</h3>
+<p>The <code>Urls</code> class provides different sizes and formats of photo URLs.</p>
+<pre><code class="lang-csharp">public class Urls
+{
+    public string Raw { get; set; }        // Full resolution, uncompressed
+    public string Full { get; set; }       // Large size (max 2048px on longest side)
+    public string Regular { get; set; }    // Medium size (max 1080px on longest side)
+    public string Small { get; set; }      // Small size (max 400px on longest side)
+    public string Thumbnail { get; set; }  // Thumbnail (max 200px on longest side)
+    public string Custom { get; set; }     // Custom size (when width/height specified)
+}
+</code></pre>
+<h3 id="url-usage-examples">URL Usage Examples</h3>
+<pre><code class="lang-csharp">public static class PhotoUrlHelper
+{
+    public static string GetBestUrlForSize(Urls urls, int maxWidth, int maxHeight)
+    {
+        // Choose the most appropriate URL based on desired dimensions
+        var maxDimension = Math.Max(maxWidth, maxHeight);
+
+        return maxDimension switch
+        {
+            &lt;= 200 =&gt; urls.Thumbnail,
+            &lt;= 400 =&gt; urls.Small,
+            &lt;= 1080 =&gt; urls.Regular,
+            &lt;= 2048 =&gt; urls.Full,
+            _ =&gt; urls.Raw
+        };
+    }
+
+    public static Dictionary&lt;string, string&gt; GetAllSizes(Urls urls)
+    {
+        return new Dictionary&lt;string, string&gt;
+        {
+            [&quot;thumbnail&quot;] = urls.Thumbnail,
+            [&quot;small&quot;] = urls.Small,
+            [&quot;regular&quot;] = urls.Regular,
+            [&quot;full&quot;] = urls.Full,
+            [&quot;raw&quot;] = urls.Raw
+        };
+    }
+
+    public static long EstimateFileSize(string url, int width, int height)
+    {
+        // Rough estimation based on dimensions and compression
+        var pixels = width * height;
+        var compressionRatio = url.Contains(&quot;raw&quot;) ? 0.3 : 0.1; // Raw vs compressed
+
+        return (long)(pixels * 3 * compressionRatio); // 3 bytes per pixel (RGB)
+    }
+}
+
+// Usage example
+var photo = await client.GetPhotoAsync(&quot;photo-id&quot;);
+
+// Get appropriate URL for different use cases
+var thumbnailUrl = PhotoUrlHelper.GetBestUrlForSize(photo.Urls, 200, 200);
+var heroImageUrl = PhotoUrlHelper.GetBestUrlForSize(photo.Urls, 1920, 1080);
+var printQualityUrl = PhotoUrlHelper.GetBestUrlForSize(photo.Urls, 4000, 3000);
+
+// Estimate download sizes
+var sizes = PhotoUrlHelper.GetAllSizes(photo.Urls);
+foreach (var (sizeName, url) in sizes)
+{
+    var estimatedSize = PhotoUrlHelper.EstimateFileSize(url, photo.Width, photo.Height);
+    Console.WriteLine($&quot;{sizeName}: {url} (~{estimatedSize / 1024:N0} KB)&quot;);
+}
+</code></pre>
+<h3 id="profileimage-class">ProfileImage Class</h3>
+<pre><code class="lang-csharp">public class ProfileImage
+{
+    public string Small { get; set; }      // Small profile image (32x32)
+    public string Medium { get; set; }     // Medium profile image (64x64)
+    public string Large { get; set; }      // Large profile image (128x128)
+}
+</code></pre>
+<h2 id="location-and-exif-models">Location and EXIF Models</h2>
+<h3 id="location-class">Location Class</h3>
+<pre><code class="lang-csharp">public class Location
+{
+    public string Name { get; set; }       // Location name (e.g., &quot;Paris, France&quot;)
+    public string City { get; set; }       // City name
+    public string Country { get; set; }    // Country name
+    public Position Position { get; set; } // GPS coordinates
+}
+
+public class Position
+{
+    public double Latitude { get; set; }   // GPS latitude
+    public double Longitude { get; set; }  // GPS longitude
+}
+</code></pre>
+<h3 id="exif-class">EXIF Class</h3>
+<pre><code class="lang-csharp">public class Exif
+{
+    public string Make { get; set; }           // Camera manufacturer (e.g., &quot;Canon&quot;)
+    public string Model { get; set; }         // Camera model (e.g., &quot;EOS 5D Mark IV&quot;)
+    public string ExposureTime { get; set; }  // Shutter speed (e.g., &quot;1/125&quot;)
+    public string Aperture { get; set; }      // F-stop (e.g., &quot;2.8&quot;)
+    public int Iso { get; set; }              // ISO sensitivity
+    public string FocalLength { get; set; }   // Focal length (e.g., &quot;85mm&quot;)
+}
+</code></pre>
+<h3 id="location-and-exif-usage-examples">Location and EXIF Usage Examples</h3>
+<pre><code class="lang-csharp">// Analyze photo location data
+public static class LocationAnalyzer
+{
+    public static bool HasLocationData(Photo photo)
+    {
+        return photo.Location != null &amp;&amp;
+               (!string.IsNullOrEmpty(photo.Location.Name) ||
+                photo.Location.Position != null);
+    }
+
+    public static double CalculateDistance(Position pos1, Position pos2)
+    {
+        // Haversine formula for distance calculation
+        const double R = 6371; // Earth's radius in kilometers
+
+        var lat1Rad = pos1.Latitude * Math.PI / 180;
+        var lat2Rad = pos2.Latitude * Math.PI / 180;
+        var deltaLatRad = (pos2.Latitude - pos1.Latitude) * Math.PI / 180;
+        var deltaLonRad = (pos2.Longitude - pos1.Longitude) * Math.PI / 180;
+
+        var a = Math.Sin(deltaLatRad / 2) * Math.Sin(deltaLatRad / 2) +
+                Math.Cos(lat1Rad) * Math.Cos(lat2Rad) *
+                Math.Sin(deltaLonRad / 2) * Math.Sin(deltaLonRad / 2);
+
+        var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+
+        return R * c;
+    }
+
+    public static string GetLocationSummary(Location location)
+    {
+        if (string.IsNullOrEmpty(location.Name))
+            return &quot;Location not specified&quot;;
+
+        var summary = location.Name;
+
+        if (location.Position != null)
+        {
+            summary += $&quot; ({location.Position.Latitude:F4}, {location.Position.Longitude:F4})&quot;;
+        }
+
+        return summary;
+    }
+}
+
+// Analyze camera EXIF data
+public static class ExifAnalyzer
+{
+    public static bool HasExifData(Photo photo)
+    {
+        return photo.Exif != null &amp;&amp; !string.IsNullOrEmpty(photo.Exif.Make);
+    }
+
+    public static string GetCameraInfo(Exif exif)
+    {
+        if (string.IsNullOrEmpty(exif.Make))
+            return &quot;Camera information not available&quot;;
+
+        return $&quot;{exif.Make} {exif.Model}&quot;.Trim();
+    }
+
+    public static string GetCameraSettings(Exif exif)
+    {
+        var settings = new List&lt;string&gt;();
+
+        if (!string.IsNullOrEmpty(exif.Aperture))
+            settings.Add($&quot;f/{exif.Aperture}&quot;);
+
+        if (!string.IsNullOrEmpty(exif.ExposureTime))
+            settings.Add($&quot;{exif.ExposureTime}s&quot;);
+
+        if (exif.Iso &gt; 0)
+            settings.Add($&quot;ISO {exif.Iso}&quot;);
+
+        if (!string.IsNullOrEmpty(exif.FocalLength))
+            settings.Add(exif.FocalLength);
+
+        return settings.Count &gt; 0 ? string.Join(&quot;, &quot;, settings) : &quot;Settings not available&quot;;
+    }
+
+    public static CameraType GetCameraType(Exif exif)
+    {
+        if (string.IsNullOrEmpty(exif.Make))
+            return CameraType.Unknown;
+
+        var make = exif.Make.ToLowerInvariant();
+
+        return make switch
+        {
+            var m when m.Contains(&quot;canon&quot;) =&gt; CameraType.Canon,
+            var m when m.Contains(&quot;nikon&quot;) =&gt; CameraType.Nikon,
+            var m when m.Contains(&quot;sony&quot;) =&gt; CameraType.Sony,
+            var m when m.Contains(&quot;fuji&quot;) =&gt; CameraType.Fujifilm,
+            var m when m.Contains(&quot;olympus&quot;) =&gt; CameraType.Olympus,
+            var m when m.Contains(&quot;panasonic&quot;) =&gt; CameraType.Panasonic,
+            var m when m.Contains(&quot;leica&quot;) =&gt; CameraType.Leica,
+            _ =&gt; CameraType.Other
+        };
+    }
+}
+
+public enum CameraType
+{
+    Unknown,
+    Canon,
+    Nikon,
+    Sony,
+    Fujifilm,
+    Olympus,
+    Panasonic,
+    Leica,
+    Other
+}
+
+// Usage example
+var photo = await client.GetPhotoAsync(&quot;photo-id&quot;);
+
+// Location analysis
+if (LocationAnalyzer.HasLocationData(photo))
+{
+    Console.WriteLine($&quot;Location: {LocationAnalyzer.GetLocationSummary(photo.Location)}&quot;);
+}
+
+// EXIF analysis
+if (ExifAnalyzer.HasExifData(photo))
+{
+    Console.WriteLine($&quot;Camera: {ExifAnalyzer.GetCameraInfo(photo.Exif)}&quot;);
+    Console.WriteLine($&quot;Settings: {ExifAnalyzer.GetCameraSettings(photo.Exif)}&quot;);
+    Console.WriteLine($&quot;Brand: {ExifAnalyzer.GetCameraType(photo.Exif)}&quot;);
+}
+</code></pre>
+<h2 id="statistics-models">Statistics Models</h2>
+<h3 id="unplashtotalstats-class">UnplashTotalStats Class</h3>
+<pre><code class="lang-csharp">public class UnplashTotalStats
+{
+    public long Photos { get; set; }              // Total photos on Unsplash
+    public long Downloads { get; set; }           // Total downloads
+    public long Views { get; set; }               // Total views
+    public long Likes { get; set; }               // Total likes
+    public long Photographers { get; set; }       // Total photographers
+    public long PixelsServed { get; set; }        // Total pixels served
+    public long ViewsThisMonth { get; set; }      // Views in current month
+    public long NewPhotosThisMonth { get; set; }  // New photos this month
+}
+</code></pre>
+<h3 id="unplashmonthlystats-class">UnplashMonthlyStats Class</h3>
+<pre><code class="lang-csharp">public class UnplashMonthlyStats
+{
+    public long Downloads { get; set; }           // Downloads this month
+    public long Views { get; set; }               // Views this month
+    public long Likes { get; set; }               // Likes this month
+    public long NewPhotos { get; set; }           // New photos this month
+    public long NewPhotographers { get; set; }    // New photographers this month
+    public long NewPixels { get; set; }           // New pixels this month
+    public long NewDevelopers { get; set; }       // New developers this month
+    public long NewApplications { get; set; }     // New applications this month
+    public long NewRequests { get; set; }         // New API requests this month
+}
+</code></pre>
+<h3 id="statistics-usage-examples">Statistics Usage Examples</h3>
+<pre><code class="lang-csharp">// Get and analyze platform statistics
+public static class StatsAnalyzer
+{
+    public static async Task AnalyzePlatformGrowth(UnsplasharpClient client)
+    {
+        var totalStats = await client.GetTotalStatsAsync();
+        var monthlyStats = await client.GetMonthlyStatsAsync();
+
+        Console.WriteLine(&quot;=== Unsplash Platform Statistics ===&quot;);
+        Console.WriteLine($&quot;Total Photos: {totalStats.Photos:N0}&quot;);
+        Console.WriteLine($&quot;Total Photographers: {totalStats.Photographers:N0}&quot;);
+        Console.WriteLine($&quot;Total Downloads: {totalStats.Downloads:N0}&quot;);
+        Console.WriteLine($&quot;Total Views: {totalStats.Views:N0}&quot;);
+
+        // Calculate averages
+        var avgPhotosPerPhotographer = (double)totalStats.Photos / totalStats.Photographers;
+        var avgDownloadsPerPhoto = (double)totalStats.Downloads / totalStats.Photos;
+        var avgViewsPerPhoto = (double)totalStats.Views / totalStats.Photos;
+
+        Console.WriteLine($&quot;\n=== Platform Averages ===&quot;);
+        Console.WriteLine($&quot;Photos per photographer: {avgPhotosPerPhotographer:F1}&quot;);
+        Console.WriteLine($&quot;Downloads per photo: {avgDownloadsPerPhoto:F1}&quot;);
+        Console.WriteLine($&quot;Views per photo: {avgViewsPerPhoto:F1}&quot;);
+
+        // Monthly growth analysis
+        Console.WriteLine($&quot;\n=== Monthly Growth ===&quot;);
+        Console.WriteLine($&quot;New photos: {monthlyStats.NewPhotos:N0}&quot;);
+        Console.WriteLine($&quot;New photographers: {monthlyStats.NewPhotographers:N0}&quot;);
+        Console.WriteLine($&quot;New developers: {monthlyStats.NewDevelopers:N0}&quot;);
+        Console.WriteLine($&quot;New applications: {monthlyStats.NewApplications:N0}&quot;);
+
+        // Growth rates (approximate)
+        var monthlyPhotoGrowthRate = (double)monthlyStats.NewPhotos / totalStats.Photos * 100;
+        var monthlyPhotographerGrowthRate = (double)monthlyStats.NewPhotographers / totalStats.Photographers * 100;
+
+        Console.WriteLine($&quot;\n=== Growth Rates (Monthly) ===&quot;);
+        Console.WriteLine($&quot;Photo growth: {monthlyPhotoGrowthRate:F2}%&quot;);
+        Console.WriteLine($&quot;Photographer growth: {monthlyPhotographerGrowthRate:F2}%&quot;);
+    }
+
+    public static PlatformHealth AssessPlatformHealth(UnplashTotalStats totalStats, UnplashMonthlyStats monthlyStats)
+    {
+        var score = 0;
+
+        // Photo volume scoring
+        if (totalStats.Photos &gt; 1000000) score += 2;
+        else if (totalStats.Photos &gt; 100000) score += 1;
+
+        // Engagement scoring
+        var engagementRate = (double)totalStats.Likes / totalStats.Views;
+        if (engagementRate &gt; 0.1) score += 2;
+        else if (engagementRate &gt; 0.05) score += 1;
+
+        // Growth scoring
+        var monthlyGrowthRate = (double)monthlyStats.NewPhotos / totalStats.Photos;
+        if (monthlyGrowthRate &gt; 0.01) score += 2; // &gt;1% monthly growth
+        else if (monthlyGrowthRate &gt; 0.005) score += 1; // &gt;0.5% monthly growth
+
+        return score switch
+        {
+            &gt;= 5 =&gt; PlatformHealth.Excellent,
+            &gt;= 3 =&gt; PlatformHealth.Good,
+            &gt;= 1 =&gt; PlatformHealth.Fair,
+            _ =&gt; PlatformHealth.Poor
+        };
+    }
+}
+
+public enum PlatformHealth
+{
+    Poor,
+    Fair,
+    Good,
+    Excellent
+}
+</code></pre>
+<h2 id="link-models">Link Models</h2>
+<h3 id="photolinks-class">PhotoLinks Class</h3>
+<pre><code class="lang-csharp">public class PhotoLinks
+{
+    public string Self { get; set; }              // API endpoint for this photo
+    public string Html { get; set; }             // Unsplash.com page for this photo
+    public string Download { get; set; }         // Direct download URL
+    public string DownloadLocation { get; set; } // Download tracking endpoint
+}
+</code></pre>
+<h3 id="userlinks-class">UserLinks Class</h3>
+<pre><code class="lang-csharp">public class UserLinks
+{
+    public string Self { get; set; }      // API endpoint for this user
+    public string Html { get; set; }      // Unsplash.com profile page
+    public string Photos { get; set; }    // API endpoint for user's photos
+    public string Likes { get; set; }     // API endpoint for user's likes
+    public string Portfolio { get; set; } // API endpoint for user's portfolio
+    public string Following { get; set; } // API endpoint for users this user follows
+    public string Followers { get; set; } // API endpoint for this user's followers
+}
+</code></pre>
+<h3 id="collectionlinks-class">CollectionLinks Class</h3>
+<pre><code class="lang-csharp">public class CollectionLinks
+{
+    public string Self { get; set; }      // API endpoint for this collection
+    public string Html { get; set; }      // Unsplash.com page for this collection
+    public string Photos { get; set; }    // API endpoint for collection's photos
+    public string Related { get; set; }   // API endpoint for related collections
+}
+</code></pre>
+<h2 id="supporting-models">Supporting Models</h2>
+<h3 id="category-class">Category Class</h3>
+<pre><code class="lang-csharp">public class Category
+{
+    public int Id { get; set; }           // Category identifier
+    public string Title { get; set; }     // Category title
+    public int PhotoCount { get; set; }   // Number of photos in category
+    public CategoryLinks Links { get; set; } // Related links
+}
+
+public class CategoryLinks
+{
+    public string Self { get; set; }      // API endpoint for this category
+    public string Photos { get; set; }    // API endpoint for category's photos
+}
+</code></pre>
+<h3 id="badge-class">Badge Class</h3>
+<pre><code class="lang-csharp">public class Badge
+{
+    public string Title { get; set; }     // Badge title (e.g., &quot;Book contributor&quot;)
+    public bool Primary { get; set; }     // Whether this is the primary badge
+    public string Slug { get; set; }      // Badge slug identifier
+    public string Link { get; set; }      // Link related to the badge
+}
+</code></pre>
+<h2 id="model-relationships">Model Relationships</h2>
+<h3 id="relationship-diagram">Relationship Diagram</h3>
+<pre><code>Photo
+├── User (photographer)
+├── Urls (different sizes)
+├── Location
+│   └── Position (GPS coordinates)
+├── Exif (camera data)
+├── PhotoLinks (API endpoints)
+├── Categories[] (tags/topics)
+└── CurrentUserCollection[] (user's collections)
+
+User
+├── ProfileImage (avatar URLs)
+├── Badge (achievements)
+└── UserLinks (API endpoints)
+
+Collection
+├── User (creator)
+├── CoverPhoto (Photo)
+└── CollectionLinks (API endpoints)
+</code></pre>
+<h3 id="navigation-examples">Navigation Examples</h3>
+<pre><code class="lang-csharp">// Navigate from photo to photographer's other work
+var photo = await client.GetPhotoAsync(&quot;photo-id&quot;);
+var photographer = photo.User;
+var photographerPhotos = await client.GetUserPhotosAsync(photographer.Username);
+
+// Find photos in the same location
+if (photo.Location?.Position != null)
+{
+    var nearbyPhotos = await client.SearchPhotosAsync(
+        $&quot;location:{photo.Location.Name}&quot;,
+        perPage: 20
+    );
+}
+
+// Get photos with similar camera equipment
+if (!string.IsNullOrEmpty(photo.Exif.Make))
+{
+    var similarCameraPhotos = await client.SearchPhotosAsync(
+        $&quot;{photo.Exif.Make} {photo.Exif.Model}&quot;,
+        perPage: 20
+    );
+}
+
+// Explore collections containing this photo
+foreach (var collection in photo.CurrentUserCollection)
+{
+    var collectionPhotos = await client.GetCollectionPhotosAsync(collection.Id);
+    Console.WriteLine($&quot;Collection '{collection.Title}' has {collectionPhotos.Count} photos&quot;);
+}
+</code></pre>
+<h2 id="usage-examples-3">Usage Examples</h2>
+<h3 id="complete-photo-analysis">Complete Photo Analysis</h3>
+<pre><code class="lang-csharp">public static async Task AnalyzePhoto(UnsplasharpClient client, string photoId)
+{
+    var photo = await client.GetPhotoAsync(photoId);
+
+    Console.WriteLine(&quot;=== PHOTO ANALYSIS ===&quot;);
+    Console.WriteLine($&quot;ID: {photo.Id}&quot;);
+    Console.WriteLine($&quot;Title: {photo.Description ?? &quot;Untitled&quot;}&quot;);
+    Console.WriteLine($&quot;Dimensions: {photo.Width}x{photo.Height} ({PhotoAnalyzer.GetOrientationDescription(photo)})&quot;);
+    Console.WriteLine($&quot;Quality: {PhotoAnalyzer.AssessQuality(photo)}&quot;);
+    Console.WriteLine($&quot;Dominant Color: {photo.Color}&quot;);
+    Console.WriteLine($&quot;Engagement: {photo.Likes:N0} likes, {photo.Downloads:N0} downloads&quot;);
+
+    // Photographer information
+    Console.WriteLine($&quot;\n=== PHOTOGRAPHER ===&quot;);
+    Console.WriteLine($&quot;Name: {photo.User.Name} (@{photo.User.Username})&quot;);
+    Console.WriteLine($&quot;Profile: {UserAnalyzer.GetUserDescription(photo.User)}&quot;);
+    Console.WriteLine($&quot;Stats: {photo.User.TotalPhotos:N0} photos, {photo.User.TotalLikes:N0} likes received&quot;);
+
+    // Technical details
+    if (ExifAnalyzer.HasExifData(photo))
+    {
+        Console.WriteLine($&quot;\n=== CAMERA INFO ===&quot;);
+        Console.WriteLine($&quot;Camera: {ExifAnalyzer.GetCameraInfo(photo.Exif)}&quot;);
+        Console.WriteLine($&quot;Settings: {ExifAnalyzer.GetCameraSettings(photo.Exif)}&quot;);
+    }
+
+    // Location information
+    if (LocationAnalyzer.HasLocationData(photo))
+    {
+        Console.WriteLine($&quot;\n=== LOCATION ===&quot;);
+        Console.WriteLine($&quot;Location: {LocationAnalyzer.GetLocationSummary(photo.Location)}&quot;);
+    }
+
+    // Available URLs
+    Console.WriteLine($&quot;\n=== AVAILABLE SIZES ===&quot;);
+    var sizes = PhotoUrlHelper.GetAllSizes(photo.Urls);
+    foreach (var (sizeName, url) in sizes)
+    {
+        var estimatedSize = PhotoUrlHelper.EstimateFileSize(url, photo.Width, photo.Height);
+        Console.WriteLine($&quot;{sizeName}: ~{estimatedSize / 1024:N0} KB&quot;);
+    }
+}
+</code></pre>
+<pre><code></code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/rootasjey/unsplasharp/blob/master/docs/models-reference.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

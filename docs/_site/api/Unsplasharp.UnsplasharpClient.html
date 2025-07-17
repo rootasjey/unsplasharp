@@ -1,0 +1,3411 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class UnsplasharpClient | Unsplasharp Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class UnsplasharpClient | Unsplasharp Documentation ">
+      
+      <meta name="description" content="Represents a Unsplasharp class which can be used to communicate with Unplash APIs.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/rootasjey/unsplasharp/new/master/apiSpec/new?filename=Unsplasharp_UnsplasharpClient.md&amp;value=---%0Auid%3A%20Unsplasharp.UnsplasharpClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Unsplasharp">
+            Unsplasharp
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Unsplasharp.UnsplasharpClient">
+
+
+
+  <h1 id="Unsplasharp_UnsplasharpClient" data-uid="Unsplasharp.UnsplasharpClient" class="text-break">
+Class UnsplasharpClient  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Unsplasharp.html">Unsplasharp</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Unsplasharp.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents a Unsplasharp class which can be used to communicate with Unplash APIs.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class UnsplasharpClient</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">UnsplasharpClient</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Unsplasharp_UnsplasharpClient__ctor_" data-uid="Unsplasharp.UnsplasharpClient.#ctor*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient__ctor_System_String_System_String_Microsoft_Extensions_Logging_ILogger_Unsplasharp_UnsplasharpClient__System_Net_Http_IHttpClientFactory_" data-uid="Unsplasharp.UnsplasharpClient.#ctor(System.String,System.String,Microsoft.Extensions.Logging.ILogger{Unsplasharp.UnsplasharpClient},System.Net.Http.IHttpClientFactory)">
+  UnsplasharpClient(string, string?, ILogger&lt;UnsplasharpClient&gt;?, IHttpClientFactory?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L205"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initialize a new instance of Unplasharp class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UnsplasharpClient(string applicationId, string? secret = null, ILogger&lt;UnsplasharpClient&gt;? logger = null, IHttpClientFactory? httpClientFactory = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>applicationId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A string to identify the current application performing a request.</p>
+</dd>
+    <dt><code>secret</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A string representing an API secret key to make HTTP authentified calls to Unplash services.</p>
+</dd>
+    <dt><code>logger</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a class="xref" href="Unsplasharp.UnsplasharpClient.html">UnsplasharpClient</a>&gt;</dt>
+    <dd><p>Optional logger for structured logging.</p>
+</dd>
+    <dt><code>httpClientFactory</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.ihttpclientfactory">IHttpClientFactory</a></dt>
+    <dd><p>Optional IHttpClientFactory for modern HTTP client management. If not provided, falls back to legacy HttpClient management.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Unsplasharp_UnsplasharpClient_ApplicationId_" data-uid="Unsplasharp.UnsplasharpClient.ApplicationId*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_ApplicationId" data-uid="Unsplasharp.UnsplasharpClient.ApplicationId">
+  ApplicationId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identify the application making API calls
+Must be created through Unplash developer page
+<a href="https://unsplash.com/developers">https://unsplash.com/developers</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ApplicationId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_LastCollectionsSearchQuery_" data-uid="Unsplasharp.UnsplasharpClient.LastCollectionsSearchQuery*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_LastCollectionsSearchQuery" data-uid="Unsplasharp.UnsplasharpClient.LastCollectionsSearchQuery">
+  LastCollectionsSearchQuery
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Last collection search query</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? LastCollectionsSearchQuery { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_LastCollectionsSearchTotalPages_" data-uid="Unsplasharp.UnsplasharpClient.LastCollectionsSearchTotalPages*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_LastCollectionsSearchTotalPages" data-uid="Unsplasharp.UnsplasharpClient.LastCollectionsSearchTotalPages">
+  LastCollectionsSearchTotalPages
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Total pages of last search collections query</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LastCollectionsSearchTotalPages { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_LastCollectionsSearchTotalResults_" data-uid="Unsplasharp.UnsplasharpClient.LastCollectionsSearchTotalResults*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_LastCollectionsSearchTotalResults" data-uid="Unsplasharp.UnsplasharpClient.LastCollectionsSearchTotalResults">
+  LastCollectionsSearchTotalResults
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Total results of last search collections query</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LastCollectionsSearchTotalResults { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_LastPhotosSearchQuery_" data-uid="Unsplasharp.UnsplasharpClient.LastPhotosSearchQuery*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_LastPhotosSearchQuery" data-uid="Unsplasharp.UnsplasharpClient.LastPhotosSearchQuery">
+  LastPhotosSearchQuery
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Last photo search query</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? LastPhotosSearchQuery { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_LastPhotosSearchTotalPages_" data-uid="Unsplasharp.UnsplasharpClient.LastPhotosSearchTotalPages*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_LastPhotosSearchTotalPages" data-uid="Unsplasharp.UnsplasharpClient.LastPhotosSearchTotalPages">
+  LastPhotosSearchTotalPages
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Total pages of last search photos query</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LastPhotosSearchTotalPages { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_LastPhotosSearchTotalResults_" data-uid="Unsplasharp.UnsplasharpClient.LastPhotosSearchTotalResults*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_LastPhotosSearchTotalResults" data-uid="Unsplasharp.UnsplasharpClient.LastPhotosSearchTotalResults">
+  LastPhotosSearchTotalResults
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Total results of last search photos query</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LastPhotosSearchTotalResults { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_LastUsersSearchQuery_" data-uid="Unsplasharp.UnsplasharpClient.LastUsersSearchQuery*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_LastUsersSearchQuery" data-uid="Unsplasharp.UnsplasharpClient.LastUsersSearchQuery">
+  LastUsersSearchQuery
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Last collection search query</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? LastUsersSearchQuery { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_LastUsersSearchTotalPages_" data-uid="Unsplasharp.UnsplasharpClient.LastUsersSearchTotalPages*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_LastUsersSearchTotalPages" data-uid="Unsplasharp.UnsplasharpClient.LastUsersSearchTotalPages">
+  LastUsersSearchTotalPages
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Total pages of last search collections query</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LastUsersSearchTotalPages { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_LastUsersSearchTotalResults_" data-uid="Unsplasharp.UnsplasharpClient.LastUsersSearchTotalResults*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_LastUsersSearchTotalResults" data-uid="Unsplasharp.UnsplasharpClient.LastUsersSearchTotalResults">
+  LastUsersSearchTotalResults
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Total results of last search collections query</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LastUsersSearchTotalResults { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_MaxRateLimit_" data-uid="Unsplasharp.UnsplasharpClient.MaxRateLimit*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_MaxRateLimit" data-uid="Unsplasharp.UnsplasharpClient.MaxRateLimit">
+  MaxRateLimit
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Maximum number of request allowed per hour.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxRateLimit { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_RateLimitRemaining_" data-uid="Unsplasharp.UnsplasharpClient.RateLimitRemaining*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_RateLimitRemaining" data-uid="Unsplasharp.UnsplasharpClient.RateLimitRemaining">
+  RateLimitRemaining
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Remaining allowed requests in the current hour.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int RateLimitRemaining { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_Secret_" data-uid="Unsplasharp.UnsplasharpClient.Secret*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_Secret" data-uid="Unsplasharp.UnsplasharpClient.Secret">
+  Secret
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>API Key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? Secret { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Unsplasharp_UnsplasharpClient_FetchCollectionsList_" data-uid="Unsplasharp.UnsplasharpClient.FetchCollectionsList*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_FetchCollectionsList_System_String_" data-uid="Unsplasharp.UnsplasharpClient.FetchCollectionsList(System.String)">
+  FetchCollectionsList(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L712"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a list of collections (of photos) from a specified URL</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Collection&gt;&gt; FetchCollectionsList(string url)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>url</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>API endpoint where to fetch the photos' list.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Collection.html">Collection</a>&gt;&gt;</dt>
+    <dd><p>Collections list</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_FetchCollectionsList_" data-uid="Unsplasharp.UnsplasharpClient.FetchCollectionsList*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_FetchCollectionsList_System_String_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.FetchCollectionsList(System.String,System.Threading.CancellationToken)">
+  FetchCollectionsList(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L722"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a list of collections (of photos) from a specified URL</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Collection&gt;&gt; FetchCollectionsList(string url, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>url</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>API endpoint where to fetch the photos' list.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Collection.html">Collection</a>&gt;&gt;</dt>
+    <dd><p>Collections list</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_FetchPhoto_" data-uid="Unsplasharp.UnsplasharpClient.FetchPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_FetchPhoto_System_String_" data-uid="Unsplasharp.UnsplasharpClient.FetchPhoto(System.String)">
+  FetchPhoto(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L578"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Fetch a photo from an Unplash specified URL</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo?&gt; FetchPhoto(string url)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>url</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>URL to fetch photo from.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A single photo instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_FetchPhoto_" data-uid="Unsplasharp.UnsplasharpClient.FetchPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_FetchPhoto_System_String_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.FetchPhoto(System.String,System.Threading.CancellationToken)">
+  FetchPhoto(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L588"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Fetch a photo from an Unplash specified URL</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo?&gt; FetchPhoto(string url, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>url</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>URL to fetch photo from.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A single photo instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_FetchPhotosList_" data-uid="Unsplasharp.UnsplasharpClient.FetchPhotosList*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_FetchPhotosList_System_String_" data-uid="Unsplasharp.UnsplasharpClient.FetchPhotosList(System.String)">
+  FetchPhotosList(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L538"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return a list of photos from the specified URL.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; FetchPhotosList(string url)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>url</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>API endpoint to fetch the photos' list.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of photos.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_FetchPhotosList_" data-uid="Unsplasharp.UnsplasharpClient.FetchPhotosList*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_FetchPhotosList_System_String_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.FetchPhotosList(System.String,System.Threading.CancellationToken)">
+  FetchPhotosList(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L548"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return a list of photos from the specified URL.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; FetchPhotosList(string url, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>url</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>API endpoint to fetch the photos' list.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of photos.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_FetchSearcCollectionsList_" data-uid="Unsplasharp.UnsplasharpClient.FetchSearcCollectionsList*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_FetchSearcCollectionsList_System_String_" data-uid="Unsplasharp.UnsplasharpClient.FetchSearcCollectionsList(System.String)">
+  FetchSearcCollectionsList(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1210"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return a list of found collections from a search query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Collection&gt;&gt; FetchSearcCollectionsList(string url)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>url</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>API endpoint to fetch the collections' list. Must be a search url.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Collection.html">Collection</a>&gt;&gt;</dt>
+    <dd><p>A list of collections found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_FetchSearcCollectionsList_" data-uid="Unsplasharp.UnsplasharpClient.FetchSearcCollectionsList*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_FetchSearcCollectionsList_System_String_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.FetchSearcCollectionsList(System.String,System.Threading.CancellationToken)">
+  FetchSearcCollectionsList(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1220"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return a list of found collections from a search query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Collection&gt;&gt; FetchSearcCollectionsList(string url, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>url</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>API endpoint to fetch the collections' list. Must be a search url.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Collection.html">Collection</a>&gt;&gt;</dt>
+    <dd><p>A list of collections found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_FetchSearcUsersList_" data-uid="Unsplasharp.UnsplasharpClient.FetchSearcUsersList*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_FetchSearcUsersList_System_String_" data-uid="Unsplasharp.UnsplasharpClient.FetchSearcUsersList(System.String)">
+  FetchSearcUsersList(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1261"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return a list of found users from a search query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;User&gt;&gt; FetchSearcUsersList(string url)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>url</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>API endpoint to fetch the users' list. Must be a search url.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.User.html">User</a>&gt;&gt;</dt>
+    <dd><p>A list of users found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_FetchSearchPhotosList_" data-uid="Unsplasharp.UnsplasharpClient.FetchSearchPhotosList*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_FetchSearchPhotosList_System_String_" data-uid="Unsplasharp.UnsplasharpClient.FetchSearchPhotosList(System.String)">
+  FetchSearchPhotosList(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1159"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return a list of found photos from a search query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; FetchSearchPhotosList(string url)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>url</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>API endpoint to fetch the photos' list. Must be a search url.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of photos found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_FetchSearchPhotosList_" data-uid="Unsplasharp.UnsplasharpClient.FetchSearchPhotosList*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_FetchSearchPhotosList_System_String_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.FetchSearchPhotosList(System.String,System.Threading.CancellationToken)">
+  FetchSearchPhotosList(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1169"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return a list of found photos from a search query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; FetchSearchPhotosList(string url, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>url</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>API endpoint to fetch the photos' list. Must be a search url.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of photos found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetCollection_" data-uid="Unsplasharp.UnsplasharpClient.GetCollection*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetCollection_System_String_" data-uid="Unsplasharp.UnsplasharpClient.GetCollection(System.String)">
+  GetCollection(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L752"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the photos collection corresponding to the given id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Collection?&gt; GetCollection(string id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Collection's id to find.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Collection.html">Collection</a>&gt;</dt>
+    <dd><p>A new collection instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetCollection_" data-uid="Unsplasharp.UnsplasharpClient.GetCollection*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetCollection_System_String_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.GetCollection(System.String,System.Threading.CancellationToken)">
+  GetCollection(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L762"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the photos collection corresponding to the given id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Collection?&gt; GetCollection(string id, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Collection's id to find.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Collection.html">Collection</a>&gt;</dt>
+    <dd><p>A new collection instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetCollectionPhotos_" data-uid="Unsplasharp.UnsplasharpClient.GetCollectionPhotos*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetCollectionPhotos_System_String_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.GetCollectionPhotos(System.String,System.Int32,System.Int32)">
+  GetCollectionPhotos(string, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L779"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a collection’s photos.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; GetCollectionPhotos(string id, int page = 1, int perPage = 10)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The collection’s ID.</p>
+</dd>
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page. (Max: 30)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of photos in the collection</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetCollectionPhotos_" data-uid="Unsplasharp.UnsplasharpClient.GetCollectionPhotos*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetCollectionPhotos_System_String_System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.GetCollectionPhotos(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)">
+  GetCollectionPhotos(string, int, int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L791"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a collection's photos.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; GetCollectionPhotos(string id, int page, int perPage, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The collection's ID.</p>
+</dd>
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page. (Max: 30)</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of photos in the collection</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetMonthlyStats_" data-uid="Unsplasharp.UnsplasharpClient.GetMonthlyStats*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetMonthlyStats" data-uid="Unsplasharp.UnsplasharpClient.GetMonthlyStats">
+  GetMonthlyStats()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1342"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the overall Unsplash stats for the past 30 days.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;UnplashMonthlyStats?&gt; GetMonthlyStats()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.UnplashMonthlyStats.html">UnplashMonthlyStats</a>&gt;</dt>
+    <dd><p>A list of Unplash's stats.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetPhoto_" data-uid="Unsplasharp.UnsplasharpClient.GetPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetPhoto_System_String_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.GetPhoto(System.String,System.Int32,System.Int32)">
+  GetPhoto(string, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L229"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the photo corresponding to the given id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo?&gt; GetPhoto(string id, int width = 0, int height = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Photo's unique id to find.</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Desired width.</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Desired height.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A new Photo class instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetPhoto_" data-uid="Unsplasharp.UnsplasharpClient.GetPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetPhoto_System_String_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.GetPhoto(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+  GetPhoto(string, int, int, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L262"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the photo corresponding to the given id,
+in the specified width and height and cropped according to a specified rectangle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo?&gt; GetPhoto(string id, int width, int height, int rectX, int rectY, int rectWidth, int rectHeight)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Photo's unique id to find.</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Desired width.</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Desired height.</p>
+</dd>
+    <dt><code>rectX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>X origin point of the cropped rectangle.</p>
+</dd>
+    <dt><code>rectY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Y origin point of the cropped rectangle.</p>
+</dd>
+    <dt><code>rectWidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Width of the cropped rectangle.</p>
+</dd>
+    <dt><code>rectHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Height of the cropped rectangle.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A new Photo class instance which has a custom URL.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetPhoto_" data-uid="Unsplasharp.UnsplasharpClient.GetPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetPhoto_System_String_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.GetPhoto(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Threading.CancellationToken)">
+  GetPhoto(string, int, int, int, int, int, int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L279"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the photo corresponding to the given id,
+in the specified width and height and cropped according to a specified rectangle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo?&gt; GetPhoto(string id, int width, int height, int rectX, int rectY, int rectWidth, int rectHeight, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Photo's unique id to find.</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Desired width.</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Desired height.</p>
+</dd>
+    <dt><code>rectX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>X origin point of the cropped rectangle.</p>
+</dd>
+    <dt><code>rectY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Y origin point of the cropped rectangle.</p>
+</dd>
+    <dt><code>rectWidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Width of the cropped rectangle.</p>
+</dd>
+    <dt><code>rectHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Height of the cropped rectangle.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A new Photo class instance which has a custom URL.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetPhoto_" data-uid="Unsplasharp.UnsplasharpClient.GetPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetPhoto_System_String_System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.GetPhoto(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)">
+  GetPhoto(string, int, int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L241"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the photo corresponding to the given id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo?&gt; GetPhoto(string id, int width, int height, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Photo's unique id to find.</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Desired width.</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Desired height.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A new Photo class instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetPhotoAsync_" data-uid="Unsplasharp.UnsplasharpClient.GetPhotoAsync*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetPhotoAsync_System_String_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.GetPhotoAsync(System.String,System.Int32,System.Int32)">
+  GetPhotoAsync(string, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L638"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the photo corresponding to the given id with comprehensive error handling.
+This method throws specific exceptions for different error scenarios.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo&gt; GetPhotoAsync(string id, int width = 0, int height = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Photo's unique id to find.</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Desired width.</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Desired height.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A new Photo class instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Unsplasharp.Exceptions.UnsplasharpException.html">UnsplasharpException</a></dt>
+    <dd><p>Thrown when the request fails</p>
+</dd>
+    <dt><a class="xref" href="Unsplasharp.Exceptions.UnsplasharpNotFoundException.html">UnsplasharpNotFoundException</a></dt>
+    <dd><p>Thrown when the photo is not found</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetPhotoAsync_" data-uid="Unsplasharp.UnsplasharpClient.GetPhotoAsync*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetPhotoAsync_System_String_System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.GetPhotoAsync(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)">
+  GetPhotoAsync(string, int, int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L653"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the photo corresponding to the given id with comprehensive error handling.
+This method throws specific exceptions for different error scenarios.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo&gt; GetPhotoAsync(string id, int width, int height, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Photo's unique id to find.</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Desired width.</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Desired height.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A new Photo class instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Unsplasharp.Exceptions.UnsplasharpException.html">UnsplasharpException</a></dt>
+    <dd><p>Thrown when the request fails</p>
+</dd>
+    <dt><a class="xref" href="Unsplasharp.Exceptions.UnsplasharpNotFoundException.html">UnsplasharpNotFoundException</a></dt>
+    <dd><p>Thrown when the photo is not found</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetPhotoDownloadLink_" data-uid="Unsplasharp.UnsplasharpClient.GetPhotoDownloadLink*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetPhotoDownloadLink_System_String_" data-uid="Unsplasharp.UnsplasharpClient.GetPhotoDownloadLink(System.String)">
+  GetPhotoDownloadLink(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L496"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a single photo’s download link.
+Preferably hit this endpoint if a photo is downloaded in your application for use
+(example: to be displayed on a blog article, to be shared on social media, to be remixed, etc.).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string?&gt; GetPhotoDownloadLink(string id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The photo’s ID.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The photo's download link</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetPhotoStats_" data-uid="Unsplasharp.UnsplasharpClient.GetPhotoStats*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetPhotoStats_System_String_Unsplasharp_UnsplasharpClient_Resolution_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.GetPhotoStats(System.String,Unsplasharp.UnsplasharpClient.Resolution,System.Int32)">
+  GetPhotoStats(string, Resolution, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L465"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve total number of downloads,
+views and likes of a single photo,
+as well as the historical breakdown
+of these stats in a specific timeframe (default is 30 days).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;PhotoStats?&gt; GetPhotoStats(string id, UnsplasharpClient.Resolution resolution = Resolution.Days, int quantity = 30)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The public id of the photo.</p>
+</dd>
+    <dt><code>resolution</code> <a class="xref" href="Unsplasharp.UnsplasharpClient.html">UnsplasharpClient</a>.<a class="xref" href="Unsplasharp.UnsplasharpClient.Resolution.html">Resolution</a></dt>
+    <dd><p>The frequency of the stats.</p>
+</dd>
+    <dt><code>quantity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The amount of for each stat.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.PhotoStats.html">PhotoStats</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetRandomPhoto" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto">
+  GetRandomPhoto()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L290"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a single random photo.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo?&gt; GetRandomPhoto()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A new Photo class instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_System_Boolean_System_String_System_String_System_Int32_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto(System.Boolean,System.String,System.String,System.Int32,System.Int32,System.Int32)">
+  GetRandomPhoto(bool, string, string, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L414"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a single random photo, given optional filters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; GetRandomPhoto(bool featured, string username = &quot;&quot;, string query = &quot;&quot;, int width = 0, int height = 0, int count = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>featured</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Limit selection to featured photos.</p>
+</dd>
+    <dt><code>username</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Limit selection to a single user.</p>
+</dd>
+    <dt><code>query</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Limit selection to photos matching a search term.</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Image width in pixels.</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Image height in pixels.</p>
+</dd>
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of photos to return. (Default: 1; max: 30)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of random photos.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_System_Int32_System_String_System_String_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+  GetRandomPhoto(int, string, string, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L364"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a single random photo, given optional filters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; GetRandomPhoto(int count, string username = &quot;&quot;, string query = &quot;&quot;, int width = 0, int height = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of photos to return. (Default: 1; max: 30)</p>
+</dd>
+    <dt><code>username</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Limit selection to a single user.</p>
+</dd>
+    <dt><code>query</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Limit selection to photos matching a search term.</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Image width in pixels.</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Image height in pixels.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of random photos.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_System_String_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto(System.String)">
+  GetRandomPhoto(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L318"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a single random photo from a specific collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo?&gt; GetRandomPhoto(string collectionId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>collectionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Public collection ID to filter selection.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A new Photo class instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_System_String_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto(System.String,System.Threading.CancellationToken)">
+  GetRandomPhoto(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L328"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a single random photo from a specific collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo?&gt; GetRandomPhoto(string collectionId, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>collectionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Public collection ID to filter selection.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A new Photo class instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_System_String___" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto(System.String[])">
+  GetRandomPhoto(string[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L338"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a single random photo from specific collections.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo?&gt; GetRandomPhoto(string[] collectionIds)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>collectionIds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>Public collection ID('s) to filter selection.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A new Photo class instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_System_String___System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto(System.String[],System.Threading.CancellationToken)">
+  GetRandomPhoto(string[], CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L348"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a single random photo from specific collections.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo?&gt; GetRandomPhoto(string[] collectionIds, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>collectionIds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>Public collection ID(‘s) to filter selection.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A new Photo class instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto(System.Threading.CancellationToken)">
+  GetRandomPhoto(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L299"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a single random photo.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo?&gt; GetRandomPhoto(CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A new Photo class instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_Unsplasharp_UnsplasharpClient_Orientation_System_Boolean_System_String_System_String_System_Int32_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto(Unsplasharp.UnsplasharpClient.Orientation,System.Boolean,System.String,System.String,System.Int32,System.Int32,System.Int32)">
+  GetRandomPhoto(Orientation, bool, string, string, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L439"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a single random photo, given optional filters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; GetRandomPhoto(UnsplasharpClient.Orientation orientation, bool featured, string username = &quot;&quot;, string query = &quot;&quot;, int width = 0, int height = 0, int count = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>orientation</code> <a class="xref" href="Unsplasharp.UnsplasharpClient.html">UnsplasharpClient</a>.<a class="xref" href="Unsplasharp.UnsplasharpClient.Orientation.html">Orientation</a></dt>
+    <dd><p>Filter search results by photo orientation.</p>
+</dd>
+    <dt><code>featured</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Limit selection to featured photos.</p>
+</dd>
+    <dt><code>username</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Limit selection to a single user.</p>
+</dd>
+    <dt><code>query</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Limit selection to photos matching a search term.</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Image width in pixels.</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Image height in pixels.</p>
+</dd>
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of photos to return. (Default: 1; max: 30)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of random photos.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetRandomPhoto_Unsplasharp_UnsplasharpClient_Orientation_System_String_System_String_System_Int32_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhoto(Unsplasharp.UnsplasharpClient.Orientation,System.String,System.String,System.Int32,System.Int32,System.Int32)">
+  GetRandomPhoto(Orientation, string, string, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L388"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a single random photo, given optional filters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; GetRandomPhoto(UnsplasharpClient.Orientation orientation, string username = &quot;&quot;, string query = &quot;&quot;, int width = 0, int height = 0, int count = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>orientation</code> <a class="xref" href="Unsplasharp.UnsplasharpClient.html">UnsplasharpClient</a>.<a class="xref" href="Unsplasharp.UnsplasharpClient.Orientation.html">Orientation</a></dt>
+    <dd><p>Filter search results by photo orientation.</p>
+</dd>
+    <dt><code>username</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Limit selection to a single user.</p>
+</dd>
+    <dt><code>query</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Limit selection to photos matching a search term.</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Image width in pixels.</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Image height in pixels.</p>
+</dd>
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of photos to return. (Default: 1; max: 30)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of random photos.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetRandomPhotoAsync_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhotoAsync*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetRandomPhotoAsync" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhotoAsync">
+  GetRandomPhotoAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L608"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a single random photo with comprehensive error handling.
+This method throws specific exceptions for different error scenarios.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo&gt; GetRandomPhotoAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A new Photo class instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Unsplasharp.Exceptions.UnsplasharpException.html">UnsplasharpException</a></dt>
+    <dd><p>Thrown when the request fails</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetRandomPhotoAsync_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhotoAsync*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetRandomPhotoAsync_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.GetRandomPhotoAsync(System.Threading.CancellationToken)">
+  GetRandomPhotoAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L619"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a single random photo with comprehensive error handling.
+This method throws specific exceptions for different error scenarios.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Photo&gt; GetRandomPhotoAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;</dt>
+    <dd><p>A new Photo class instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Unsplasharp.Exceptions.UnsplasharpException.html">UnsplasharpException</a></dt>
+    <dd><p>Thrown when the request fails</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetTotalStats_" data-uid="Unsplasharp.UnsplasharpClient.GetTotalStats*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetTotalStats" data-uid="Unsplasharp.UnsplasharpClient.GetTotalStats">
+  GetTotalStats()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1303"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a list of counts for all of Unsplash.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;UnplashTotalStats?&gt; GetTotalStats()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.UnplashTotalStats.html">UnplashTotalStats</a>&gt;</dt>
+    <dd><p>A list of Unplash's stats.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetTotalStats_" data-uid="Unsplasharp.UnsplasharpClient.GetTotalStats*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetTotalStats_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.GetTotalStats(System.Threading.CancellationToken)">
+  GetTotalStats(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1312"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a list of counts for all of Unsplash.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;UnplashTotalStats?&gt; GetTotalStats(CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.UnplashTotalStats.html">UnplashTotalStats</a>&gt;</dt>
+    <dd><p>A list of Unplash's stats.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetUser_" data-uid="Unsplasharp.UnsplasharpClient.GetUser*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetUser_System_String_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.GetUser(System.String,System.Int32,System.Int32)">
+  GetUser(string, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L879"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return the User corresponding to the given username.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;User?&gt; GetUser(string username, int width = 0, int height = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>username</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The user’s username to find. Required.</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Profile image width in pixels.</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Profile image height in pixels.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.User.html">User</a>&gt;</dt>
+    <dd><p>User corresponding to the username if found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetUser_" data-uid="Unsplasharp.UnsplasharpClient.GetUser*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetUser_System_String_System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.GetUser(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)">
+  GetUser(string, int, int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L891"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return the User corresponding to the given username.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;User?&gt; GetUser(string username, int width, int height, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>username</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The user's username to find. Required.</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Profile image width in pixels.</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Profile image height in pixels.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.User.html">User</a>&gt;</dt>
+    <dd><p>User corresponding to the username if found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetUserPorfolioLink_" data-uid="Unsplasharp.UnsplasharpClient.GetUserPorfolioLink*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetUserPorfolioLink_System_String_" data-uid="Unsplasharp.UnsplasharpClient.GetUserPorfolioLink(System.String)">
+  GetUserPorfolioLink(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L910"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve a single user’s portfolio link.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string?&gt; GetUserPorfolioLink(string username)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>username</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>User's name to get portfolio link from.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The user's porfolio link</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_GetUserStats_" data-uid="Unsplasharp.UnsplasharpClient.GetUserStats*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_GetUserStats_System_String_Unsplasharp_UnsplasharpClient_Resolution_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.GetUserStats(System.String,Unsplasharp.UnsplasharpClient.Resolution,System.Int32)">
+  GetUserStats(string, Resolution, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L983"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve the consolidated number of downloads,
+views and likes of all user’s photos,
+as well as the historical breakdown and average of these stats
+in a specific timeframe (default is 30 days).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;UserStats?&gt; GetUserStats(string username, UnsplasharpClient.Resolution resolution = Resolution.Days, int quantity = 30)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>username</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The user’s username. Required.</p>
+</dd>
+    <dt><code>resolution</code> <a class="xref" href="Unsplasharp.UnsplasharpClient.html">UnsplasharpClient</a>.<a class="xref" href="Unsplasharp.UnsplasharpClient.Resolution.html">Resolution</a></dt>
+    <dd><p>The frequency of the stats. (Optional; default: “days”).</p>
+</dd>
+    <dt><code>quantity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The amount of for each stat. (Optional; default: 30)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Unsplasharp.Models.UserStats.html">UserStats</a>&gt;</dt>
+    <dd><p>User's statistics</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_ListCollections_" data-uid="Unsplasharp.UnsplasharpClient.ListCollections*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_ListCollections_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.ListCollections(System.Int32,System.Int32)">
+  ListCollections(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L805"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a single page from the list of all collections.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Collection&gt;&gt; ListCollections(int page = 1, int perPage = 10)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page. (Max: 30)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Collection.html">Collection</a>&gt;&gt;</dt>
+    <dd><p>List of recent collections</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_ListCollections_" data-uid="Unsplasharp.UnsplasharpClient.ListCollections*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_ListCollections_System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.ListCollections(System.Int32,System.Int32,System.Threading.CancellationToken)">
+  ListCollections(int, int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L816"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a single page from the list of all collections.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Collection&gt;&gt; ListCollections(int page, int perPage, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page. (Max: 30)</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Collection.html">Collection</a>&gt;&gt;</dt>
+    <dd><p>List of recent collections</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_ListFeaturedCollections_" data-uid="Unsplasharp.UnsplasharpClient.ListFeaturedCollections*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_ListFeaturedCollections_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.ListFeaturedCollections(System.Int32,System.Int32)">
+  ListFeaturedCollections(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L830"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a single page from the list of featured collections.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Collection&gt;&gt; ListFeaturedCollections(int page = 1, int perPage = 10)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page. (Max: 30)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Collection.html">Collection</a>&gt;&gt;</dt>
+    <dd><p>A list of collections.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_ListFeaturedCollections_" data-uid="Unsplasharp.UnsplasharpClient.ListFeaturedCollections*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_ListFeaturedCollections_System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.ListFeaturedCollections(System.Int32,System.Int32,System.Threading.CancellationToken)">
+  ListFeaturedCollections(int, int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L841"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a single page from the list of featured collections.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Collection&gt;&gt; ListFeaturedCollections(int page, int perPage, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page. (Max: 30)</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Collection.html">Collection</a>&gt;&gt;</dt>
+    <dd><p>A list of collections.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_ListPhotos_" data-uid="Unsplasharp.UnsplasharpClient.ListPhotos*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_ListPhotos_System_Int32_System_Int32_Unsplasharp_UnsplasharpClient_OrderBy_" data-uid="Unsplasharp.UnsplasharpClient.ListPhotos(System.Int32,System.Int32,Unsplasharp.UnsplasharpClient.OrderBy)">
+  ListPhotos(int, int, OrderBy)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L513"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a list of all  photos.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; ListPhotos(int page = 1, int perPage = 10, UnsplasharpClient.OrderBy orderBy = OrderBy.Latest)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page.</p>
+</dd>
+    <dt><code>orderBy</code> <a class="xref" href="Unsplasharp.UnsplasharpClient.html">UnsplasharpClient</a>.<a class="xref" href="Unsplasharp.UnsplasharpClient.OrderBy.html">OrderBy</a></dt>
+    <dd><p>How to sort the photos.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>List of all  photos.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_ListPhotos_" data-uid="Unsplasharp.UnsplasharpClient.ListPhotos*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_ListPhotos_System_Int32_System_Int32_Unsplasharp_UnsplasharpClient_OrderBy_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.ListPhotos(System.Int32,System.Int32,Unsplasharp.UnsplasharpClient.OrderBy,System.Threading.CancellationToken)">
+  ListPhotos(int, int, OrderBy, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L525"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a list of all  photos.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; ListPhotos(int page, int perPage, UnsplasharpClient.OrderBy orderBy, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page.</p>
+</dd>
+    <dt><code>orderBy</code> <a class="xref" href="Unsplasharp.UnsplasharpClient.html">UnsplasharpClient</a>.<a class="xref" href="Unsplasharp.UnsplasharpClient.OrderBy.html">OrderBy</a></dt>
+    <dd><p>How to sort the photos.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>List of all  photos.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_ListRelatedCollections_" data-uid="Unsplasharp.UnsplasharpClient.ListRelatedCollections*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_ListRelatedCollections_System_String_" data-uid="Unsplasharp.UnsplasharpClient.ListRelatedCollections(System.String)">
+  ListRelatedCollections(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L854"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a collection's related collections.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Collection&gt;&gt; ListRelatedCollections(string id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The collection’s ID.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Collection.html">Collection</a>&gt;&gt;</dt>
+    <dd><p>A list of collections.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_ListRelatedCollections_" data-uid="Unsplasharp.UnsplasharpClient.ListRelatedCollections*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_ListRelatedCollections_System_String_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.ListRelatedCollections(System.String,System.Threading.CancellationToken)">
+  ListRelatedCollections(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L864"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a collection's related collections.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Collection&gt;&gt; ListRelatedCollections(string id, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The collection's ID.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Collection.html">Collection</a>&gt;&gt;</dt>
+    <dd><p>A list of collections.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_ListUserCollections_" data-uid="Unsplasharp.UnsplasharpClient.ListUserCollections*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_ListUserCollections_System_String_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.ListUserCollections(System.String,System.Int32,System.Int32)">
+  ListUserCollections(string, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L965"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get all photos collections of an user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Collection&gt;&gt; ListUserCollections(string username, int page = 1, int perPage = 10)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>username</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Name of the user to get collections from</p>
+</dd>
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Collection.html">Collection</a>&gt;&gt;</dt>
+    <dd><p>List of user's collections</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_ListUserLikedPhotos_" data-uid="Unsplasharp.UnsplasharpClient.ListUserLikedPhotos*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_ListUserLikedPhotos_System_String_System_Int32_System_Int32_Unsplasharp_UnsplasharpClient_OrderBy_" data-uid="Unsplasharp.UnsplasharpClient.ListUserLikedPhotos(System.String,System.Int32,System.Int32,Unsplasharp.UnsplasharpClient.OrderBy)">
+  ListUserLikedPhotos(string, int, int, OrderBy)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L948"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a list of photos liked by a user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; ListUserLikedPhotos(string username, int page = 1, int perPage = 10, UnsplasharpClient.OrderBy orderBy = OrderBy.Latest)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>username</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Username to get photos from</p>
+</dd>
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page.</p>
+</dd>
+    <dt><code>orderBy</code> <a class="xref" href="Unsplasharp.UnsplasharpClient.html">UnsplasharpClient</a>.<a class="xref" href="Unsplasharp.UnsplasharpClient.OrderBy.html">OrderBy</a></dt>
+    <dd><p>How to sort the photos.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of user's liked photos.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_ListUserPhotos_" data-uid="Unsplasharp.UnsplasharpClient.ListUserPhotos*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_ListUserPhotos_System_String_System_Int32_System_Int32_Unsplasharp_UnsplasharpClient_OrderBy_System_Boolean_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.ListUserPhotos(System.String,System.Int32,System.Int32,Unsplasharp.UnsplasharpClient.OrderBy,System.Boolean,System.Int32)">
+  ListUserPhotos(string, int, int, OrderBy, bool, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L930"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a list of photos uploaded by a user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; ListUserPhotos(string username, int page = 1, int perPage = 10, UnsplasharpClient.OrderBy orderBy = OrderBy.Latest, bool stats = false, int quantity = 30)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>username</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Username to get photos from</p>
+</dd>
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page.</p>
+</dd>
+    <dt><code>orderBy</code> <a class="xref" href="Unsplasharp.UnsplasharpClient.html">UnsplasharpClient</a>.<a class="xref" href="Unsplasharp.UnsplasharpClient.OrderBy.html">OrderBy</a></dt>
+    <dd><p>How to sort the photos.</p>
+</dd>
+    <dt><code>stats</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Show the stats for each user’s photo.</p>
+</dd>
+    <dt><code>quantity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The amount of for each stat.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of user's photos.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_SearchCollections_" data-uid="Unsplasharp.UnsplasharpClient.SearchCollections*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_SearchCollections_System_String_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.SearchCollections(System.String,System.Int32,System.Int32)">
+  SearchCollections(string, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1117"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a single page of collection results for a query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Collection&gt;&gt; SearchCollections(string query, int page = 1, int perPage = 10)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Search terms.</p>
+</dd>
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Collection.html">Collection</a>&gt;&gt;</dt>
+    <dd><p>A list of collections found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_SearchCollections_" data-uid="Unsplasharp.UnsplasharpClient.SearchCollections*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_SearchCollections_System_String_System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.SearchCollections(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)">
+  SearchCollections(string, int, int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1129"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a single page of collection results for a query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Collection&gt;&gt; SearchCollections(string query, int page, int perPage, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Search terms.</p>
+</dd>
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Collection.html">Collection</a>&gt;&gt;</dt>
+    <dd><p>A list of collections found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_SearchPhotos_" data-uid="Unsplasharp.UnsplasharpClient.SearchPhotos*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_SearchPhotos_System_String_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.SearchPhotos(System.String,System.Int32,System.Int32)">
+  SearchPhotos(string, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1021"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a single page of photo results for a query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; SearchPhotos(string query, int page = 1, int perPage = 10)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Search terms.</p>
+</dd>
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of photos found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_SearchPhotos_" data-uid="Unsplasharp.UnsplasharpClient.SearchPhotos*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_SearchPhotos_System_String_System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.SearchPhotos(System.String,System.Int32,System.Int32,System.Threading.CancellationToken)">
+  SearchPhotos(string, int, int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1033"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a single page of photo results for a query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; SearchPhotos(string query, int page, int perPage, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Search terms.</p>
+</dd>
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of photos found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_SearchPhotos_" data-uid="Unsplasharp.UnsplasharpClient.SearchPhotos*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_SearchPhotos_System_String_System_String_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.SearchPhotos(System.String,System.String,System.Int32,System.Int32)">
+  SearchPhotos(string, string, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1058"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a single page of photo results for a query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; SearchPhotos(string query, string collectionId, int page = 1, int perPage = 10)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Search terms.</p>
+</dd>
+    <dt><code>collectionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Collection ID to narrow search.</p>
+</dd>
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of photos found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_SearchPhotos_" data-uid="Unsplasharp.UnsplasharpClient.SearchPhotos*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_SearchPhotos_System_String_System_String_System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.SearchPhotos(System.String,System.String,System.Int32,System.Int32,System.Threading.CancellationToken)">
+  SearchPhotos(string, string, int, int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1071"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a single page of photo results for a query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; SearchPhotos(string query, string collectionId, int page, int perPage, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Search terms.</p>
+</dd>
+    <dt><code>collectionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Collection ID to narrow search.</p>
+</dd>
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of photos found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_SearchPhotos_" data-uid="Unsplasharp.UnsplasharpClient.SearchPhotos*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_SearchPhotos_System_String_System_String___System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.SearchPhotos(System.String,System.String[],System.Int32,System.Int32)">
+  SearchPhotos(string, string[], int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1088"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a single page of photo results for a query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; SearchPhotos(string query, string[] collectionIds, int page = 1, int perPage = 10)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Search terms.</p>
+</dd>
+    <dt><code>collectionIds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>Collection ID's to narrow search.</p>
+</dd>
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of photos found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_SearchPhotos_" data-uid="Unsplasharp.UnsplasharpClient.SearchPhotos*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_SearchPhotos_System_String_System_String___System_Int32_System_Int32_System_Threading_CancellationToken_" data-uid="Unsplasharp.UnsplasharpClient.SearchPhotos(System.String,System.String[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+  SearchPhotos(string, string[], int, int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a single page of photo results for a query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;Photo&gt;&gt; SearchPhotos(string query, string[] collectionIds, int page, int perPage, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Search terms.</p>
+</dd>
+    <dt><code>collectionIds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>Collection ID's to narrow search.</p>
+</dd>
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>Cancellation token to cancel the request.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.Photo.html">Photo</a>&gt;&gt;</dt>
+    <dd><p>A list of photos found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Unsplasharp_UnsplasharpClient_SearchUsers_" data-uid="Unsplasharp.UnsplasharpClient.SearchUsers*"></a>
+
+  <h3 id="Unsplasharp_UnsplasharpClient_SearchUsers_System_String_System_Int32_System_Int32_" data-uid="Unsplasharp.UnsplasharpClient.SearchUsers(System.String,System.Int32,System.Int32)">
+  SearchUsers(string, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L1145"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a single page of user results for a query.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;User&gt;&gt; SearchUsers(string query, int page = 1, int perPage = 10)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Search terms.</p>
+</dd>
+    <dt><code>page</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Page number to retrieve.</p>
+</dd>
+    <dt><code>perPage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Number of items per page.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Unsplasharp.Models.User.html">User</a>&gt;&gt;</dt>
+    <dd><p>A list of users found.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/rootasjey/unsplasharp/blob/master/src/unsplasharp/Source/UnsplasharpClient.cs/#L21" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
